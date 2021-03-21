@@ -1,0 +1,21 @@
+{
+  "name": "436v-project_c7s1b_v4x0b_w9d1b",
+  "version": "1.0.0",
+  "description": "*Reference and source any external material here*",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git@github.students.cs.ubc.ca:cpsc436v-2020w-t2/436v-project_c7s1b_v4x0b_w9d1b.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "eslint": "^7.22.0",
+    "eslint-config-airbnb-base": "^14.2.1",
+    "eslint-plugin-import": "^2.22.1"
+  }
+}
