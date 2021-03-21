@@ -1,0 +1,2690 @@
+{
+  "2000": [
+    {
+      "constructor": "Arrows",
+      "car": "Arrows A21",
+      "power": "780 hp @ 15,800 rpm[2]",
+      "weight": null,
+      "drivers": [
+        "Pedro de la Rosa",
+        "Jos Verstappen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7273757"
+    },
+    {
+      "constructor": "British American Racing",
+      "car": "BAR 002",
+      "power": "810 hp @ 17,000 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Jacques Villeneuve",
+        "Ricardo Zonta"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7287510"
+    },
+    {
+      "constructor": "Benetton",
+      "car": "Benetton B200",
+      "power": "775-780 hp @ 15,600 rpm[1]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Giancarlo Fisichella",
+        "Alexander Wurz"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7180241"
+    },
+    {
+      "constructor": "Ferrari",
+      "car": "Ferrari F1-2000",
+      "power": "805 hp @ 17,300 RPM[1]",
+      "weight": null,
+      "drivers": [
+        "Michael Schumacher",
+        "Rubens Barrichello"
+      ],
+      "url": "https://en.wikipedia.org/?curid=5880799"
+    },
+    {
+      "constructor": "Jaguar",
+      "car": "Jaguar R1",
+      "power": "805 hp @  17,500 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Eddie Irvine",
+        "Luciano Burti",
+        "Johnny Herbert"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7151610"
+    },
+    {
+      "constructor": "Jordan",
+      "car": "Jordan EJ10",
+      "power": "770\u00a0hp (574.2\u00a0kW) @ 15,800 rpm[2]",
+      "weight": null,
+      "drivers": [
+        "Heinz-Harald Frentzen",
+        "Jarno Trulli"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7137072"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4/15",
+      "power": "815\u00a0hp (608\u00a0kW) @ 17,800 rpm[1][2]",
+      "weight": null,
+      "drivers": [
+        "Mika H\u00e4kkinen",
+        "David Coulthard"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7135071"
+    },
+    {
+      "constructor": "Minardi",
+      "car": "Minardi M02",
+      "power": "770 hp @ 15,800 rpm[1]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Marc Gen\u00e9",
+        "Gast\u00f3n Mazzacane"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7275839"
+    },
+    {
+      "constructor": "Prost",
+      "car": "Prost AP03",
+      "power": "800 hp @ 16,200 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Jean Alesi",
+        "Nick Heidfeld"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7240641"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C19",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Pedro Diniz",
+        "Mika Salo"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7255152"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW22",
+      "power": "810 hp @ 17,500 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Ralf Schumacher",
+        "Jenson Button"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7166469"
+    }
+  ],
+  "2001": [
+    {
+      "constructor": "Arrows",
+      "car": "Arrows A22",
+      "power": "800 hp @ 17,500 RPM[1]",
+      "weight": null,
+      "drivers": [
+        "Jos Verstappen",
+        "Enrique Bernoldi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9293394"
+    },
+    {
+      "constructor": "BAR",
+      "car": "BAR 003",
+      "power": "800 hp @ 17,000 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Olivier Panis",
+        "Jacques Villeneuve"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9018645"
+    },
+    {
+      "constructor": "Benetton",
+      "car": "Benetton B201",
+      "power": "780 hp @ 17,400 rpm",
+      "weight": null,
+      "drivers": [
+        "Giancarlo Fisichella",
+        "Jenson Button"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9024623"
+    },
+    {
+      "constructor": "Ferrari",
+      "car": "Ferrari F2001",
+      "power": "825 horsepower (615\u00a0kW) @ 17,300 rpm[1]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Michael Schumacher",
+        "Rubens Barrichello"
+      ],
+      "url": "https://en.wikipedia.org/?curid=5698586"
+    },
+    {
+      "constructor": "Jaguar",
+      "car": "Jaguar R2",
+      "power": "805\u00a0hp (600.3\u00a0kW) @ 17,500 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Eddie Irvine",
+        "Luciano Burti",
+        "Pedro de la Rosa"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9038150"
+    },
+    {
+      "constructor": "Jordan Grand Prix",
+      "car": "Jordan EJ11",
+      "power": "800\u00a0hp (596.6\u00a0kW) @ 17,000 rpm[2]",
+      "weight": null,
+      "drivers": [
+        "Heinz-Harald Frentzen",
+        "Ricardo Zonta",
+        "Jean Alesi",
+        "Jarno Trulli"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7377288"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-16",
+      "power": "830\u00a0hp (619\u00a0kW) @ 17,800 RPM[1]",
+      "weight": null,
+      "drivers": [
+        "Mika H\u00e4kkinen",
+        "David Coulthard"
+      ],
+      "url": "https://en.wikipedia.org/?curid=19720297"
+    },
+    {
+      "constructor": "Minardi",
+      "car": "Minardi PS01",
+      "power": "805 hp @ 17,500 rpm[2]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Tarso Marques",
+        "Alex Yoong",
+        "Fernando Alonso"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9369107"
+    },
+    {
+      "constructor": "Prost",
+      "car": "Prost AP04",
+      "power": "825 hp @ 17,300 rpm",
+      "weight": null,
+      "drivers": [
+        "Jean Alesi",
+        "Heinz-Harald Frentzen",
+        "Gast\u00f3n Mazzacane",
+        "Luciano Burti",
+        "Tom\u00e1\u0161 Enge"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9231059"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C20",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Nick Heidfeld",
+        "Kimi R\u00e4ikk\u00f6nen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8207845"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW23",
+      "power": "880 hp @ 18,000 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Ralf Schumacher",
+        "Juan Pablo Montoya"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8972351"
+    }
+  ],
+  "2002": [
+    {
+      "constructor": "Arrows",
+      "car": "Arrows A23",
+      "power": "805 hp @ 17,500 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Heinz-Harald Frentzen",
+        "Enrique Bernoldi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=11988683"
+    },
+    {
+      "constructor": "BAR",
+      "car": "BAR 004",
+      "power": "835 hp @ 18,200 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Jacques Villeneuve",
+        "Olivier Panis"
+      ],
+      "url": "https://en.wikipedia.org/?curid=27338956"
+    },
+    {
+      "constructor": "Ferrari",
+      "car": "Ferrari F2001",
+      "power": "825 horsepower (615\u00a0kW) @ 17,300 rpm[1]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Michael Schumacher",
+        "Rubens Barrichello"
+      ],
+      "url": "https://en.wikipedia.org/?curid=5698586"
+    },
+    {
+      "constructor": "Ferrari",
+      "car": "Ferrari F2002",
+      "power": "835 horsepower (623\u00a0kW) @ 17,800 rpm[1]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Michael Schumacher",
+        "Rubens Barrichello"
+      ],
+      "url": "https://en.wikipedia.org/?curid=5127799"
+    },
+    {
+      "constructor": "Jaguar",
+      "car": "Jaguar R3",
+      "power": "805 hp @ 17,500 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Eddie Irvine",
+        "Pedro de la Rosa"
+      ],
+      "url": "https://en.wikipedia.org/?curid=16195126"
+    },
+    {
+      "constructor": "Jordan",
+      "car": "Jordan EJ12",
+      "power": "835\u00a0hp (622.7\u00a0kW) @ 18,200 rpm[2]",
+      "weight": null,
+      "drivers": [
+        "Giancarlo Fisichella",
+        "Takuma Sato"
+      ],
+      "url": "https://en.wikipedia.org/?curid=11796765"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-17",
+      "power": "845-850 hp @ 18,500 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "David Coulthard",
+        "Kimi R\u00e4ikk\u00f6nen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=11201709"
+    },
+    {
+      "constructor": "Minardi",
+      "car": "Minardi PS02",
+      "power": "800 hp @ 17,500 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Alex Yoong",
+        "Anthony Davidson",
+        "Mark Webber"
+      ],
+      "url": "https://en.wikipedia.org/?curid=16194959"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R202",
+      "power": "820 hp @ 17,500 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Jarno Trulli",
+        "Jenson Button"
+      ],
+      "url": "https://en.wikipedia.org/?curid=11202189"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C21",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Nick Heidfeld",
+        "Felipe Massa",
+        "Heinz-Harald Frentzen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=12827707"
+    },
+    {
+      "constructor": "Toyota",
+      "car": "Toyota TF102",
+      "power": "835 hp @ 18,200 rpm[2]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Mika Salo",
+        "Allan McNish"
+      ],
+      "url": "https://en.wikipedia.org/?curid=12642945"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW24",
+      "power": "880-900 hp @ 19,050 rpm",
+      "weight": null,
+      "drivers": [
+        "Ralf Schumacher",
+        "Juan Pablo Montoya"
+      ],
+      "url": "https://en.wikipedia.org/?curid=10336316"
+    }
+  ],
+  "2003": [
+    {
+      "constructor": "BAR-Honda",
+      "car": "BAR 005",
+      "power": "835 hp @ 18,200 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Jacques Villeneuve",
+        "Takuma Sato",
+        "Jenson Button"
+      ],
+      "url": "https://en.wikipedia.org/?curid=22721139"
+    },
+    {
+      "constructor": "Ferrari",
+      "car": "Ferrari F2002",
+      "power": "835 horsepower (623\u00a0kW) @ 17,800 rpm[1]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Michael Schumacher",
+        "Rubens Barrichello"
+      ],
+      "url": "https://en.wikipedia.org/?curid=5127799"
+    },
+    {
+      "constructor": "Scuderia Ferrari",
+      "car": "Ferrari F2003-GA",
+      "power": "845 horsepower (630\u00a0kW) @ 18,300 rpm[1]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Michael Schumacher",
+        "Rubens Barrichello"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7552974"
+    },
+    {
+      "constructor": "Jaguar",
+      "car": "Jaguar R4",
+      "power": "900 hp @ 19,000 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Mark Webber",
+        "Ant\u00f4nio Pizzonia",
+        "Justin Wilson"
+      ],
+      "url": "https://en.wikipedia.org/?curid=10260529"
+    },
+    {
+      "constructor": "Jordan",
+      "car": "Jordan EJ13",
+      "power": "810 hp @ 17,500 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Giancarlo Fisichella",
+        "Ralph Firman",
+        "Zsolt Baumgartner"
+      ],
+      "url": "https://en.wikipedia.org/?curid=11796887"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-17",
+      "power": "845-850 hp @ 18,500 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "David Coulthard",
+        "Kimi R\u00e4ikk\u00f6nen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=11201709"
+    },
+    {
+      "constructor": "Minardi",
+      "car": "Minardi PS03",
+      "power": "805 hp @ 17,500 rpm[1]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Justin Wilson",
+        "Nicolas Kiesa",
+        "Jos Verstappen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=10238223"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R23",
+      "power": "830\u00a0hp (619\u00a0kW) @ 17,800 rpm[1]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Jarno Trulli",
+        "Fernando Alonso"
+      ],
+      "url": "https://en.wikipedia.org/?curid=11202348"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C22",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Nick Heidfeld",
+        "Heinz-Harald Frentzen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=18568263"
+    },
+    {
+      "constructor": "Toyota",
+      "car": "Toyota TF103",
+      "power": "845 hp @ 18,400 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Olivier Panis",
+        "Cristiano da Matta"
+      ],
+      "url": "https://en.wikipedia.org/?curid=12643272"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW25",
+      "power": "940 hp @ 19,200 rpm[1][2]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Juan Pablo Montoya",
+        "Ralf Schumacher",
+        "Marc Gen\u00e9"
+      ],
+      "url": "https://en.wikipedia.org/?curid=6197558"
+    }
+  ],
+  "2004": [
+    {
+      "constructor": "BAR-Honda",
+      "car": "BAR 006",
+      "power": "900+ hp @ 18,500 RPM",
+      "weight": null,
+      "drivers": [
+        "Jenson Button",
+        "Takuma Sato"
+      ],
+      "url": "https://en.wikipedia.org/?curid=18981411"
+    },
+    {
+      "constructor": "Scuderia Ferrari",
+      "car": "Ferrari F2004",
+      "power": "900\u20131,000 horsepower (670\u2013750\u00a0kW) @ 18,300 rpm",
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Michael Schumacher",
+        "Rubens Barrichello"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7552574"
+    },
+    {
+      "constructor": "Jaguar",
+      "car": "Jaguar R5",
+      "power": "900+ hp @ 19,000 rpm",
+      "weight": null,
+      "drivers": [
+        "Mark Webber",
+        "Christian Klien"
+      ],
+      "url": "https://en.wikipedia.org/?curid=16219938"
+    },
+    {
+      "constructor": "Jordan",
+      "car": "Jordan EJ14",
+      "power": "800-900 hp @ 18,000-19,000 rpm[6]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Nick Heidfeld",
+        "Giorgio Pantano",
+        "Timo Glock"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7365495"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-19",
+      "power": "870 hp @ 18,500 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "David Coulthard",
+        "Kimi R\u00e4ikk\u00f6nen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=11201957"
+    },
+    {
+      "constructor": "Minardi",
+      "car": "Minardi PS04B",
+      "power": "800 hp @ 18,000 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Gianmaria Bruni",
+        "Patrick Friesacher",
+        "Zsolt Baumgartner",
+        "Christijan Albers"
+      ],
+      "url": "https://en.wikipedia.org/?curid=20482481"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R24",
+      "power": "900 hp @ 19,000 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Jarno Trulli",
+        "Jacques Villeneuve",
+        "Fernando Alonso"
+      ],
+      "url": "https://en.wikipedia.org/?curid=11202565"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C23",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Giancarlo Fisichella",
+        "Felipe Massa"
+      ],
+      "url": "https://en.wikipedia.org/?curid=18431595"
+    },
+    {
+      "constructor": "Toyota",
+      "car": "Toyota TF104",
+      "power": "900 hp @ 19,000 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Cristiano da Matta",
+        "Ricardo Zonta",
+        "Jarno Trulli",
+        "Olivier Panis"
+      ],
+      "url": "https://en.wikipedia.org/?curid=12643713"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW26",
+      "power": "950\u00a0hp (708\u00a0kW) @ 19,000 rpm",
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Juan Pablo Montoya",
+        "Ralf Schumacher",
+        "Marc Gen\u00e9",
+        "Ant\u00f4nio Pizzonia"
+      ],
+      "url": "https://en.wikipedia.org/?curid=10336377"
+    }
+  ],
+  "2005": [
+    {
+      "constructor": "BAR-Honda",
+      "car": "BAR 007",
+      "power": null,
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Jenson Button",
+        "Takuma Sato",
+        "Anthony Davidson"
+      ],
+      "url": "https://en.wikipedia.org/?curid=10409891"
+    },
+    {
+      "constructor": "Scuderia Ferrari",
+      "car": "Ferrari F2004",
+      "power": "900\u20131,000 horsepower (670\u2013750\u00a0kW) @ 18,300 rpm",
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Michael Schumacher",
+        "Rubens Barrichello"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7552574"
+    },
+    {
+      "constructor": "Scuderia Ferrari",
+      "car": "Ferrari F2005",
+      "power": "865-950 hp @ 18,300-19,000 rpm[1]",
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Michael Schumacher",
+        "Rubens Barrichello"
+      ],
+      "url": "https://en.wikipedia.org/?curid=3208696"
+    },
+    {
+      "constructor": "Jordan",
+      "car": "Jordan EJ15",
+      "power": "900 hp @ 19,000 rpm[6]",
+      "weight": null,
+      "drivers": [
+        "Tiago Monteiro",
+        "Narain Karthikeyan"
+      ],
+      "url": "https://en.wikipedia.org/?curid=11797014"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-20",
+      "power": "930\u00a0hp (694\u00a0kW) @ 19,000 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Kimi R\u00e4ikk\u00f6nen",
+        "Juan Pablo Montoya",
+        "Pedro de la Rosa",
+        "Alexander Wurz"
+      ],
+      "url": "https://en.wikipedia.org/?curid=10335398"
+    },
+    {
+      "constructor": "Minardi",
+      "car": "Minardi PS04B",
+      "power": "800 hp @ 18,000 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Gianmaria Bruni",
+        "Patrick Friesacher",
+        "Zsolt Baumgartner",
+        "Christijan Albers"
+      ],
+      "url": "https://en.wikipedia.org/?curid=20482481"
+    },
+    {
+      "constructor": "Minardi",
+      "car": "Minardi PS05",
+      "power": "915 hp @ 19,000 rpm",
+      "weight": null,
+      "drivers": [
+        "Patrick Friesacher",
+        " Robert Doornbos[note]",
+        "Christijan Albers"
+      ],
+      "url": "https://en.wikipedia.org/?curid=29066656"
+    },
+    {
+      "constructor": "Red Bull",
+      "car": "Red Bull RB1",
+      "power": "915\u00a0hp (682.3\u00a0kW) @ 19,000 rpm",
+      "weight": null,
+      "drivers": [
+        "David Coulthard",
+        "Christian Klien",
+        "Vitantonio Liuzzi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=12130076"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R25",
+      "power": "900\u2013950\u00a0hp (671\u2013708\u00a0kW) @ 19,000 RPM",
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Fernando Alonso",
+        "Giancarlo Fisichella"
+      ],
+      "url": "https://en.wikipedia.org/?curid=5948736"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C24",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Jacques Villeneuve",
+        "Felipe Massa"
+      ],
+      "url": "https://en.wikipedia.org/?curid=10517792"
+    },
+    {
+      "constructor": "Toyota",
+      "car": "Toyota TF105",
+      "power": "940 hp @ 19,000 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Jarno Trulli",
+        "Ralf Schumacher",
+        "Ricardo Zonta"
+      ],
+      "url": "https://en.wikipedia.org/?curid=10459730"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW27",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Mark Webber",
+        "Nick Heidfeld",
+        "Ant\u00f4nio Pizzonia"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7533994"
+    }
+  ],
+  "2006": [
+    {
+      "constructor": "BMW Sauber",
+      "car": "BMW Sauber F1.06",
+      "power": "760 hp @ 19,500 rpm[2][3]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Nick Heidfeld",
+        "Jacques Villeneuve",
+        "Robert Kubica"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8550257"
+    },
+    {
+      "constructor": "Ferrari",
+      "car": "Ferrari 248 F1",
+      "power": "730-785 hp @ 19,000+ rpm",
+      "weight": null,
+      "drivers": [
+        "Michael Schumacher",
+        "Felipe Massa"
+      ],
+      "url": "https://en.wikipedia.org/?curid=4012292"
+    },
+    {
+      "constructor": "Honda",
+      "car": "Honda RA106",
+      "power": "650-700+ hp @ 19,500 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Rubens Barrichello",
+        "Jenson Button"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8498870"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-21",
+      "power": "750 hp @ 19,000 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Kimi R\u00e4ikk\u00f6nen",
+        "Juan Pablo Montoya",
+        "Pedro de la Rosa"
+      ],
+      "url": "https://en.wikipedia.org/?curid=6654512"
+    },
+    {
+      "constructor": "Midland F1 Racing",
+      "car": "Midland M16",
+      "power": null,
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Tiago Monteiro",
+        "Christijan Albers"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8907980"
+    },
+    {
+      "constructor": "Red Bull",
+      "car": "Red Bull RB2",
+      "power": "760-785 hp @ 19,000+ rpm",
+      "weight": null,
+      "drivers": [
+        "David Coulthard",
+        "Christian Klien",
+        "Robert Doornbos"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8566838"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R26",
+      "power": "755-775 hp @ 20,500 rpm[1][2]",
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Fernando Alonso",
+        "Giancarlo Fisichella"
+      ],
+      "url": "https://en.wikipedia.org/?curid=5938194"
+    },
+    {
+      "constructor": "Super Aguri",
+      "car": "Super Aguri SA05",
+      "power": "650\u2013750\u00a0hp (485\u2013559\u00a0kW) @ 19,500 rpm[1]",
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Takuma Sato",
+        "Yuji Ide",
+        "Franck Montagny"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8908524"
+    },
+    {
+      "constructor": "Super Aguri",
+      "car": "Super Aguri SA06",
+      "power": null,
+      "weight": "600\u00a0kg",
+      "drivers": [
+        "Takuma Sato",
+        "Sakon Yamamoto"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8922026"
+    },
+    {
+      "constructor": "Toro Rosso",
+      "car": "Toro Rosso STR1",
+      "power": "915\u00a0hp (682.3\u00a0kW) @ 19,000 rpm[2] (rev-limited to 16,700/17,000\u00a0rpm)",
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Vitantonio Liuzzi",
+        "Scott Speed"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8691692"
+    },
+    {
+      "constructor": "Toyota",
+      "car": "Toyota TF106",
+      "power": "745 hp @ 19,000 rpm",
+      "weight": null,
+      "drivers": [
+        "Ralf Schumacher",
+        "Jarno Trulli"
+      ],
+      "url": "https://en.wikipedia.org/?curid=6657434"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW28",
+      "power": "755 hp @ 19,250 rpm (314.7 hp/L)[1]",
+      "weight": null,
+      "drivers": [
+        "Mark Webber",
+        "Nico Rosberg"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8581446"
+    }
+  ],
+  "2007": [
+    {
+      "constructor": "BMW Sauber",
+      "car": "BMW Sauber F1.07",
+      "power": "750\u00a0hp (559\u00a0kW)",
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Nick Heidfeld",
+        "Robert Kubica",
+        "Sebastian Vettel"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9056848"
+    },
+    {
+      "constructor": "Scuderia Ferrari",
+      "car": "Ferrari F2007",
+      "power": "750 hp[1]-800 hp @ 19,000 RPM-limited",
+      "weight": null,
+      "drivers": [
+        "Felipe Massa",
+        "Kimi R\u00e4ikk\u00f6nen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8920980"
+    },
+    {
+      "constructor": "Honda",
+      "car": "Honda RA107",
+      "power": "700-775 hp @ 19,000 rpm[1][2]",
+      "weight": null,
+      "drivers": [
+        "Jenson Button",
+        "Rubens Barrichello"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8984576"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-22",
+      "power": "810 hp @ 19,000 rpm[1]",
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Fernando Alonso",
+        "Lewis Hamilton"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8984417"
+    },
+    {
+      "constructor": "Red Bull",
+      "car": "Red Bull RB3",
+      "power": "750 hp @ 19,000 rpm",
+      "weight": null,
+      "drivers": [
+        "David Coulthard  ",
+        "Mark Webber"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9127079"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R27",
+      "power": null,
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Giancarlo Fisichella",
+        "Heikki Kovalainen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=8980082"
+    },
+    {
+      "constructor": "Spyker/Force India",
+      "car": "Spyker F8-VII",
+      "power": "750\u00a0hp (559\u00a0kW) @ 17000 rpm",
+      "weight": null,
+      "drivers": [
+        "Adrian Sutil",
+        "Christijan Albers",
+        "Markus Winkelhock",
+        "Sakon Yamamoto",
+        "Giancarlo Fisichella"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9328930"
+    },
+    {
+      "constructor": "Super Aguri",
+      "car": "Super Aguri SA07",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Takuma Sato",
+        "Anthony Davidson"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9898561"
+    },
+    {
+      "constructor": "Toro Rosso",
+      "car": "Toro Rosso STR2",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        ":",
+        "Vitantonio Liuzzi",
+        "Scott Speed",
+        "Sebastian Vettel:",
+        "S\u00e9bastien Bourdais",
+        "Sebastian Vettel"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9500567"
+    },
+    {
+      "constructor": "Toyota",
+      "car": "Toyota TF107",
+      "power": "750 hp @ 19,000 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Ralf Schumacher",
+        "Jarno Trulli"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9056785"
+    },
+    {
+      "constructor": "Williams[1]",
+      "car": "Williams FW29",
+      "power": "755 hp @ 19,000 rpm[2]",
+      "weight": null,
+      "drivers": [
+        "Nico Rosberg",
+        "Alexander Wurz",
+        "Kazuki Nakajima"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9334671"
+    }
+  ],
+  "2008": [
+    {
+      "constructor": "BMW Sauber",
+      "car": "BMW Sauber F1.08",
+      "power": null,
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Nick Heidfeld ",
+        "Robert Kubica"
+      ],
+      "url": "https://en.wikipedia.org/?curid=13481202"
+    },
+    {
+      "constructor": "Scuderia Ferrari",
+      "car": "Ferrari F2008",
+      "power": "750-800 hp @ 19,000 rpm-limited",
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Kimi R\u00e4ikk\u00f6nen",
+        "Felipe Massa"
+      ],
+      "url": "https://en.wikipedia.org/?curid=14357729"
+    },
+    {
+      "constructor": "Spyker/Force India",
+      "car": "Force India VJM01",
+      "power": "750\u00a0hp (559\u00a0kW) @ 17000 rpm",
+      "weight": null,
+      "drivers": [
+        "Adrian Sutil",
+        "Christijan Albers",
+        "Markus Winkelhock",
+        "Sakon Yamamoto",
+        "Giancarlo Fisichella"
+      ],
+      "url": "https://en.wikipedia.org/?curid=15640968"
+    },
+    {
+      "constructor": "Honda",
+      "car": "Honda RA108",
+      "power": "700-775 hp @ 19,000 rpm[2]",
+      "weight": null,
+      "drivers": [
+        "Jenson Button",
+        "Rubens Barrichello"
+      ],
+      "url": "https://en.wikipedia.org/?curid=14584578"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-23",
+      "power": "810 hp @ 19,000 RPM (Limited)",
+      "weight": null,
+      "drivers": [
+        "Lewis Hamilton",
+        "Heikki Kovalainen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=13859976"
+    },
+    {
+      "constructor": "Red Bull",
+      "car": "Red Bull RB4",
+      "power": "750 hp @ 19,000 rpm\n  Gearbox name     =",
+      "weight": null,
+      "drivers": [
+        "David Coulthard ",
+        "Mark Webber"
+      ],
+      "url": "https://en.wikipedia.org/?curid=14410970"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R28",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Fernando Alonso",
+        "Nelson Piquet Jr."
+      ],
+      "url": "https://en.wikipedia.org/?curid=13888323"
+    },
+    {
+      "constructor": "Spyker/Force India",
+      "car": "Spyker F8-VII",
+      "power": "750\u00a0hp (559\u00a0kW) @ 17000 rpm",
+      "weight": null,
+      "drivers": [
+        "Adrian Sutil",
+        "Christijan Albers",
+        "Markus Winkelhock",
+        "Sakon Yamamoto",
+        "Giancarlo Fisichella"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9328930"
+    },
+    {
+      "constructor": "Super Aguri F1",
+      "car": "Super Aguri SA08",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Takuma Sato",
+        "Anthony Davidson"
+      ],
+      "url": "https://en.wikipedia.org/?curid=14183753"
+    },
+    {
+      "constructor": "Toro Rosso",
+      "car": "Toro Rosso STR2",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        ":",
+        "Vitantonio Liuzzi",
+        "Scott Speed",
+        "Sebastian Vettel:",
+        "S\u00e9bastien Bourdais",
+        "Sebastian Vettel"
+      ],
+      "url": "https://en.wikipedia.org/?curid=9500567"
+    },
+    {
+      "constructor": "Toro Rosso",
+      "car": "Toro Rosso STR3",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "S\u00e9bastien Bourdais",
+        "Sebastian Vettel"
+      ],
+      "url": "https://en.wikipedia.org/?curid=14486899"
+    },
+    {
+      "constructor": "Toyota",
+      "car": "Toyota TF108",
+      "power": "750 hp @ 19,000 rpm[1]",
+      "weight": null,
+      "drivers": [
+        "Jarno Trulli",
+        "Timo Glock"
+      ],
+      "url": "https://en.wikipedia.org/?curid=14232310"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW30",
+      "power": null,
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Nico Rosberg",
+        "Kazuki Nakajima"
+      ],
+      "url": "https://en.wikipedia.org/?curid=14188171"
+    }
+  ],
+  "2009": [
+    {
+      "constructor": "BMW Sauber",
+      "car": "BMW Sauber F1.09",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Robert Kubica",
+        "Nick Heidfeld"
+      ],
+      "url": "https://en.wikipedia.org/?curid=20057738"
+    },
+    {
+      "constructor": "Brawn GP",
+      "car": "Brawn BGP 001",
+      "power": "750 hp @ 18,000 RPM",
+      "weight": null,
+      "drivers": [
+        "Jenson Button",
+        "Rubens Barrichello"
+      ],
+      "url": "https://en.wikipedia.org/?curid=21845600"
+    },
+    {
+      "constructor": "Scuderia Ferrari",
+      "car": "Ferrari F60",
+      "power": null,
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Felipe Massa",
+        "Luca Badoer",
+        "Giancarlo Fisichella",
+        "Kimi R\u00e4ikk\u00f6nen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=7733039"
+    },
+    {
+      "constructor": "Force India",
+      "car": "Force India VJM02",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Adrian Sutil",
+        "Giancarlo Fisichella",
+        "Vitantonio Liuzzi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=21751430"
+    },
+    {
+      "constructor": "McLaren Racing",
+      "car": "McLaren MP4-24",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Lewis Hamilton",
+        "Heikki Kovalainen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=21118691"
+    },
+    {
+      "constructor": "Red Bull",
+      "car": "Red Bull RB5",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Mark Webber",
+        "Sebastian Vettel"
+      ],
+      "url": "https://en.wikipedia.org/?curid=21461488"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R29",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Fernando Alonso ",
+        "Nelson Piquet, Jr. ",
+        "Romain Grosjean"
+      ],
+      "url": "https://en.wikipedia.org/?curid=21121707"
+    },
+    {
+      "constructor": "Toro Rosso",
+      "car": "Toro Rosso STR4",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "S\u00e9bastien Bourdais",
+        "Jaime Alguersuari",
+        "S\u00e9bastien Buemi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=21889541"
+    },
+    {
+      "constructor": "Toyota",
+      "car": "Toyota TF109",
+      "power": "740 hp @ 18,000 rpm[2]",
+      "weight": null,
+      "drivers": [
+        "Jarno Trulli",
+        "Timo Glock",
+        "Kamui Kobayashi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=21124948"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW31",
+      "power": "740 hp @ 18,000 rpm[2]",
+      "weight": "605\u00a0kg",
+      "drivers": [
+        "Nico Rosberg ",
+        "Kazuki Nakajima"
+      ],
+      "url": "https://en.wikipedia.org/?curid=21159072"
+    }
+  ],
+  "2010": [
+    {
+      "constructor": "Scuderia Ferrari",
+      "car": "Ferrari F10",
+      "power": null,
+      "weight": "620\u00a0kg",
+      "drivers": [
+        "Felipe Massa",
+        "Fernando Alonso"
+      ],
+      "url": "https://en.wikipedia.org/?curid=25978992"
+    },
+    {
+      "constructor": "Force India",
+      "car": "Force India VJM03",
+      "power": null,
+      "weight": "620\u00a0kg",
+      "drivers": [
+        "Adrian Sutil ",
+        "Vitantonio Liuzzi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=25990210"
+    },
+    {
+      "constructor": "Dallara",
+      "car": "Hispania F110",
+      "power": null,
+      "weight": "620\u00a0kg",
+      "drivers": [
+        "Karun Chandhok ",
+        "Bruno Senna",
+        "Sakon Yamamoto",
+        "Christian Klien"
+      ],
+      "url": "https://en.wikipedia.org/?curid=26428173"
+    },
+    {
+      "constructor": "Lotus",
+      "car": "Lotus T127",
+      "power": null,
+      "weight": "620\u00a0kg",
+      "drivers": [
+        "Jarno Trulli ",
+        "Heikki Kovalainen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=26176875"
+    },
+    {
+      "constructor": "McLaren Racing",
+      "car": "McLaren MP4-25",
+      "power": null,
+      "weight": "620\u00a0kg",
+      "drivers": [
+        "Jenson Button ",
+        "Lewis Hamilton"
+      ],
+      "url": "https://en.wikipedia.org/?curid=25127734"
+    },
+    {
+      "constructor": "Mercedes",
+      "car": "Mercedes MGP W01",
+      "power": null,
+      "weight": "620\u00a0kg",
+      "drivers": [
+        "Michael Schumacher ",
+        "Nico Rosberg"
+      ],
+      "url": "https://en.wikipedia.org/?curid=25990186"
+    },
+    {
+      "constructor": "Red Bull",
+      "car": "Red Bull RB6",
+      "power": null,
+      "weight": "620\u00a0kg",
+      "drivers": [
+        "Sebastian Vettel ",
+        "Mark Webber"
+      ],
+      "url": "https://en.wikipedia.org/?curid=25478278"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R30",
+      "power": null,
+      "weight": "620\u00a0kg",
+      "drivers": [
+        "Robert Kubica ",
+        "Vitaly Petrov"
+      ],
+      "url": "https://en.wikipedia.org/?curid=25753692"
+    },
+    {
+      "constructor": "BMW Sauber",
+      "car": "Sauber C29",
+      "power": null,
+      "weight": "620\u00a0kg",
+      "drivers": [
+        "Pedro de la Rosa",
+        "Nick Heidfeld",
+        "Kamui Kobayashi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=25294123"
+    },
+    {
+      "constructor": "Toro Rosso",
+      "car": "Toro Rosso STR5",
+      "power": null,
+      "weight": "620\u00a0kg",
+      "drivers": [
+        "S\u00e9bastien Buemi ",
+        "Jaime Alguersuari"
+      ],
+      "url": "https://en.wikipedia.org/?curid=25990239"
+    },
+    {
+      "constructor": "Virgin Racing",
+      "car": "Virgin VR-01",
+      "power": null,
+      "weight": "620\u00a0kg",
+      "drivers": [
+        "Timo Glock",
+        "Lucas di Grassi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=25990275"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW32",
+      "power": null,
+      "weight": "620\u00a0kg",
+      "drivers": [
+        "Rubens Barrichello",
+        "Nico H\u00fclkenberg"
+      ],
+      "url": "https://en.wikipedia.org/?curid=25987735"
+    }
+  ],
+  "2011": [
+    {
+      "constructor": "Scuderia Ferrari",
+      "car": "Ferrari 150\u00ba Italia",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Fernando Alonso",
+        "Felipe Massa"
+      ],
+      "url": "https://en.wikipedia.org/?curid=30628116"
+    },
+    {
+      "constructor": "Force India",
+      "car": "Force India VJM04",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Adrian Sutil ",
+        "Paul di Resta"
+      ],
+      "url": "https://en.wikipedia.org/?curid=29878092"
+    },
+    {
+      "constructor": "HRT",
+      "car": "Hispania F111",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Narain Karthikeyan",
+        "Daniel Ricciardo ",
+        "Vitantonio Liuzzi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=30626359"
+    },
+    {
+      "constructor": "Lotus",
+      "car": "Lotus T128 (Formula One car)",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Heikki Kovalainen ",
+        "Jarno Trulli ",
+        "Karun Chandhok"
+      ],
+      "url": "https://en.wikipedia.org/?curid=30627292"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-26",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Lewis Hamilton",
+        "Jenson Button"
+      ],
+      "url": "https://en.wikipedia.org/?curid=29873457"
+    },
+    {
+      "constructor": "Mercedes",
+      "car": "Mercedes MGP W02",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Michael Schumacher ",
+        "Nico Rosberg"
+      ],
+      "url": "https://en.wikipedia.org/?curid=30337906"
+    },
+    {
+      "constructor": "Red Bull",
+      "car": "Red Bull RB7",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Sebastian Vettel ",
+        "Mark Webber"
+      ],
+      "url": "https://en.wikipedia.org/?curid=29888924"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R31",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Bruno Senna",
+        "Nick Heidfeld ",
+        "Vitaly Petrov"
+      ],
+      "url": "https://en.wikipedia.org/?curid=30337475"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C30",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Kamui Kobayashi",
+        "Sergio P\u00e9rez",
+        "Pedro de la Rosa"
+      ],
+      "url": "https://en.wikipedia.org/?curid=29869830"
+    },
+    {
+      "constructor": "Toro Rosso",
+      "car": "Toro Rosso STR6",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "S\u00e9bastien Buemi",
+        "Jaime Alguersuari"
+      ],
+      "url": "https://en.wikipedia.org/?curid=29889904"
+    },
+    {
+      "constructor": "Virgin Racing",
+      "car": "Virgin MVR-02",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Timo Glock",
+        "J\u00e9r\u00f4me d'Ambrosio"
+      ],
+      "url": "https://en.wikipedia.org/?curid=30556061"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW33",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Rubens Barrichello",
+        "Pastor Maldonado"
+      ],
+      "url": "https://en.wikipedia.org/?curid=29889893"
+    }
+  ],
+  "2012": [
+    {
+      "constructor": "Caterham",
+      "car": "Caterham CT01",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Heikki Kovalainen",
+        "Vitaly Petrov"
+      ],
+      "url": "https://en.wikipedia.org/?curid=34054493"
+    },
+    {
+      "constructor": "Scuderia Ferrari",
+      "car": "Ferrari F2012",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Fernando Alonso",
+        "Felipe Massa"
+      ],
+      "url": "https://en.wikipedia.org/?curid=34587578"
+    },
+    {
+      "constructor": "Force India",
+      "car": "Force India VJM05",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Paul di Resta",
+        "Nico H\u00fclkenberg"
+      ],
+      "url": "https://en.wikipedia.org/?curid=34212260"
+    },
+    {
+      "constructor": "HRT",
+      "car": "HRT F112",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Pedro de la Rosa",
+        "Narain Karthikeyan"
+      ],
+      "url": "https://en.wikipedia.org/?curid=34203929"
+    },
+    {
+      "constructor": "Lotus",
+      "car": "Lotus E20",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Kimi R\u00e4ikk\u00f6nen",
+        "Romain Grosjean",
+        "J\u00e9r\u00f4me d'Ambrosio"
+      ],
+      "url": "https://en.wikipedia.org/?curid=34517631"
+    },
+    {
+      "constructor": "Marussia",
+      "car": "Marussia MR01",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Timo Glock",
+        "Charles Pic"
+      ],
+      "url": "https://en.wikipedia.org/?curid=34427117"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-27",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Jenson Button",
+        "Lewis Hamilton"
+      ],
+      "url": "https://en.wikipedia.org/?curid=34427116"
+    },
+    {
+      "constructor": "Mercedes",
+      "car": "Mercedes F1 W03",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Michael Schumacher",
+        "Nico Rosberg"
+      ],
+      "url": "https://en.wikipedia.org/?curid=33964872"
+    },
+    {
+      "constructor": "Red Bull",
+      "car": "Red Bull RB8",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Sebastian Vettel",
+        "Mark Webber"
+      ],
+      "url": "https://en.wikipedia.org/?curid=33899691"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C31",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Kamui Kobayashi",
+        "Sergio P\u00e9rez"
+      ],
+      "url": "https://en.wikipedia.org/?curid=34212262"
+    },
+    {
+      "constructor": "Toro Rosso",
+      "car": "Toro Rosso STR7",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Daniel Ricciardo",
+        "Jean-\u00c9ric Vergne"
+      ],
+      "url": "https://en.wikipedia.org/?curid=33893023"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW34",
+      "power": null,
+      "weight": "640\u00a0kg",
+      "drivers": [
+        "Pastor Maldonado",
+        "Bruno Senna"
+      ],
+      "url": "https://en.wikipedia.org/?curid=34212265"
+    }
+  ],
+  "2013": [
+    {
+      "constructor": "Caterham",
+      "car": "Caterham CT03",
+      "power": "750\u00a0hp (559\u00a0kW) + 80\u00a0hp (60\u00a0kW) KERS",
+      "weight": "642\u00a0kg",
+      "drivers": [
+        "Charles Pic",
+        "Giedo van der Garde"
+      ],
+      "url": "https://en.wikipedia.org/?curid=38291968"
+    },
+    {
+      "constructor": "Ferrari",
+      "car": "Ferrari F138",
+      "power": null,
+      "weight": "642\u00a0kg",
+      "drivers": [
+        "Fernando Alonso",
+        "Felipe Massa"
+      ],
+      "url": "https://en.wikipedia.org/?curid=38323668"
+    },
+    {
+      "constructor": "Force India",
+      "car": "Force India VJM06",
+      "power": null,
+      "weight": "642\u00a0kg",
+      "drivers": [
+        "Paul di Resta",
+        "Adrian Sutil"
+      ],
+      "url": "https://en.wikipedia.org/?curid=38294448"
+    },
+    {
+      "constructor": "Lotus",
+      "car": "Lotus E21",
+      "power": "750\u00a0hp (560\u00a0kW)",
+      "weight": "642\u00a0kg",
+      "drivers": [
+        "Kimi R\u00e4ikk\u00f6nen",
+        "Heikki Kovalainen",
+        "Romain Grosjean"
+      ],
+      "url": "https://en.wikipedia.org/?curid=38264768"
+    },
+    {
+      "constructor": "Marussia",
+      "car": "Marussia MR02",
+      "power": null,
+      "weight": "642\u00a0kg",
+      "drivers": [
+        "Jules Bianchi",
+        "Max Chilton"
+      ],
+      "url": "https://en.wikipedia.org/?curid=38154863"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-28",
+      "power": null,
+      "weight": "642\u00a0kg",
+      "drivers": [
+        "Jenson Button",
+        "Sergio P\u00e9rez"
+      ],
+      "url": "https://en.wikipedia.org/?curid=38153744"
+    },
+    {
+      "constructor": "Mercedes",
+      "car": "Mercedes F1 W04",
+      "power": "750 + 80\u00a0hp (559 + 60\u00a0kW) @ 18,000 rpm with KERS mode",
+      "weight": null,
+      "drivers": [
+        "Nico Rosberg",
+        "Lewis Hamilton"
+      ],
+      "url": "https://en.wikipedia.org/?curid=38264726"
+    },
+    {
+      "constructor": "Red Bull",
+      "car": "Red Bull RB9",
+      "power": "750\u00a0hp (560\u00a0kW)",
+      "weight": "642\u00a0kg",
+      "drivers": [
+        "Sebastian Vettel",
+        "Mark Webber"
+      ],
+      "url": "https://en.wikipedia.org/?curid=38154935"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C32",
+      "power": null,
+      "weight": "642\u00a0kg",
+      "drivers": [
+        "Nico H\u00fclkenberg",
+        "Esteban Guti\u00e9rrez"
+      ],
+      "url": "https://en.wikipedia.org/?curid=38264656"
+    },
+    {
+      "constructor": "Toro Rosso",
+      "car": "Toro Rosso STR8",
+      "power": "750 + 80\u00a0hp (559 + 60\u00a0kW) with KERS",
+      "weight": null,
+      "drivers": [
+        "Jean-\u00c9ric Vergne",
+        "Daniel Ricciardo"
+      ],
+      "url": "https://en.wikipedia.org/?curid=38264620"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW35",
+      "power": null,
+      "weight": "642\u00a0kg",
+      "drivers": [
+        "Pastor Maldonado ",
+        "Valtteri Bottas"
+      ],
+      "url": "https://en.wikipedia.org/?curid=38264357"
+    }
+  ],
+  "2014": [
+    {
+      "constructor": "Caterham",
+      "car": "Caterham CT05",
+      "power": "600\u00a0hp (447\u00a0kW) + 160\u00a0hp (119\u00a0kW) with MGU-K",
+      "weight": null,
+      "drivers": [
+        "Marcus Ericsson",
+        "Kamui Kobayashi ",
+        "Andr\u00e9 Lotterer",
+        "Will Stevens"
+      ],
+      "url": "https://en.wikipedia.org/?curid=41773934"
+    },
+    {
+      "constructor": "Scuderia Ferrari",
+      "car": "Ferrari F14 T",
+      "power": null,
+      "weight": "691\u00a0kg",
+      "drivers": [
+        "Kimi R\u00e4ikk\u00f6nen",
+        "Fernando Alonso"
+      ],
+      "url": "https://en.wikipedia.org/?curid=41732676"
+    },
+    {
+      "constructor": "Force India",
+      "car": "Force India VJM07",
+      "power": null,
+      "weight": "691\u00a0kg",
+      "drivers": [
+        "Sergio P\u00e9rez",
+        "Nico H\u00fclkenberg"
+      ],
+      "url": "https://en.wikipedia.org/?curid=41708904"
+    },
+    {
+      "constructor": "Lotus",
+      "car": "Lotus E22",
+      "power": null,
+      "weight": "692kg",
+      "drivers": [
+        "Romain Grosjean",
+        "Pastor Maldonado"
+      ],
+      "url": "https://en.wikipedia.org/?curid=41051447"
+    },
+    {
+      "constructor": "Marussia",
+      "car": "Marussia MR03",
+      "power": null,
+      "weight": "691\u00a0kg",
+      "drivers": [
+        "Max Chilton",
+        "Jules Bianchi",
+        "Will Stevens",
+        "Alexander Rossi",
+        "Roberto Merhi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=41708825"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-29",
+      "power": null,
+      "weight": "691\u00a0kg",
+      "drivers": [
+        "Kevin Magnussen",
+        "Jenson Button"
+      ],
+      "url": "https://en.wikipedia.org/?curid=41583538"
+    },
+    {
+      "constructor": "Mercedes",
+      "car": "Mercedes F1 W05 Hybrid",
+      "power": "800\u2013850 horsepower (600\u2013630\u00a0kW)",
+      "weight": "691\u00a0kg",
+      "drivers": [
+        "Nico Rosberg",
+        "Lewis Hamilton"
+      ],
+      "url": "https://en.wikipedia.org/?curid=41051428"
+    },
+    {
+      "constructor": "Red Bull",
+      "car": "Red Bull RB10",
+      "power": null,
+      "weight": "691\u00a0kg",
+      "drivers": [
+        "Sebastian Vettel",
+        "Daniel Ricciardo"
+      ],
+      "url": "https://en.wikipedia.org/?curid=40846608"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C33",
+      "power": null,
+      "weight": "691\u00a0kg",
+      "drivers": [
+        "Esteban Guti\u00e9rrez",
+        "Adrian Sutil"
+      ],
+      "url": "https://en.wikipedia.org/?curid=41574061"
+    },
+    {
+      "constructor": "Toro Rosso",
+      "car": "Toro Rosso STR9",
+      "power": null,
+      "weight": "691\u00a0kg",
+      "drivers": [
+        "Jean-\u00c9ric Vergne",
+        "Daniil Kvyat"
+      ],
+      "url": "https://en.wikipedia.org/?curid=41574053"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW36",
+      "power": null,
+      "weight": "691\u00a0kg",
+      "drivers": [
+        "Felipe Massa",
+        "Valtteri Bottas"
+      ],
+      "url": "https://en.wikipedia.org/?curid=40907250"
+    }
+  ],
+  "2015": [
+    {
+      "constructor": "Ferrari",
+      "car": "Ferrari SF15-T",
+      "power": null,
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Sebastian Vettel ",
+        "Kimi R\u00e4ikk\u00f6nen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=45218687"
+    },
+    {
+      "constructor": "Force India",
+      "car": "Force India VJM08",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Sergio P\u00e9rez ",
+        "Nico H\u00fclkenberg"
+      ],
+      "url": "https://en.wikipedia.org/?curid=45152387"
+    },
+    {
+      "constructor": "Lotus",
+      "car": "Lotus E23 Hybrid",
+      "power": "930\u00a0hp (690\u00a0kW)",
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Romain Grosjean ",
+        "Pastor Maldonado"
+      ],
+      "url": "https://en.wikipedia.org/?curid=45205683"
+    },
+    {
+      "constructor": "Marussia",
+      "car": "Marussia MR03",
+      "power": null,
+      "weight": "691\u00a0kg",
+      "drivers": [
+        "Max Chilton",
+        "Jules Bianchi",
+        "Will Stevens",
+        "Alexander Rossi",
+        "Roberto Merhi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=41708825"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-30",
+      "power": null,
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Fernando Alonso",
+        "Jenson Button"
+      ],
+      "url": "https://en.wikipedia.org/?curid=44701023"
+    },
+    {
+      "constructor": "Mercedes",
+      "car": "Mercedes F1 W06 Hybrid",
+      "power": "850\u2013900 horsepower (630\u2013670\u00a0kW)",
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Nico Rosberg  ",
+        "Lewis Hamilton"
+      ],
+      "url": "https://en.wikipedia.org/?curid=45205462"
+    },
+    {
+      "constructor": "Red Bull",
+      "car": "Red Bull RB11",
+      "power": null,
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Daniel Ricciardo",
+        "Daniil Kvyat"
+      ],
+      "url": "https://en.wikipedia.org/?curid=44785992"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C34",
+      "power": null,
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Marcus Ericsson ",
+        "Felipe Nasr"
+      ],
+      "url": "https://en.wikipedia.org/?curid=45205583"
+    },
+    {
+      "constructor": "Toro Rosso",
+      "car": "Toro Rosso STR10",
+      "power": "700\u00a0hp (522\u00a0kW) at 10,500 rpm160\u00a0hp (119\u00a0kW) at 13,000 rpm (ERS)",
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Max Verstappen ",
+        "Carlos Sainz, Jr."
+      ],
+      "url": "https://en.wikipedia.org/?curid=45205630"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW37",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Felipe Massa",
+        "Valtteri Bottas"
+      ],
+      "url": "https://en.wikipedia.org/?curid=45150996"
+    }
+  ],
+  "2016": [
+    {
+      "constructor": "Ferrari",
+      "car": "Ferrari SF16-H",
+      "power": null,
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Sebastian Vettel ",
+        "Kimi R\u00e4ikk\u00f6nen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=49483587"
+    },
+    {
+      "constructor": "Force India",
+      "car": "Force India VJM09",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Sergio P\u00e9rez",
+        "Nico H\u00fclkenberg"
+      ],
+      "url": "https://en.wikipedia.org/?curid=49417258"
+    },
+    {
+      "constructor": "Haas",
+      "car": "Haas VF-16",
+      "power": null,
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Romain Grosjean",
+        "Esteban Guti\u00e9rrez"
+      ],
+      "url": "https://en.wikipedia.org/?curid=49502960"
+    },
+    {
+      "constructor": "Manor",
+      "car": "Manor MRT05",
+      "power": null,
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Esteban Ocon  ",
+        "Rio Haryanto  ",
+        "Pascal Wehrlein"
+      ],
+      "url": "https://en.wikipedia.org/?curid=49492176"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MP4-31",
+      "power": null,
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Fernando Alonso",
+        "Jenson Button",
+        "Stoffel Vandoorne"
+      ],
+      "url": "https://en.wikipedia.org/?curid=49417263"
+    },
+    {
+      "constructor": "Mercedes",
+      "car": "Mercedes F1 W07 Hybrid",
+      "power": "900\u2013950 horsepower (670\u2013710\u00a0kW)",
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Nico Rosberg  ",
+        "Lewis Hamilton"
+      ],
+      "url": "https://en.wikipedia.org/?curid=49194160"
+    },
+    {
+      "constructor": "Red Bull",
+      "car": "Red Bull RB12",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Daniel Ricciardo",
+        "Daniil Kvyat",
+        "Max Verstappen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=49417256"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R.S.16",
+      "power": null,
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Kevin Magnussen ",
+        "Jolyon Palmer"
+      ],
+      "url": "https://en.wikipedia.org/?curid=49273172"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C35",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Marcus Ericsson",
+        "Felipe Nasr"
+      ],
+      "url": "https://en.wikipedia.org/?curid=49417262"
+    },
+    {
+      "constructor": "Toro Rosso",
+      "car": "Toro Rosso STR11",
+      "power": null,
+      "weight": "702\u00a0kg",
+      "drivers": [
+        "Daniil Kvyat",
+        "Max Verstappen",
+        "Carlos Sainz, Jr."
+      ],
+      "url": "https://en.wikipedia.org/?curid=49417259"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW38",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Felipe Massa",
+        "Valtteri Bottas"
+      ],
+      "url": "https://en.wikipedia.org/?curid=49417254"
+    }
+  ],
+  "2017": [
+    {
+      "constructor": "Ferrari",
+      "car": "Ferrari SF70H",
+      "power": "950-1000 hp (708-746 kW)",
+      "weight": null,
+      "drivers": [
+        "  Sebastian Vettel  Kimi R\u00e4ikk\u00f6nen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=53294225"
+    },
+    {
+      "constructor": "Force India",
+      "car": "Force India VJM10",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Sergio P\u00e9rez  ",
+        "Esteban Ocon"
+      ],
+      "url": "https://en.wikipedia.org/?curid=53206985"
+    },
+    {
+      "constructor": "Haas",
+      "car": "Haas VF-17",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Romain Grosjean",
+        "Kevin Magnussen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=53083015"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MCL32",
+      "power": "850-900 hp (633-671 kw)",
+      "weight": "728\u00a0kg",
+      "drivers": [
+        " Stoffel Vandoorne",
+        "Fernando Alonso",
+        "Jenson Button"
+      ],
+      "url": "https://en.wikipedia.org/?curid=53075975"
+    },
+    {
+      "constructor": "Mercedes",
+      "car": "Mercedes AMG F1 W08 EQ Power+",
+      "power": "950\u20131,000 horsepower (710\u2013750\u00a0kW)",
+      "weight": "728\u00a0kg",
+      "drivers": [
+        "Lewis Hamilton  ",
+        "Valtteri Bottas"
+      ],
+      "url": "https://en.wikipedia.org/?curid=53283941"
+    },
+    {
+      "constructor": "Red Bull Racing",
+      "car": "Red Bull RB13",
+      "power": "900 bhp (671kw)",
+      "weight": null,
+      "drivers": [
+        "Daniel Ricciardo  ",
+        "Max Verstappen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=53207005"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R.S.17",
+      "power": null,
+      "weight": "728\u00a0kg",
+      "drivers": [
+        "Nico H\u00fclkenberg",
+        "Jolyon Palmer  ",
+        "Carlos Sainz, Jr."
+      ],
+      "url": "https://en.wikipedia.org/?curid=53216548"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C36",
+      "power": null,
+      "weight": "728\u00a0kg",
+      "drivers": [
+        "Marcus Ericsson  ",
+        "Pascal Wehrlein  ",
+        "Antonio Giovinazzi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=53207501"
+    },
+    {
+      "constructor": "Toro Rosso",
+      "car": "Toro Rosso STR12",
+      "power": null,
+      "weight": "728\u00a0kg",
+      "drivers": [
+        "Pierre Gasly ",
+        "Daniil Kvyat",
+        "Brendon Hartley ",
+        "Carlos Sainz, Jr."
+      ],
+      "url": "https://en.wikipedia.org/?curid=53207517"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW40",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Lance Stroll",
+        "Felipe Massa ",
+        "Paul Di Resta"
+      ],
+      "url": "https://en.wikipedia.org/?curid=52161475"
+    }
+  ],
+  "2018": [
+    {
+      "constructor": "Ferrari",
+      "car": "Ferrari SF71H",
+      "power": null,
+      "weight": "733\u00a0kg",
+      "drivers": [
+        "Sebastian Vettel  ",
+        "Kimi R\u00e4ikk\u00f6nen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=56659929"
+    },
+    {
+      "constructor": "Force India",
+      "car": "Force India VJM11",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Sergio P\u00e9rez  ",
+        "Esteban Ocon"
+      ],
+      "url": "https://en.wikipedia.org/?curid=56646697"
+    },
+    {
+      "constructor": "Haas",
+      "car": "Haas VF-18",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Romain Grosjean",
+        "Kevin Magnussen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=56550580"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MCL33",
+      "power": null,
+      "weight": "733\u00a0kg",
+      "drivers": [
+        "Stoffel Vandoorne",
+        "Fernando Alonso"
+      ],
+      "url": "https://en.wikipedia.org/?curid=56336850"
+    },
+    {
+      "constructor": "Mercedes",
+      "car": "Mercedes AMG F1 W09 EQ Power+",
+      "power": "950\u20131,000 horsepower (710\u2013750\u00a0kW)",
+      "weight": "733\u00a0kg",
+      "drivers": [
+        "Lewis Hamilton  ",
+        "Valtteri Bottas"
+      ],
+      "url": "https://en.wikipedia.org/?curid=56608814"
+    },
+    {
+      "constructor": "Red Bull Racing",
+      "car": "Red Bull Racing RB14",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        " Daniel Ricciardo  ",
+        "Max Verstappen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=56491793"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R.S.18",
+      "power": null,
+      "weight": "733\u00a0kg",
+      "drivers": [
+        "Nico H\u00fclkenberg",
+        "Carlos Sainz Jr."
+      ],
+      "url": "https://en.wikipedia.org/?curid=56608691"
+    },
+    {
+      "constructor": "Sauber",
+      "car": "Sauber C37",
+      "power": null,
+      "weight": "733\u00a0kg",
+      "drivers": [
+        "  Marcus Ericsson  ",
+        "Charles Leclerc"
+      ],
+      "url": "https://en.wikipedia.org/?curid=56483427"
+    },
+    {
+      "constructor": "Scuderia Toro Rosso",
+      "car": "Scuderia Toro Rosso STR13",
+      "power": null,
+      "weight": "734\u00a0kg",
+      "drivers": [
+        "Pierre Gasly",
+        "Brendon Hartley"
+      ],
+      "url": "https://en.wikipedia.org/?curid=56355613"
+    },
+    {
+      "constructor": "Williams\u2013Mercedes",
+      "car": "Williams FW41",
+      "power": null,
+      "weight": "733kg",
+      "drivers": [
+        "Lance Stroll",
+        "Sergey Sirotkin"
+      ],
+      "url": "https://en.wikipedia.org/?curid=56354667"
+    }
+  ],
+  "2019": [
+    {
+      "constructor": "Alfa Romeo",
+      "car": "Alfa Romeo Racing C38",
+      "power": null,
+      "weight": "740\u00a0kg",
+      "drivers": [
+        "Kimi R\u00e4ikk\u00f6nen",
+        "Antonio Giovinazzi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=60004174"
+    },
+    {
+      "constructor": "Ferrari",
+      "car": "Ferrari SF90",
+      "power": null,
+      "weight": "743\u00a0kg",
+      "drivers": [
+        "Sebastian Vettel",
+        "Charles Leclerc"
+      ],
+      "url": "https://en.wikipedia.org/?curid=59968878"
+    },
+    {
+      "constructor": "Haas",
+      "car": "Haas VF-19",
+      "power": null,
+      "weight": "743\u00a0kg",
+      "drivers": [
+        "Romain Grosjean",
+        "Kevin Magnussen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=59882149"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MCL34",
+      "power": null,
+      "weight": "743\u00a0kg",
+      "drivers": [
+        "Lando Norris  ",
+        "Carlos Sainz Jr."
+      ],
+      "url": "https://en.wikipedia.org/?curid=59939572"
+    },
+    {
+      "constructor": "Mercedes",
+      "car": "Mercedes AMG F1 W10 EQ Power+",
+      "power": "950\u20131,000 horsepower (710\u2013750\u00a0kW)[citation needed]",
+      "weight": "743\u00a0kg",
+      "drivers": [
+        "Lewis Hamilton  ",
+        "Valtteri Bottas"
+      ],
+      "url": "https://en.wikipedia.org/?curid=59941902"
+    },
+    {
+      "constructor": "Racing Point",
+      "car": "Racing Point RP19",
+      "power": null,
+      "weight": "743\u00a0kg",
+      "drivers": [
+        "Sergio P\u00e9rez",
+        "Lance Stroll"
+      ],
+      "url": "https://en.wikipedia.org/?curid=59945487"
+    },
+    {
+      "constructor": "Red Bull Racing",
+      "car": "Red Bull Racing RB15",
+      "power": "Over 950\u00a0hp (708\u00a0kW)",
+      "weight": "743\u00a0kg",
+      "drivers": [
+        "Pierre Gasly",
+        "Alexander Albon",
+        "Max Verstappen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=59939950"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R.S.19",
+      "power": "Around 1000HP in qualifying",
+      "weight": "743\u00a0kg",
+      "drivers": [
+        "Daniel Ricciardo",
+        "Nico H\u00fclkenberg"
+      ],
+      "url": "https://en.wikipedia.org/?curid=59930810"
+    },
+    {
+      "constructor": "Scuderia Toro Rosso",
+      "car": "Scuderia Toro Rosso STR14",
+      "power": null,
+      "weight": "743\u00a0kg",
+      "drivers": [
+        "Pierre Gasly",
+        "Alexander Albon",
+        "Daniil Kvyat"
+      ],
+      "url": "https://en.wikipedia.org/?curid=59920246"
+    },
+    {
+      "constructor": "Williams\u2013Mercedes",
+      "car": "Williams FW42",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "George Russell",
+        "Robert Kubica"
+      ],
+      "url": "https://en.wikipedia.org/?curid=59921007"
+    }
+  ],
+  "2020": [
+    {
+      "constructor": "Alfa Romeo Racing",
+      "car": "Alfa Romeo Racing C39",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Kimi R\u00e4ikk\u00f6nen",
+        "Antonio Giovinazzi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=63053185"
+    },
+    {
+      "constructor": "AlphaTauri",
+      "car": "AlphaTauri AT01",
+      "power": null,
+      "weight": "743\u00a0kg",
+      "drivers": [
+        "Pierre Gasly",
+        "Daniil Kvyat"
+      ],
+      "url": "https://en.wikipedia.org/?curid=63083919"
+    },
+    {
+      "constructor": "Ferrari",
+      "car": "Ferrari SF1000",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Sebastian Vettel",
+        "Charles Leclerc"
+      ],
+      "url": "https://en.wikipedia.org/?curid=63087532"
+    },
+    {
+      "constructor": "Haas F1 Team",
+      "car": "Haas VF-20",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Romain Grosjean",
+        "Kevin Magnussen",
+        "Pietro Fittipaldi"
+      ],
+      "url": "https://en.wikipedia.org/?curid=63051291"
+    },
+    {
+      "constructor": "McLaren",
+      "car": "McLaren MCL35",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Daniel Ricciardo",
+        "Lando Norris",
+        "Carlos Sainz Jr."
+      ],
+      "url": "https://en.wikipedia.org/?curid=62337088"
+    },
+    {
+      "constructor": "Mercedes",
+      "car": "Mercedes-AMG F1 W11 EQ Performance",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Lewis Hamilton  ",
+        "George Russell  ",
+        "Valtteri Bottas"
+      ],
+      "url": "https://en.wikipedia.org/?curid=63088565"
+    },
+    {
+      "constructor": "Racing Point",
+      "car": "Racing Point RP20",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Sergio P\u00e9rez",
+        "Lance Stroll",
+        "Nico H\u00fclkenberg"
+      ],
+      "url": "https://en.wikipedia.org/?curid=63056205"
+    },
+    {
+      "constructor": "Red Bull Racing",
+      "car": "Red Bull Racing RB16",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Alexander Albon",
+        "Max Verstappen"
+      ],
+      "url": "https://en.wikipedia.org/?curid=63036442"
+    },
+    {
+      "constructor": "Renault",
+      "car": "Renault R.S.20",
+      "power": null,
+      "weight": "743\u00a0kg",
+      "drivers": [
+        "Daniel Ricciardo",
+        "Esteban Ocon"
+      ],
+      "url": "https://en.wikipedia.org/?curid=63052396"
+    },
+    {
+      "constructor": "Williams",
+      "car": "Williams FW43",
+      "power": null,
+      "weight": null,
+      "drivers": [
+        "Nicholas Latifi",
+        "George Russell",
+        "Jack Aitken"
+      ],
+      "url": "https://en.wikipedia.org/?curid=63053907"
+    }
+  ]
+}
