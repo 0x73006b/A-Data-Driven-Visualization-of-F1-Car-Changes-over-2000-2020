@@ -1,1 +1,15 @@
 /* Todo: set up styling */
+
+#tooltip {
+    position: absolute;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 2px 2px 3px 0px rgb(92 92 92);
+    border: 1px solid #444;
+    font-weight: 600;
+    padding: 2px 8px;
+}
+.tooltip-label {
+    font-weight: 500;
+    color: #888;
+}
