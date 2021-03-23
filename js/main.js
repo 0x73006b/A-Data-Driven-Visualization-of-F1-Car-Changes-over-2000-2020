@@ -21,3 +21,4 @@ Promise.all([
     // Create Mechanical Changes Scatterplot
     mechanicalChanges = new ScatterPlot({ parentElement: '#mechanical-changes' }, mechanicalChangesData.data);
   });
+
