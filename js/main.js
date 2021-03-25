@@ -20,5 +20,8 @@ Promise.all([
 
     // Create Mechanical Changes Scatterplot
     mechanicalChanges = new ScatterPlot({ parentElement: '#mechanical-changes' }, mechanicalChangesData.data);
+  
+    // Create Laptime Plot 2
+    barchart = new Barchart({parentElement: '#laptime2-barchart'}, circuitData);
   });
 
