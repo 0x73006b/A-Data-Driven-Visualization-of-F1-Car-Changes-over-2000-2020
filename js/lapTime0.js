@@ -4,7 +4,7 @@ class LineChart {
   /**
    * Class constructor with basic chart configuration
    * @param {Object} _config
-   * @param {Object[]} _data
+   * @param {Array} _data
    */
   constructor(_config, _data) {
     this.config = {
@@ -109,19 +109,26 @@ class LineChart {
     // see https://www.reddit.com/r/formula1/comments/cs1txp/f1_lap_times_by_year_from_20002019/
     // reference for how to calculate it
     // get percentage relative to last value, group by circuit name!
-    vis.xValue = (d) => +d.bestLapTime;
-    vis.yValue = (d) => d.year;
 
+    // TODO: format from string to miliseconds
+    // Following Robert's example
+    vis.yValue = (d) => {
+      const minuteParsed = d.bestLapTime.split(':');
+      const secondParsed = minuteParsed[1].split('.');
+      const millis = secondParsed[1];
+      return ((+minuteParsed[0] * 60 + (+secondParsed[0])) * 1000 + (+millis) * 10);
+    };
+    vis.xValue = (d) => d.year;
     vis.line = d3.line()
       .x((d) => vis.xScale(vis.xValue(d)))
       .y((d) => vis.yScale(vis.yValue(d)));
 
     // Set the scale input domains
+    // TODO: remove this console.log
     // eslint-disable-next-line no-console
-    console.log(vis.data);
+    console.log(vis.line);
     // eslint-disable-next-line max-len
-    // vis.xScale.domain([d3.min(vis.averagedData, vis.xValue), d3.max(vis.averagedData, vis.xValue)]);
-    vis.yScale.domain([d3.min(vis.averagedData, vis.yValue), d3.max(vis.averagedData, vis.yValue)]);
+    vis.yScale.domain([d3.min(vis.averagedData, vis.yValue) - 1000, d3.max(vis.averagedData, vis.yValue)]);
 
     vis.bisectTime = d3.bisector(vis.xValue).left;
 
@@ -131,7 +138,6 @@ class LineChart {
   /**
    * Bind data to visual elements
    */
-  // TODO: DO RENDER VIS
   renderVis() {
     const vis = this;
 
