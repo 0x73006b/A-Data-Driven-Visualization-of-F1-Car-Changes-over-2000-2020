@@ -123,7 +123,7 @@ class MechanicalChangesScatterPlot {
       }
       mechanicalChangesScatterPlot.updateVis();
       mechanicalChangesHorsePower.updateVis();
-      // mechanicalChangesPowerWeightRatio.updateVis();
+      mechanicalChangesPowerToWeight.updateVis();
     });
 
     // TODO: Make tool tip better

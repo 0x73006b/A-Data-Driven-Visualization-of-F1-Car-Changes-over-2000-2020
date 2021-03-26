@@ -5,10 +5,10 @@ module.exports = {
         "ScatterPlot": true,
         "MechanicalChangesScatterPlot": true,
         "MechanicalChangesHorsePower": true,
-        "MechanicalChangesPowerWeight": true,
+        "MechanicalChangesPowerToWeight": true,
         "mechanicalChangesScatterPlot": true,
         "mechanicalChangesHorsePower": true,
-        'mechanicalChangesPowerWeightRatio': true,
+        'mechanicalChangesPowerToWeight': true,
         "mechanicalChangesSelectedGroup": true
     }
 }

@@ -1,7 +1,7 @@
 let mechanicalChangesScatterPlot;
 // TODO: Need to name these better
 let mechanicalChangesHorsePower;
-let mechanicalChangesPowerWeightRatio;
+let mechanicalChangesPowerToWeight;
 let mechanicalChangesData;
 let mechanicalChangesSelectedGroup = null;
 
@@ -30,8 +30,8 @@ Promise.all([
       parentElement: '#mechanical-changes-horsepower',
     },
     mechanicalChangesData.data);
-    // mechanicalChangesPowerWeightRatio = new MechanicalChangesPowerWeight({
-    //   parentElement: '#mechanical-changes-powerweight',
-    // },
-    // mechanicalChangesData.data);
+    mechanicalChangesPowerToWeight = new MechanicalChangesPowerToWeight({
+      parentElement: '#mechanical-changes-powerweight',
+    },
+    mechanicalChangesData.data);
   });
