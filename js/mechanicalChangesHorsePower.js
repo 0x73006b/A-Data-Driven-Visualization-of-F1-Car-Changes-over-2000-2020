@@ -43,15 +43,8 @@ class MechanicalChangesHorsePower {
       .range([vis.height, 0])
       .nice();
 
-    vis.line = d3.line()
-      // .curve(d3.curveNatural)
-      .x((d) => vis.xScale(vis.xValue(d)))
-      .y((d) => vis.yScale(vis.yValue(d)));
-
     // Set the scale input domains
     vis.yScale.domain(d3.extent(vis.data, vis.yValue));
-
-    vis.bisectDate = d3.bisector(vis.xValue).left;
 
     // Initialize axes
     vis.xAxis = d3.axisBottom(vis.xScale)
@@ -95,11 +88,9 @@ class MechanicalChangesHorsePower {
 
     // TODO: Setup proper filter
     if (mechanicalChangesSelectedGroup) {
-      console.log('true block');
       vis.filteredData = d3.filter(vis.data, (d) => d.group === mechanicalChangesSelectedGroup);
       vis.renderVis();
     } else {
-      console.log('false block');
       vis.marks.selectAll('.chart-line').remove();
       vis.marks.selectAll('.point-hp').remove();
       this.drawAxis();
@@ -116,20 +107,34 @@ class MechanicalChangesHorsePower {
       .join('path')
       .attr('class', 'chart-line')
       .attr('fill', 'none')
-      .attr('stroke', 'red')
-      .attr('d', vis.line);
+      .attr('stroke', 'red');
+
+    // TODO: how does merge work on transition?
+    chartLine
+      .merge(chartLine)
+      .transition()
+      .duration(1000)
+      .ease(d3.easeSin)
+      .attr('d', d3.line()
+        // .curve(d3.curveNatural)
+        .x((d) => vis.xScale(vis.xValue(d)))
+        .y((d) => vis.yScale(vis.yValue(d))));
 
     // eslint-disable-next-line no-unused-vars
     const circles = vis.marks.selectAll('.point-hp')
       .data(vis.filteredData, (d) => d)
       .join('circle')
       .attr('class', 'point-hp')
-      .attr('r', 5)
+      .attr('r', 5);
+
+    circles.merge(circles)
+      .transition()
+      .duration(1000)
+      .ease(d3.easeExpOut)
       .attr('cy', (d) => vis.yScale(vis.yValue(d)))
       .attr('cx', (d) => vis.xScale(vis.xValue(d)))
       .attr('fill-opacity', 0.5)
       .attr('fill', 'red');
-
     // TODO: Add Tool tip
 
     // Update the axes
