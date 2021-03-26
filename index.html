@@ -9,16 +9,24 @@
 <body>
     <!-- Add HTML content, SVG drawing area, ... -->
 
-    <svg id="mechanical-changes"></svg>
+    <div style="display: flex">
+        <svg id="mechanical-changes-scatterplot"></svg>
+        <div style="display: inherit; flex-flow: column">
+        <svg id="mechanical-changes-horsepower"></svg>
+        <svg id="mechanical-changes-powerweight"></svg>
+        </div>
+    </div>
     <div id="tooltip"></div>
-  
+
     <!-- D3 bundle -->
     <script src="js/d3.v6.min.js"></script>
 
     <!-- Our JS code -->
     <script src="js/main.js"></script>
     <script src="utils/index.js"></script>
-    <script src="js/mechanicalChanges.js"></script>
+    <script src="js/mechanicalChanges_scatterPlot.js"></script>
+    <script src="js/mechanicalChangesHorsePower.js"></script>
+<!--    <script src="js/mechanicalChangesPowerWeightRatioChart.js"></script>-->
     <script src="js/lapTime0.js"></script>
     <script src="js/lapTime1.js"></script>
     <script src="js/lapTime2Barchart.js"></script>

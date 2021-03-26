@@ -1,5 +1,9 @@
-let mechanicalChanges;
+let mechanicalChangesScatterPlot;
+// TODO: Need to name these better
+let mechanicalChangesHorsePower;
+let mechanicalChangesPowerWeightRatio;
 let mechanicalChangesData;
+let mechanicalChangesSelectedGroup = null;
 
 // TODO: Remove the eslint disables once ready
 // eslint-disable-next-line no-unused-vars
@@ -19,6 +23,15 @@ Promise.all([
     [circuitData, mechanicalChangesData] = data;
 
     // Create Mechanical Changes Scatterplot
-    mechanicalChanges = new ScatterPlot({ parentElement: '#mechanical-changes' }, mechanicalChangesData.data);
+    mechanicalChangesScatterPlot = new MechanicalChangesScatterPlot({
+      parentElement: '#mechanical-changes-scatterplot',
+    }, mechanicalChangesData.data);
+    mechanicalChangesHorsePower = new MechanicalChangesHorsePower({
+      parentElement: '#mechanical-changes-horsepower',
+    },
+    mechanicalChangesData.data);
+    // mechanicalChangesPowerWeightRatio = new MechanicalChangesPowerWeight({
+    //   parentElement: '#mechanical-changes-powerweight',
+    // },
+    // mechanicalChangesData.data);
   });
-

@@ -1,7 +1,7 @@
 // Todo: Implement mechanical change scatterplot;
 // x-axis: Horsepower; y-axis: weight(kg)
 
-class ScatterPlot {
+class MechanicalChangesScatterPlot {
   /**
    * Class constructor with initial configuration
    * @param {Object} _config
@@ -10,7 +10,7 @@ class ScatterPlot {
   constructor(_config, _data) {
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 1000,
+      containerWidth: 500,
       containerHeight: 500,
       tooltipPadding: 15,
       margin: {
@@ -80,13 +80,13 @@ class ScatterPlot {
   updateVis() {
     const vis = this;
 
-    // TODO: Remove this
+    // TODO: Remove this?
     // Filter data to show only points where the GDP is known
     vis.filteredData = vis.data;
 
     // Specify accessor functions
-    vis.xValue = (d) => d.weight;
-    vis.yValue = (d) => d.power;
+    vis.xValue = (d) => d.power;
+    vis.yValue = (d) => d.weight;
 
     // Set the scale input domains
     vis.xScale.domain([d3.min(vis.filteredData, vis.xValue), d3.max(vis.filteredData, vis.xValue)]);
@@ -108,18 +108,30 @@ class ScatterPlot {
       .attr('cy', (d) => vis.yScale(vis.yValue(d)))
       .attr('cx', (d) => vis.xScale(vis.xValue(d)))
       .attr('fill-opacity', 0.5)
-      .attr('fill', 'red');
+      .attr('fill', (d) => (d.group === mechanicalChangesSelectedGroup ? 'green' : 'red'));
     // .attr('fill-opacity', d => isGenderSelected(d) ? 0.7 : 0.15)
     // .attr('fill', d => isPoliticianSelected(d) ? 'red' : '#444');
+    // Tooltip event listeners
+
+    // Detail View Selector
+    circles.on('click', (e, d) => {
+      if (mechanicalChangesSelectedGroup === d.group) {
+        mechanicalChangesSelectedGroup = null;
+      } else {
+        mechanicalChangesSelectedGroup = d.group;
+        console.log(d.group);
+      }
+      mechanicalChangesScatterPlot.updateVis();
+      mechanicalChangesHorsePower.updateVis();
+      // mechanicalChangesPowerWeightRatio.updateVis();
+    });
 
     // TODO: Make tool tip better
-    // Tooltip event listeners
-    circles
-      .on('mouseover', (event, d) => {
-        circles.attr('cursor', 'pointer');
-        d3.select('#tooltip')
-          .style('opacity', 1)
-          .html((`
+    circles.on('mouseover', (event, d) => {
+      circles.attr('cursor', 'pointer');
+      d3.select('#tooltip')
+        .style('opacity', 1)
+        .html((`
             <div class="tooltip-label">
                 <div class="tooltip-title">${d.car}</div>
                 Season: ${d.year}
@@ -127,7 +139,7 @@ class ScatterPlot {
                 PWR:WEIGHT: ${d.powerToWeightRatio} <br/>
             </div>
            `));
-      })
+    })
       .on('mousemove', (event) => {
         d3.select('#tooltip')
           .style('left', `${event.pageX + vis.config.tooltipPadding}px`)
@@ -153,4 +165,3 @@ class ScatterPlot {
         .remove());
   }
 }
-
