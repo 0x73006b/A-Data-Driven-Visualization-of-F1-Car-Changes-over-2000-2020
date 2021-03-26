@@ -2,7 +2,7 @@
 // Y-Axis: HP
 // TODO: Ref 436 tutorial
 // eslint-disable-next-line no-unused-vars
-class MechanicalChangesHorsePower {
+class MechanicalChangesDetailView {
   /**
    * Class constructor with initial configuration
    * @param {Object} _config
@@ -12,7 +12,7 @@ class MechanicalChangesHorsePower {
     this.config = {
       parentElement: _config.parentElement,
       containerWidth: 500,
-      containerHeight: 250,
+      containerHeight: 350,
       tooltipPadding: 15,
       margin: {
         top: 30,
@@ -30,21 +30,26 @@ class MechanicalChangesHorsePower {
 
     vis.width = vis.config.containerWidth - vis.config.margin.left - vis.config.margin.right;
     vis.height = vis.config.containerHeight - vis.config.margin.top - vis.config.margin.bottom;
+    vis.halfHeight = (vis.height / 2);
 
     // We want X-Axis and Y-Axis to stay consistent
     vis.xValue = (d) => d.year;
-    vis.yValue = (d) => d.power;
+    vis.yValueTop = (d) => d.power;
+    vis.yValueBottom = (d) => d.powerToWeightRatio;
 
     vis.xScale = d3.scaleLinear()
       .range([0, vis.width])
       .domain(d3.extent(vis.data, vis.xValue));
 
-    vis.yScale = d3.scaleLinear()
-      .range([vis.height, 0])
-      .nice();
+    vis.yScaleTop = d3.scaleLinear()
+      .range([vis.halfHeight, 0])
+      .nice()
+      .domain(d3.extent(vis.data, vis.yValueTop));
 
-    // Set the scale input domains
-    vis.yScale.domain(d3.extent(vis.data, vis.yValue));
+    vis.yScaleBottom = d3.scaleLinear()
+      .range([vis.halfHeight, 0])
+      .nice()
+      .domain(d3.extent(vis.data, vis.yValueBottom));
 
     // Initialize axes
     vis.xAxis = d3.axisBottom(vis.xScale)
@@ -53,7 +58,12 @@ class MechanicalChangesHorsePower {
       .tickPadding(5)
       .tickFormat(d3.format('d'));
 
-    vis.yAxis = d3.axisLeft(vis.yScale)
+    vis.yAxisTop = d3.axisLeft(vis.yScaleTop)
+      .ticks(4)
+      .tickSizeOuter(0)
+      .tickPadding(10);
+
+    vis.yAxisBottom = d3.axisLeft(vis.yScaleBottom)
       .ticks(4)
       .tickSizeOuter(0)
       .tickPadding(10);
@@ -72,9 +82,13 @@ class MechanicalChangesHorsePower {
       .attr('class', 'axis x-axis')
       .attr('transform', `translate(0,${vis.height})`);
 
-    // Append y-axis group
-    vis.yAxisG = vis.chart.append('g')
+    // Append y-axis groups
+    vis.yAxisTopG = vis.chart.append('g')
       .attr('class', 'axis y-axis');
+
+    vis.yAxisBottomG = vis.chart.append('g')
+      .attr('class', 'axis y-axis-bottom')
+      .attr('transform', `translate(0, ${vis.halfHeight})`);
 
     // We need to make sure that the tracking area is on top of other chart elements
     vis.marks = vis.chart.append('g');
@@ -91,8 +105,14 @@ class MechanicalChangesHorsePower {
       vis.filteredData = d3.filter(vis.data, (d) => d.group === mechanicalChangesSelectedGroup);
       vis.renderVis();
     } else {
-      vis.marks.selectAll('.chart-line').remove();
-      vis.marks.selectAll('.point-hp').remove();
+      vis.marks.selectAll('.chart-line')
+        .remove();
+      vis.marks.selectAll('.point-hp')
+        .remove();
+      vis.marks.selectAll('.chart-line-pwr')
+        .remove();
+      vis.marks.selectAll('.point-pwr')
+        .remove();
       this.drawAxis();
     }
   }
@@ -102,7 +122,7 @@ class MechanicalChangesHorsePower {
 
     // Add line path
     // eslint-disable-next-line no-unused-vars
-    const chartLine = vis.marks.selectAll('.chart-line')
+    const horsePowerLine = vis.marks.selectAll('.chart-line')
       .data([vis.filteredData])
       .join('path')
       .attr('class', 'chart-line')
@@ -110,32 +130,69 @@ class MechanicalChangesHorsePower {
       .attr('stroke', 'red');
 
     // TODO: how does merge work on transition?
-    chartLine
-      .merge(chartLine)
+    horsePowerLine
+      .merge(horsePowerLine)
       .transition()
       .duration(1000)
       .ease(d3.easeSin)
       .attr('d', d3.line()
         // .curve(d3.curveNatural)
         .x((d) => vis.xScale(vis.xValue(d)))
-        .y((d) => vis.yScale(vis.yValue(d))));
+        .y((d) => vis.yScaleTop(vis.yValueTop(d))));
 
     // eslint-disable-next-line no-unused-vars
-    const circles = vis.marks.selectAll('.point-hp')
+    const horsePowerCircle = vis.marks.selectAll('.point-hp')
       .data(vis.filteredData, (d) => d)
       .join('circle')
       .attr('class', 'point-hp')
       .attr('r', 5);
 
-    circles.merge(circles)
+    horsePowerCircle.merge(horsePowerCircle)
       .transition()
       .duration(1000)
       .ease(d3.easeExpOut)
-      .attr('cy', (d) => vis.yScale(vis.yValue(d)))
+      .attr('cy', (d) => vis.yScaleTop(vis.yValueTop(d)))
       .attr('cx', (d) => vis.xScale(vis.xValue(d)))
       .attr('fill-opacity', 0.5)
       .attr('fill', 'red');
     // TODO: Add Tool tip
+
+    // Add line path
+    // eslint-disable-next-line no-unused-vars
+    const powerWeightRatioLine = vis.marks.selectAll('.chart-line-pwr')
+      .data([vis.filteredData])
+      .join('path')
+      .attr('class', 'chart-line-pwr')
+      .attr('fill', 'none')
+      .attr('stroke', 'red');
+
+    // TODO: how does merge work on transition?
+    powerWeightRatioLine
+      .merge(powerWeightRatioLine)
+      .transition()
+      .duration(1000)
+      .ease(d3.easeSin)
+      .attr('d', d3.line()
+        // .curve(d3.curveNatural)
+        .x((d) => vis.xScale(vis.xValue(d)))
+        .y((d) => vis.yScaleBottom(vis.yValueBottom(d))+vis.halfHeight));
+
+    // eslint-disable-next-line no-unused-vars
+    const powerWeightRatioCircle = vis.marks.selectAll('.point-pwr')
+      .data(vis.filteredData, (d) => d)
+      .join('circle')
+      .attr('class', 'point-pwr')
+      .attr('r', 5);
+
+    powerWeightRatioCircle.merge(powerWeightRatioCircle)
+      .transition()
+      .duration(1000)
+      .ease(d3.easeExpOut)
+      .attr('cy', (d) => vis.yScaleBottom(vis.yValueBottom(d)))
+      .attr('cx', (d) => vis.xScale(vis.xValue(d)))
+      .attr('transform', `translate(0, ${vis.halfHeight})`)
+      .attr('fill-opacity', 0.5)
+      .attr('fill', 'red');
 
     // Update the axes
     this.drawAxis();
@@ -144,6 +201,7 @@ class MechanicalChangesHorsePower {
   drawAxis() {
     const vis = this;
     vis.xAxisG.call(vis.xAxis);
-    vis.yAxisG.call(vis.yAxis);
+    vis.yAxisTopG.call(vis.yAxisTop);
+    vis.yAxisBottomG.call(vis.yAxisBottom);
   }
 }

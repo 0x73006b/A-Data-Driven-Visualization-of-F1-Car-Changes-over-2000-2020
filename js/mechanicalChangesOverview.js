@@ -1,7 +1,7 @@
 // Todo: Implement mechanical change scatterplot;
 // x-axis: Horsepower; y-axis: weight(kg)
 
-class MechanicalChangesScatterPlot {
+class MechanicalChangesOverview {
   /**
    * Class constructor with initial configuration
    * @param {Object} _config
@@ -11,7 +11,7 @@ class MechanicalChangesScatterPlot {
     this.config = {
       parentElement: _config.parentElement,
       containerWidth: 500,
-      containerHeight: 500,
+      containerHeight: 350,
       tooltipPadding: 15,
       margin: {
         top: 30,
@@ -107,7 +107,7 @@ class MechanicalChangesScatterPlot {
       .attr('r', 5)
       .attr('cy', (d) => vis.yScale(vis.yValue(d)))
       .attr('cx', (d) => vis.xScale(vis.xValue(d)))
-      .attr('fill-opacity', 0.5)
+      .attr('fill-opacity', 0.35)
       .attr('fill', (d) => (d.group === mechanicalChangesSelectedGroup ? 'green' : 'red'));
     // .attr('fill-opacity', d => isGenderSelected(d) ? 0.7 : 0.15)
     // .attr('fill', d => isPoliticianSelected(d) ? 'red' : '#444');
@@ -119,11 +119,11 @@ class MechanicalChangesScatterPlot {
         mechanicalChangesSelectedGroup = null;
       } else {
         mechanicalChangesSelectedGroup = d.group;
-        console.log(d.group);
+        // console.log(d.group);
       }
-      mechanicalChangesScatterPlot.updateVis();
-      mechanicalChangesHorsePower.updateVis();
-      mechanicalChangesPowerToWeight.updateVis();
+      mechanicalChangesOverview.updateVis();
+      mechanicalChangesDetailView.updateVis();
+      // mechanicalChangesPowerToWeight.updateVis();
     });
 
     // TODO: Make tool tip better

@@ -8,12 +8,14 @@
 </head>
 <body>
     <!-- Add HTML content, SVG drawing area, ... -->
+    <div class="step" id="step0">
 
-    <div style="display: flex">
-        <svg id="mechanical-changes-scatterplot"></svg>
+    </div>
+    <div class="step" id="step1" style="display: flex">
+        <svg id="mechanical-changes-overview"></svg>
         <div style="display: inherit; flex-flow: column">
-        <svg id="mechanical-changes-horsepower"></svg>
-        <svg id="mechanical-changes-powerweight"></svg>
+        <svg id="mechanical-changes-detail-view"></svg>
+<!--        <svg id="mechanical-changes-powerweight"></svg>-->
         </div>
     </div>
     <div id="tooltip"></div>
@@ -24,9 +26,9 @@
     <!-- Our JS code -->
     <script src="js/main.js"></script>
     <script src="utils/index.js"></script>
-    <script src="js/mechanicalChanges_scatterPlot.js"></script>
-    <script src="js/mechanicalChangesHorsePower.js"></script>
-    <script src="js/mechanicalChangesPowerToWeight.js"></script>
+    <script src="js/mechanicalChangesOverview.js"></script>
+    <script src="js/mechanicalChangesDetailView.js"></script>
+<!--    <script src="js/mechanicalChangesPowerToWeight.js"></script>-->
     <script src="js/lapTime0.js"></script>
     <script src="js/lapTime1.js"></script>
     <script src="js/lapTime2Barchart.js"></script>

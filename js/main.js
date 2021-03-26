@@ -1,6 +1,6 @@
-let mechanicalChangesScatterPlot;
+let mechanicalChangesOverview;
 // TODO: Need to name these better
-let mechanicalChangesHorsePower;
+let mechanicalChangesDetailView;
 let mechanicalChangesPowerToWeight;
 let mechanicalChangesData;
 let mechanicalChangesSelectedGroup = null;
@@ -23,15 +23,15 @@ Promise.all([
     [circuitData, mechanicalChangesData] = data;
 
     // Create Mechanical Changes Scatterplot
-    mechanicalChangesScatterPlot = new MechanicalChangesScatterPlot({
-      parentElement: '#mechanical-changes-scatterplot',
+    mechanicalChangesOverview = new MechanicalChangesOverview({
+      parentElement: '#mechanical-changes-overview',
     }, mechanicalChangesData.data);
-    mechanicalChangesHorsePower = new MechanicalChangesHorsePower({
-      parentElement: '#mechanical-changes-horsepower',
+    mechanicalChangesDetailView = new MechanicalChangesDetailView({
+      parentElement: '#mechanical-changes-detail-view',
     },
     mechanicalChangesData.data);
-    mechanicalChangesPowerToWeight = new MechanicalChangesPowerToWeight({
-      parentElement: '#mechanical-changes-powerweight',
-    },
-    mechanicalChangesData.data);
+    // mechanicalChangesPowerToWeight = new MechanicalChangesPowerToWeight({
+    //   parentElement: '#mechanical-changes-powerweight',
+    // },
+    // mechanicalChangesData.data);
   });
