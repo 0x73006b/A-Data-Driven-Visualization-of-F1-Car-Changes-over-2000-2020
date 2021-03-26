@@ -7,7 +7,7 @@
       },
       {
         "name":"year",
-        "type":"string"
+        "type":"integer"
       },
       {
         "name":"constructor",
@@ -18,7 +18,7 @@
         "type":"string"
       },
       {
-        "name":"grouping",
+        "name":"group",
         "type":"string"
       },
       {
@@ -47,10 +47,10 @@
   "data":[
     {
       "index":0,
-      "year":"2000",
+      "year": 2000,
       "constructor":"Arrows",
       "car":"Arrows A21",
-      "grouping":0,
+      "group":0,
       "power":780,
       "weight":600,
       "drivers":[
@@ -62,10 +62,10 @@
     },
     {
       "index":1,
-      "year":"2000",
+      "year": 2000,
       "constructor":"British American Racing",
       "car":"BAR 002",
-      "grouping":10,
+      "group":10,
       "power":810,
       "weight":600,
       "drivers":[
@@ -77,10 +77,10 @@
     },
     {
       "index":2,
-      "year":"2000",
+      "year": 2000,
       "constructor":"Benetton",
       "car":"Benetton B200",
-      "grouping":4,
+      "group":4,
       "power":780,
       "weight":600,
       "drivers":[
@@ -92,10 +92,10 @@
     },
     {
       "index":3,
-      "year":"2000",
+      "year": 2000,
       "constructor":"Ferrari",
       "car":"Ferrari F1-2000",
-      "grouping":6,
+      "group":6,
       "power":805,
       "weight":600,
       "drivers":[
@@ -107,10 +107,10 @@
     },
     {
       "index":4,
-      "year":"2000",
+      "year": 2000,
       "constructor":"Jaguar",
       "car":"Jaguar R1",
-      "grouping":9,
+      "group":9,
       "power":805,
       "weight":600,
       "drivers":[
@@ -123,10 +123,10 @@
     },
     {
       "index":5,
-      "year":"2000",
+      "year": 2000,
       "constructor":"Jordan",
       "car":"Jordan EJ10",
-      "grouping":15,
+      "group":15,
       "power":770,
       "weight":600,
       "drivers":[
@@ -138,10 +138,10 @@
     },
     {
       "index":6,
-      "year":"2000",
+      "year": 2000,
       "constructor":"McLaren",
       "car":"McLaren MP4\/15",
-      "grouping":1,
+      "group":1,
       "power":815,
       "weight":600,
       "drivers":[
@@ -153,10 +153,10 @@
     },
     {
       "index":7,
-      "year":"2000",
+      "year": 2000,
       "constructor":"Minardi",
       "car":"Minardi M02",
-      "grouping":5,
+      "group":5,
       "power":770,
       "weight":600,
       "drivers":[
@@ -168,10 +168,10 @@
     },
     {
       "index":8,
-      "year":"2000",
+      "year": 2000,
       "constructor":"Prost",
       "car":"Prost AP03",
-      "grouping":14,
+      "group":14,
       "power":800,
       "weight":600,
       "drivers":[
@@ -183,10 +183,10 @@
     },
     {
       "index":9,
-      "year":"2000",
+      "year": 2000,
       "constructor":"Sauber",
       "car":"Sauber C19",
-      "grouping":2,
+      "group":2,
       "power":780,
       "weight":600,
       "drivers":[
@@ -198,10 +198,10 @@
     },
     {
       "index":10,
-      "year":"2000",
+      "year": 2000,
       "constructor":"Williams",
       "car":"Williams FW22",
-      "grouping":3,
+      "group":3,
       "power":810,
       "weight":600,
       "drivers":[
@@ -213,10 +213,10 @@
     },
     {
       "index":10,
-      "year":"2001",
+      "year": 2001,
       "constructor":"Williams",
       "car":"Williams FW23",
-      "grouping":3,
+      "group":3,
       "power":880,
       "weight":600,
       "drivers":[
@@ -228,10 +228,10 @@
     },
     {
       "index":9,
-      "year":"2001",
+      "year": 2001,
       "constructor":"Sauber",
       "car":"Sauber C20",
-      "grouping":2,
+      "group":2,
       "power":805,
       "weight":600,
       "drivers":[
@@ -243,10 +243,10 @@
     },
     {
       "index":8,
-      "year":"2001",
+      "year": 2001,
       "constructor":"Prost",
       "car":"Prost AP04",
-      "grouping":14,
+      "group":14,
       "power":825,
       "weight":600,
       "drivers":[
@@ -261,10 +261,10 @@
     },
     {
       "index":7,
-      "year":"2001",
+      "year": 2001,
       "constructor":"Minardi",
       "car":"Minardi PS01",
-      "grouping":5,
+      "group":5,
       "power":805,
       "weight":600,
       "drivers":[
@@ -277,10 +277,10 @@
     },
     {
       "index":6,
-      "year":"2001",
+      "year": 2001,
       "constructor":"McLaren",
       "car":"McLaren MP4-16",
-      "grouping":1,
+      "group":1,
       "power":830,
       "weight":600,
       "drivers":[
@@ -292,10 +292,10 @@
     },
     {
       "index":2,
-      "year":"2001",
+      "year": 2001,
       "constructor":"Benetton",
       "car":"Benetton B201",
-      "grouping":4,
+      "group":4,
       "power":780,
       "weight":600,
       "drivers":[
@@ -307,10 +307,10 @@
     },
     {
       "index":4,
-      "year":"2001",
+      "year": 2001,
       "constructor":"Jaguar",
       "car":"Jaguar R2",
-      "grouping":9,
+      "group":9,
       "power":805,
       "weight":600,
       "drivers":[
@@ -323,10 +323,10 @@
     },
     {
       "index":3,
-      "year":"2001",
+      "year": 2001,
       "constructor":"Ferrari",
       "car":"Ferrari F2001",
-      "grouping":6,
+      "group":6,
       "power":825,
       "weight":600,
       "drivers":[
@@ -338,10 +338,10 @@
     },
     {
       "index":1,
-      "year":"2001",
+      "year": 2001,
       "constructor":"BAR",
       "car":"BAR 003",
-      "grouping":10,
+      "group":10,
       "power":800,
       "weight":600,
       "drivers":[
@@ -353,10 +353,10 @@
     },
     {
       "index":0,
-      "year":"2001",
+      "year": 2001,
       "constructor":"Arrows",
       "car":"Arrows A22",
-      "grouping":0,
+      "group":0,
       "power":800,
       "weight":600,
       "drivers":[
@@ -368,10 +368,10 @@
     },
     {
       "index":5,
-      "year":"2001",
+      "year": 2001,
       "constructor":"Jordan Grand Prix",
       "car":"Jordan EJ11",
-      "grouping":15,
+      "group":15,
       "power":800,
       "weight":600,
       "drivers":[
@@ -385,10 +385,10 @@
     },
     {
       "index":7,
-      "year":"2002",
+      "year": 2002,
       "constructor":"Minardi",
       "car":"Minardi PS02",
-      "grouping":5,
+      "group":5,
       "power":800,
       "weight":600,
       "drivers":[
@@ -401,10 +401,10 @@
     },
     {
       "index":11,
-      "year":"2002",
+      "year": 2002,
       "constructor":"Williams",
       "car":"Williams FW24",
-      "grouping":3,
+      "group":3,
       "power":900,
       "weight":600,
       "drivers":[
@@ -416,10 +416,10 @@
     },
     {
       "index":10,
-      "year":"2002",
+      "year": 2002,
       "constructor":"Toyota",
       "car":"Toyota TF102",
-      "grouping":7,
+      "group":7,
       "power":835,
       "weight":600,
       "drivers":[
@@ -431,10 +431,10 @@
     },
     {
       "index":9,
-      "year":"2002",
+      "year": 2002,
       "constructor":"Sauber",
       "car":"Sauber C21",
-      "grouping":2,
+      "group":2,
       "power":825,
       "weight":600,
       "drivers":[
@@ -447,10 +447,10 @@
     },
     {
       "index":6,
-      "year":"2002",
+      "year": 2002,
       "constructor":"McLaren",
       "car":"McLaren MP4-17",
-      "grouping":1,
+      "group":1,
       "power":850,
       "weight":600,
       "drivers":[
@@ -462,10 +462,10 @@
     },
     {
       "index":8,
-      "year":"2002",
+      "year": 2002,
       "constructor":"Renault",
       "car":"Renault R202",
-      "grouping":4,
+      "group":4,
       "power":820,
       "weight":600,
       "drivers":[
@@ -477,10 +477,10 @@
     },
     {
       "index":4,
-      "year":"2002",
+      "year": 2002,
       "constructor":"Jaguar",
       "car":"Jaguar R3",
-      "grouping":9,
+      "group":9,
       "power":805,
       "weight":600,
       "drivers":[
@@ -492,10 +492,10 @@
     },
     {
       "index":3,
-      "year":"2002",
+      "year": 2002,
       "constructor":"Ferrari",
       "car":"Ferrari F2002",
-      "grouping":6,
+      "group":6,
       "power":835,
       "weight":600,
       "drivers":[
@@ -507,10 +507,10 @@
     },
     {
       "index":5,
-      "year":"2002",
+      "year": 2002,
       "constructor":"Jordan",
       "car":"Jordan EJ12",
-      "grouping":15,
+      "group":15,
       "power":835,
       "weight":600,
       "drivers":[
@@ -522,10 +522,10 @@
     },
     {
       "index":2,
-      "year":"2002",
+      "year": 2002,
       "constructor":"Ferrari",
       "car":"Ferrari F2001",
-      "grouping":6,
+      "group":6,
       "power":825,
       "weight":600,
       "drivers":[
@@ -537,10 +537,10 @@
     },
     {
       "index":1,
-      "year":"2002",
+      "year": 2002,
       "constructor":"BAR",
       "car":"BAR 004",
-      "grouping":10,
+      "group":10,
       "power":835,
       "weight":600,
       "drivers":[
@@ -552,10 +552,10 @@
     },
     {
       "index":0,
-      "year":"2002",
+      "year": 2002,
       "constructor":"Arrows",
       "car":"Arrows A23",
-      "grouping":0,
+      "group":0,
       "power":805,
       "weight":600,
       "drivers":[
@@ -567,10 +567,10 @@
     },
     {
       "index":9,
-      "year":"2003",
+      "year": 2003,
       "constructor":"Toyota",
       "car":"Toyota TF103",
-      "grouping":7,
+      "group":7,
       "power":845,
       "weight":600,
       "drivers":[
@@ -582,10 +582,10 @@
     },
     {
       "index":8,
-      "year":"2003",
+      "year": 2003,
       "constructor":"Sauber",
       "car":"Sauber C22",
-      "grouping":2,
+      "group":2,
       "power":805,
       "weight":600,
       "drivers":[
@@ -597,10 +597,10 @@
     },
     {
       "index":7,
-      "year":"2003",
+      "year": 2003,
       "constructor":"Renault",
       "car":"Renault R23",
-      "grouping":4,
+      "group":4,
       "power":830,
       "weight":600,
       "drivers":[
@@ -612,10 +612,10 @@
     },
     {
       "index":6,
-      "year":"2003",
+      "year": 2003,
       "constructor":"Minardi",
       "car":"Minardi PS03",
-      "grouping":5,
+      "group":5,
       "power":805,
       "weight":600,
       "drivers":[
@@ -628,10 +628,10 @@
     },
     {
       "index":5,
-      "year":"2003",
+      "year": 2003,
       "constructor":"McLaren",
       "car":"McLaren MP4-17",
-      "grouping":1,
+      "group":1,
       "power":850,
       "weight":600,
       "drivers":[
@@ -643,10 +643,10 @@
     },
     {
       "index":10,
-      "year":"2003",
+      "year": 2003,
       "constructor":"Williams",
       "car":"Williams FW25",
-      "grouping":3,
+      "group":3,
       "power":940,
       "weight":600,
       "drivers":[
@@ -659,10 +659,10 @@
     },
     {
       "index":3,
-      "year":"2003",
+      "year": 2003,
       "constructor":"Jaguar",
       "car":"Jaguar R4",
-      "grouping":9,
+      "group":9,
       "power":900,
       "weight":600,
       "drivers":[
@@ -675,10 +675,10 @@
     },
     {
       "index":2,
-      "year":"2003",
+      "year": 2003,
       "constructor":"Scuderia Ferrari",
       "car":"Ferrari F2003-GA",
-      "grouping":6,
+      "group":6,
       "power":845,
       "weight":600,
       "drivers":[
@@ -690,10 +690,10 @@
     },
     {
       "index":1,
-      "year":"2003",
+      "year": 2003,
       "constructor":"Ferrari",
       "car":"Ferrari F2002",
-      "grouping":6,
+      "group":6,
       "power":835,
       "weight":600,
       "drivers":[
@@ -705,10 +705,10 @@
     },
     {
       "index":0,
-      "year":"2003",
+      "year": 2003,
       "constructor":"BAR-Honda",
       "car":"BAR 005",
-      "grouping":10,
+      "group":10,
       "power":835,
       "weight":600,
       "drivers":[
@@ -721,10 +721,10 @@
     },
     {
       "index":4,
-      "year":"2003",
+      "year": 2003,
       "constructor":"Jordan",
       "car":"Jordan EJ13",
-      "grouping":15,
+      "group":15,
       "power":810,
       "weight":600,
       "drivers":[
@@ -737,10 +737,10 @@
     },
     {
       "index":9,
-      "year":"2004",
+      "year": 2004,
       "constructor":"Williams",
       "car":"Williams FW26",
-      "grouping":3,
+      "group":3,
       "power":950,
       "weight":605,
       "drivers":[
@@ -754,10 +754,10 @@
     },
     {
       "index":8,
-      "year":"2004",
+      "year": 2004,
       "constructor":"Toyota",
       "car":"Toyota TF104",
-      "grouping":7,
+      "group":7,
       "power":900,
       "weight":600,
       "drivers":[
@@ -771,10 +771,10 @@
     },
     {
       "index":7,
-      "year":"2004",
+      "year": 2004,
       "constructor":"Sauber",
       "car":"Sauber C23",
-      "grouping":2,
+      "group":2,
       "power":880,
       "weight":600,
       "drivers":[
@@ -786,10 +786,10 @@
     },
     {
       "index":6,
-      "year":"2004",
+      "year": 2004,
       "constructor":"Renault",
       "car":"Renault R24",
-      "grouping":4,
+      "group":4,
       "power":900,
       "weight":600,
       "drivers":[
@@ -802,10 +802,10 @@
     },
     {
       "index":5,
-      "year":"2004",
+      "year": 2004,
       "constructor":"Minardi",
       "car":"Minardi PS04B",
-      "grouping":5,
+      "group":5,
       "power":800,
       "weight":600,
       "drivers":[
@@ -819,10 +819,10 @@
     },
     {
       "index":3,
-      "year":"2004",
+      "year": 2004,
       "constructor":"Jordan",
       "car":"Jordan EJ14",
-      "grouping":15,
+      "group":15,
       "power":900,
       "weight":600,
       "drivers":[
@@ -835,10 +835,10 @@
     },
     {
       "index":2,
-      "year":"2004",
+      "year": 2004,
       "constructor":"Jaguar",
       "car":"Jaguar R5",
-      "grouping":9,
+      "group":9,
       "power":900,
       "weight":600,
       "drivers":[
@@ -850,10 +850,10 @@
     },
     {
       "index":1,
-      "year":"2004",
+      "year": 2004,
       "constructor":"Scuderia Ferrari",
       "car":"Ferrari F2004",
-      "grouping":6,
+      "group":6,
       "power":1000,
       "weight":605,
       "drivers":[
@@ -865,10 +865,10 @@
     },
     {
       "index":0,
-      "year":"2004",
+      "year": 2004,
       "constructor":"BAR-Honda",
       "car":"BAR 006",
-      "grouping":10,
+      "group":10,
       "power":900,
       "weight":600,
       "drivers":[
@@ -880,10 +880,10 @@
     },
     {
       "index":4,
-      "year":"2004",
+      "year": 2004,
       "constructor":"McLaren",
       "car":"McLaren MP4-19",
-      "grouping":1,
+      "group":1,
       "power":870,
       "weight":600,
       "drivers":[
@@ -895,10 +895,10 @@
     },
     {
       "index":7,
-      "year":"2005",
+      "year": 2005,
       "constructor":"Red Bull",
       "car":"Red Bull RB1",
-      "grouping":9,
+      "group":9,
       "power":915,
       "weight":605,
       "drivers":[
@@ -911,10 +911,10 @@
     },
     {
       "index":11,
-      "year":"2005",
+      "year": 2005,
       "constructor":"Williams",
       "car":"Williams FW27",
-      "grouping":3,
+      "group":3,
       "power":950,
       "weight":605,
       "drivers":[
@@ -927,10 +927,10 @@
     },
     {
       "index":10,
-      "year":"2005",
+      "year": 2005,
       "constructor":"Toyota",
       "car":"Toyota TF105",
-      "grouping":7,
+      "group":7,
       "power":940,
       "weight":605,
       "drivers":[
@@ -943,10 +943,10 @@
     },
     {
       "index":9,
-      "year":"2005",
+      "year": 2005,
       "constructor":"Sauber",
       "car":"Sauber C24",
-      "grouping":2,
+      "group":2,
       "power":900,
       "weight":605,
       "drivers":[
@@ -958,10 +958,10 @@
     },
     {
       "index":8,
-      "year":"2005",
+      "year": 2005,
       "constructor":"Renault",
       "car":"Renault R25",
-      "grouping":4,
+      "group":4,
       "power":900,
       "weight":605,
       "drivers":[
@@ -973,10 +973,10 @@
     },
     {
       "index":6,
-      "year":"2005",
+      "year": 2005,
       "constructor":"Minardi",
       "car":"Minardi PS05",
-      "grouping":5,
+      "group":5,
       "power":915,
       "weight":605,
       "drivers":[
@@ -989,10 +989,10 @@
     },
     {
       "index":4,
-      "year":"2005",
+      "year": 2005,
       "constructor":"McLaren",
       "car":"McLaren MP4-20",
-      "grouping":1,
+      "group":1,
       "power":930,
       "weight":605,
       "drivers":[
@@ -1006,10 +1006,10 @@
     },
     {
       "index":3,
-      "year":"2005",
+      "year": 2005,
       "constructor":"Jordan",
       "car":"Jordan EJ15",
-      "grouping":15,
+      "group":15,
       "power":900,
       "weight":605,
       "drivers":[
@@ -1021,10 +1021,10 @@
     },
     {
       "index":2,
-      "year":"2005",
+      "year": 2005,
       "constructor":"Scuderia Ferrari",
       "car":"Ferrari F2005",
-      "grouping":6,
+      "group":6,
       "power":950,
       "weight":605,
       "drivers":[
@@ -1036,10 +1036,10 @@
     },
     {
       "index":1,
-      "year":"2005",
+      "year": 2005,
       "constructor":"Scuderia Ferrari",
       "car":"Ferrari F2004",
-      "grouping":6,
+      "group":6,
       "power":900,
       "weight":605,
       "drivers":[
@@ -1051,10 +1051,10 @@
     },
     {
       "index":0,
-      "year":"2005",
+      "year": 2005,
       "constructor":"BAR-Honda",
       "car":"BAR 007",
-      "grouping":10,
+      "group":10,
       "power":890,
       "weight":605,
       "drivers":[
@@ -1067,10 +1067,10 @@
     },
     {
       "index":5,
-      "year":"2005",
+      "year": 2005,
       "constructor":"Minardi",
       "car":"Minardi PS04B",
-      "grouping":5,
+      "group":5,
       "power":800,
       "weight":600,
       "drivers":[
@@ -1084,10 +1084,10 @@
     },
     {
       "index":11,
-      "year":"2006",
+      "year": 2006,
       "constructor":"Williams",
       "car":"Williams FW28",
-      "grouping":3,
+      "group":3,
       "power":755,
       "weight":605,
       "drivers":[
@@ -1099,10 +1099,10 @@
     },
     {
       "index":10,
-      "year":"2006",
+      "year": 2006,
       "constructor":"Toyota",
       "car":"Toyota TF106",
-      "grouping":7,
+      "group":7,
       "power":745,
       "weight":600,
       "drivers":[
@@ -1114,10 +1114,10 @@
     },
     {
       "index":9,
-      "year":"2006",
+      "year": 2006,
       "constructor":"Toro Rosso",
       "car":"Toro Rosso STR1",
-      "grouping":5,
+      "group":5,
       "power":915,
       "weight":605,
       "drivers":[
@@ -1129,10 +1129,10 @@
     },
     {
       "index":8,
-      "year":"2006",
+      "year": 2006,
       "constructor":"Super Aguri",
       "car":"Super Aguri SA06",
-      "grouping":8,
+      "group":8,
       "power":700,
       "weight":600,
       "drivers":[
@@ -1144,10 +1144,10 @@
     },
     {
       "index":7,
-      "year":"2006",
+      "year": 2006,
       "constructor":"Super Aguri",
       "car":"Super Aguri SA05",
-      "grouping":8,
+      "group":8,
       "power":650,
       "weight":600,
       "drivers":[
@@ -1160,10 +1160,10 @@
     },
     {
       "index":6,
-      "year":"2006",
+      "year": 2006,
       "constructor":"Renault",
       "car":"Renault R26",
-      "grouping":4,
+      "group":4,
       "power":775,
       "weight":605,
       "drivers":[
@@ -1175,10 +1175,10 @@
     },
     {
       "index":5,
-      "year":"2006",
+      "year": 2006,
       "constructor":"Red Bull",
       "car":"Red Bull RB2",
-      "grouping":9,
+      "group":9,
       "power":735,
       "weight":600,
       "drivers":[
@@ -1191,10 +1191,10 @@
     },
     {
       "index":4,
-      "year":"2006",
+      "year": 2006,
       "constructor":"Midland F1 Racing",
       "car":"Midland M16",
-      "grouping":15,
+      "group":15,
       "power":745,
       "weight":600,
       "drivers":[
@@ -1206,10 +1206,10 @@
     },
     {
       "index":3,
-      "year":"2006",
+      "year": 2006,
       "constructor":"McLaren",
       "car":"McLaren MP4-21",
-      "grouping":1,
+      "group":1,
       "power":750,
       "weight":600,
       "drivers":[
@@ -1222,10 +1222,10 @@
     },
     {
       "index":2,
-      "year":"2006",
+      "year": 2006,
       "constructor":"Honda",
       "car":"Honda RA106",
-      "grouping":10,
+      "group":10,
       "power":700,
       "weight":600,
       "drivers":[
@@ -1237,10 +1237,10 @@
     },
     {
       "index":1,
-      "year":"2006",
+      "year": 2006,
       "constructor":"Ferrari",
       "car":"Ferrari 248 F1",
-      "grouping":6,
+      "group":6,
       "power":785,
       "weight":600,
       "drivers":[
@@ -1252,10 +1252,10 @@
     },
     {
       "index":0,
-      "year":"2006",
+      "year": 2006,
       "constructor":"BMW Sauber",
       "car":"BMW Sauber F1.06",
-      "grouping":2,
+      "group":2,
       "power":760,
       "weight":600,
       "drivers":[
@@ -1268,10 +1268,10 @@
     },
     {
       "index":10,
-      "year":"2007",
+      "year": 2007,
       "constructor":"Williams",
       "car":"Williams FW29",
-      "grouping":3,
+      "group":3,
       "power":755,
       "weight":605,
       "drivers":[
@@ -1284,10 +1284,10 @@
     },
     {
       "index":8,
-      "year":"2007",
+      "year": 2007,
       "constructor":"Toro Rosso",
       "car":"Toro Rosso STR2",
-      "grouping":5,
+      "group":5,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1303,10 +1303,10 @@
     },
     {
       "index":7,
-      "year":"2007",
+      "year": 2007,
       "constructor":"Super Aguri",
       "car":"Super Aguri SA07",
-      "grouping":8,
+      "group":8,
       "power":775,
       "weight":605,
       "drivers":[
@@ -1318,10 +1318,10 @@
     },
     {
       "index":6,
-      "year":"2007",
+      "year": 2007,
       "constructor":"Spyker\/Force India",
       "car":"Spyker F8-VII",
-      "grouping":15,
+      "group":15,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1336,10 +1336,10 @@
     },
     {
       "index":5,
-      "year":"2007",
+      "year": 2007,
       "constructor":"Renault",
       "car":"Renault R27",
-      "grouping":4,
+      "group":4,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1351,10 +1351,10 @@
     },
     {
       "index":9,
-      "year":"2007",
+      "year": 2007,
       "constructor":"Toyota",
       "car":"Toyota TF107",
-      "grouping":7,
+      "group":7,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1366,10 +1366,10 @@
     },
     {
       "index":3,
-      "year":"2007",
+      "year": 2007,
       "constructor":"McLaren",
       "car":"McLaren MP4-22",
-      "grouping":1,
+      "group":1,
       "power":810,
       "weight":605,
       "drivers":[
@@ -1381,10 +1381,10 @@
     },
     {
       "index":2,
-      "year":"2007",
+      "year": 2007,
       "constructor":"Honda",
       "car":"Honda RA107",
-      "grouping":10,
+      "group":10,
       "power":775,
       "weight":605,
       "drivers":[
@@ -1396,10 +1396,10 @@
     },
     {
       "index":1,
-      "year":"2007",
+      "year": 2007,
       "constructor":"Scuderia Ferrari",
       "car":"Ferrari F2007",
-      "grouping":6,
+      "group":6,
       "power":800,
       "weight":605,
       "drivers":[
@@ -1411,10 +1411,10 @@
     },
     {
       "index":0,
-      "year":"2007",
+      "year": 2007,
       "constructor":"BMW Sauber",
       "car":"BMW Sauber F1.07",
-      "grouping":2,
+      "group":2,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1427,10 +1427,10 @@
     },
     {
       "index":4,
-      "year":"2007",
+      "year": 2007,
       "constructor":"Red Bull",
       "car":"Red Bull RB3",
-      "grouping":9,
+      "group":9,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1442,10 +1442,10 @@
     },
     {
       "index":12,
-      "year":"2008",
+      "year": 2008,
       "constructor":"Williams",
       "car":"Williams FW30",
-      "grouping":3,
+      "group":3,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1457,10 +1457,10 @@
     },
     {
       "index":8,
-      "year":"2008",
+      "year": 2008,
       "constructor":"Super Aguri F1",
       "car":"Super Aguri SA08",
-      "grouping":8,
+      "group":8,
       "power":775,
       "weight":605,
       "drivers":[
@@ -1472,10 +1472,10 @@
     },
     {
       "index":11,
-      "year":"2008",
+      "year": 2008,
       "constructor":"Toyota",
       "car":"Toyota TF108",
-      "grouping":7,
+      "group":7,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1487,10 +1487,10 @@
     },
     {
       "index":10,
-      "year":"2008",
+      "year": 2008,
       "constructor":"Toro Rosso",
       "car":"Toro Rosso STR3",
-      "grouping":5,
+      "group":5,
       "power":785,
       "weight":605,
       "drivers":[
@@ -1502,10 +1502,10 @@
     },
     {
       "index":9,
-      "year":"2008",
+      "year": 2008,
       "constructor":"Toro Rosso",
       "car":"Toro Rosso STR2",
-      "grouping":5,
+      "group":5,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1521,10 +1521,10 @@
     },
     {
       "index":7,
-      "year":"2008",
+      "year": 2008,
       "constructor":"Spyker\/Force India",
       "car":"Spyker F8-VII",
-      "grouping":15,
+      "group":15,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1539,10 +1539,10 @@
     },
     {
       "index":0,
-      "year":"2008",
+      "year": 2008,
       "constructor":"BMW Sauber",
       "car":"BMW Sauber F1.08",
-      "grouping":2,
+      "group":2,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1554,10 +1554,10 @@
     },
     {
       "index":5,
-      "year":"2008",
+      "year": 2008,
       "constructor":"Red Bull",
       "car":"Red Bull RB4",
-      "grouping":9,
+      "group":9,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1569,10 +1569,10 @@
     },
     {
       "index":4,
-      "year":"2008",
+      "year": 2008,
       "constructor":"McLaren",
       "car":"McLaren MP4-23",
-      "grouping":1,
+      "group":1,
       "power":810,
       "weight":605,
       "drivers":[
@@ -1584,10 +1584,10 @@
     },
     {
       "index":3,
-      "year":"2008",
+      "year": 2008,
       "constructor":"Honda",
       "car":"Honda RA108",
-      "grouping":10,
+      "group":10,
       "power":775,
       "weight":605,
       "drivers":[
@@ -1599,10 +1599,10 @@
     },
     {
       "index":2,
-      "year":"2008",
+      "year": 2008,
       "constructor":"Spyker\/Force India",
       "car":"Force India VJM01",
-      "grouping":15,
+      "group":15,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1617,10 +1617,10 @@
     },
     {
       "index":1,
-      "year":"2008",
+      "year": 2008,
       "constructor":"Scuderia Ferrari",
       "car":"Ferrari F2008",
-      "grouping":6,
+      "group":6,
       "power":800,
       "weight":605,
       "drivers":[
@@ -1632,10 +1632,10 @@
     },
     {
       "index":6,
-      "year":"2008",
+      "year": 2008,
       "constructor":"Renault",
       "car":"Renault R28",
-      "grouping":4,
+      "group":4,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1647,10 +1647,10 @@
     },
     {
       "index":9,
-      "year":"2009",
+      "year": 2009,
       "constructor":"Williams",
       "car":"Williams FW31",
-      "grouping":3,
+      "group":3,
       "power":740,
       "weight":605,
       "drivers":[
@@ -1662,10 +1662,10 @@
     },
     {
       "index":8,
-      "year":"2009",
+      "year": 2009,
       "constructor":"Toyota",
       "car":"Toyota TF109",
-      "grouping":7,
+      "group":7,
       "power":740,
       "weight":605,
       "drivers":[
@@ -1678,10 +1678,10 @@
     },
     {
       "index":7,
-      "year":"2009",
+      "year": 2009,
       "constructor":"Toro Rosso",
       "car":"Toro Rosso STR4",
-      "grouping":5,
+      "group":5,
       "power":800,
       "weight":605,
       "drivers":[
@@ -1694,10 +1694,10 @@
     },
     {
       "index":6,
-      "year":"2009",
+      "year": 2009,
       "constructor":"Renault",
       "car":"Renault R29",
-      "grouping":4,
+      "group":4,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1710,10 +1710,10 @@
     },
     {
       "index":5,
-      "year":"2009",
+      "year": 2009,
       "constructor":"Red Bull",
       "car":"Red Bull RB5",
-      "grouping":9,
+      "group":9,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1725,10 +1725,10 @@
     },
     {
       "index":2,
-      "year":"2009",
+      "year": 2009,
       "constructor":"Scuderia Ferrari",
       "car":"Ferrari F60",
-      "grouping":6,
+      "group":6,
       "power":800,
       "weight":605,
       "drivers":[
@@ -1742,10 +1742,10 @@
     },
     {
       "index":3,
-      "year":"2009",
+      "year": 2009,
       "constructor":"Force India",
       "car":"Force India VJM02",
-      "grouping":15,
+      "group":15,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1758,10 +1758,10 @@
     },
     {
       "index":1,
-      "year":"2009",
+      "year": 2009,
       "constructor":"Brawn GP",
       "car":"Brawn BGP 001",
-      "grouping":10,
+      "group":10,
       "power":750,
       "weight":605,
       "drivers":[
@@ -1773,10 +1773,10 @@
     },
     {
       "index":0,
-      "year":"2009",
+      "year": 2009,
       "constructor":"BMW Sauber",
       "car":"BMW Sauber F1.09",
-      "grouping":2,
+      "group":2,
       "power":760,
       "weight":605,
       "drivers":[
@@ -1788,10 +1788,10 @@
     },
     {
       "index":4,
-      "year":"2009",
+      "year": 2009,
       "constructor":"McLaren Racing",
       "car":"McLaren MP4-24",
-      "grouping":1,
+      "group":1,
       "power":730,
       "weight":605,
       "drivers":[
@@ -1803,10 +1803,10 @@
     },
     {
       "index":8,
-      "year":"2010",
+      "year": 2010,
       "constructor":"BMW Sauber",
       "car":"Sauber C29",
-      "grouping":2,
+      "group":2,
       "power":800,
       "weight":620,
       "drivers":[
@@ -1819,10 +1819,10 @@
     },
     {
       "index":9,
-      "year":"2010",
+      "year": 2010,
       "constructor":"Toro Rosso",
       "car":"Toro Rosso STR5",
-      "grouping":5,
+      "group":5,
       "power":800,
       "weight":620,
       "drivers":[
@@ -1834,10 +1834,10 @@
     },
     {
       "index":7,
-      "year":"2010",
+      "year": 2010,
       "constructor":"Renault",
       "car":"Renault R30",
-      "grouping":4,
+      "group":4,
       "power":750,
       "weight":620,
       "drivers":[
@@ -1849,10 +1849,10 @@
     },
     {
       "index":11,
-      "year":"2010",
+      "year": 2010,
       "constructor":"Williams",
       "car":"Williams FW32",
-      "grouping":3,
+      "group":3,
       "power":730,
       "weight":620,
       "drivers":[
@@ -1864,10 +1864,10 @@
     },
     {
       "index":10,
-      "year":"2010",
+      "year": 2010,
       "constructor":"Virgin Racing",
       "car":"Virgin VR-01",
-      "grouping":13,
+      "group":13,
       "power":750,
       "weight":620,
       "drivers":[
@@ -1879,10 +1879,10 @@
     },
     {
       "index":6,
-      "year":"2010",
+      "year": 2010,
       "constructor":"Red Bull",
       "car":"Red Bull RB6",
-      "grouping":9,
+      "group":9,
       "power":750,
       "weight":620,
       "drivers":[
@@ -1894,10 +1894,10 @@
     },
     {
       "index":2,
-      "year":"2010",
+      "year": 2010,
       "constructor":"Dallara",
       "car":"Hispania F110",
-      "grouping":12,
+      "group":12,
       "power":730,
       "weight":620,
       "drivers":[
@@ -1911,10 +1911,10 @@
     },
     {
       "index":4,
-      "year":"2010",
+      "year": 2010,
       "constructor":"McLaren Racing",
       "car":"McLaren MP4-25",
-      "grouping":1,
+      "group":1,
       "power":750,
       "weight":620,
       "drivers":[
@@ -1926,10 +1926,10 @@
     },
     {
       "index":0,
-      "year":"2010",
+      "year": 2010,
       "constructor":"Scuderia Ferrari",
       "car":"Ferrari F10",
-      "grouping":6,
+      "group":6,
       "power":800,
       "weight":620,
       "drivers":[
@@ -1941,10 +1941,10 @@
     },
     {
       "index":1,
-      "year":"2010",
+      "year": 2010,
       "constructor":"Force India",
       "car":"Force India VJM03",
-      "grouping":15,
+      "group":15,
       "power":750,
       "weight":620,
       "drivers":[
@@ -1956,10 +1956,10 @@
     },
     {
       "index":5,
-      "year":"2010",
+      "year": 2010,
       "constructor":"Mercedes",
       "car":"Mercedes MGP W01",
-      "grouping":10,
+      "group":10,
       "power":750,
       "weight":620,
       "drivers":[
@@ -1971,10 +1971,10 @@
     },
     {
       "index":3,
-      "year":"2010",
+      "year": 2010,
       "constructor":"Team Lotus",
       "car":"Lotus T127",
-      "grouping":11,
+      "group":11,
       "power":750,
       "weight":620,
       "drivers":[
@@ -1986,10 +1986,10 @@
     },
     {
       "index":11,
-      "year":"2011",
+      "year": 2011,
       "constructor":"Williams",
       "car":"Williams FW33",
-      "grouping":3,
+      "group":3,
       "power":810,
       "weight":640,
       "drivers":[
@@ -2001,10 +2001,10 @@
     },
     {
       "index":10,
-      "year":"2011",
+      "year": 2011,
       "constructor":"Virgin Racing",
       "car":"Virgin MVR-02",
-      "grouping":13,
+      "group":13,
       "power":730,
       "weight":640,
       "drivers":[
@@ -2016,10 +2016,10 @@
     },
     {
       "index":9,
-      "year":"2011",
+      "year": 2011,
       "constructor":"Toro Rosso",
       "car":"Toro Rosso STR6",
-      "grouping":5,
+      "group":5,
       "power":880,
       "weight":640,
       "drivers":[
@@ -2031,10 +2031,10 @@
     },
     {
       "index":8,
-      "year":"2011",
+      "year": 2011,
       "constructor":"Sauber",
       "car":"Sauber C30",
-      "grouping":2,
+      "group":2,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2047,10 +2047,10 @@
     },
     {
       "index":6,
-      "year":"2011",
+      "year": 2011,
       "constructor":"Red Bull",
       "car":"Red Bull RB7",
-      "grouping":9,
+      "group":9,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2062,10 +2062,10 @@
     },
     {
       "index":7,
-      "year":"2011",
+      "year": 2011,
       "constructor":"Renault",
       "car":"Renault R31",
-      "grouping":4,
+      "group":4,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2078,10 +2078,10 @@
     },
     {
       "index":4,
-      "year":"2011",
+      "year": 2011,
       "constructor":"McLaren",
       "car":"McLaren MP4-26",
-      "grouping":1,
+      "group":1,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2093,10 +2093,10 @@
     },
     {
       "index":3,
-      "year":"2011",
+      "year": 2011,
       "constructor":"Team Lotus",
       "car":"Lotus T128 (Formula One car)",
-      "grouping":11,
+      "group":11,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2109,10 +2109,10 @@
     },
     {
       "index":2,
-      "year":"2011",
+      "year": 2011,
       "constructor":"HRT",
       "car":"Hispania F111",
-      "grouping":12,
+      "group":12,
       "power":750,
       "weight":640,
       "drivers":[
@@ -2125,10 +2125,10 @@
     },
     {
       "index":1,
-      "year":"2011",
+      "year": 2011,
       "constructor":"Force India",
       "car":"Force India VJM04",
-      "grouping":15,
+      "group":15,
       "power":700,
       "weight":640,
       "drivers":[
@@ -2140,10 +2140,10 @@
     },
     {
       "index":0,
-      "year":"2011",
+      "year": 2011,
       "constructor":"Scuderia Ferrari",
       "car":"Ferrari 150\u00ba Italia",
-      "grouping":6,
+      "group":6,
       "power":875,
       "weight":640,
       "drivers":[
@@ -2155,10 +2155,10 @@
     },
     {
       "index":5,
-      "year":"2011",
+      "year": 2011,
       "constructor":"Mercedes",
       "car":"Mercedes MGP W02",
-      "grouping":10,
+      "group":10,
       "power":780,
       "weight":640,
       "drivers":[
@@ -2170,10 +2170,10 @@
     },
     {
       "index":7,
-      "year":"2012",
+      "year": 2012,
       "constructor":"Mercedes",
       "car":"Mercedes F1 W03",
-      "grouping":10,
+      "group":10,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2185,10 +2185,10 @@
     },
     {
       "index":11,
-      "year":"2012",
+      "year": 2012,
       "constructor":"Williams",
       "car":"Williams FW34",
-      "grouping":3,
+      "group":3,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2200,10 +2200,10 @@
     },
     {
       "index":9,
-      "year":"2012",
+      "year": 2012,
       "constructor":"Sauber",
       "car":"Sauber C31",
-      "grouping":2,
+      "group":2,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2215,10 +2215,10 @@
     },
     {
       "index":8,
-      "year":"2012",
+      "year": 2012,
       "constructor":"Red Bull",
       "car":"Red Bull RB8",
-      "grouping":9,
+      "group":9,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2230,10 +2230,10 @@
     },
     {
       "index":6,
-      "year":"2012",
+      "year": 2012,
       "constructor":"McLaren",
       "car":"McLaren MP4-27",
-      "grouping":1,
+      "group":1,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2245,10 +2245,10 @@
     },
     {
       "index":10,
-      "year":"2012",
+      "year": 2012,
       "constructor":"Toro Rosso",
       "car":"Toro Rosso STR7",
-      "grouping":5,
+      "group":5,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2260,10 +2260,10 @@
     },
     {
       "index":4,
-      "year":"2012",
+      "year": 2012,
       "constructor":"Lotus F1",
       "car":"Lotus E20",
-      "grouping":4,
+      "group":4,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2276,10 +2276,10 @@
     },
     {
       "index":3,
-      "year":"2012",
+      "year": 2012,
       "constructor":"HRT",
       "car":"HRT F112",
-      "grouping":12,
+      "group":12,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2291,10 +2291,10 @@
     },
     {
       "index":2,
-      "year":"2012",
+      "year": 2012,
       "constructor":"Force India",
       "car":"Force India VJM05",
-      "grouping":15,
+      "group":15,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2306,10 +2306,10 @@
     },
     {
       "index":1,
-      "year":"2012",
+      "year": 2012,
       "constructor":"Scuderia Ferrari",
       "car":"Ferrari F2012",
-      "grouping":6,
+      "group":6,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2321,10 +2321,10 @@
     },
     {
       "index":5,
-      "year":"2012",
+      "year": 2012,
       "constructor":"Marussia",
       "car":"Marussia MR01",
-      "grouping":13,
+      "group":13,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2336,10 +2336,10 @@
     },
     {
       "index":0,
-      "year":"2012",
+      "year": 2012,
       "constructor":"Caterham",
       "car":"Caterham CT01",
-      "grouping":11,
+      "group":11,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2351,10 +2351,10 @@
     },
     {
       "index":9,
-      "year":"2013",
+      "year": 2013,
       "constructor":"Toro Rosso",
       "car":"Toro Rosso STR8",
-      "grouping":5,
+      "group":5,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2366,10 +2366,10 @@
     },
     {
       "index":8,
-      "year":"2013",
+      "year": 2013,
       "constructor":"Sauber",
       "car":"Sauber C32",
-      "grouping":2,
+      "group":2,
       "power":830,
       "weight":642,
       "drivers":[
@@ -2381,10 +2381,10 @@
     },
     {
       "index":7,
-      "year":"2013",
+      "year": 2013,
       "constructor":"Red Bull",
       "car":"Red Bull RB9",
-      "grouping":9,
+      "group":9,
       "power":750,
       "weight":642,
       "drivers":[
@@ -2396,10 +2396,10 @@
     },
     {
       "index":6,
-      "year":"2013",
+      "year": 2013,
       "constructor":"Mercedes",
       "car":"Mercedes F1 W04",
-      "grouping":10,
+      "group":10,
       "power":830,
       "weight":640,
       "drivers":[
@@ -2411,10 +2411,10 @@
     },
     {
       "index":5,
-      "year":"2013",
+      "year": 2013,
       "constructor":"McLaren",
       "car":"McLaren MP4-28",
-      "grouping":1,
+      "group":1,
       "power":830,
       "weight":642,
       "drivers":[
@@ -2426,10 +2426,10 @@
     },
     {
       "index":10,
-      "year":"2013",
+      "year": 2013,
       "constructor":"Williams",
       "car":"Williams FW35",
-      "grouping":3,
+      "group":3,
       "power":830,
       "weight":642,
       "drivers":[
@@ -2441,10 +2441,10 @@
     },
     {
       "index":3,
-      "year":"2013",
+      "year": 2013,
       "constructor":"Lotus F1",
       "car":"Lotus E21",
-      "grouping":4,
+      "group":4,
       "power":750,
       "weight":642,
       "drivers":[
@@ -2457,10 +2457,10 @@
     },
     {
       "index":4,
-      "year":"2013",
+      "year": 2013,
       "constructor":"Marussia",
       "car":"Marussia MR02",
-      "grouping":13,
+      "group":13,
       "power":830,
       "weight":642,
       "drivers":[
@@ -2472,10 +2472,10 @@
     },
     {
       "index":0,
-      "year":"2013",
+      "year": 2013,
       "constructor":"Caterham",
       "car":"Caterham CT03",
-      "grouping":11,
+      "group":11,
       "power":750,
       "weight":642,
       "drivers":[
@@ -2487,10 +2487,10 @@
     },
     {
       "index":1,
-      "year":"2013",
+      "year": 2013,
       "constructor":"Ferrari",
       "car":"Ferrari F138",
-      "grouping":6,
+      "group":6,
       "power":830,
       "weight":642,
       "drivers":[
@@ -2502,10 +2502,10 @@
     },
     {
       "index":2,
-      "year":"2013",
+      "year": 2013,
       "constructor":"Force India",
       "car":"Force India VJM06",
-      "grouping":15,
+      "group":15,
       "power":830,
       "weight":642,
       "drivers":[
@@ -2517,10 +2517,10 @@
     },
     {
       "index":6,
-      "year":"2014",
+      "year": 2014,
       "constructor":"Mercedes",
       "car":"Mercedes F1 W05 Hybrid",
-      "grouping":10,
+      "group":10,
       "power":800,
       "weight":691,
       "drivers":[
@@ -2532,10 +2532,10 @@
     },
     {
       "index":10,
-      "year":"2014",
+      "year": 2014,
       "constructor":"Williams",
       "car":"Williams FW36",
-      "grouping":3,
+      "group":3,
       "power":1010,
       "weight":691,
       "drivers":[
@@ -2547,10 +2547,10 @@
     },
     {
       "index":9,
-      "year":"2014",
+      "year": 2014,
       "constructor":"Toro Rosso",
       "car":"Toro Rosso STR9",
-      "grouping":5,
+      "group":5,
       "power":1010,
       "weight":691,
       "drivers":[
@@ -2562,10 +2562,10 @@
     },
     {
       "index":8,
-      "year":"2014",
+      "year": 2014,
       "constructor":"Sauber",
       "car":"Sauber C33",
-      "grouping":2,
+      "group":2,
       "power":1010,
       "weight":691,
       "drivers":[
@@ -2577,10 +2577,10 @@
     },
     {
       "index":7,
-      "year":"2014",
+      "year": 2014,
       "constructor":"Red Bull",
       "car":"Red Bull RB10",
-      "grouping":9,
+      "group":9,
       "power":1010,
       "weight":691,
       "drivers":[
@@ -2592,10 +2592,10 @@
     },
     {
       "index":5,
-      "year":"2014",
+      "year": 2014,
       "constructor":"McLaren",
       "car":"McLaren MP4-29",
-      "grouping":1,
+      "group":1,
       "power":1010,
       "weight":691,
       "drivers":[
@@ -2607,10 +2607,10 @@
     },
     {
       "index":3,
-      "year":"2014",
+      "year": 2014,
       "constructor":"Lotus F1",
       "car":"Lotus E22",
-      "grouping":4,
+      "group":4,
       "power":1010,
       "weight":692,
       "drivers":[
@@ -2622,10 +2622,10 @@
     },
     {
       "index":2,
-      "year":"2014",
+      "year": 2014,
       "constructor":"Force India",
       "car":"Force India VJM07",
-      "grouping":15,
+      "group":15,
       "power":1010,
       "weight":691,
       "drivers":[
@@ -2637,10 +2637,10 @@
     },
     {
       "index":1,
-      "year":"2014",
+      "year": 2014,
       "constructor":"Scuderia Ferrari",
       "car":"Ferrari F14 T",
-      "grouping":6,
+      "group":6,
       "power":1010,
       "weight":691,
       "drivers":[
@@ -2652,10 +2652,10 @@
     },
     {
       "index":0,
-      "year":"2014",
+      "year": 2014,
       "constructor":"Caterham",
       "car":"Caterham CT05",
-      "grouping":11,
+      "group":11,
       "power":600,
       "weight":691,
       "drivers":[
@@ -2669,10 +2669,10 @@
     },
     {
       "index":4,
-      "year":"2014",
+      "year": 2014,
       "constructor":"Marussia",
       "car":"Marussia MR03",
-      "grouping":13,
+      "group":13,
       "power":1010,
       "weight":691,
       "drivers":[
@@ -2687,10 +2687,10 @@
     },
     {
       "index":5,
-      "year":"2015",
+      "year": 2015,
       "constructor":"Mercedes",
       "car":"Mercedes F1 W06 Hybrid",
-      "grouping":10,
+      "group":10,
       "power":850,
       "weight":702,
       "drivers":[
@@ -2702,10 +2702,10 @@
     },
     {
       "index":8,
-      "year":"2015",
+      "year": 2015,
       "constructor":"Toro Rosso",
       "car":"Toro Rosso STR10",
-      "grouping":5,
+      "group":5,
       "power":700,
       "weight":702,
       "drivers":[
@@ -2717,10 +2717,10 @@
     },
     {
       "index":7,
-      "year":"2015",
+      "year": 2015,
       "constructor":"Sauber",
       "car":"Sauber C34",
-      "grouping":2,
+      "group":2,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2732,10 +2732,10 @@
     },
     {
       "index":6,
-      "year":"2015",
+      "year": 2015,
       "constructor":"Red Bull",
       "car":"Red Bull RB11",
-      "grouping":9,
+      "group":9,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2747,10 +2747,10 @@
     },
     {
       "index":9,
-      "year":"2015",
+      "year": 2015,
       "constructor":"Williams",
       "car":"Williams FW37",
-      "grouping":3,
+      "group":3,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2762,10 +2762,10 @@
     },
     {
       "index":4,
-      "year":"2015",
+      "year": 2015,
       "constructor":"McLaren",
       "car":"McLaren MP4-30",
-      "grouping":1,
+      "group":1,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2777,10 +2777,10 @@
     },
     {
       "index":2,
-      "year":"2015",
+      "year": 2015,
       "constructor":"Lotus F1",
       "car":"Lotus E23 Hybrid",
-      "grouping":4,
+      "group":4,
       "power":930,
       "weight":702,
       "drivers":[
@@ -2792,10 +2792,10 @@
     },
     {
       "index":1,
-      "year":"2015",
+      "year": 2015,
       "constructor":"Force India",
       "car":"Force India VJM08",
-      "grouping":15,
+      "group":15,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2807,10 +2807,10 @@
     },
     {
       "index":0,
-      "year":"2015",
+      "year": 2015,
       "constructor":"Ferrari",
       "car":"Ferrari SF15-T",
-      "grouping":6,
+      "group":6,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2822,10 +2822,10 @@
     },
     {
       "index":3,
-      "year":"2015",
+      "year": 2015,
       "constructor":"Marussia",
       "car":"Marussia MR03",
-      "grouping":13,
+      "group":13,
       "power":1060,
       "weight":691,
       "drivers":[
@@ -2840,10 +2840,10 @@
     },
     {
       "index":9,
-      "year":"2016",
+      "year": 2016,
       "constructor":"Toro Rosso",
       "car":"Toro Rosso STR11",
-      "grouping":5,
+      "group":5,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2856,10 +2856,10 @@
     },
     {
       "index":8,
-      "year":"2016",
+      "year": 2016,
       "constructor":"Sauber",
       "car":"Sauber C35",
-      "grouping":2,
+      "group":2,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2871,10 +2871,10 @@
     },
     {
       "index":7,
-      "year":"2016",
+      "year": 2016,
       "constructor":"Renault",
       "car":"Renault R.S.16",
-      "grouping":4,
+      "group":4,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2886,10 +2886,10 @@
     },
     {
       "index":6,
-      "year":"2016",
+      "year": 2016,
       "constructor":"Red Bull",
       "car":"Red Bull RB12",
-      "grouping":9,
+      "group":9,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2902,10 +2902,10 @@
     },
     {
       "index":5,
-      "year":"2016",
+      "year": 2016,
       "constructor":"Mercedes",
       "car":"Mercedes F1 W07 Hybrid",
-      "grouping":10,
+      "group":10,
       "power":900,
       "weight":702,
       "drivers":[
@@ -2917,10 +2917,10 @@
     },
     {
       "index":10,
-      "year":"2016",
+      "year": 2016,
       "constructor":"Williams",
       "car":"Williams FW38",
-      "grouping":3,
+      "group":3,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2932,10 +2932,10 @@
     },
     {
       "index":3,
-      "year":"2016",
+      "year": 2016,
       "constructor":"Manor",
       "car":"Manor MRT05",
-      "grouping":13,
+      "group":13,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2948,10 +2948,10 @@
     },
     {
       "index":2,
-      "year":"2016",
+      "year": 2016,
       "constructor":"Haas",
       "car":"Haas VF-16",
-      "grouping":16,
+      "group":16,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2963,10 +2963,10 @@
     },
     {
       "index":1,
-      "year":"2016",
+      "year": 2016,
       "constructor":"Force India",
       "car":"Force India VJM09",
-      "grouping":15,
+      "group":15,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2978,10 +2978,10 @@
     },
     {
       "index":0,
-      "year":"2016",
+      "year": 2016,
       "constructor":"Ferrari",
       "car":"Ferrari SF16-H",
-      "grouping":6,
+      "group":6,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -2993,10 +2993,10 @@
     },
     {
       "index":4,
-      "year":"2016",
+      "year": 2016,
       "constructor":"McLaren",
       "car":"McLaren MP4-31",
-      "grouping":1,
+      "group":1,
       "power":1060,
       "weight":702,
       "drivers":[
@@ -3009,10 +3009,10 @@
     },
     {
       "index":9,
-      "year":"2017",
+      "year": 2017,
       "constructor":"Williams",
       "car":"Williams FW40",
-      "grouping":3,
+      "group":3,
       "power":1060,
       "weight":728,
       "drivers":[
@@ -3025,10 +3025,10 @@
     },
     {
       "index":8,
-      "year":"2017",
+      "year": 2017,
       "constructor":"Toro Rosso",
       "car":"Toro Rosso STR12",
-      "grouping":5,
+      "group":5,
       "power":1060,
       "weight":728,
       "drivers":[
@@ -3042,10 +3042,10 @@
     },
     {
       "index":7,
-      "year":"2017",
+      "year": 2017,
       "constructor":"Sauber",
       "car":"Sauber C36",
-      "grouping":2,
+      "group":2,
       "power":1060,
       "weight":728,
       "drivers":[
@@ -3058,10 +3058,10 @@
     },
     {
       "index":6,
-      "year":"2017",
+      "year": 2017,
       "constructor":"Renault",
       "car":"Renault R.S.17",
-      "grouping":4,
+      "group":4,
       "power":1060,
       "weight":728,
       "drivers":[
@@ -3074,10 +3074,10 @@
     },
     {
       "index":5,
-      "year":"2017",
+      "year": 2017,
       "constructor":"Red Bull Racing",
       "car":"Red Bull RB13",
-      "grouping":9,
+      "group":9,
       "power":900,
       "weight":728,
       "drivers":[
@@ -3089,10 +3089,10 @@
     },
     {
       "index":4,
-      "year":"2017",
+      "year": 2017,
       "constructor":"Mercedes",
       "car":"Mercedes AMG F1 W08 EQ Power+",
-      "grouping":10,
+      "group":10,
       "power":950,
       "weight":728,
       "drivers":[
@@ -3104,10 +3104,10 @@
     },
     {
       "index":2,
-      "year":"2017",
+      "year": 2017,
       "constructor":"Haas",
       "car":"Haas VF-17",
-      "grouping":16,
+      "group":16,
       "power":1060,
       "weight":728,
       "drivers":[
@@ -3119,10 +3119,10 @@
     },
     {
       "index":1,
-      "year":"2017",
+      "year": 2017,
       "constructor":"Force India",
       "car":"Force India VJM10",
-      "grouping":15,
+      "group":15,
       "power":1060,
       "weight":728,
       "drivers":[
@@ -3134,10 +3134,10 @@
     },
     {
       "index":0,
-      "year":"2017",
+      "year": 2017,
       "constructor":"Ferrari",
       "car":"Ferrari SF70H",
-      "grouping":6,
+      "group":6,
       "power":1000,
       "weight":728,
       "drivers":[
@@ -3148,10 +3148,10 @@
     },
     {
       "index":3,
-      "year":"2017",
+      "year": 2017,
       "constructor":"McLaren",
       "car":"McLaren MCL32",
-      "grouping":1,
+      "group":1,
       "power":900,
       "weight":728,
       "drivers":[
@@ -3164,10 +3164,10 @@
     },
     {
       "index":6,
-      "year":"2018",
+      "year": 2018,
       "constructor":"Renault",
       "car":"Renault R.S.18",
-      "grouping":4,
+      "group":4,
       "power":1100,
       "weight":733,
       "drivers":[
@@ -3179,10 +3179,10 @@
     },
     {
       "index":8,
-      "year":"2018",
+      "year": 2018,
       "constructor":"Scuderia Toro Rosso",
       "car":"Scuderia Toro Rosso STR13",
-      "grouping":5,
+      "group":5,
       "power":1100,
       "weight":734,
       "drivers":[
@@ -3194,10 +3194,10 @@
     },
     {
       "index":7,
-      "year":"2018",
+      "year": 2018,
       "constructor":"Sauber",
       "car":"Sauber C37",
-      "grouping":2,
+      "group":2,
       "power":1100,
       "weight":733,
       "drivers":[
@@ -3209,10 +3209,10 @@
     },
     {
       "index":9,
-      "year":"2018",
+      "year": 2018,
       "constructor":"Williams\u2013Mercedes",
       "car":"Williams FW41",
-      "grouping":3,
+      "group":3,
       "power":1100,
       "weight":733,
       "drivers":[
@@ -3224,10 +3224,10 @@
     },
     {
       "index":5,
-      "year":"2018",
+      "year": 2018,
       "constructor":"Red Bull Racing",
       "car":"Red Bull Racing RB14",
-      "grouping":9,
+      "group":9,
       "power":1100,
       "weight":728,
       "drivers":[
@@ -3239,10 +3239,10 @@
     },
     {
       "index":2,
-      "year":"2018",
+      "year": 2018,
       "constructor":"Haas",
       "car":"Haas VF-18",
-      "grouping":16,
+      "group":16,
       "power":1100,
       "weight":728,
       "drivers":[
@@ -3254,10 +3254,10 @@
     },
     {
       "index":3,
-      "year":"2018",
+      "year": 2018,
       "constructor":"McLaren",
       "car":"McLaren MCL33",
-      "grouping":1,
+      "group":1,
       "power":1100,
       "weight":733,
       "drivers":[
@@ -3269,10 +3269,10 @@
     },
     {
       "index":1,
-      "year":"2018",
+      "year": 2018,
       "constructor":"Force India",
       "car":"Force India VJM11",
-      "grouping":15,
+      "group":15,
       "power":1100,
       "weight":728,
       "drivers":[
@@ -3284,10 +3284,10 @@
     },
     {
       "index":0,
-      "year":"2018",
+      "year": 2018,
       "constructor":"Ferrari",
       "car":"Ferrari SF71H",
-      "grouping":6,
+      "group":6,
       "power":1100,
       "weight":733,
       "drivers":[
@@ -3299,10 +3299,10 @@
     },
     {
       "index":4,
-      "year":"2018",
+      "year": 2018,
       "constructor":"Mercedes",
       "car":"Mercedes AMG F1 W09 EQ Power+",
-      "grouping":10,
+      "group":10,
       "power":950,
       "weight":733,
       "drivers":[
@@ -3314,10 +3314,10 @@
     },
     {
       "index":9,
-      "year":"2019",
+      "year": 2019,
       "constructor":"Williams\u2013Mercedes",
       "car":"Williams FW42",
-      "grouping":3,
+      "group":3,
       "power":1100,
       "weight":728,
       "drivers":[
@@ -3329,10 +3329,10 @@
     },
     {
       "index":8,
-      "year":"2019",
+      "year": 2019,
       "constructor":"Scuderia Toro Rosso",
       "car":"Scuderia Toro Rosso STR14",
-      "grouping":5,
+      "group":5,
       "power":1100,
       "weight":743,
       "drivers":[
@@ -3345,10 +3345,10 @@
     },
     {
       "index":6,
-      "year":"2019",
+      "year": 2019,
       "constructor":"Red Bull Racing",
       "car":"Red Bull Racing RB15",
-      "grouping":9,
+      "group":9,
       "power":950,
       "weight":743,
       "drivers":[
@@ -3361,10 +3361,10 @@
     },
     {
       "index":5,
-      "year":"2019",
+      "year": 2019,
       "constructor":"Racing Point",
       "car":"Racing Point RP19",
-      "grouping":15,
+      "group":15,
       "power":1100,
       "weight":743,
       "drivers":[
@@ -3376,10 +3376,10 @@
     },
     {
       "index":7,
-      "year":"2019",
+      "year": 2019,
       "constructor":"Renault",
       "car":"Renault R.S.19",
-      "grouping":4,
+      "group":4,
       "power":1000,
       "weight":743,
       "drivers":[
@@ -3391,10 +3391,10 @@
     },
     {
       "index":3,
-      "year":"2019",
+      "year": 2019,
       "constructor":"McLaren",
       "car":"McLaren MCL34",
-      "grouping":1,
+      "group":1,
       "power":1100,
       "weight":743,
       "drivers":[
@@ -3406,10 +3406,10 @@
     },
     {
       "index":2,
-      "year":"2019",
+      "year": 2019,
       "constructor":"Haas",
       "car":"Haas VF-19",
-      "grouping":16,
+      "group":16,
       "power":1100,
       "weight":743,
       "drivers":[
@@ -3421,10 +3421,10 @@
     },
     {
       "index":1,
-      "year":"2019",
+      "year": 2019,
       "constructor":"Ferrari",
       "car":"Ferrari SF90",
-      "grouping":6,
+      "group":6,
       "power":1100,
       "weight":743,
       "drivers":[
@@ -3436,10 +3436,10 @@
     },
     {
       "index":0,
-      "year":"2019",
+      "year": 2019,
       "constructor":"Alfa Romeo",
       "car":"Alfa Romeo Racing C38",
-      "grouping":2,
+      "group":2,
       "power":1100,
       "weight":740,
       "drivers":[
@@ -3451,10 +3451,10 @@
     },
     {
       "index":4,
-      "year":"2019",
+      "year": 2019,
       "constructor":"Mercedes",
       "car":"Mercedes AMG F1 W10 EQ Power+",
-      "grouping":10,
+      "group":10,
       "power":950,
       "weight":743,
       "drivers":[
@@ -3466,10 +3466,10 @@
     },
     {
       "index":8,
-      "year":"2020",
+      "year": 2020,
       "constructor":"Renault",
       "car":"Renault R.S.20",
-      "grouping":4,
+      "group":4,
       "power":1100,
       "weight":743,
       "drivers":[
@@ -3481,10 +3481,10 @@
     },
     {
       "index":0,
-      "year":"2020",
+      "year": 2020,
       "constructor":"Alfa Romeo Racing",
       "car":"Alfa Romeo Racing C39",
-      "grouping":2,
+      "group":2,
       "power":1100,
       "weight":728,
       "drivers":[
@@ -3496,10 +3496,10 @@
     },
     {
       "index":1,
-      "year":"2020",
+      "year": 2020,
       "constructor":"AlphaTauri",
       "car":"AlphaTauri AT01",
-      "grouping":5,
+      "group":5,
       "power":1100,
       "weight":743,
       "drivers":[
@@ -3511,10 +3511,10 @@
     },
     {
       "index":2,
-      "year":"2020",
+      "year": 2020,
       "constructor":"Ferrari",
       "car":"Ferrari SF1000",
-      "grouping":6,
+      "group":6,
       "power":1100,
       "weight":728,
       "drivers":[
@@ -3526,10 +3526,10 @@
     },
     {
       "index":3,
-      "year":"2020",
+      "year": 2020,
       "constructor":"Haas F1 Team",
       "car":"Haas VF-20",
-      "grouping":16,
+      "group":16,
       "power":1100,
       "weight":728,
       "drivers":[
@@ -3542,10 +3542,10 @@
     },
     {
       "index":4,
-      "year":"2020",
+      "year": 2020,
       "constructor":"McLaren",
       "car":"McLaren MCL35",
-      "grouping":1,
+      "group":1,
       "power":1100,
       "weight":728,
       "drivers":[
@@ -3558,10 +3558,10 @@
     },
     {
       "index":5,
-      "year":"2020",
+      "year": 2020,
       "constructor":"Mercedes",
       "car":"Mercedes-AMG F1 W11 EQ Performance",
-      "grouping":10,
+      "group":10,
       "power":1100,
       "weight":728,
       "drivers":[
@@ -3574,10 +3574,10 @@
     },
     {
       "index":6,
-      "year":"2020",
+      "year": 2020,
       "constructor":"Racing Point",
       "car":"Racing Point RP20",
-      "grouping":15,
+      "group":15,
       "power":1100,
       "weight":728,
       "drivers":[
@@ -3590,10 +3590,10 @@
     },
     {
       "index":7,
-      "year":"2020",
+      "year": 2020,
       "constructor":"Red Bull Racing",
       "car":"Red Bull Racing RB16",
-      "grouping":9,
+      "group":9,
       "power":1100,
       "weight":728,
       "drivers":[
@@ -3606,10 +3606,10 @@
     },
     {
       "index":9,
-      "year":"2020",
+      "year": 2020,
       "constructor":"Williams",
       "car":"Williams FW43",
-      "grouping":3,
+      "group":3,
       "power":1100,
       "weight":728,
       "drivers":[
