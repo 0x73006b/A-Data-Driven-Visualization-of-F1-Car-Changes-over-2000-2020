@@ -3,7 +3,9 @@ module.exports = {
     "globals": {
         "d3": true,
         "ScatterPlot": true,
-        "mechanicalChanges": true
+        "mechanicalChanges": true,
+        "LineChart": true,
+        "laptime0": true
     }
 }
 

@@ -1,8 +1,6 @@
 let mechanicalChanges;
 let mechanicalChangesData;
-
 // TODO: Remove the eslint disables once ready
-// eslint-disable-next-line no-unused-vars
 let lapTime0;
 // eslint-disable-next-line no-unused-vars
 let lapTime1;
@@ -19,6 +17,14 @@ Promise.all([
     [circuitData, mechanicalChangesData] = data;
 
     // Create Mechanical Changes Scatterplot
+    // eslint-disable-next-line no-unused-vars
     mechanicalChanges = new ScatterPlot({ parentElement: '#mechanical-changes' }, mechanicalChangesData.data);
-  });
 
+    // Create LT0 Linegraph
+    // eslint-disable-next-line no-unused-vars
+    // Todo: data need to change to data here instead of circuit only to include tooltip information
+    lapTime0 = new LineChart({ parentElement: '#lap-time0' }, circuitData);
+    lapTime0.updateVis();
+  })
+  // eslint-disable-next-line no-console
+  .catch((error) => console.error(error));
