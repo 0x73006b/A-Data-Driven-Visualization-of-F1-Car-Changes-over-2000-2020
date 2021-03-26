@@ -10,7 +10,7 @@ class MechanicalChangesOverview {
   constructor(_config, _data) {
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 500,
+      containerWidth: 600,
       containerHeight: 350,
       tooltipPadding: 15,
       margin: {

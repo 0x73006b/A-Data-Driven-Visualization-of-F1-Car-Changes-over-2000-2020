@@ -11,7 +11,7 @@ class MechanicalChangesDetailView {
   constructor(_config, _data) {
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 500,
+      containerWidth: 600,
       containerHeight: 350,
       tooltipPadding: 15,
       margin: {
@@ -120,6 +120,7 @@ class MechanicalChangesDetailView {
   renderVis() {
     const vis = this;
 
+    // TODO: Refactor into helper function?
     // Add line path
     // eslint-disable-next-line no-unused-vars
     const horsePowerLine = vis.marks.selectAll('.chart-line')
@@ -145,7 +146,7 @@ class MechanicalChangesDetailView {
       .data(vis.filteredData, (d) => d)
       .join('circle')
       .attr('class', 'point-hp')
-      .attr('r', 5);
+      .attr('r', 6);
 
     horsePowerCircle.merge(horsePowerCircle)
       .transition()
@@ -155,7 +156,6 @@ class MechanicalChangesDetailView {
       .attr('cx', (d) => vis.xScale(vis.xValue(d)))
       .attr('fill-opacity', 0.5)
       .attr('fill', 'red');
-    // TODO: Add Tool tip
 
     // Add line path
     // eslint-disable-next-line no-unused-vars
@@ -175,14 +175,14 @@ class MechanicalChangesDetailView {
       .attr('d', d3.line()
         // .curve(d3.curveNatural)
         .x((d) => vis.xScale(vis.xValue(d)))
-        .y((d) => vis.yScaleBottom(vis.yValueBottom(d))+vis.halfHeight));
+        .y((d) => vis.yScaleBottom(vis.yValueBottom(d)) + vis.halfHeight));
 
     // eslint-disable-next-line no-unused-vars
     const powerWeightRatioCircle = vis.marks.selectAll('.point-pwr')
       .data(vis.filteredData, (d) => d)
       .join('circle')
       .attr('class', 'point-pwr')
-      .attr('r', 5);
+      .attr('r', 6);
 
     powerWeightRatioCircle.merge(powerWeightRatioCircle)
       .transition()
@@ -193,6 +193,8 @@ class MechanicalChangesDetailView {
       .attr('transform', `translate(0, ${vis.halfHeight})`)
       .attr('fill-opacity', 0.5)
       .attr('fill', 'red');
+
+    // TODO: Tool tpi
 
     // Update the axes
     this.drawAxis();

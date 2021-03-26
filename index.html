@@ -3,35 +3,48 @@
 <head>
     <title>D3 Project Starter Template</title>
     <meta charset="UTF-8">
-    <link rel="icon" href="data:;base64,iVBORwOKGO=" />
+    <link rel="icon" href="data:;base64,iVBORwOKGO="/>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <!-- Add HTML content, SVG drawing area, ... -->
-    <div class="step" id="step0">
+<!-- Add HTML content, SVG drawing area, ... -->
+<div class="step" id="step0">
+    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+    aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim suspendisse in est
+    ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
+</div>
+<p/>
+<div class="step" id="step1" style="display: inherit">
+    <span>
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
+        suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis. Diam in arcu
+        cursus euismod quis viverra nibh cras pulvinar. Scelerisque mauris pellentesque pulvinar pellentesque habitant.
+        At imperdiet dui accumsan sit amet. Amet est placerat in egestas. Convallis tellus id interdum velit laoreet id.
+        Ornare quam viverra orci sagittis eu. Diam donec adipiscing tristique risus nec. Lacus vel facilisis volutpat
+        est velit egestas. Pulvinar elementum integer enim neque volutpat ac. Praesent tristique magna sit amet
+        purus gravida.
+    </span>
+    <span style="display: inherit; flex-flow: column">
+    <svg id="mechanical-changes-overview"></svg>
+    <svg id="mechanical-changes-detail-view"></svg>
+    </span>
+    <!--        <svg id="mechanical-changes-powerweight"></svg>-->
+</div>
+<div id="tooltip"></div>
 
-    </div>
-    <div class="step" id="step1" style="display: flex">
-        <svg id="mechanical-changes-overview"></svg>
-        <div style="display: inherit; flex-flow: column">
-        <svg id="mechanical-changes-detail-view"></svg>
-<!--        <svg id="mechanical-changes-powerweight"></svg>-->
-        </div>
-    </div>
-    <div id="tooltip"></div>
+<!-- D3 bundle -->
+<script src="js/d3.v6.min.js"></script>
 
-    <!-- D3 bundle -->
-    <script src="js/d3.v6.min.js"></script>
-
-    <!-- Our JS code -->
-    <script src="js/main.js"></script>
-    <script src="utils/index.js"></script>
-    <script src="js/mechanicalChangesOverview.js"></script>
-    <script src="js/mechanicalChangesDetailView.js"></script>
+<!-- Our JS code -->
+<script src="js/main.js"></script>
+<script src="utils/index.js"></script>
+<script src="js/mechanicalChangesOverview.js"></script>
+<script src="js/mechanicalChangesDetailView.js"></script>
 <!--    <script src="js/mechanicalChangesPowerToWeight.js"></script>-->
-    <script src="js/lapTime0.js"></script>
-    <script src="js/lapTime1.js"></script>
-    <script src="js/lapTime2Barchart.js"></script>
-    <script src="js/lapTime2AnimatedView.js"></script>
+<script src="js/lapTime0.js"></script>
+<script src="js/lapTime1.js"></script>
+<script src="js/lapTime2Barchart.js"></script>
+<script src="js/lapTime2AnimatedView.js"></script>
 </body>
 </html>
