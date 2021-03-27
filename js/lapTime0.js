@@ -27,7 +27,8 @@ class LineChart {
    * Initialize scales/axes and append static elements, such as axis titles
   */
   initVis() {
-    const vis = this;
+    // eslint-disable-next-line prefer-const
+    let vis = this;
 
     vis.width = vis.config.containerWidth - vis.config.margin.left - vis.config.margin.right;
     vis.height = vis.config.containerHeight - vis.config.margin.top - vis.config.margin.bottom;
@@ -36,6 +37,7 @@ class LineChart {
     vis.xScale = d3.scaleTime()
       .range([0, vis.width])
       .domain([new Date(2000, 0, 0), new Date(2020, 11, 31)]);
+
     // Yscale should be best averaged laptime in seconds
     vis.yScale = d3.scaleLinear()
       .range([vis.height, 0])
@@ -49,6 +51,13 @@ class LineChart {
 
     vis.yAxis = d3.axisLeft(vis.yScale)
       .ticks(10)
+      .tickFormat((x) => {
+        const millis = (x % 1000);
+        let sec = Math.floor(x / 1000);
+        const minute = Math.floor(sec / 60);
+        sec %= 60;
+        return `${minute.toString()}:${sec.toString()}.${(millis / 10).toString()}`;
+      })
       .tickSizeOuter(0)
       .tickPadding(10);
     // .tickFormat(d => d + 'ms');
@@ -95,7 +104,8 @@ class LineChart {
   }
 
   updateVis() {
-    const vis = this;
+    // eslint-disable-next-line prefer-const
+    let vis = this;
 
     // TODO: Remove this
     // Filter data to show fastest f1 lap time averaged
@@ -112,24 +122,24 @@ class LineChart {
 
     // TODO: format from string to miliseconds
     // Following Robert's example
+    vis.xValue = (d) => d.year;
     vis.yValue = (d) => {
       const minuteParsed = d.bestLapTime.split(':');
       const secondParsed = minuteParsed[1].split('.');
       const millis = secondParsed[1];
       return ((+minuteParsed[0] * 60 + (+secondParsed[0])) * 1000 + (+millis) * 10);
     };
-    vis.xValue = (d) => d.year;
     vis.line = d3.line()
       .x((d) => vis.xScale(vis.xValue(d)))
       .y((d) => vis.yScale(vis.yValue(d)));
 
     // Set the scale input domains
-    // TODO: remove this console.log
-    // eslint-disable-next-line no-console
-    console.log(vis.line);
     // eslint-disable-next-line max-len
-    vis.yScale.domain([d3.min(vis.averagedData, vis.yValue) - 1000, d3.max(vis.averagedData, vis.yValue)]);
-
+    // TODO: vis.averagedData is showing negatives for some reason
+    // DEBUG
+    console.log(vis.averagedData);
+    console.log(vis.yValue);
+    vis.yScale.domain([d3.min(vis.averagedData, vis.yValue), d3.max(vis.averagedData, vis.yValue)]);
     vis.bisectTime = d3.bisector(vis.xValue).left;
 
     vis.renderVis();
@@ -139,16 +149,18 @@ class LineChart {
    * Bind data to visual elements
    */
   renderVis() {
-    const vis = this;
+    // eslint-disable-next-line prefer-const
+    let vis = this;
 
     // Add line path
     vis.marks.selectAll('.chart-line')
-      .data(vis.averagedData, (d) => d)
+      .data([vis.averagedData], (d) => d)
       .join('path')
       .attr('class', 'chart-line')
-      .attr('stroke', 'grey')
-      .attr('stroke-width', '2px')
       .attr('d', vis.line);
+    /*  .attr('fill', 'none')
+      .attr('stroke', '#517390')
+      .attr('stroke-width', '2px'); */
 
     vis.trackingArea
       .on('mouseenter', () => {
@@ -170,10 +182,10 @@ class LineChart {
 
         // Update tooltip
         vis.tooltip.select('circle')
-          .attr('transform', `translate(${vis.xScale(d.date)},${vis.yScale(d.close)})`);
+          .attr('transform', `translate(${vis.xScale(vis.xValue(d))},${vis.yScale(vis.yValue(d))})`);
 
         vis.tooltip.select('text')
-          .attr('transform', `translate(${vis.xScale(d.date)},${(vis.yScale(d.close) - 15)})`)
+          .attr('transform', `translate(${vis.xScale(vis.xValue(d))},${(vis.yValue(d) - 15)})`)
           .text(Math.round(d.close));
       });
 

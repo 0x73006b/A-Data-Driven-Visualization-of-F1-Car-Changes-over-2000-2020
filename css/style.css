@@ -13,4 +13,9 @@
     font-weight: 500;
     color: #888;
 }
+.chart-line {
+    fill: none;
+    stroke: #517390;
+    stroke-width: 2px;
+}
 
