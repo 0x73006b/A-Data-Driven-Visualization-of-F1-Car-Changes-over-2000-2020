@@ -23,7 +23,7 @@ Promise.all([
     // Create LT0 Linegraph
     // eslint-disable-next-line no-unused-vars
     // Todo: data need to change to data here instead of circuit only to include tooltip information
-    lapTime0 = new LineChart({ parentElement: '#lap-time0' }, circuitData);
+    lapTime0 = new LapTime0({ parentElement: '#lap-time0' }, circuitData);
     lapTime0.updateVis();
   })
   // eslint-disable-next-line no-console
