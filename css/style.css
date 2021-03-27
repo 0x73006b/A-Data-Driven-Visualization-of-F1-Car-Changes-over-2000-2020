@@ -1,5 +1,12 @@
 /* Todo: set up styling */
 
+body {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 1000px;
+    margin: auto;
+}
 #tooltip {
     position: absolute;
     opacity: 0;

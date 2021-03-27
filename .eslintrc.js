@@ -3,7 +3,13 @@ module.exports = {
     "globals": {
         "d3": true,
         "ScatterPlot": true,
-        "mechanicalChanges": true
+        "MechanicalChangesOverview": true,
+        "MechanicalChangesDetailView": true,
+        // "MechanicalChangesPowerToWeight": true,
+        "mechanicalChangesOverview": true,
+        "mechanicalChangesDetailView": true,
+        // 'mechanicalChangesPowerToWeight': true,
+        "mechanicalChangesSelectedGroup": true
     }
 }
 
