@@ -174,20 +174,33 @@ class LineChart {
         const xPos = d3.pointer(event, this)[0]; // First array element is x, second is y
         const bestLapTime = vis.xScale.invert(xPos);
 
-        // Find nearest data point
-        const index = vis.bisectTime(vis.data, bestLapTime, 1);
-        const a = vis.data[index - 1];
-        const b = vis.data[index];
-        const d = b && (bestLapTime - a.bestLapTime > b.bestLapTime - bestLapTime) ? b : a;
-
-        // Update tooltip
-        vis.tooltip.select('circle')
-          .attr('transform', `translate(${vis.xScale(vis.xValue(d))},${vis.yScale(vis.yValue(d))})`);
-
-        vis.tooltip.select('text')
-          .attr('transform', `translate(${vis.xScale(vis.xValue(d))},${(vis.yValue(d) - 15)})`)
-          .text(Math.round(d.close));
-      });
+    // TODO: tool tip
+    // vis.trackingArea
+    //   .on('mouseenter', () => {
+    //     vis.tooltip.style('display', 'block');
+    //   })
+    //   .on('mouseleave', () => {
+    //     vis.tooltip.style('display', 'none');
+    //   })
+    //   .on('mousemove', (event) => {
+    //     // Get best laptime that corresponds to current mouse x-coordinate
+    //     const xPos = d3.pointer(event, this)[0]; // First array element is x, second is y
+    //     const bestLapTime = vis.xScale.invert(xPos);
+    //
+    //     // Find nearest data point
+    //     const index = vis.bisectTime(vis.averagedData, bestLapTime, 1);
+    //     const a = vis.averagedData[index - 1];
+    //     const b = vis.averagedData[index];
+    //     const d = b && (bestLapTime - a.bestLapTime > b.bestLapTime - bestLapTime) ? b : a;
+    //
+    //     // Update tooltip
+    //     vis.tooltip.select('circle')
+    //       .attr('transform', `translate(${vis.xScale(vis.xValue(d))},${vis.yScale(vis.yValue(d))})`);
+    //
+    //     vis.tooltip.select('text')
+    //       .attr('transform', `translate(${vis.xScale(vis.xValue(d))},${(vis.yValue(d) - 15)})`)
+    //       .text(Math.round(d.close));
+    //   });
 
     // Update the axes
     // We use the second .call() to remove the axis and just show gridlines
