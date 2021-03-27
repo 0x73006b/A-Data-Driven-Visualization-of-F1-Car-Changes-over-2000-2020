@@ -1,6 +1,23 @@
-// Todo: Implement laptime 0 line graph
+// TODO: PUT THIS FUNCTION INTO UTILS
+function getMilisecondsFromTimeString(d) {
+  const minuteParsed = d.bestLapTime.split(':');
+  const secondParsed = minuteParsed[1].split('.');
+  const millis = secondParsed[1];
+  return ((+minuteParsed[0] * 60 + (+secondParsed[0])) * 1000 + (+millis) * 10);
+}
+
+// TODO: PUT THIS FN INTO UTILS
+function getMinuteStringFromMillisecond(x) {
+  const millis = (x % 1000);
+  let sec = Math.floor(x / 1000);
+  const minute = Math.floor(sec / 60);
+  sec %= 60;
+  // TODO: 1:0:0 should display as 1:00:00
+  return `${minute.toString()}:${sec.toString()}.${(millis / 10).toString()}`;
+}
+
 // x-axis: years, y-axis: averaged fastest qualifying lap time
-class LineChart {
+class LapTime0 {
   /**
    * Class constructor with basic chart configuration
    * @param {Object} _config
@@ -25,7 +42,7 @@ class LineChart {
 
   /**
    * Initialize scales/axes and append static elements, such as axis titles
-  */
+   */
   initVis() {
     // eslint-disable-next-line prefer-const
     let vis = this;
@@ -34,9 +51,8 @@ class LineChart {
     vis.height = vis.config.containerHeight - vis.config.margin.top - vis.config.margin.bottom;
 
     // Xscale should be years 2000-2020
-    vis.xScale = d3.scaleTime()
-      .range([0, vis.width])
-      .domain([new Date(2000, 0, 0), new Date(2020, 11, 31)]);
+    vis.xScale = d3.scaleLinear()
+      .range([0, vis.width]);
 
     // Yscale should be best averaged laptime in seconds
     vis.yScale = d3.scaleLinear()
@@ -47,20 +63,14 @@ class LineChart {
     vis.xAxis = d3.axisBottom(vis.xScale)
       .ticks(10)
       .tickSizeOuter(0)
-      .tickPadding(10);
+      .tickPadding(10)
+      .tickFormat((x) => x);
 
     vis.yAxis = d3.axisLeft(vis.yScale)
       .ticks(10)
-      .tickFormat((x) => {
-        const millis = (x % 1000);
-        let sec = Math.floor(x / 1000);
-        const minute = Math.floor(sec / 60);
-        sec %= 60;
-        return `${minute.toString()}:${sec.toString()}.${(millis / 10).toString()}`;
-      })
       .tickSizeOuter(0)
-      .tickPadding(10);
-    // .tickFormat(d => d + 'ms');
+      .tickPadding(10)
+      .tickFormat((x) => getMinuteStringFromMillisecond(x));
 
     // Define size of SVG drawing area
     vis.svg = d3.select(vis.config.parentElement)
@@ -100,46 +110,53 @@ class LineChart {
     vis.tooltip.append('text');
 
     // TODO: append X axis title (years)
-    // TODO: append Y axis title (best laptime in seconds(?) currently MM:SS:MS format...)
+    // TODO: append Y axis title; AVERAGED best laptime in minute
   }
 
   updateVis() {
     // eslint-disable-next-line prefer-const
     let vis = this;
 
-    // TODO: Remove this
-    // Filter data to show fastest f1 lap time averaged
-    // averaged fastest laptime in one circuit compared to fastest time from the previous year
-    // as percentage decrease in time
-    vis.averagedData = vis.data;
-    // vis.averagedData = d3.rollup(vis.data, (v,d) => d., d => d.year)
-
     // Specify accessor functions
-    // TODO: xValue should be averaged time
+    // TODO: Y VALUE should be averaged time
     // see https://www.reddit.com/r/formula1/comments/cs1txp/f1_lap_times_by_year_from_20002019/
     // reference for how to calculate it
     // get percentage relative to last value, group by circuit name!
 
-    // TODO: format from string to miliseconds
-    // Following Robert's example
-    vis.xValue = (d) => d.year;
-    vis.yValue = (d) => {
-      const minuteParsed = d.bestLapTime.split(':');
-      const secondParsed = minuteParsed[1].split('.');
-      const millis = secondParsed[1];
-      return ((+minuteParsed[0] * 60 + (+secondParsed[0])) * 1000 + (+millis) * 10);
-    };
-    vis.line = d3.line()
-      .x((d) => vis.xScale(vis.xValue(d)))
-      .y((d) => vis.yScale(vis.yValue(d)));
+    // accessors for rollups, [ [YEAR int, AVG TIME int] ]
+    vis.xValue = (d) => d[0];
+    vis.yValue = (d) => d[1];
+
+    // TODO: Remove this
+    // Filter data to show fastest f1 lap time averaged
+    // averaged fastest laptime in one circuit compared to fastest time from the previous year
+    // as percentage decrease in time
+    // vis.averagedData = vis.data;
+
+    // TODO: Implement averaging properly -- this is solely for displaying line
+    vis.averagedData = d3.rollups(vis.data, (d) => {
+      let cumulativeSum = 0;
+      d.forEach((v) => {
+        // for each year, get millisec. and add it to cumulative sum
+        cumulativeSum = +getMilisecondsFromTimeString(v);
+      });
+      // average cumsum by amount of rounds, obtained through the length of that year's array
+      const averagedTime = Math.round(cumulativeSum / d.length);
+      return averagedTime;
+    }, (d) => d.year);
+
+    // need sort to make sure line displays properly when using rollupS
+    vis.averagedData = vis.averagedData.sort();
 
     // Set the scale input domains
     // eslint-disable-next-line max-len
     // TODO: vis.averagedData is showing negatives for some reason
     // DEBUG
     console.log(vis.averagedData);
-    console.log(vis.yValue);
+    // console.log(vis.yValue);
+    vis.xScale.domain([d3.min(vis.averagedData, vis.xValue), d3.max(vis.averagedData, vis.xValue)]);
     vis.yScale.domain([d3.min(vis.averagedData, vis.yValue), d3.max(vis.averagedData, vis.yValue)]);
+    // console.log(vis.yScale.domain())
     vis.bisectTime = d3.bisector(vis.xValue).left;
 
     vis.renderVis();
@@ -153,51 +170,54 @@ class LineChart {
     let vis = this;
 
     // Add line path
-    vis.marks.selectAll('.chart-line')
-      .data([vis.averagedData], (d) => d)
+    vis.marks.selectAll('.lap-time-0-line')
+      .data([vis.averagedData])
       .join('path')
-      .attr('class', 'chart-line')
-      .attr('d', vis.line);
-    /*  .attr('fill', 'none')
+      .attr('class', 'lap-time-0-line')
+      .attr('fill', 'none')
       .attr('stroke', '#517390')
-      .attr('stroke-width', '2px'); */
+      .attr('stroke-width', '2px')
+      .attr('d', d3.line()
+        .x((d) => vis.xScale(vis.xValue(d)))
+        .y((d) => vis.yScale(vis.yValue(d))));
 
-    vis.trackingArea
-      .on('mouseenter', () => {
-        vis.tooltip.style('display', 'block');
-      })
-      .on('mouseleave', () => {
-        vis.tooltip.style('display', 'none');
-      })
-      .on('mousemove', (event) => {
-        // Get best laptime that corresponds to current mouse x-coordinate
-        const xPos = d3.pointer(event, this)[0]; // First array element is x, second is y
-        const bestLapTime = vis.xScale.invert(xPos);
-
-        // Find nearest data point
-        const index = vis.bisectTime(vis.data, bestLapTime, 1);
-        const a = vis.data[index - 1];
-        const b = vis.data[index];
-        const d = b && (bestLapTime - a.bestLapTime > b.bestLapTime - bestLapTime) ? b : a;
-
-        // Update tooltip
-        vis.tooltip.select('circle')
-          .attr('transform', `translate(${vis.xScale(vis.xValue(d))},${vis.yScale(vis.yValue(d))})`);
-
-        vis.tooltip.select('text')
-          .attr('transform', `translate(${vis.xScale(vis.xValue(d))},${(vis.yValue(d) - 15)})`)
-          .text(Math.round(d.close));
-      });
+    // TODO: tool tip
+    // vis.trackingArea
+    //   .on('mouseenter', () => {
+    //     vis.tooltip.style('display', 'block');
+    //   })
+    //   .on('mouseleave', () => {
+    //     vis.tooltip.style('display', 'none');
+    //   })
+    //   .on('mousemove', (event) => {
+    //     // Get best laptime that corresponds to current mouse x-coordinate
+    //     const xPos = d3.pointer(event, this)[0]; // First array element is x, second is y
+    //     const bestLapTime = vis.xScale.invert(xPos);
+    //
+    //     // Find nearest data point
+    //     const index = vis.bisectTime(vis.averagedData, bestLapTime, 1);
+    //     const a = vis.averagedData[index - 1];
+    //     const b = vis.averagedData[index];
+    //     const d = b && (bestLapTime - a.bestLapTime > b.bestLapTime - bestLapTime) ? b : a;
+    //
+    //     // Update tooltip
+    //     vis.tooltip.select('circle')
+    //       .attr('transform', `translate(${vis.xScale(vis.xValue(d))},${vis.yScale(vis.yValue(d))})`);
+    //
+    //     vis.tooltip.select('text')
+    //       .attr('transform', `translate(${vis.xScale(vis.xValue(d))},${(vis.yValue(d) - 15)})`)
+    //       .text(Math.round(d.close));
+    //   });
 
     // Update the axes
     // We use the second .call() to remove the axis and just show gridlines
     vis.xAxisG
-      .call(vis.xAxis)
-      .call((g) => g.select('.domain')
-        .remove());
+      .call(vis.xAxis);
+    // .call((g) => g.select('.domain')
+    //   .remove());
     vis.yAxisG
-      .call(vis.yAxis)
-      .call((g) => g.select('.domain')
-        .remove());
+      .call(vis.yAxis);
+    // .call((g) => g.select('.domain')
+    //   .remove());
   }
 }

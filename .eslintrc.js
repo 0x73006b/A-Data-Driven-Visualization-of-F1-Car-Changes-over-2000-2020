@@ -5,7 +5,8 @@ module.exports = {
         "ScatterPlot": true,
         "mechanicalChanges": true,
         "LineChart": true,
-        "laptime0": true
+        "laptime0": true,
+        "LapTime0": true,
     }
 }
 
