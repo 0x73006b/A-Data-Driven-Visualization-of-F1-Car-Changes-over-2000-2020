@@ -7,6 +7,13 @@ module.exports = {
         "LineChart": true,
         "laptime0": true,
         "LapTime0": true,
+        "MechanicalChangesOverview": true,
+        "MechanicalChangesDetailView": true,
+        // "MechanicalChangesPowerToWeight": true,
+        "mechanicalChangesOverview": true,
+        "mechanicalChangesDetailView": true,
+        // 'mechanicalChangesPowerToWeight': true,
+        "mechanicalChangesSelectedGroup": true
     }
 }
 

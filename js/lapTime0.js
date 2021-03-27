@@ -111,6 +111,7 @@ class LapTime0 {
 
     // TODO: append X axis title (years)
     // TODO: append Y axis title; AVERAGED best laptime in minute
+    vis.updateVis();
   }
 
   updateVis() {
