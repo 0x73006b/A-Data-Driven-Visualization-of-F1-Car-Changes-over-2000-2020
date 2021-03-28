@@ -50,8 +50,9 @@ class RealTimeLap {
   /**
    * Prepare data and scales before we render it
    */
-   updateVis() {
+   updateVis(_selectedTrack) {
     let vis = this;
+    vis.selectedTrack=_selectedTrack
 
     vis.renderVis();
   }
@@ -79,14 +80,6 @@ class RealTimeLap {
     });
 
 
-
-
-    d3.select("#selectButton").on("change", function(d) {
-      // recover the option that has been chosen
-      vis.selectedTrack = d3.select(this).property("value")
-      // run the updateChart function with this selected option
-      vis.updateVis()
-    })
   }
 
 }

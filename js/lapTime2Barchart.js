@@ -6,7 +6,7 @@ class Barchart {
    * @param {Object}
    * @param {Array}
    */
-  constructor(_config, _data) {
+  constructor(_config, _data,_reatimeLap) {
     // Configuration object with defaults
     this.config = {
       parentElement: _config.parentElement,
@@ -16,6 +16,7 @@ class Barchart {
       margin: _config.margin || {top: 25, right: 20, bottom: 20, left: 40},
     }
     this.data = _data;
+    this.reatimeLap = _reatimeLap
     this.initVis();
   }
   
@@ -102,7 +103,7 @@ class Barchart {
     vis.circuitNames = Array.from(new Set(vis.data.map(d=>d.circuitName))).sort()
     vis.trackNames = vis.data.map(d=>[d.circuitName,d.circuitId])
     vis.selectedTrackData = vis.data.filter(lt=>lt.circuitName==this.selectedTrack)
-    vis.years = Array.from(vis.selectedTrackData.map(d=>d.year)).sort()
+    vis.years = Array.from(vis.data.map(d=>d.year)).sort()
     
 
     // Specificy accessor functions
@@ -135,14 +136,13 @@ class Barchart {
     //translate and rotate
     .attr("transform", d=>"translate("+(40)+","+(-10)+")")
 
-    var barWidth = Math.floor(vis.width/vis.selectedTrackData.length)-10
     // Add rectangles
     const bars = vis.chart.selectAll('.bar')
       .data(vis.selectedTrackData, vis.yValue)
       .join('rect')
       .attr('class', 'bar')
       .attr('x', d => vis.xScale(vis.xValue(d)))
-      .attr('width', barWidth)
+      .attr('width', 35)
       .attr('height', d => vis.height - vis.yScale(vis.yValue(d)))
       .attr('y', d => vis.yScale(vis.yValue(d)))
       .attr('fill', d => "#800020")
@@ -176,6 +176,8 @@ class Barchart {
       // run the updateChart function with this selected option
       vis.updateVis()
     })
-      
+    
+    vis.reatimeLap.updateVis(vis.selectedTrack)
+
   }
 }

@@ -22,9 +22,9 @@ Promise.all([
     mechanicalChanges = new ScatterPlot({ parentElement: '#mechanical-changes' }, mechanicalChangesData.data);
   
     // Create Laptime Plot 2
-    barchart = new Barchart({parentElement: '#laptime2-barchart'}, circuitData);
-    // realtimeMap = new RealTimeLap({parentElement: '#laptime2-realtime-lap'}, circuitData);
     reatimeMap = new RealTimeLap({parentElement: '#laptime2-reatimeLap'}, circuitData)
+    barchart = new Barchart({parentElement: '#laptime2-barchart'}, circuitData,reatimeMap);
+    
   });
 
   
