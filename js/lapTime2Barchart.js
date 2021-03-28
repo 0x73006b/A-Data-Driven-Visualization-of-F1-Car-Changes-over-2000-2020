@@ -109,12 +109,7 @@ class Barchart {
     // Specificy accessor functions
     vis.colorValue = d => d.key;
     vis.xValue = d => d.year;
-    vis.yValue = d => {
-      var minuteParsed = d.bestLapTime.split(":")
-      var secondParsed = minuteParsed[1].split(".")
-      var millis = secondParsed[1]
-      return ((+minuteParsed[0]*60+(+secondParsed[0]))*1000+(+millis)*10)
-    }
+    vis.yValue = d => d.laptimeMillis
 
     // Set the scale input domains
     vis.xScale.domain(vis.years);

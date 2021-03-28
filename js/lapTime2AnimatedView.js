@@ -58,23 +58,39 @@ class RealTimeLap {
 
   renderVis() {
     let vis = this;
-    let circuit = vis.data.filter(d=>d.circuitName==vis.selectedTrack)
-    if(circuit.length>0){
-      let fileName = "data/maps/"+circuit[0].circuitRef+".svg"
+    let laps = vis.data.filter(d=>d.circuitName==vis.selectedTrack)
+    let laptimes = laps.map(d=>d.laptimeMillis).sort()
+    if(laps.length>0){
+      let fileName = "data/maps/"+laps[0].circuitRef+".svg"
       d3.xml(fileName)
       .then(data => {
+
+        // clean up previous drawings
         d3.select("#laptime2-reatimeLap").selectAll("*").remove();
         d3.select("#laptime2-reatimeLap").node().append(data.documentElement)
+
+        // setup background
+        var background = d3.select("#background");
+        background
+        .attr("stroke-width", 1)
+            .attr("stroke-dasharray", totalLength + " " + totalLength)
+            .attr("stroke-dashoffset", totalLength)
+            .transition()
+            .duration(laptimes[0])
+            .ease(d3.easeLinear)
+            .attr("stroke-dashoffset", 0);
+
+        // draw out actual lap
         var path = d3.select("#track");
         if(this.startLap){
           var totalLength = path.node().getTotalLength();
           path
-            .attr("stroke-width", 2)
+            .attr("stroke-width", 3)
             .attr("stroke", "#800020")
             .attr("stroke-dasharray", totalLength + " " + totalLength)
             .attr("stroke-dashoffset", totalLength)
             .transition()
-            .duration(10000)
+            .duration(laptimes[0])
             .ease(d3.easeLinear)
             .attr("stroke-dashoffset", 0);
         }
@@ -84,7 +100,9 @@ class RealTimeLap {
         }
       });
     }
-    let button = d3.select("#raceButton")
+
+    //start button
+    let button = d3.select("#startButton")
     .on('click', function(event, d) {
       vis.startLap=true
       vis.updateVis(vis.selectedTrack,true)
