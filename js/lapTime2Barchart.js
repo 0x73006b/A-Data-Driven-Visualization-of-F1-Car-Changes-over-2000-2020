@@ -177,7 +177,7 @@ class Barchart {
       vis.updateVis()
     })
     
-    vis.reatimeLap.updateVis(vis.selectedTrack)
+    vis.reatimeLap.updateVis(vis.selectedTrack,false)
 
   }
 }
