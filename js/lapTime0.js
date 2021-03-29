@@ -54,6 +54,17 @@ class LapTime0 {
       .tickPadding(10)
       .tickFormat((x) => getMinuteStringFromMillisecond(x));
 
+    // TODO: cite https://sashamaps.net/docs/resources/20-colors/ for colors
+    vis.colorScale = d3.scaleOrdinal()
+      .range([
+        '#e6194b', '#3cb44b', '#ffe119', '#4363d8',
+        '#f58231', '#911eb4', '#46f0f0', '#f032e6',
+        '#bcf60c', '#fabebe', '#008080', '#e6beff',
+        '#9a6324', '#fffac8', '#800000', '#aaffc3',
+        '#808000', '#ffd8b1', '#000075', '#808080',
+        '#ffffff', '#000000'])
+      .domain([2000, 2021]);
+
     // Define size of SVG drawing area
     vis.svg = d3.select(vis.config.parentElement)
       .attr('width', vis.config.containerWidth)
@@ -170,20 +181,21 @@ class LapTime0 {
 
     // console.log(lt0lt1SelectedYears);
 
-    const lt0Circles = getCircles(
-      vis,
-      vis.averagedData,
-      'lt1',
-      lt0lt1SelectedYears, vis.xValue, vis.yValue
-    );
+    // const lt0Circles = getCircles(
+    //   vis,
+    //   vis.averagedData,
+    //   'lt1',
+    //   lt0lt1SelectedYears, vis.xValue, vis.yValue, null
+    // );
 
-    // const lt0Circles = vis.chart.selectAll('.lt0-point')
-    //   .data(vis.averagedData, (d) => d)
-    //   .join('circle')
-    //   .attr('class', (d) => (lt0lt1SelectedYears.includes(d[0]) ? 'lt0-point lt0-selected' : 'lt0-point'))
-    //   .attr('r', 5)
-    //   .attr('cy', (d) => vis.yScale(vis.yValue(d)))
-    //   .attr('cx', (d) => vis.xScale(vis.xValue(d)));
+    const lt0Circles = vis.chart.selectAll('.lt0-point')
+      .data(vis.averagedData, (d) => d)
+      .join('circle')
+      .attr('class', (d) => (lt0lt1SelectedYears.includes(d[0]) ? 'lt0-point lt0-selected' : 'lt0-point'))
+      .attr('r', 5)
+      .attr('cy', (d) => vis.yScale(vis.yValue(d)))
+      .attr('cx', (d) => vis.xScale(vis.xValue(d)))
+      .attr('fill', (d) => vis.colorScale(d[0]));
 
     lt0Circles.on('click', (event, d) => {
       if (lt0lt1SelectedYears.includes(d[0])) {

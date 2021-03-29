@@ -72,7 +72,7 @@ function axisLabel(vis, isX, title) {
  * @param dataArray {[]} - Array of objects to check if class should also have 'selected'.
  * @param dataToCheck {Object} - The value that determines if class is regular, or selected as well.
  * @param yScaleAccessor{function} - Determines value to pass into visualization's yScale.
- * @param radius {number} - Circle's radius.
+ * @param radius {null|number} - Circle's radius.
  * @returns {*}
  */
 // eslint-disable-next-line no-unused-vars

@@ -36,12 +36,12 @@ body {
 
 .lt0-point {
     fill-opacity: 0.2;
-    fill: red;
+    /*fill: red;*/
 }
 
 .lt0-selected {
     fill-opacity: 1;
-    fill: green
+    /*fill: green*/
 }
 
 .lt1-point {
