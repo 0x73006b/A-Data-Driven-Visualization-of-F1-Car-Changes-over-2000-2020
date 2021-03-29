@@ -7,6 +7,7 @@ body {
     width: 1000px;
     margin: auto;
 }
+
 #tooltip {
     position: absolute;
     opacity: 0;
@@ -15,9 +16,42 @@ body {
     border: 1px solid #444;
     font-weight: 600;
     padding: 2px 8px;
+    left: 0px;
+    top: 0px;
 }
+
+.tooltip-title {
+    font-weight: bold;
+}
+
 .tooltip-label {
     font-weight: 500;
     color: #888;
 }
+.lap-time-0-line {
+    fill: none;
+    stroke: #517390;
+    stroke-width: 2px;
+}
+
+.lt0-point {
+    fill-opacity: 0.2;
+    fill: red;
+}
+
+.lt0-selected {
+    fill-opacity: 1;
+    fill: green
+}
+
+.lt1-point {
+    fill-opacity: 0.2;
+    fill: red;
+}
+
+.lt1-selected {
+    fill-opacity: 1;
+    fill: green
+}
+
 
