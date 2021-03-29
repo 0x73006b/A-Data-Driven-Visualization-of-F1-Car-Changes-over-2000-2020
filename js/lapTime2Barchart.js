@@ -6,55 +6,56 @@ class Barchart {
    * @param {Object}
    * @param {Array}
    */
-  constructor(_config, _data,_reatimeLap) {
+  constructor(_config, _data, _reatimeLap) {
     // Configuration object with defaults
     this.config = {
       parentElement: _config.parentElement,
       // colorScale: _config.colorScale,
       containerWidth: _config.containerWidth || 1000,
       containerHeight: _config.containerHeight || 500,
-      margin: _config.margin || {top: 25, right: 20, bottom: 20, left: 40},
-    }
+      margin: _config.margin || {
+        top: 25, right: 20, bottom: 20, left: 40,
+      },
+    };
     this.data = _data;
-    this.reatimeLap = _reatimeLap
+    this.reatimeLap = _reatimeLap;
     this.initVis();
   }
-  
+
   /**
    * Initialize scales/axes and append static elements, such as axis titles
    */
   initVis() {
-    let vis = this;
+    const vis = this;
 
     // Calculate inner chart size. Margin specifies the space around the actual chart.
     vis.width = vis.config.containerWidth - vis.config.margin.left - vis.config.margin.right;
     vis.height = vis.config.containerHeight - vis.config.margin.top - vis.config.margin.bottom;
 
     // Initialize scales and axes
-    
+
     // Important: we flip array elements in the y output range to position the rectangles correctly
     vis.yScale = d3.scaleLinear()
-      .range([vis.height, 0]) 
+      .range([vis.height, 0]);
 
     vis.xScale = d3.scaleBand()
       .range([0, vis.width])
       .paddingInner(0.2);
-
 
     vis.xAxis = d3.axisBottom(vis.xScale)
       .tickSizeOuter(0)
       .tickSize(0);
 
     vis.yAxis = d3.axisLeft(vis.yScale)
-      .tickFormat(x => {
-        var millis = (x%1000)
-        var sec = Math.floor(x/1000)
-        var minute = Math.floor(sec/60)
-        sec = sec%60
-        return minute.toString()+":"+sec.toString()+"."+(millis/10).toString()
+      .tickFormat((x) => {
+        const millis = (x % 1000);
+        let sec = Math.floor(x / 1000);
+        const minute = Math.floor(sec / 60);
+        sec %= 60;
+        return `${minute.toString()}:${sec.toString()}.${(millis / 10).toString()}`;
       })
       .ticks(6)
-      .tickSizeOuter(0)
+      .tickSizeOuter(0);
 
     // Define size of SVG drawing area
     vis.svg = d3.select(vis.config.parentElement)
@@ -69,7 +70,7 @@ class Barchart {
     vis.xAxisG = vis.chart.append('g')
       .attr('class', 'axis x-axis')
       .attr('transform', `translate(0,${vis.height})`);
-    
+
     // Append y-axis group 
     vis.yAxisG = vis.chart.append('g')
       .attr('class', 'axis y-axis');
@@ -87,8 +88,8 @@ class Barchart {
       .attr('y', 0)
       .attr('dy', '.71em')
       .text('Lap Time');
-    
-    vis.selectedTrack=""
+
+    vis.selectedTrack = '';
 
     vis.updateVis();
   }
@@ -97,23 +98,25 @@ class Barchart {
    * Prepare data and scales before we render it
    */
   updateVis() {
-    let vis = this;
+    const vis = this;
 
-    //prep data
-    vis.circuitNames = Array.from(new Set(vis.data.map(d=>d.circuitName))).sort()
-    vis.trackNames = vis.data.map(d=>[d.circuitName,d.circuitId])
-    vis.selectedTrackData = vis.data.filter(lt=>lt.circuitName==this.selectedTrack)
-    vis.years = Array.from(vis.data.map(d=>d.year)).sort()
-    
+    // prep data
+    vis.circuitNames = Array.from(new Set(vis.data.map((d) => d.circuitName))).sort();
+    vis.trackNames = vis.data.map((d) => [d.circuitName, d.circuitId]);
+    vis.selectedTrackData = vis.data.filter((lt) => lt.circuitName === this.selectedTrack);
+    vis.years = Array.from(vis.data.map((d) => d.year)).sort();
 
     // Specificy accessor functions
-    vis.colorValue = d => d.key;
-    vis.xValue = d => d.year;
-    vis.yValue = d => d.laptimeMillis
+    vis.colorValue = (d) => d.key;
+    vis.xValue = (d) => d.year;
+    vis.yValue = (d) => d.laptimeMillis;
 
     // Set the scale input domains
     vis.xScale.domain(vis.years);
-    vis.yScale.domain([d3.min(vis.selectedTrackData, vis.yValue)-1000, d3.max(vis.selectedTrackData, vis.yValue)]);
+    vis.yScale.domain(
+      [d3.min(vis.selectedTrackData, vis.yValue)
+        - 1000, d3.max(vis.selectedTrackData, vis.yValue)],
+    );
     vis.renderVis();
   }
 
@@ -121,58 +124,48 @@ class Barchart {
    * Bind data to visual elements
    */
   renderVis() {
-    let vis = this;
+    const vis = this;
 
-    const circuitName = vis.chart.selectAll('.circuiteName')
-    .data(vis.selectedTrackData)
-    .join('text')
-    .attr('class', 'circuiteName')
-    .text(d=>d.circuitName)
-    //translate and rotate
-    .attr("transform", d=>"translate("+(40)+","+(-10)+")")
+    vis.chart.selectAll('.circuiteName')
+      .data(vis.selectedTrackData)
+      .join('text')
+      .attr('class', 'circuiteName')
+      .text((d) => d.circuitName)
+      // translate and rotate
+      .attr('transform', `translate(${40},${-10})`);
 
     // Add rectangles
-    const bars = vis.chart.selectAll('.bar')
+    vis.chart.selectAll('.bar')
       .data(vis.selectedTrackData, vis.yValue)
       .join('rect')
       .attr('class', 'bar')
-      .attr('x', d => vis.xScale(vis.xValue(d)))
+      .attr('x', (d) => vis.xScale(vis.xValue(d)))
       .attr('width', 35)
-      .attr('height', d => vis.height - vis.yScale(vis.yValue(d)))
-      .attr('y', d => vis.yScale(vis.yValue(d)))
-      .attr('fill', d => "#800020")
-      //   .on('click', function(event, d) {
-      //     const isActive = difficultyFilter.includes(d.key);
-      //     if (isActive) {
-      //       difficultyFilter = difficultyFilter.filter(f => f !== d.key); // Remove filter
-      //     } else {
-      //       difficultyFilter.push(d.key); // Append filter
-      //     }
-      //     filterData(); // Call global function to update scatter plot
-      //     d3.select(this).classed('active', !isActive); // Add class to style active filters with CSS
-      //   });
+      .attr('height', (d) => vis.height - vis.yScale(vis.yValue(d)))
+      .attr('y', (d) => vis.yScale(vis.yValue(d)))
+      .attr('fill', () => '#800020');
 
     // Update axes
     vis.xAxisG.call(vis.xAxis);
     vis.yAxisG.call(vis.yAxis);
 
     // add the options to the button
-    d3.select("#selectButton")
+    d3.select('#selectButton')
       .selectAll('myOptions')
-     	.data(vis.circuitNames)
+      .data(vis.circuitNames)
       .enter()
-    	.append('option')
-      .text(function (d) { return d; }) // text showed in the menu
-      .attr("value", function (d) { return d; }) // corresponding value returned by the button
+      .append('option')
+      .text((d) => d) // text showed in the menu
+      .attr('value', (d) => d); // corresponding value returned by the button
 
-    d3.select("#selectButton").on("change", function(d) {
+    // eslint-disable-next-line func-names
+    d3.select('#selectButton').on('change', function () {
       // recover the option that has been chosen
-      vis.selectedTrack = d3.select(this).property("value")
+      vis.selectedTrack = d3.select(this).property('value');
       // run the updateChart function with this selected option
-      vis.updateVis()
-    })
-    
-    vis.reatimeLap.updateVis(vis.selectedTrack,false)
+      vis.updateVis();
+    });
 
+    vis.reatimeLap.updateVis(vis.selectedTrack, false);
   }
 }

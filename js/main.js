@@ -19,20 +19,22 @@ Promise.all([
     [circuitData, mechanicalChangesData] = data;
 
     // converting lap time from minute:second.10*millis to millis
-    circuitData.map(d=>{
-      var minuteParsed = d.bestLapTime.split(":")
-      var secondParsed = minuteParsed[1].split(".")
-      var millis = secondParsed[1]
-      d.laptimeMillis=((+minuteParsed[0]*60+(+secondParsed[0]))*1000+(+millis)*10)
-    })
+    // eslint-disable-next-line array-callback-return
+    circuitData.map((d) => {
+      const minuteParsed = d.bestLapTime.split(':');
+      const secondParsed = minuteParsed[1].split('.');
+      const millis = secondParsed[1];
+      // eslint-disable-next-line no-param-reassign
+      d.laptimeMillis = ((+minuteParsed[0] * 60) + (+secondParsed[0])) * 1000 + (+millis) * 10;
+    });
 
     // Create Mechanical Changes Scatterplot
+    // eslint-disable-next-line no-unused-vars
     mechanicalChanges = new ScatterPlot({ parentElement: '#mechanical-changes' }, mechanicalChangesData.data);
-  
-    // Create Laptime Plot 2
-    reatimeMap = new RealTimeLap({parentElement: '#laptime2-reatimeLap'}, circuitData)
-    barchart = new Barchart({parentElement: '#laptime2-barchart'}, circuitData,reatimeMap);
-    
-  });
 
-  
+    // Create Laptime Plot 2
+    // eslint-disable-next-line no-undef
+    reatimeMap = new RealTimeLap({ parentElement: '#laptime2-reatimeLap' }, circuitData);
+    // eslint-disable-next-line no-undef
+    barchart = new Barchart({ parentElement: '#laptime2-barchart' }, circuitData, reatimeMap);
+  });
