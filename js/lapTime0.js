@@ -1,21 +1,3 @@
-// TODO: PUT THIS FUNCTION INTO UTILS
-function getMilisecondsFromTimeString(d) {
-  const minuteParsed = d.bestLapTime.split(':');
-  const secondParsed = minuteParsed[1].split('.');
-  const millis = secondParsed[1];
-  return ((+minuteParsed[0] * 60 + (+secondParsed[0])) * 1000 + (+millis) * 10);
-}
-
-// TODO: PUT THIS FN INTO UTILS
-function getMinuteStringFromMillisecond(x) {
-  const millis = (x % 1000);
-  let sec = Math.floor(x / 1000);
-  const minute = Math.floor(sec / 60);
-  sec %= 60;
-  // TODO: 1:0:0 should display as 1:00:00
-  return `${minute.toString()}:${sec.toString()}.${(millis / 10).toString()}`;
-}
-
 // x-axis: years, y-axis: averaged fastest qualifying lap time
 class LapTime0 {
   /**
@@ -27,13 +9,13 @@ class LapTime0 {
     this.config = {
       parentElement: _config.parentElement,
       containerWidth: 1000,
-      containerHeight: 500,
+      containerHeight: 400,
       tooltipPadding: 15,
       margin: {
         top: 30,
         right: 50,
-        bottom: 40,
-        left: 50,
+        bottom: 70,
+        left: 70,
       },
     };
     this.data = _data;
@@ -61,7 +43,7 @@ class LapTime0 {
 
     // Initialize axes
     vis.xAxis = d3.axisBottom(vis.xScale)
-      .ticks(10)
+      .ticks(21)
       .tickSizeOuter(0)
       .tickPadding(10)
       .tickFormat((x) => x);
@@ -92,11 +74,6 @@ class LapTime0 {
 
     // We need to make sure that the tracking area is on top of other chart elements
     vis.marks = vis.chart.append('g');
-    vis.trackingArea = vis.chart.append('rect')
-      .attr('width', vis.width)
-      .attr('height', vis.height)
-      .attr('fill', 'none')
-      .attr('pointer-events', 'all');
 
     // Empty tooltip group (hidden by default)
     // TODO: mouseover tooltip-> flesh this out
@@ -109,8 +86,33 @@ class LapTime0 {
 
     vis.tooltip.append('text');
 
-    // TODO: append X axis title (years)
-    // TODO: append Y axis title; AVERAGED best laptime in minute
+    chartTitle(vis, 'LT0: Averaged Best Lap Time by Year');
+    axisLabel(vis, true, 'Years');
+    axisLabel(vis, false, 'Averaged Best Lap Time (Minute)');
+
+    vis.initData();
+  }
+
+  initData() {
+    const vis = this;
+
+    // TODO: Implement averaging properly -- this is solely for displaying line
+    vis.averagedData = d3.rollups(vis.data, (d) => {
+      let cumulativeSum = 0;
+      d.forEach((v) => {
+        // for each year, get millisec. and add it to cumulative sum
+        cumulativeSum = +getMillisecondsFromTimeString(v);
+      });
+      // average cumsum by amount of rounds, obtained through the length of that year's array
+      const averagedTime = Math.round(cumulativeSum / d.length);
+      return averagedTime;
+    }, (d) => d.year);
+
+    // need sort to make sure line displays properly when using rollupS
+    vis.averagedData = vis.averagedData.sort();
+    lt0lt1SelectedYears = [];
+    lt0lt1SelectedYears.push(vis.averagedData[d3.minIndex(vis.averagedData, (d) => d[1])][0]);
+    lt0lt1SelectedYears.push(vis.averagedData[d3.maxIndex(vis.averagedData, (d) => d[1])][0]);
     vis.updateVis();
   }
 
@@ -124,7 +126,9 @@ class LapTime0 {
     // reference for how to calculate it
     // get percentage relative to last value, group by circuit name!
 
-    // accessors for rollups, [ [YEAR int, AVG TIME int] ]
+    // accessors for rollups
+    // 0 = YEAR int
+    // 1 = AVG TIME int
     vis.xValue = (d) => d[0];
     vis.yValue = (d) => d[1];
 
@@ -134,31 +138,16 @@ class LapTime0 {
     // as percentage decrease in time
     // vis.averagedData = vis.data;
 
-    // TODO: Implement averaging properly -- this is solely for displaying line
-    vis.averagedData = d3.rollups(vis.data, (d) => {
-      let cumulativeSum = 0;
-      d.forEach((v) => {
-        // for each year, get millisec. and add it to cumulative sum
-        cumulativeSum = +getMilisecondsFromTimeString(v);
-      });
-      // average cumsum by amount of rounds, obtained through the length of that year's array
-      const averagedTime = Math.round(cumulativeSum / d.length);
-      return averagedTime;
-    }, (d) => d.year);
-
-    // need sort to make sure line displays properly when using rollupS
-    vis.averagedData = vis.averagedData.sort();
-
     // Set the scale input domains
     // eslint-disable-next-line max-len
     // TODO: vis.averagedData is showing negatives for some reason
     // DEBUG
-    console.log(vis.averagedData);
+    // console.log(vis.averagedData);
     // console.log(vis.yValue);
     vis.xScale.domain([d3.min(vis.averagedData, vis.xValue), d3.max(vis.averagedData, vis.xValue)]);
     vis.yScale.domain([d3.min(vis.averagedData, vis.yValue), d3.max(vis.averagedData, vis.yValue)]);
-    // console.log(vis.yScale.domain())
-    vis.bisectTime = d3.bisector(vis.xValue).left;
+
+    vis.bisectOnXVal = d3.bisector(vis.xValue).left;
 
     vis.renderVis();
   }
@@ -171,54 +160,85 @@ class LapTime0 {
     let vis = this;
 
     // Add line path
-    vis.marks.selectAll('.lap-time-0-line')
+    const lt0Line = vis.marks.selectAll('.lap-time-0-line')
       .data([vis.averagedData])
       .join('path')
       .attr('class', 'lap-time-0-line')
-      .attr('fill', 'none')
-      .attr('stroke', '#517390')
-      .attr('stroke-width', '2px')
       .attr('d', d3.line()
         .x((d) => vis.xScale(vis.xValue(d)))
         .y((d) => vis.yScale(vis.yValue(d))));
 
-    // TODO: tool tip
-    // vis.trackingArea
-    //   .on('mouseenter', () => {
-    //     vis.tooltip.style('display', 'block');
-    //   })
-    //   .on('mouseleave', () => {
-    //     vis.tooltip.style('display', 'none');
-    //   })
-    //   .on('mousemove', (event) => {
-    //     // Get best laptime that corresponds to current mouse x-coordinate
-    //     const xPos = d3.pointer(event, this)[0]; // First array element is x, second is y
-    //     const bestLapTime = vis.xScale.invert(xPos);
-    //
-    //     // Find nearest data point
-    //     const index = vis.bisectTime(vis.averagedData, bestLapTime, 1);
-    //     const a = vis.averagedData[index - 1];
-    //     const b = vis.averagedData[index];
-    //     const d = b && (bestLapTime - a.bestLapTime > b.bestLapTime - bestLapTime) ? b : a;
-    //
-    //     // Update tooltip
-    //     vis.tooltip.select('circle')
-    //       .attr('transform', `translate(${vis.xScale(vis.xValue(d))},${vis.yScale(vis.yValue(d))})`);
-    //
-    //     vis.tooltip.select('text')
-    //       .attr('transform', `translate(${vis.xScale(vis.xValue(d))},${(vis.yValue(d) - 15)})`)
-    //       .text(Math.round(d.close));
-    //   });
+    // console.log(lt0lt1SelectedYears);
+
+    const lt0Circles = getCircles(
+      vis,
+      vis.averagedData,
+      'lt1',
+      lt0lt1SelectedYears, vis.xValue, vis.yValue
+    );
+
+    // const lt0Circles = vis.chart.selectAll('.lt0-point')
+    //   .data(vis.averagedData, (d) => d)
+    //   .join('circle')
+    //   .attr('class', (d) => (lt0lt1SelectedYears.includes(d[0]) ? 'lt0-point lt0-selected' : 'lt0-point'))
+    //   .attr('r', 5)
+    //   .attr('cy', (d) => vis.yScale(vis.yValue(d)))
+    //   .attr('cx', (d) => vis.xScale(vis.xValue(d)));
+
+    lt0Circles.on('click', (event, d) => {
+      if (lt0lt1SelectedYears.includes(d[0])) {
+        lt0lt1SelectedYears = lt0lt1SelectedYears.filter((year) => year !== d[0]);
+        // console.log(lt0lt1SelectedYears);
+      } else {
+        lt0lt1SelectedYears.push(d[0]);
+      }
+      lapTime0.updateVis();
+      lapTime1.updateVis();
+    });
+
+    lt0Circles
+      .on('mouseover', (event, d) => {
+        lt0Circles.attr('cursor', 'pointer');
+        d3.select('#tooltip')
+          .style('opacity', 1)
+          .html((`
+            <div class="tooltip-label">
+                <div class="tooltip-title">Average best laptime for ${d[0]}</div>
+                ${d[1]}
+            </div>
+           `));
+      })
+      .on('mouseleave', () => {
+        d3.select('#tooltip')
+          .style('opacity', 0);
+      })
+      .on('mousemove', (event) => {
+        d3.select('#tooltip')
+          .style('left', `${event.pageX + vis.config.tooltipPadding}px`)
+          .style('top', `${event.pageY + vis.config.tooltipPadding}px`);
+      });
 
     // Update the axes
     // We use the second .call() to remove the axis and just show gridlines
-    vis.xAxisG
-      .call(vis.xAxis);
+    vis.xAxisG.call(vis.xAxis);
     // .call((g) => g.select('.domain')
     //   .remove());
-    vis.yAxisG
-      .call(vis.yAxis);
+    vis.yAxisG.call(vis.yAxis);
     // .call((g) => g.select('.domain')
     //   .remove());
+
+    let clearButton = d3.select('#lap-time-0-clear')
+      .on('click', (event, d) => {
+        // clear selectedYears array
+        lt0lt1SelectedYears = [];
+        // call update
+        lapTime0.updateVis();
+        lapTime1.updateVis();
+      });
+
+    let resetButton = d3.select('#lap-time-0-reset')
+      .on('click', () => {
+        vis.initData();
+      });
   }
 }

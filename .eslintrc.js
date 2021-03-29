@@ -2,18 +2,20 @@ module.exports = {
     "extends" : "airbnb-base",
     "globals": {
         "d3": true,
-        "ScatterPlot": true,
-        "mechanicalChanges": true,
-        "LineChart": true,
-        "laptime0": true,
-        "LapTime0": true,
-        "MechanicalChangesOverview": true,
-        "MechanicalChangesDetailView": true,
-        // "MechanicalChangesPowerToWeight": true,
-        "mechanicalChangesOverview": true,
-        "mechanicalChangesDetailView": true,
-        // 'mechanicalChangesPowerToWeight': true,
-        "mechanicalChangesSelectedGroup": true
+        "mechanicalChangesOverview": true, "MechanicalChangesOverview": true,
+        "mechanicalChangesDetailView": true, "MechanicalChangesDetailView": true,
+        "mechanicalChangesSelectedGroup": true,
+
+        "lapTime0": true, "LapTime0": true,
+        "lapTime1": true, "LapTime1": true,
+        "lt0lt1SelectedYears": true,
+
+        "getCircles":true,
+        "chartTitle":true,
+        "axisLabel":true,
+
+        "getMinuteStringFromMillisecond": true,
+        "getMillisecondsFromTimeString":true,
     }
 }
 

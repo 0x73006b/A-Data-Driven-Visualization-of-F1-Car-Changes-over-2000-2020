@@ -3,6 +3,7 @@ let mechanicalChangesOverview;
 let mechanicalChangesDetailView;
 let mechanicalChangesData;
 let mechanicalChangesSelectedGroup = null;
+let lt0lt1SelectedYears = [];
 
 // TODO: Remove the eslint disables once ready
 let lapTime0;
@@ -16,9 +17,9 @@ Promise.all([
   d3.json('data/car_data.json'),
 ])
   .then((data) => {
-    // TODO: Remove eslint disable once utilized
-    // eslint-disable-next-line no-unused-vars
     [circuitData, mechanicalChangesData] = data;
+
+    // console.log(d3.rollup(circuitData, d=>d.length, d=>d.year));
 
     // Create Mechanical Changes Scatterplot
     mechanicalChangesOverview = new MechanicalChangesOverview({
@@ -33,6 +34,11 @@ Promise.all([
     // },
     // mechanicalChangesData.data);
 
+    // Create LT0
     lapTime0 = new LapTime0({ parentElement: '#lap-time-0' }, circuitData);
+
+    // Create LT1
+    lapTime1 = new LapTime1({ parentElement: '#lap-time-1' }, circuitData);
   })
+  // eslint-disable-next-line no-console
   .catch((error) => console.error(error));
