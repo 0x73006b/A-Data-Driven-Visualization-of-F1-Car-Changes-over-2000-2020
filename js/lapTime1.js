@@ -1,5 +1,3 @@
-// Todo: Implement laptime 2 stacked scatterplot chart
-
 // TODO: Better comments lol
 class LapTime1 {
   /**
