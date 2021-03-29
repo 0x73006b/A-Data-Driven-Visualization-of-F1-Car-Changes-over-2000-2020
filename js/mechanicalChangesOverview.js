@@ -74,6 +74,10 @@ class MechanicalChangesOverview {
     // TODO: Append X axis title (weight)
     // TODO: Append Y axis title (power)
 
+    chartTitle(vis, 'Power-to-Weight');
+    axisLabel(vis, true, 'Power');
+    axisLabel(vis, false, 'Weight');
+
     vis.updateVis();
   }
 

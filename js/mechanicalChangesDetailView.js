@@ -92,7 +92,11 @@ class MechanicalChangesDetailView {
 
     // We need to make sure that the tracking area is on top of other chart elements
     vis.marks = vis.chart.append('g');
-    // TODO: Axis titles
+
+    // TODO: Fix title, labels -- needs one for derived hp:weight
+    chartTitle(vis, 'Power');
+    axisLabel(vis, true, 'Years');
+    axisLabel(vis, false, 'Power-to-Weight                Power').attr('style', 'white-space:pre');
 
     vis.updateVis();
   }
@@ -193,8 +197,6 @@ class MechanicalChangesDetailView {
       .attr('transform', `translate(0, ${vis.halfHeight})`)
       .attr('fill-opacity', 0.5)
       .attr('fill', 'red');
-
-    // TODO: Tool tpi
 
     // Update the axes
     this.drawAxis();
