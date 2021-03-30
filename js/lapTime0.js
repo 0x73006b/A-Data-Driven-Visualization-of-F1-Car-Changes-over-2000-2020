@@ -19,6 +19,7 @@ class LapTime0 {
       },
     };
     this.data = _data;
+    this.processedData = null;
     this.initVis();
   }
 
@@ -53,6 +54,8 @@ class LapTime0 {
       .tickSizeOuter(0)
       .tickPadding(10)
       .tickFormat((x) => getMinuteStringFromMillisecond(x));
+
+    // TODO: cite https://sashamaps.net/docs/resources/20-colors/ for colors
 
     // Define size of SVG drawing area
     vis.svg = d3.select(vis.config.parentElement)
@@ -97,7 +100,7 @@ class LapTime0 {
     const vis = this;
 
     // TODO: Implement averaging properly -- this is solely for displaying line
-    vis.averagedData = d3.rollups(vis.data, (d) => {
+    vis.processedData = d3.rollups(vis.data, (d) => {
       let cumulativeSum = 0;
       d.forEach((v) => {
         // for each year, get millisec. and add it to cumulative sum
@@ -109,10 +112,10 @@ class LapTime0 {
     }, (d) => d.year);
 
     // need sort to make sure line displays properly when using rollupS
-    vis.averagedData = vis.averagedData.sort();
+    vis.processedData = vis.processedData.sort();
     lt0lt1SelectedYears = [];
-    lt0lt1SelectedYears.push(vis.averagedData[d3.minIndex(vis.averagedData, (d) => d[1])][0]);
-    lt0lt1SelectedYears.push(vis.averagedData[d3.maxIndex(vis.averagedData, (d) => d[1])][0]);
+    lt0lt1SelectedYears.push(vis.processedData[d3.minIndex(vis.processedData, (d) => d[1])][0]);
+    lt0lt1SelectedYears.push(vis.processedData[d3.maxIndex(vis.processedData, (d) => d[1])][0]);
     vis.updateVis();
   }
 
@@ -120,32 +123,15 @@ class LapTime0 {
     // eslint-disable-next-line prefer-const
     let vis = this;
 
-    // Specify accessor functions
-    // TODO: Y VALUE should be averaged time
-    // see https://www.reddit.com/r/formula1/comments/cs1txp/f1_lap_times_by_year_from_20002019/
-    // reference for how to calculate it
-    // get percentage relative to last value, group by circuit name!
-
-    // accessors for rollups
-    // 0 = YEAR int
-    // 1 = AVG TIME int
+    // Accessors: 0 = YEAR int, 1 = AVG TIME int
     vis.xValue = (d) => d[0];
     vis.yValue = (d) => d[1];
+    vis.yearAccessor = vis.xValue;
 
-    // TODO: Remove this
-    // Filter data to show fastest f1 lap time averaged
-    // averaged fastest laptime in one circuit compared to fastest time from the previous year
-    // as percentage decrease in time
-    // vis.averagedData = vis.data;
-
-    // Set the scale input domains
-    // eslint-disable-next-line max-len
-    // TODO: vis.averagedData is showing negatives for some reason
-    // DEBUG
-    // console.log(vis.averagedData);
-    // console.log(vis.yValue);
-    vis.xScale.domain([d3.min(vis.averagedData, vis.xValue), d3.max(vis.averagedData, vis.xValue)]);
-    vis.yScale.domain([d3.min(vis.averagedData, vis.yValue), d3.max(vis.averagedData, vis.yValue)]);
+    vis.xScale.domain([d3.min(vis.processedData, vis.xValue),
+      d3.max(vis.processedData, vis.xValue)]);
+    vis.yScale.domain([d3.min(vis.processedData, vis.yValue),
+      d3.max(vis.processedData, vis.yValue)]);
 
     vis.bisectOnXVal = d3.bisector(vis.xValue).left;
 
@@ -161,7 +147,7 @@ class LapTime0 {
 
     // Add line path
     const lt0Line = vis.marks.selectAll('.lap-time-0-line')
-      .data([vis.averagedData])
+      .data([vis.processedData])
       .join('path')
       .attr('class', 'lap-time-0-line')
       .attr('d', d3.line()
@@ -170,31 +156,7 @@ class LapTime0 {
 
     // console.log(lt0lt1SelectedYears);
 
-    const lt0Circles = getCircles(
-      vis,
-      vis.averagedData,
-      'lt1',
-      lt0lt1SelectedYears, vis.xValue, vis.yValue
-    );
-
-    // const lt0Circles = vis.chart.selectAll('.lt0-point')
-    //   .data(vis.averagedData, (d) => d)
-    //   .join('circle')
-    //   .attr('class', (d) => (lt0lt1SelectedYears.includes(d[0]) ? 'lt0-point lt0-selected' : 'lt0-point'))
-    //   .attr('r', 5)
-    //   .attr('cy', (d) => vis.yScale(vis.yValue(d)))
-    //   .attr('cx', (d) => vis.xScale(vis.xValue(d)));
-
-    lt0Circles.on('click', (event, d) => {
-      if (lt0lt1SelectedYears.includes(d[0])) {
-        lt0lt1SelectedYears = lt0lt1SelectedYears.filter((year) => year !== d[0]);
-        // console.log(lt0lt1SelectedYears);
-      } else {
-        lt0lt1SelectedYears.push(d[0]);
-      }
-      lapTime0.updateVis();
-      lapTime1.updateVis();
-    });
+    const lt0Circles = getCircles(vis, 'lt0', lt0lt1SelectedYears, null);
 
     lt0Circles
       .on('mouseover', (event, d) => {
@@ -208,7 +170,7 @@ class LapTime0 {
             </div>
            `));
       })
-      .on('mouseleave', () => {
+      .on('mouseleave', (event, d) => {
         d3.select('#tooltip')
           .style('opacity', 0);
       })
@@ -216,19 +178,19 @@ class LapTime0 {
         d3.select('#tooltip')
           .style('left', `${event.pageX + vis.config.tooltipPadding}px`)
           .style('top', `${event.pageY + vis.config.tooltipPadding}px`);
+      })
+      .on('click', (event, d) => {
+        if (lt0lt1SelectedYears.includes(d[0])) {
+          lt0lt1SelectedYears = lt0lt1SelectedYears.filter((year) => year !== d[0]);
+        } else {
+          lt0lt1SelectedYears.push(d[0]);
+        }
+        lapTime0.updateVis();
+        lapTime1.updateVis();
       });
 
-    // Update the axes
-    // We use the second .call() to remove the axis and just show gridlines
-    vis.xAxisG.call(vis.xAxis);
-    // .call((g) => g.select('.domain')
-    //   .remove());
-    vis.yAxisG.call(vis.yAxis);
-    // .call((g) => g.select('.domain')
-    //   .remove());
-
     let clearButton = d3.select('#lap-time-0-clear')
-      .on('click', (event, d) => {
+      .on('click', () => {
         // clear selectedYears array
         lt0lt1SelectedYears = [];
         // call update
@@ -240,5 +202,10 @@ class LapTime0 {
       .on('click', () => {
         vis.initData();
       });
+
+    // Update the axes
+    // We use the second .call() to remove the axis and just show gridlines
+    vis.xAxisG.call(vis.xAxis);
+    vis.yAxisG.call(vis.yAxis);
   }
 }

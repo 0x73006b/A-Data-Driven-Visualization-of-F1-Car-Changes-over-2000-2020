@@ -1,3 +1,23 @@
+// const colors = [
+//   '#771155', '#AA4488', '#CC99BB', '#114477', '#4477AA', '#77AADD', '#117777',
+//   '#44AAAA', '#77CCCC', '#117744', '#44AA77', '#88CCAA', '#777711', '#AAAA44',
+//   '#DDDD77', '#774411', '#AA7744', '#DDAA77', '#771122', '#AA4455', '#DD7788'];
+// TODO: Cite https://sashamaps.net/docs/resources/20-colors/ if we use this
+const colors = [
+  '#e6194b', '#3cb44b', '#ffe119', '#4363d8',
+  '#f58231', '#911eb4', '#46f0f0', '#f032e6',
+  '#bcf60c', '#fabebe', '#008080', '#e6beff',
+  '#9a6324', '#fffac8', '#800000', '#aaffc3',
+  '#808000', '#ffd8b1', '#000075', '#808080',
+  '#ffffff', '#000000'];
+
+/**
+ *
+ */
+const colorScale = d3.scaleOrdinal()
+  .range(colors)
+  .domain([2000, 2021]);
+
 /**
  * Take in lap time string in Minutes:Seconds:Milliseconds and convert it to milliseconds number.
  * @param d
@@ -22,7 +42,6 @@ function getMinuteStringFromMillisecond(x) {
   let sec = Math.floor(x / 1000);
   const minute = Math.floor(sec / 60);
   sec %= 60;
-  // TODO: 1:0:0 should display as 1:00:00
   return `${minute.toString()}:${sec.toString().padStart(2, '0')}.${(millis / 10).toString()}`;
 }
 
@@ -67,21 +86,25 @@ function axisLabel(vis, isX, title) {
 /**
  * Make circles for a given visualization.
  * @param vis{Object} - A given visualization.
- * @param visData {Object[]} - The data to join on.
  * @param chartName {string} - Used for selectAll and class attr.
  * @param dataArray {[]} - Array of objects to check if class should also have 'selected'.
- * @param dataToCheck {Object} - The value that determines if class is regular, or selected as well.
- * @param yScaleAccessor{function} - Determines value to pass into visualization's yScale.
- * @param radius {number} - Circle's radius.
+ * @param radius {null|number} - Circle's radius.
  * @returns {*}
  */
 // eslint-disable-next-line no-unused-vars
-function getCircles(vis, visData, chartName, dataArray, dataToCheck, yScaleAccessor, radius) {
+function getCircles(vis, chartName, dataArray, radius) {
   return vis.chart.selectAll(`.${chartName}-point`)
-    .data(visData)
+    .data(vis.processedData)
     .join('circle')
-    .attr('class', (d) => (dataArray.includes(dataToCheck(d)) ? `${chartName}-point ${chartName}-selected` : `${chartName}-point`))
+    .attr('class', (d) => (dataArray.includes(vis.yearAccessor(d)) ? `${chartName}-point ${chartName}-selected` : `${chartName}-point`))
+    .attr('id', (d) => `${chartName}-point-${vis.yValue(d)}-${vis.xValue(d)}`)
     .attr('r', () => (radius || 5))
-    .attr('cy', (d) => vis.yScale(yScaleAccessor(d)))
-    .attr('cx', (d) => vis.xScale(vis.xValue(d)));
+    .attr('cy', (d) => vis.yScale(vis.yValue(d)))
+    .attr('cx', (d) => vis.xScale(vis.xValue(d)))
+    .attr('fill', (d) => {
+      if (dataArray.includes(vis.yearAccessor(d))) {
+        return colorScale(vis.yearAccessor(d));
+      }
+      return '#8e8e8e';
+    });
 }

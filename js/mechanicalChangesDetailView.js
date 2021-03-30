@@ -92,7 +92,11 @@ class MechanicalChangesDetailView {
 
     // We need to make sure that the tracking area is on top of other chart elements
     vis.marks = vis.chart.append('g');
-    // TODO: Axis titles
+
+    // TODO: Fix title, labels -- needs one for derived hp:weight
+    chartTitle(vis, 'Power');
+    axisLabel(vis, true, 'Years');
+    axisLabel(vis, false, 'Power-to-Weight                Power').attr('style', 'white-space:pre');
 
     vis.updateVis();
   }
@@ -157,6 +161,28 @@ class MechanicalChangesDetailView {
       .attr('fill-opacity', 0.5)
       .attr('fill', 'red');
 
+    horsePowerCircle.on('mouseover', (event, d) => {
+      horsePowerCircle.attr('cursor', 'pointer');
+      d3.select('#tooltip')
+        .style('opacity', 1)
+        .html((`
+            <div class="tooltip-label">
+                horsePowerCircle
+            </div>
+           `));
+    })
+      .on('mousemove', (event) => {
+        d3.select('#tooltip')
+          .style('left', `${event.pageX + vis.config.tooltipPadding}px`)
+          .style('top', `${event.pageY + vis.config.tooltipPadding}px`);
+      })
+      .on('mouseleave', () => {
+        d3.select('#tooltip')
+          .style('left', `${0}px`)
+          .style('top', `${0}px`)
+          .style('opacity', 0);
+      });
+
     // Add line path
     // eslint-disable-next-line no-unused-vars
     const powerWeightRatioLine = vis.marks.selectAll('.chart-line-pwr')
@@ -194,7 +220,27 @@ class MechanicalChangesDetailView {
       .attr('fill-opacity', 0.5)
       .attr('fill', 'red');
 
-    // TODO: Tool tpi
+    powerWeightRatioCircle.on('mouseover', (event, d) => {
+      powerWeightRatioCircle.attr('cursor', 'pointer');
+      d3.select('#tooltip')
+        .style('opacity', 1)
+        .html((`
+            <div class="tooltip-label">
+                ${d.year} ${d.car} ${d.powerToWeightRatio}
+            </div>
+           `));
+    })
+      .on('mousemove', (event) => {
+        d3.select('#tooltip')
+          .style('left', `${event.pageX + vis.config.tooltipPadding}px`)
+          .style('top', `${event.pageY + vis.config.tooltipPadding}px`);
+      })
+      .on('mouseleave', () => {
+        d3.select('#tooltip')
+          .style('left', `${0}px`)
+          .style('top', `${0}px`)
+          .style('opacity', 0);
+      });
 
     // Update the axes
     this.drawAxis();
