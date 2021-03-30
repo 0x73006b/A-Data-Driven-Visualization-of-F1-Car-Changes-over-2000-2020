@@ -88,7 +88,7 @@ class LapTime1 {
 
     // vis.xValueDebug = (d) => console.log('xValDebug', d);
     // vis.yValueDebug = (d) => console.log('yValDebug', d);
-    vis.yValue = (d) => getMillisecondsFromTimeString(d);
+    vis.yValue = (d) => d.laptimeMillis;
     vis.xValue = (d) => d.circuitName;
     vis.yearAccessor = (d) => d.year;
     // vis.yValue = (d) => console.log('in yVal for render', d);
