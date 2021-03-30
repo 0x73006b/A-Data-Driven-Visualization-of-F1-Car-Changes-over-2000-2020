@@ -30,28 +30,18 @@ body {
 }
 .lap-time-0-line {
     fill: none;
-    stroke: #517390;
+    stroke: lightgrey;
     stroke-width: 2px;
 }
 
-.lt0-point {
-    fill-opacity: 0.2;
-    /*fill: red;*/
+.lt0-point, .lt1-point {
+    fill-opacity: 0.25;
+    stroke-opacity: 0.15;
+    stroke: lightgrey;
 }
 
-.lt0-selected {
+.lt0-selected, .lt1-selected {
     fill-opacity: 1;
-    /*fill: green*/
+    stroke-opacity: 1;
+    stroke: black;
 }
-
-.lt1-point {
-    fill-opacity: 0.2;
-    fill: red;
-}
-
-.lt1-selected {
-    fill-opacity: 1;
-    fill: green
-}
-
-

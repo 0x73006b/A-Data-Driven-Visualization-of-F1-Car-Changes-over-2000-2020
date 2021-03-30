@@ -13,6 +13,7 @@ module.exports = {
         "getCircles":true,
         "chartTitle":true,
         "axisLabel":true,
+        "colorScale":true,
 
         "getMinuteStringFromMillisecond": true,
         "getMillisecondsFromTimeString":true,

@@ -19,7 +19,7 @@ class LapTime1 {
       },
     };
     this.data = _data;
-    this.filteredData = null;
+    this.processedData = null;
     this.initVis();
   }
 
@@ -86,8 +86,9 @@ class LapTime1 {
   updateVis() {
     const vis = this;
 
-    vis.xValueDebug = (d) => console.log('xValDebug', d);
-    vis.yValueDebug = (d) => console.log('yValDebug', d);
+    // vis.xValueDebug = (d) => console.log('xValDebug', d);
+    // vis.yValueDebug = (d) => console.log('yValDebug', d);
+    vis.yValue = (d) => getMillisecondsFromTimeString(d);
     vis.xValue = (d) => d.circuitName;
     vis.yearAccessor = (d) => d.year;
     // vis.yValue = (d) => console.log('in yVal for render', d);
@@ -95,18 +96,18 @@ class LapTime1 {
     // group by circuitName
     // get circuit names
     // todo: this could just be read as static data; why waste precious Computar Powar........
-    let tracks = vis.data.map((entry) => entry.circuitName)
-      .sort();
+    let tracks = vis.data.map((entry) => entry.circuitName).sort();
     tracks = new Set(tracks);
 
     // grab each circuit name from first array index
     vis.xScale.domain(tracks);
 
     vis.yScale.domain([
-      d3.min(vis.data, (d) => getMillisecondsFromTimeString(d)),
-      d3.max(vis.data, (d) => getMillisecondsFromTimeString(d)),
+      d3.min(vis.data, (d) => vis.yValue(d)),
+      d3.max(vis.data, (d) => vis.yValue(d)),
     ]);
 
+    vis.processedData = vis.data;
     vis.renderVis();
   }
 
@@ -116,7 +117,7 @@ class LapTime1 {
   renderVis() {
     const vis = this;
 
-    const lt1Circles = getCircles(vis, vis.data, 'lt1', lt0lt1SelectedYears, vis.yearAccessor, getMillisecondsFromTimeString);
+    const lt1Circles = getCircles(vis, 'lt1', lt0lt1SelectedYears, null);
 
     lt1Circles.on('click', (event, d) => {
       if (lt0lt1SelectedYears.includes(d.year)) {
