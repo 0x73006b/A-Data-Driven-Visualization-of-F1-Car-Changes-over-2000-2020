@@ -146,18 +146,21 @@ class MechanicalChangesDetailView {
         .y((d) => vis.yScaleTop(vis.yValueTop(d))));
 
     // eslint-disable-next-line no-unused-vars
+    // todo: if 2014 exists in next selection, update THAT one
+    // make d3 know each circle is unique based on what year/data
+    // make it select just the update, then it transitions to new position
     const horsePowerCircle = vis.marks.selectAll('.point-hp')
-      .data(vis.filteredData, (d) => d)
+      .data(vis.filteredData)
       .join('circle')
       .attr('class', 'point-hp')
-      .attr('r', 6);
+      .attr('r', 6)
+      .attr('cy', (d) => vis.yScaleTop(vis.yValueTop(d)))
+      .attr('cx', (d) => vis.xScale(vis.xValue(d)));
 
     horsePowerCircle.merge(horsePowerCircle)
       .transition()
       .duration(1000)
       .ease(d3.easeExpOut)
-      .attr('cy', (d) => vis.yScaleTop(vis.yValueTop(d)))
-      .attr('cx', (d) => vis.xScale(vis.xValue(d)))
       .attr('fill-opacity', 0.5)
       .attr('fill', 'red');
 
@@ -208,15 +211,15 @@ class MechanicalChangesDetailView {
       .data(vis.filteredData, (d) => d)
       .join('circle')
       .attr('class', 'point-pwr')
-      .attr('r', 6);
+      .attr('r', 6)
+      .attr('transform', `translate(0, ${vis.halfHeight})`)
+      .attr('cy', (d) => vis.yScaleBottom(vis.yValueBottom(d)))
+      .attr('cx', (d) => vis.xScale(vis.xValue(d)));
 
     powerWeightRatioCircle.merge(powerWeightRatioCircle)
       .transition()
       .duration(1000)
       .ease(d3.easeExpOut)
-      .attr('cy', (d) => vis.yScaleBottom(vis.yValueBottom(d)))
-      .attr('cx', (d) => vis.xScale(vis.xValue(d)))
-      .attr('transform', `translate(0, ${vis.halfHeight})`)
       .attr('fill-opacity', 0.5)
       .attr('fill', 'red');
 
