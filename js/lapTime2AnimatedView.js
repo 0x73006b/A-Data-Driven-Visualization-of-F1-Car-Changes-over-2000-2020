@@ -110,6 +110,7 @@ class RealTimeLap {
               .attr('stroke-width', 0);
           }
         }).catch(() => {
+          d3.select('#laptime2-reatimeLap').selectAll('*').remove();
           const ANIMATION_SVG = d3.select('#laptime2-reatimeLap')
             .append('svg')
             .attr('width', 1000)
