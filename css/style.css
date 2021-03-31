@@ -28,9 +28,19 @@ body {
     font-weight: 500;
     color: #888;
 }
+
+.mech-overview-point {
+    opacity: 0.35;
+}
+
 .lap-time-0-line {
     fill: none;
     stroke: lightgrey;
+    stroke-width: 2px;
+}
+
+.lap-time-1-line {
+    fill: none;
     stroke-width: 2px;
 }
 

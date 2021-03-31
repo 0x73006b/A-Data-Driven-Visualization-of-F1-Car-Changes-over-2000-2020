@@ -86,28 +86,26 @@ class LapTime1 {
   updateVis() {
     const vis = this;
 
-    // vis.xValueDebug = (d) => console.log('xValDebug', d);
-    // vis.yValueDebug = (d) => console.log('yValDebug', d);
-    vis.yValue = (d) => getMillisecondsFromTimeString(d);
+    // Accessor
+    vis.yValue = (d) => d.laptimeMillis;
     vis.xValue = (d) => d.circuitName;
     vis.yearAccessor = (d) => d.year;
-    // vis.yValue = (d) => console.log('in yVal for render', d);
 
+    // TODO: Move this out into main -- something similar used by LT2 as well
     // group by circuitName
     // get circuit names
-    // todo: this could just be read as static data; why waste precious Computar Powar........
     let tracks = vis.data.map((entry) => entry.circuitName).sort();
     tracks = new Set(tracks);
-
-    // grab each circuit name from first array index
     vis.xScale.domain(tracks);
+    vis.yScale.domain([d3.min(vis.data, (d) => vis.yValue(d)), d3.max(vis.data, (d) => vis.yValue(d))]);
 
-    vis.yScale.domain([
-      d3.min(vis.data, (d) => vis.yValue(d)),
-      d3.max(vis.data, (d) => vis.yValue(d)),
-    ]);
+    let lineChartData = vis.data.filter((d) => (lt0lt1SelectedYears.includes(d.year)));
+    lineChartData = lineChartData.sort((a, b) => d3.ascending(a.circuitName, b.circuitName));
+    lineChartData = d3.rollup(lineChartData, (d) => d, (d) => d.year);
+    vis.lineChartData = Array.from(lineChartData, ([year, values]) => ({ year, values }));
 
     vis.processedData = vis.data;
+
     vis.renderVis();
   }
 
@@ -119,20 +117,31 @@ class LapTime1 {
 
     const lt1Circles = getCircles(vis, 'lt1', lt0lt1SelectedYears, null);
 
+    const line = d3.line()
+      .x((d) => vis.xScale(vis.xValue(d)))
+      .y((d) => vis.yScale(vis.yValue(d)));
+
+    // todo: cite https://bl.ocks.org/sebg/0cc55428f83eb52bdfad6f5692023b07 for general guidance
+    const lt1Line = vis.chart.selectAll('.lap-time-1-line')
+      .data(vis.lineChartData)
+      .join('path')
+      .attr('class', 'lap-time-1-line')
+      .attr('stroke', (d) => colorScale(vis.yearAccessor(d)))
+      .attr('d', (d) => line(d.values));
+
+    // If in selection, raise points that may be covered by others
+    vis.chart.selectAll('.lt1-selected')
+      .raise();
+
     lt1Circles.on('click', (event, d) => {
       if (lt0lt1SelectedYears.includes(d.year)) {
         lt0lt1SelectedYears = lt0lt1SelectedYears.filter((year) => year !== d.year);
-        // console.log(lt0lt1SelectedYears);
       } else {
         lt0lt1SelectedYears.push(d.year);
       }
       lapTime0.updateVis();
       lapTime1.updateVis();
     });
-
-    // If in selection, raise points that may be covered by others
-    vis.chart.selectAll('.lt1-selected')
-      .raise();
 
     lt1Circles.on('mouseover', (event, d) => {
       lt1Circles.attr('cursor', 'pointer');
