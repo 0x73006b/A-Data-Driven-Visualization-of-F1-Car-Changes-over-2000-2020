@@ -62,9 +62,8 @@ class RealTimeLap {
     const laps = vis.data.filter((d) => d.circuitName === vis.selectedTrack);
     const laptimes = laps.map((d) => d.laptimeMillis).sort();
 
-    d3.select('#laptime2-reatimeLap').selectAll('*').remove();
-
     if (this.selectedTrack === '') {
+      d3.select('#laptime2-reatimeLap').selectAll('*').remove();
       const ANIMATION_SVG = d3.select('#laptime2-reatimeLap')
         .append('svg')
         .attr('width', 1000)
