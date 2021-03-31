@@ -104,18 +104,14 @@ class MechanicalChangesOverview {
     const vis = this;
 
     // Add circles
-    const circles = vis.chart.selectAll('.point')
+    const circles = vis.chart.selectAll('.mech-overview-point')
       .data(vis.filteredData, (d) => d)
       .join('circle')
-      .attr('class', 'point')
+      .attr('class', 'mech-overview-point')
       .attr('r', 5)
       .attr('cy', (d) => vis.yScale(vis.yValue(d)))
       .attr('cx', (d) => vis.xScale(vis.xValue(d)))
-      .attr('fill-opacity', 0.35)
       .attr('fill', (d) => (d.group === mechanicalChangesSelectedGroup ? 'green' : 'red'));
-    // .attr('fill-opacity', d => isGenderSelected(d) ? 0.7 : 0.15)
-    // .attr('fill', d => isPoliticianSelected(d) ? 'red' : '#444');
-    // Tooltip event listeners
 
     // Detail View Selector
     circles.on('click', (e, d) => {
@@ -123,11 +119,9 @@ class MechanicalChangesOverview {
         mechanicalChangesSelectedGroup = null;
       } else {
         mechanicalChangesSelectedGroup = d.group;
-        // console.log(d.group);
       }
       mechanicalChangesOverview.updateVis();
       mechanicalChangesDetailView.updateVis();
-      // mechanicalChangesPowerToWeight.updateVis();
     });
 
     // TODO: Make tool tip better

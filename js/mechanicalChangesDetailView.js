@@ -139,7 +139,7 @@ class MechanicalChangesDetailView {
       .merge(horsePowerLine)
       .transition()
       .duration(1000)
-      .ease(d3.easeSin)
+      .ease(d3.easeSinOut)
       .attr('d', d3.line()
         // .curve(d3.curveNatural)
         .x((d) => vis.xScale(vis.xValue(d)))
@@ -160,7 +160,7 @@ class MechanicalChangesDetailView {
     horsePowerCircle.merge(horsePowerCircle)
       .transition()
       .duration(1000)
-      .ease(d3.easeExpOut)
+      .ease(d3.easeSinOut)
       .attr('fill-opacity', 0.5)
       .attr('fill', 'red');
 
@@ -200,7 +200,7 @@ class MechanicalChangesDetailView {
       .merge(powerWeightRatioLine)
       .transition()
       .duration(1000)
-      .ease(d3.easeSin)
+      .ease(d3.easeSinOut)
       .attr('d', d3.line()
         // .curve(d3.curveNatural)
         .x((d) => vis.xScale(vis.xValue(d)))
@@ -219,7 +219,7 @@ class MechanicalChangesDetailView {
     powerWeightRatioCircle.merge(powerWeightRatioCircle)
       .transition()
       .duration(1000)
-      .ease(d3.easeExpOut)
+      .ease(d3.easeSinOut)
       .attr('fill-opacity', 0.5)
       .attr('fill', 'red');
 
