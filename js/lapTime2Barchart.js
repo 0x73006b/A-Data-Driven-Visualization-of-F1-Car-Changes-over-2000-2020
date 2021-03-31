@@ -19,6 +19,7 @@ class Barchart {
     };
     this.data = _data;
     this.reatimeLap = _reatimeLap;
+    this.dropDownReady = false;
     this.initVis();
   }
 
@@ -150,13 +151,15 @@ class Barchart {
     vis.yAxisG.call(vis.yAxis);
 
     // add the options to the button
-    d3.select('#selectButton')
-      .selectAll('myOptions')
-      .data(vis.circuitNames)
-      .enter()
-      .append('option')
-      .text((d) => d) // text showed in the menu
-      .attr('value', (d) => d); // corresponding value returned by the button
+    if (!vis.dropDownReady) {
+      d3.select('#selectButton')
+        .selectAll('myOptions')
+        .data(vis.circuitNames)
+        .join('option')
+        .text((d) => d) // text showed in the menu
+        .attr('value', (d) => d); // corresponding value returned by the button
+      vis.dropDownReady = true;
+    }
 
     // eslint-disable-next-line func-names
     d3.select('#selectButton').on('change', function () {
