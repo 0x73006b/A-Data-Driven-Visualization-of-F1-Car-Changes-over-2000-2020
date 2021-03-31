@@ -61,7 +61,21 @@ class RealTimeLap {
     const vis = this;
     const laps = vis.data.filter((d) => d.circuitName === vis.selectedTrack);
     const laptimes = laps.map((d) => d.laptimeMillis).sort();
-    if (laps.length > 0) {
+
+    d3.select('#laptime2-reatimeLap').selectAll('*').remove();
+
+    if (this.selectedTrack === '') {
+      const ANIMATION_SVG = d3.select('#laptime2-reatimeLap')
+        .append('svg')
+        .attr('width', 1000)
+        .attr('height', 1000);
+
+      ANIMATION_SVG.append('text')
+        .attr('x', 50)
+        .attr('y', 50)
+        .attr('dy', '.35em')
+        .text('Please select a track to race');
+    } else if (laps.length > 0) {
       const fileName = `data/maps/${laps[0].circuitRef}.svg`;
       d3.xml(fileName)
         .then((data) => {
@@ -96,9 +110,19 @@ class RealTimeLap {
             path
               .attr('stroke-width', 0);
           }
+        }).catch(() => {
+          const ANIMATION_SVG = d3.select('#laptime2-reatimeLap')
+            .append('svg')
+            .attr('width', 1000)
+            .attr('height', 1000);
+
+          ANIMATION_SVG.append('text')
+            .attr('x', 50)
+            .attr('y', 50)
+            .attr('dy', '.35em')
+            .text('Selected track is not available for animation');
         });
     }
-
     // start button
     d3.select('#startButton')
       // eslint-disable-next-line no-unused-vars
