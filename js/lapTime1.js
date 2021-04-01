@@ -73,9 +73,9 @@ class LapTime1 {
       .attr('class', 'axis y-axis');
 
     // Chart Title
-    chartTitle(vis, 'LT1: Best Lap Times');
-    axisLabel(vis, true, 'Tracks');
-    axisLabel(vis, false, 'Averaged Fastest Qualifying Lap Time (in Minute)');
+    chartTitle(vis, 'Best Lap Times', 0);
+    axisLabel(vis, true, 'Tracks', 0, -50);
+    axisLabel(vis, false, 'Fastest Qualifying Lap Time (in Minute)', 0, 30);
 
     vis.updateVis();
   }

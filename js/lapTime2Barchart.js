@@ -14,7 +14,7 @@ class Barchart {
       containerWidth: _config.containerWidth || 1000,
       containerHeight: _config.containerHeight || 500,
       margin: _config.margin || {
-        top: 25, right: 20, bottom: 20, left: 40,
+        top: 25, right: 20, bottom: 20, left: 60,
       },
     };
     this.data = _data;
@@ -76,21 +76,11 @@ class Barchart {
     vis.yAxisG = vis.chart.append('g')
       .attr('class', 'axis y-axis');
 
-    // Append axis title
-    vis.svg.append('text')
-      .attr('class', 'axis-title')
-      .attr('x', 0)
-      .attr('y', 0)
-      .attr('dy', '.71em')
-      .text('Lap Time');
-    vis.svg.append('text')
-      .attr('class', 'axis-title')
-      .attr('x', 0)
-      .attr('y', 0)
-      .attr('dy', '.71em')
-      .text('Lap Time');
-
     vis.selectedTrack = '';
+
+    chartTitle(vis, 'Averaged Best Lap Time by Year', 0);
+    axisLabel(vis, true, 'Years', -10, 10);
+    axisLabel(vis, false, 'Averaged Best Lap Time', 0, -30);
 
     vis.updateVis();
   }
@@ -127,13 +117,13 @@ class Barchart {
   renderVis() {
     const vis = this;
 
-    vis.chart.selectAll('.circuiteName')
-      .data(vis.selectedTrackData)
-      .join('text')
-      .attr('class', 'circuiteName')
-      .text((d) => d.circuitName)
-      // translate and rotate
-      .attr('transform', `translate(${40},${-10})`);
+    // vis.chart.selectAll('.circuiteName')
+    //   .data(vis.selectedTrackData)
+    //   .join('text')
+    //   .attr('class', 'circuiteName')
+    //   .text((d) => d.circuitName)
+    //   // translate and rotate
+    //   .attr('transform', `translate(${40},${-10})`);
 
     // Add rectangles
     vis.chart.selectAll('.bar')

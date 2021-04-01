@@ -51,11 +51,11 @@ function getMinuteStringFromMillisecond(x) {
  * @param title{string} - title of chart to append
  */
 // eslint-disable-next-line no-unused-vars
-function chartTitle(vis, title) {
+function chartTitle(vis, title, yOffset) {
   vis.svg.append('text')
     .attr('class', 'chart-title')
     .attr('x', `${vis.width / 2}`)
-    .attr('y', 15)
+    .attr('y', 15 + yOffset)
     .attr('text-anchor', 'middle')
     .attr('font-size', '0.75em')
     .text(title);
@@ -69,9 +69,9 @@ function chartTitle(vis, title) {
  * @param title {string} - Title text
  */
 // eslint-disable-next-line no-unused-vars
-function axisLabel(vis, isX, title) {
-  const x = isX ? vis.width / 2 : 20;
-  const y = isX ? (vis.config.containerHeight - 20) : -150;
+function axisLabel(vis, isX, title, xOffset, yOffset) {
+  const x = isX ? vis.width + 50 + xOffset : 10 + xOffset;
+  const y = isX ? (vis.config.containerHeight - 10) + yOffset : -38 + yOffset;
   const rotate = isX ? 0 : -90;
   return vis.svg.append('text')
     .attr('class', 'axis-title')

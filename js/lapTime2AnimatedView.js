@@ -19,7 +19,7 @@ class RealTimeLap {
       containerWidth: _config.containerWidth || 1000,
       containerHeight: _config.containerHeight || 500,
       margin: _config.margin || {
-        top: 25, right: 20, bottom: 20, left: 40,
+        top: 25, right: 20, bottom: 20, left: 120,
       },
     };
     this.data = _data;

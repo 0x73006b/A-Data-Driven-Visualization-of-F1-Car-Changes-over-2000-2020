@@ -89,9 +89,9 @@ class LapTime0 {
 
     vis.tooltip.append('text');
 
-    chartTitle(vis, 'LT0: Averaged Best Lap Time by Year');
-    axisLabel(vis, true, 'Years');
-    axisLabel(vis, false, 'Averaged Best Lap Time (Minute)');
+    chartTitle(vis, 'Averaged Best Lap Time by Year', 0);
+    axisLabel(vis, true, 'Years', 0, 0);
+    axisLabel(vis, false, 'Averaged Best Lap Time (Minute)', 0, 0);
 
     vis.initData();
   }

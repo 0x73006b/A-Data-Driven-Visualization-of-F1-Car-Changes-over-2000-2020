@@ -80,23 +80,25 @@ class MechanicalChangesDetailView {
     // Append empty x-axis group and move it to the bottom of the chart
     vis.xAxisG = vis.chart.append('g')
       .attr('class', 'axis x-axis')
-      .attr('transform', `translate(0,${vis.height})`);
+      .attr('transform', `translate(0,${vis.height + 10})`);
 
     // Append y-axis groups
     vis.yAxisTopG = vis.chart.append('g')
-      .attr('class', 'axis y-axis');
+      .attr('class', 'axis y-axis')
+      .attr("transform", "translate(0, -20)");
 
     vis.yAxisBottomG = vis.chart.append('g')
       .attr('class', 'axis y-axis-bottom')
-      .attr('transform', `translate(0, ${vis.halfHeight})`);
+      .attr('transform', `translate(0, ${vis.halfHeight + 10})`);
 
     // We need to make sure that the tracking area is on top of other chart elements
     vis.marks = vis.chart.append('g');
 
     // TODO: Fix title, labels -- needs one for derived hp:weight
-    chartTitle(vis, 'Power');
-    axisLabel(vis, true, 'Years');
-    axisLabel(vis, false, 'Power-to-Weight                Power').attr('style', 'white-space:pre');
+    chartTitle(vis, 'Power Progression for Selected Constructor, through the Years', 0);
+    chartTitle(vis, 'Power-to-Weight Ratio Progression for Selected Constructor, through the Years', 150);
+    axisLabel(vis, true, 'Years', 0, 10);
+    axisLabel(vis, false, 'Power-to-Weight                                                   Power', 0, -150).attr('style', 'white-space:pre');
 
     vis.updateVis();
   }
@@ -143,7 +145,7 @@ class MechanicalChangesDetailView {
       .attr('d', d3.line()
         // .curve(d3.curveNatural)
         .x((d) => vis.xScale(vis.xValue(d)))
-        .y((d) => vis.yScaleTop(vis.yValueTop(d))));
+        .y((d) => vis.yScaleTop(vis.yValueTop(d)) - 20));
 
     // eslint-disable-next-line no-unused-vars
     // todo: if 2014 exists in next selection, update THAT one
@@ -154,7 +156,7 @@ class MechanicalChangesDetailView {
       .join('circle')
       .attr('class', 'point-hp')
       .attr('r', 6)
-      .attr('cy', (d) => vis.yScaleTop(vis.yValueTop(d)))
+      .attr('cy', (d) => vis.yScaleTop(vis.yValueTop(d)) - 20)
       .attr('cx', (d) => vis.xScale(vis.xValue(d)));
 
     horsePowerCircle.merge(horsePowerCircle)
@@ -204,7 +206,7 @@ class MechanicalChangesDetailView {
       .attr('d', d3.line()
         // .curve(d3.curveNatural)
         .x((d) => vis.xScale(vis.xValue(d)))
-        .y((d) => vis.yScaleBottom(vis.yValueBottom(d)) + vis.halfHeight));
+        .y((d) => vis.yScaleBottom(vis.yValueBottom(d)) + vis.halfHeight + 10));
 
     // eslint-disable-next-line no-unused-vars
     const powerWeightRatioCircle = vis.marks.selectAll('.point-pwr')
@@ -213,7 +215,7 @@ class MechanicalChangesDetailView {
       .attr('class', 'point-pwr')
       .attr('r', 6)
       .attr('transform', `translate(0, ${vis.halfHeight})`)
-      .attr('cy', (d) => vis.yScaleBottom(vis.yValueBottom(d)))
+      .attr('cy', (d) => vis.yScaleBottom(vis.yValueBottom(d)) + 10)
       .attr('cx', (d) => vis.xScale(vis.xValue(d)));
 
     powerWeightRatioCircle.merge(powerWeightRatioCircle)
