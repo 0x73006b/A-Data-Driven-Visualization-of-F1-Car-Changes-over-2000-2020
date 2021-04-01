@@ -75,7 +75,7 @@ class LapTime1 {
     // Chart Title
     chartTitle(vis, 'Best Lap Times', 0);
     axisLabel(vis, true, 'Tracks', 0, -50);
-    axisLabel(vis, false, 'Fastest Qualifying Lap Time (in Minute)', 0, 30);
+    axisLabel(vis, false, 'Best Lap Time (in Minute)', 0, -30);
 
     vis.updateVis();
   }
@@ -97,6 +97,7 @@ class LapTime1 {
     let tracks = vis.data.map((entry) => entry.circuitName).sort();
     tracks = new Set(tracks);
     vis.xScale.domain(tracks);
+    // eslint-disable-next-line max-len
     vis.yScale.domain([d3.min(vis.data, (d) => vis.yValue(d)), d3.max(vis.data, (d) => vis.yValue(d))]);
 
     let lineChartData = vis.data.filter((d) => (lt0lt1SelectedYears.includes(d.year)));
