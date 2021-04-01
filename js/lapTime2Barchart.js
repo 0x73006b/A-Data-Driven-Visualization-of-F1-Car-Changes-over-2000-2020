@@ -78,9 +78,9 @@ class Barchart {
 
     vis.selectedTrack = '';
 
-    chartTitle(vis, 'Averaged Best Lap Time by Year', 0);
+    chartTitle(vis, 'Best Lap Time by Year', 0);
     axisLabel(vis, true, 'Years', -10, 10);
-    axisLabel(vis, false, 'Averaged Best Lap Time', 0, -30);
+    axisLabel(vis, false, 'Best Lap Time', 0, -30);
 
     vis.updateVis();
   }
