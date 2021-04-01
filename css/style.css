@@ -1,1 +1,57 @@
 /* Todo: set up styling */
+
+body {
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    width: 1000px;
+    margin: auto;
+}
+
+#tooltip {
+    position: absolute;
+    opacity: 0;
+    background: #fff;
+    box-shadow: 2px 2px 3px 0px rgb(92 92 92);
+    border: 1px solid #444;
+    font-weight: 600;
+    padding: 2px 8px;
+    left: 0px;
+    top: 0px;
+}
+
+.tooltip-title {
+    font-weight: bold;
+}
+
+.tooltip-label {
+    font-weight: 500;
+    color: #888;
+}
+
+.mech-overview-point {
+    opacity: 0.35;
+}
+
+.lap-time-0-line {
+    fill: none;
+    stroke: lightgrey;
+    stroke-width: 2px;
+}
+
+.lap-time-1-line {
+    fill: none;
+    stroke-width: 2px;
+}
+
+.lt0-point, .lt1-point {
+    fill-opacity: 0.25;
+    stroke-opacity: 0.15;
+    stroke: lightgrey;
+}
+
+.lt0-selected, .lt1-selected {
+    fill-opacity: 1;
+    stroke-opacity: 1;
+    stroke: black;
+}
