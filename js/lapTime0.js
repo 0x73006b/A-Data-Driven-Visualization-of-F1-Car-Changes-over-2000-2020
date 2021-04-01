@@ -104,7 +104,7 @@ class LapTime0 {
       let cumulativeSum = 0;
       d.forEach((v) => {
         // for each year, get millisec. and add it to cumulative sum
-        cumulativeSum =+ v.laptimeMillis;
+        cumulativeSum += v.laptimeMillis;
       });
       // average cumsum by amount of rounds, obtained through the length of that year's array
       const averagedTime = Math.round(cumulativeSum / d.length);
