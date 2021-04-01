@@ -14,6 +14,7 @@ const colors = [
 /**
  *
  */
+// TODO: fix color by order rather than consistent color scale issue
 const colorScale = d3.scaleOrdinal()
   .range(colors)
   .domain([2000, 2021]);
