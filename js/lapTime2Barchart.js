@@ -169,6 +169,6 @@ class Barchart {
       vis.updateVis();
     });
 
-    vis.reatimeLap.updateVis(vis.selectedTrack, false);
+    vis.reatimeLap.updateVis(vis.selectedTrack, -1);
   }
 }

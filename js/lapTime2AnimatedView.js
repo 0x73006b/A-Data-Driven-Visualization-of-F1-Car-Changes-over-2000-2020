@@ -43,7 +43,7 @@ class RealTimeLap {
       .attr('transform', `translate(${vis.config.margin.left},${vis.config.margin.top})`);
 
     vis.selectedTrack = '';
-    vis.startLap = false;
+    vis.startLap = -1;
     vis.updateVis();
   }
 
@@ -75,60 +75,89 @@ class RealTimeLap {
         .attr('dy', '.35em')
         .text('Please select a track to race');
     } else if (laps.length > 0) {
-      const fileName = `data/maps/${laps[0].circuitRef}.svg`;
-      d3.xml(fileName)
-        .then((data) => {
-        // clean up previous drawings
-          d3.select('#laptime2-reatimeLap').selectAll('*').remove();
-          d3.select('#laptime2-reatimeLap').node().append(data.documentElement);
+      if (this.startLap === -1) {
+        const fileName = `data/maps/${laps[0].circuitRef}_sector.svg`;
+        d3.xml(fileName)
+          .then((data) => {
+          // clean up previous drawings
+            d3.select('#laptime2-reatimeLap').selectAll('*').remove();
+            d3.select('#laptime2-reatimeLap').node().append(data.documentElement);
 
-          // setup background
-          const background = d3.select('#background');
-          background
-            .attr('stroke-width', 1)
-            .transition()
-            .duration(laptimes[0])
-            .ease(d3.easeLinear)
-            .attr('stroke-dashoffset', 0);
-
-          // draw out actual lap
-          const path = d3.select('#track');
-
-          if (this.startLap) {
-            const totalLength = path.node().getTotalLength();
-            path
-              .attr('stroke-width', 3)
-              .attr('stroke', '#800020')
-              .attr('stroke-dasharray', `${totalLength} ${totalLength}`)
-              .attr('stroke-dashoffset', totalLength)
+            // setup background
+            const background = d3.select('#background');
+            background
+              .attr('stroke-width', 1)
               .transition()
-              .duration(laptimes[0])
               .ease(d3.easeLinear)
               .attr('stroke-dashoffset', 0);
-          } else {
-            path
-              .attr('stroke-width', 0);
-          }
-        }).catch(() => {
-          d3.select('#laptime2-reatimeLap').selectAll('*').remove();
-          const ANIMATION_SVG = d3.select('#laptime2-reatimeLap')
-            .append('svg')
-            .attr('width', 1000)
-            .attr('height', 1000);
 
-          ANIMATION_SVG.append('text')
-            .attr('x', 50)
-            .attr('y', 50)
-            .attr('dy', '.35em')
-            .text('Selected track is not available for animation');
-        });
+            // draw out actual lap
+            vis.path1 = d3.select('#sector1');
+            vis.path2 = d3.select('#sector2');
+            vis.path3 = d3.select('#sector3');
+
+            vis.path1
+              .attr('stroke-width', 0);
+            vis.path2
+              .attr('stroke-width', 0);
+            vis.path3
+              .attr('stroke-width', 0);
+          }).catch(() => {
+            d3.select('#laptime2-reatimeLap').selectAll('*').remove();
+            const ANIMATION_SVG = d3.select('#laptime2-reatimeLap')
+              .append('svg')
+              .attr('width', 1000)
+              .attr('height', 1000);
+
+            ANIMATION_SVG.append('text')
+              .attr('x', 50)
+              .attr('y', 50)
+              .attr('dy', '.35em')
+              .text('Selected track is not available for animation');
+          });
+      }
+      else if (this.startLap === 0) {
+        const sector1Length = vis.path1.node().getTotalLength();
+        vis.path1
+          .attr('stroke-width', 3)
+          .attr('stroke', '#800020')
+          .attr('stroke-dasharray', `${sector1Length} ${sector1Length}`)
+          .attr('stroke-dashoffset', sector1Length)
+          .transition()
+          .duration(18594)
+          .ease(d3.easeLinear)
+          .attr('stroke-dashoffset', 0)
+          .on('end', () => vis.updateVis(vis.selectedTrack, this.startLap + 1));
+      } else if (this.startLap === 1) {
+        const sector2Length = vis.path2.node().getTotalLength();
+        vis.path2
+          .attr('stroke-width', 3)
+          .attr('stroke', '#87ceff')
+          .attr('stroke-dasharray', `${sector2Length} ${sector2Length}`)
+          .attr('stroke-dashoffset', sector2Length)
+          .transition()
+          .duration(33392)
+          .ease(d3.easeLinear)
+          .attr('stroke-dashoffset', 0)
+          .on('end', () => vis.updateVis(vis.selectedTrack, this.startLap + 1));
+      } else if (this.startLap === 2) {
+        const sector3Length = vis.path2.node().getTotalLength();
+        vis.path3
+          .attr('stroke-width', 3)
+          .attr('stroke', '#FFD300')
+          .attr('stroke-dasharray', `${sector3Length} ${sector3Length}`)
+          .attr('stroke-dashoffset', sector3Length)
+          .transition()
+          .duration(18779)
+          .ease(d3.easeLinear)
+          .attr('stroke-dashoffset', 0);
+      }
     }
     // start button
     d3.select('#startButton')
       // eslint-disable-next-line no-unused-vars
       .on('click', (_event, d) => {
-        vis.startLap = true;
-        vis.updateVis(vis.selectedTrack, true);
+        vis.updateVis(vis.selectedTrack, 0);
       });
   }
 }
