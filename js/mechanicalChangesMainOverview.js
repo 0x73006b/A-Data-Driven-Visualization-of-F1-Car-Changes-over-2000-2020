@@ -26,6 +26,7 @@ class MechanicalChangesMainOverview {
       },
     };
     this.data = _data;
+    this.processedData = null;
     this.initVis();
   }
 
@@ -37,17 +38,17 @@ class MechanicalChangesMainOverview {
 
     // We want X-Axis and Y-Axis to stay consistent
     // accessor functions
-    vis.xValue = (d) => d.year; // year
-    vis.yValueBottom = (d) => d.powerToWeightRatio; // average power-to-weight ratio
+    vis.xValue1 = (d) => d.year; // year
+    vis.yValue1 = (d) => d.powerToWeightRatio; // average power-to-weight ratio
 
     vis.xScale = d3.scaleLinear()
       .range([0, vis.width])
-      .domain(d3.extent(vis.data, vis.xValue));
+      .domain(d3.extent(vis.data, vis.xValue1));
 
-    vis.yScaleBottom = d3.scaleLinear()
+    vis.yScale = d3.scaleLinear()
       .range([vis.height, 0])
       .nice()
-      .domain(d3.extent(vis.data, vis.yValueBottom));
+      .domain(d3.extent(vis.data, vis.yValue1));
 
     // Initialize axes
     vis.xAxis = d3.axisBottom(vis.xScale)
@@ -56,7 +57,7 @@ class MechanicalChangesMainOverview {
       .tickPadding(5)
       .tickFormat(d3.format('d'));
 
-    vis.yAxisBottom = d3.axisLeft(vis.yScaleBottom)
+    vis.yAxisBottom = d3.axisLeft(vis.yScale)
       .ticks(4)
       .tickSizeOuter(0)
       .tickPadding(10);
@@ -86,13 +87,11 @@ class MechanicalChangesMainOverview {
     axisLabel(vis, true, 'Years', 0, 10);
     axisLabel(vis, false, 'Average-Power-to-Weight-Ration', 0, -150);
 
-    vis.updateVis();
+    vis.initData();
   }
 
-  updateVis() {
+  initData() {
     const vis = this;
-
-    // TODO: Setup proper filter
     // Should have averaged power-to-weight by each year
 
     vis.processedData = d3.rollups(vis.data, (d) => {
@@ -106,11 +105,24 @@ class MechanicalChangesMainOverview {
       // Currently rounded to 3 decimal places
       return parseFloat(averagedRatio.toFixed(3));
     }, (d) => d.year);
-    console.log(vis.processedData);
+
+    vis.processedData = vis.processedData.sort();
+    mechanicalChangesSelectedYears = [];
+    // some sort of default years selected?
+    // eslint-disable-next-line max-len
+    mechanicalChangesSelectedYears.push(vis.processedData[d3.minIndex(vis.processedData, (d) => d[1])][0]);
+    // eslint-disable-next-line max-len
+    mechanicalChangesSelectedYears.push(vis.processedData[d3.maxIndex(vis.processedData, (d) => d[1])][0]);
+    vis.updateVis();
+  }
+
+  updateVis() {
+    const vis = this;
 
     // accessors for the data
-    vis.yearAccessor = (d) => d[0]; // x-axis accesor for rollup data
-    vis.avgRatioAccessor = (d) => d[1]; // y-axis accesor for rollup data
+    vis.xValue = (d) => d[0]; // x-axis accesor for rollup data
+    vis.yValue = (d) => d[1]; // y-axis accesor for rollup data
+    vis.yearAccessor = vis.xValue;
 
     vis.renderVis();
   }
@@ -125,34 +137,17 @@ class MechanicalChangesMainOverview {
       .join('path')
       .attr('class', 'chart-line-pwr')
       .attr('fill', 'none')
-      .attr('stroke', 'red');
+      .attr('stroke', 'grey');
 
     // TODO: how does merge work on transition?
     powerWeightRatioLine
       .merge(powerWeightRatioLine)
-      .transition()
-      .duration(1000)
-      .ease(d3.easeSinOut)
       .attr('d', d3.line()
         // .curve(d3.curveNatural)
-        .x((d) => vis.xScale(vis.yearAccessor(d)))
-        .y((d) => vis.yScaleBottom(vis.avgRatioAccessor(d))));
+        .x((d) => vis.xScale(vis.xValue(d)))
+        .y((d) => vis.yScale(vis.yValue(d))));
 
-    // eslint-disable-next-line no-unused-vars
-    const powerWeightRatioCircle = vis.marks.selectAll('.point-pwr')
-      .data(vis.processedData, (d) => d)
-      .join('circle')
-      .attr('class', 'point-pwr')
-      .attr('r', 6)
-      .attr('cy', (d) => vis.yScaleBottom(vis.avgRatioAccessor(d)))
-      .attr('cx', (d) => vis.xScale(vis.yearAccessor(d)));
-
-    powerWeightRatioCircle.merge(powerWeightRatioCircle)
-      .transition()
-      .duration(1000)
-      .ease(d3.easeSinOut)
-      .attr('fill-opacity', 0.5)
-      .attr('fill', 'red');
+    const powerWeightRatioCircle = getCircles(vis, 'mc-main-overview', mechanicalChangesSelectedYears, null);
 
     powerWeightRatioCircle.on('mouseover', (event, d) => {
       powerWeightRatioCircle.attr('cursor', 'pointer');
@@ -174,6 +169,17 @@ class MechanicalChangesMainOverview {
           .style('left', `${0}px`)
           .style('top', `${0}px`)
           .style('opacity', 0);
+      })
+      .on('click', (event, d) => {
+        if (mechanicalChangesSelectedYears.includes(d[0])) {
+          // eslint-disable-next-line max-len
+          mechanicalChangesSelectedYears = mechanicalChangesSelectedYears.filter((year) => year !== d[0]);
+        } else {
+          mechanicalChangesSelectedYears.push(d[0]);
+        }
+        mechanicalChangesMainOverview.updateVis();
+        mechanicalChangesOverview.updateVis();
+        mechanicalChangesDetailView.updateVis();
       });
 
     // Update the axes
