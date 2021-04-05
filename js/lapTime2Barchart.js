@@ -21,6 +21,7 @@ class Barchart {
     this.reatimeLap = _reatimeLap;
     this.dropDownReady = false;
     this.initVis();
+    this.lt2SelectedYears = [];
   }
 
   /**
@@ -144,7 +145,23 @@ class Barchart {
       .attr('width', 35)
       .attr('height', (d) => vis.height - vis.yScale(vis.yValue(d)))
       .attr('y', (d) => vis.yScale(vis.yValue(d)))
-      .attr('fill', () => '#800020');
+      .attr('fill', () => '#800020')
+      .attr('stroke', '#FF0000')
+      .attr('stroke-width', (d) => {
+        if (vis.lt2SelectedYears.includes(d.year)) {
+          return '3';
+        }
+        return '0';
+      })
+      .on('click', (event, d) => {
+        console.log(d)
+        if (vis.lt2SelectedYears.includes(d.year)) {
+          vis.lt2SelectedYears = vis.lt2SelectedYears.filter((year) => year !== d.year);
+        } else {
+          vis.lt2SelectedYears.push(d.year);
+        }
+        vis.updateVis();
+      });
 
     // Update axes
     vis.xAxisG.call(vis.xAxis);
@@ -165,6 +182,8 @@ class Barchart {
     d3.select('#selectButton').on('change', function () {
       // recover the option that has been chosen
       vis.selectedTrack = d3.select(this).property('value');
+      // clear the selected years for new track
+      vis.lt2SelectedYears = [];
       // run the updateChart function with this selected option
       vis.updateVis();
     });
