@@ -84,8 +84,8 @@ class MechanicalChangesOverview {
   updateVis() {
     const vis = this;
 
-    // TODO: Remove this?
     // Filter data to show only points where the GDP is known
+    // This should be filtered on mechanicalChangesSelectedYears; 
     vis.filteredData = vis.data;
 
     // Specify accessor functions

@@ -107,6 +107,7 @@ class MechanicalChangesDetailView {
     const vis = this;
 
     // TODO: Setup proper filter
+    // TODO: !! This should be filtered on both mcselectedYears and mcselectedGroups
     if (mechanicalChangesSelectedGroup) {
       vis.filteredData = d3.filter(vis.data, (d) => d.group === mechanicalChangesSelectedGroup);
       vis.renderVis();

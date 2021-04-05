@@ -4,6 +4,8 @@ module.exports = {
         "d3": true,
         "mechanicalChangesOverview": true, "MechanicalChangesOverview": true,
         "mechanicalChangesDetailView": true, "MechanicalChangesDetailView": true,
+        "mechanicalChangesMainOverview": true, "MechanicalChangesMainOverview": true,
+        "mechanicalChangesSelectedYears": true,
         "mechanicalChangesSelectedGroup": true,
 
         "lapTime0": true, "LapTime0": true,
