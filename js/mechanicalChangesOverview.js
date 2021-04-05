@@ -84,10 +84,18 @@ class MechanicalChangesOverview {
   updateVis() {
     const vis = this;
 
+    // TODO: Remove this?
     // Filter data to show only points where the GDP is known
-    // This should be filtered on mechanicalChangesSelectedYears; 
-    vis.filteredData = vis.data;
+    // vis.filteredData = vis.data;
 
+    if (mechanicalChangesSelectedYears) {
+      vis.filteredData = vis.data.filter((d) => mechanicalChangesSelectedYears.includes(d.year));
+      console.log(vis.filteredData);
+    } else {
+      vis.marks.selectAll('.mech-overview-point')
+        .remove();
+      this.drawAxis();
+    }
     // Specify accessor functions
     vis.xValue = (d) => d.power;
     vis.yValue = (d) => d.weight;
@@ -105,7 +113,10 @@ class MechanicalChangesOverview {
 
     // Add circles
     const circles = vis.chart.selectAll('.mech-overview-point')
-      .data(vis.filteredData, (d) => d)
+      .data(vis.filteredData, (d) => {
+        console.log(d);
+        return d;
+      })
       .join('circle')
       .attr('class', 'mech-overview-point')
       .attr('r', 5)
