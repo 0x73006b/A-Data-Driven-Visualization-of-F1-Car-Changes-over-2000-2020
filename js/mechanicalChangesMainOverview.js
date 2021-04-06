@@ -122,7 +122,6 @@ class MechanicalChangesMainOverview {
     // accessors for the data
     vis.xValue = (d) => d[0]; // x-axis accesor for rollup data
     vis.yValue = (d) => d[1]; // y-axis accesor for rollup data
-    vis.yearAccessor = vis.xValue;
 
     vis.renderVis();
   }
@@ -147,7 +146,20 @@ class MechanicalChangesMainOverview {
         .x((d) => vis.xScale(vis.xValue(d)))
         .y((d) => vis.yScale(vis.yValue(d))));
 
-    const powerWeightRatioCircle = getCircles(vis, 'mc-main-overview', mechanicalChangesSelectedYears, null);
+    const powerWeightRatioCircle = vis.chart.selectAll(`.mc-main-overview-point`)
+      .data(vis.processedData)
+      .join('circle')
+      .attr('class', (d) => (mechanicalChangesSelectedYears.includes(vis.xValue(d)) ? 'mc-main-overview-point mc-main-overview-selected' : 'mc-main-overview-point'))
+      .attr('id', (d) => `mc-main-overview-point-${vis.yValue(d)}-${vis.xValue(d)}`)
+      .attr('r', () => 5)
+      .attr('cy', (d) => vis.yScale(vis.yValue(d)))
+      .attr('cx', (d) => vis.xScale(vis.xValue(d)))
+      .attr('fill', (d) => {
+        if (mechanicalChangesSelectedYears.includes(vis.xValue(d))) {
+          return 'green';
+        }
+        return '#8e8e8e';
+      });
 
     powerWeightRatioCircle.on('mouseover', (event, d) => {
       powerWeightRatioCircle.attr('cursor', 'pointer');
