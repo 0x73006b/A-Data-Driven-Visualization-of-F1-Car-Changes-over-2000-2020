@@ -19,6 +19,12 @@ const colorScale = d3.scaleOrdinal()
   .range(colors)
   .domain([2000, 2021]);
 
+// color scale for mechanical changes Overview, by constructor group
+// eslint-disable-next-line no-unused-vars
+const colorScaleGroup = d3.scaleOrdinal()
+  .range(colors)
+  .domain([1, 16]);
+
 /**
  * Take in lap time string in Minutes:Seconds:Milliseconds and convert it to milliseconds number.
  * @param d
@@ -92,6 +98,7 @@ function axisLabel(vis, isX, title, xOffset, yOffset) {
  * @param radius {null|number} - Circle's radius.
  * @returns {*}
  */
+// accessor is typically year, but can be group too (Mechanical changes)
 // eslint-disable-next-line no-unused-vars
 function getCircles(vis, chartName, dataArray, radius) {
   return vis.chart.selectAll(`.${chartName}-point`)

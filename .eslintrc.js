@@ -16,6 +16,7 @@ module.exports = {
         "chartTitle":true,
         "axisLabel":true,
         "colorScale":true,
+        "colorScaleGroup":true,
 
         "getMinuteStringFromMillisecond": true,
         "getMillisecondsFromTimeString":true,

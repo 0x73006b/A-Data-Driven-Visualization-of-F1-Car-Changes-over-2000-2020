@@ -90,7 +90,6 @@ class MechanicalChangesOverview {
 
     if (mechanicalChangesSelectedYears) {
       vis.filteredData = vis.data.filter((d) => mechanicalChangesSelectedYears.includes(d.year));
-      console.log(vis.filteredData);
     } else {
       vis.marks.selectAll('.mech-overview-point')
         .remove();
@@ -99,7 +98,8 @@ class MechanicalChangesOverview {
     // Specify accessor functions
     vis.xValue = (d) => d.power;
     vis.yValue = (d) => d.weight;
-
+    // TODO: change
+    vis.groupAccessor = (d) => d.group;
     // Set the scale input domains
     vis.xScale.domain([d3.min(vis.filteredData, vis.xValue), d3.max(vis.filteredData, vis.xValue)]);
     vis.yScale.domain([d3.min(vis.filteredData, vis.yValue), d3.max(vis.filteredData, vis.yValue)]);
@@ -113,17 +113,19 @@ class MechanicalChangesOverview {
 
     // Add circles
     const circles = vis.chart.selectAll('.mech-overview-point')
-      .data(vis.filteredData, (d) => {
-        console.log(d);
-        return d;
-      })
+      .data(vis.filteredData, (d) => d)
       .join('circle')
       .attr('class', 'mech-overview-point')
       .attr('r', 5)
       .attr('cy', (d) => vis.yScale(vis.yValue(d)))
       .attr('cx', (d) => vis.xScale(vis.xValue(d)))
-      .attr('fill', (d) => (d.group === mechanicalChangesSelectedGroup ? 'green' : 'red'));
-
+      .attr('fill', (d) => {
+        if (d.group === mechanicalChangesSelectedGroup) {
+          return 'black';
+        }
+        return colorScaleGroup(vis.groupAccessor(d));
+      })
+      .style('opacity', (d) => (d.group === mechanicalChangesSelectedGroup ? 1 : 0.8));
     // Detail View Selector
     circles.on('click', (e, d) => {
       if (mechanicalChangesSelectedGroup === d.group) {

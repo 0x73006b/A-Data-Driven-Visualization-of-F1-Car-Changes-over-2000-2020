@@ -167,6 +167,7 @@ class MechanicalChangesDetailView {
       .attr('fill-opacity', 0.5)
       .attr('fill', 'red');
 
+    // eslint-disable-next-line no-unused-vars
     horsePowerCircle.on('mouseover', (event, d) => {
       horsePowerCircle.attr('cursor', 'pointer');
       d3.select('#tooltip')
