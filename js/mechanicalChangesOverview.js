@@ -78,6 +78,13 @@ class MechanicalChangesOverview {
     axisLabel(vis, true, 'Power', 0, 0);
     axisLabel(vis, false, 'Weight', 0, 0);
 
+    // Specify accessor functions
+    vis.xValue = (d) => d.power;
+    vis.yValue = (d) => d.weight;
+    // Set the scale input domains
+    vis.xScale.domain([d3.min(vis.data, vis.xValue), d3.max(vis.data, vis.xValue)]);
+    vis.yScale.domain([d3.min(vis.data, vis.yValue), d3.max(vis.data, vis.yValue)]);
+
     vis.updateVis();
   }
 
@@ -100,9 +107,6 @@ class MechanicalChangesOverview {
     vis.yValue = (d) => d.weight;
     // TODO: change
     vis.groupAccessor = (d) => d.group;
-    // Set the scale input domains
-    vis.xScale.domain([d3.min(vis.filteredData, vis.xValue), d3.max(vis.filteredData, vis.xValue)]);
-    vis.yScale.domain([d3.min(vis.filteredData, vis.yValue), d3.max(vis.filteredData, vis.yValue)]);
 
     vis.renderVis();
   }
