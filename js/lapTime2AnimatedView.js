@@ -141,6 +141,7 @@ class RealTimeLap {
   updateAnimation(trackNum, sectorNum) {
     const vis = this;
     const sectorLength = vis.animationPaths[trackNum][sectorNum].node().getTotalLength();
+    console.log(vis.animationPaths[trackNum][sectorNum])
     vis.animationPaths[trackNum][sectorNum]
       .attr('stroke-width', 3)
       .attr('stroke', vis.trackColor[trackNum][sectorNum])
