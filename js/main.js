@@ -13,7 +13,7 @@ let circuitData;
 
 // TODO: Setup charts here
 Promise.all([
-  d3.json('data/Filtered Merged Circuit.json'),
+  d3.json('data/circuitData.json'),
   d3.json('data/car_data.json'),
 ])
   .then((data) => {
