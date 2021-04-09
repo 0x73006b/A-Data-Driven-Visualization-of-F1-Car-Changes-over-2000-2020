@@ -28,7 +28,7 @@ function getMillisecondsFromTimeString(d) {
   const minuteParsed = d.bestLapTime.split(':');
   const secondParsed = minuteParsed[1].split('.');
   const millis = secondParsed[1];
-  return ((+minuteParsed[0] * 60 + (+secondParsed[0])) * 1000 + (+millis) * 10);
+  return ((+minuteParsed[0] * 60 + (+secondParsed[0])) * 1000 + (+millis));
 }
 
 /**

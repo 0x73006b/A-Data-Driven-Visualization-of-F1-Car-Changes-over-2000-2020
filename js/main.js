@@ -2,6 +2,7 @@
 let mechanicalChangesOverview;
 let mechanicalChangesDetailView;
 let mechanicalChangesData;
+let sectorData;
 let mechanicalChangesSelectedGroup = null;
 let lt0lt1SelectedYears = [];
 
@@ -15,14 +16,15 @@ let circuitData;
 Promise.all([
   d3.json('data/Filtered Merged Circuit.json'),
   d3.json('data/car_data.json'),
+  d3.json('data/filtered_sector_time.json'),
 ])
   .then((data) => {
-    [circuitData, mechanicalChangesData] = data;
+    [circuitData, mechanicalChangesData, sectorData] = data;
 
     // console.log(d3.rollup(circuitData, d=>d.length, d=>d.year));
 
     // converting lap time from minute:second.10*millis to millis
-
+    console.log(sectorData);
     circuitData.map((d) => d.laptimeMillis = getMillisecondsFromTimeString(d));
 
     // Create Mechanical Changes Scatterplot
@@ -37,7 +39,7 @@ Promise.all([
 
     // Create LT2
     reatimeMap = new RealTimeLap({ parentElement: '#laptime2-reatimeLap' }, circuitData);
-    barchart = new Barchart({ parentElement: '#lap-time-2-barchart' }, circuitData, reatimeMap);
+    barchart = new Barchart({ parentElement: '#lap-time-2-barchart' }, sectorData, reatimeMap);
   })
   // eslint-disable-next-line no-console
   .catch((error) => console.error(error));
