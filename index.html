@@ -8,36 +8,37 @@
 </head>
 <body>
 <!-- Add HTML content, SVG drawing area, ... -->
-<h1>A Data Driven Visualization of F1 Car Changes over 2000-2020</h1>
-<div class="step" id="step0">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-    magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
-    suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
-</div>
+<!--<h1>A Data Driven Visualization of F1 Car Changes over 2000-2020</h1>-->
+<!--<div class="step" id="step0">-->
+<!--    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore-->
+<!--    magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim-->
+<!--    suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.-->
+<!--</div>-->
 <p/>
-<div class="step" id="step1" style="display: inherit">
-        <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate
-            dignissim suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
-            Diam in arcu cursus euismod quis viverra nibh cras pulvinar. Scelerisque mauris pellentesque pulvinar
-            pellentesque habitant.At imperdiet dui accumsan sit amet. Amet est placerat in egestas. Convallis tellus id
-            interdum velit laoreet id. Ornare quam viverra orci sagittis eu. Diam donec adipiscing tristique risus nec.
-            Lacus vel facilisis volutpat est velit egestas. Pulvinar elementum integer enim neque volutpat ac.
-            Praesent tristique magna sit amet purus gravida.
-        </span>
-    <span style="display: inherit; flex-flow: column">
-        <img src="data/Legends_mc.png" alt="mc_legend" width="350" height="100">
-            <svg id="mechanical-changes-overview"></svg>
-            <svg id="mechanical-changes-detail-view"></svg>
-        </span>
-</div>
+<!--<div class="step" id="step1" style="display: inherit">-->
+<!--        <span>-->
+<!--            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et-->
+<!--            dolore magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate-->
+<!--            dignissim suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.-->
+<!--            Diam in arcu cursus euismod quis viverra nibh cras pulvinar. Scelerisque mauris pellentesque pulvinar-->
+<!--            pellentesque habitant.At imperdiet dui accumsan sit amet. Amet est placerat in egestas. Convallis tellus id-->
+<!--            interdum velit laoreet id. Ornare quam viverra orci sagittis eu. Diam donec adipiscing tristique risus nec.-->
+<!--            Lacus vel facilisis volutpat est velit egestas. Pulvinar elementum integer enim neque volutpat ac.-->
+<!--            Praesent tristique magna sit amet purus gravida.-->
+<!--        </span>-->
+<!--    <span style="display: inherit; flex-flow: column">-->
+<!--        <img src="data/Legends_mc.png" alt="mc_legend" width="350" height="100">-->
+<!--            <svg id="mechanical-changes-overview"></svg>-->
+<!--            <svg id="mechanical-changes-detail-view"></svg>-->
+<!--        </span>-->
+<!--</div>-->
 
 <div class="step" id="step2">
+    <h1>Lap Time 0 + Lap Time 1</h1>
     <button type="button" id="lap-time-0-clear">Clear</button>
     <button type="button" id="lap-time-0-reset">Reset</button>
-    <div id="lt0-lt1-container" style="display: flex; flex-direction: row">
-        <div id="leftCol">
+    <div id="lt0-lt1-container" style="display: flex; flex-direction: column">
+        <div id="lt0-lt1-top">
             sfsdfsdfsf
             <svg id="lap-time-0"></svg>
         </div>
@@ -56,7 +57,7 @@
 </div>
 
 <!-- D3 bundle -->
-<script src="js/d3.v6.min.js"></script>
+<script src="js/utils/d3.v6.min.js"></script>
 
 <!-- Our JS code -->
 <script src="js/main.js"></script>
