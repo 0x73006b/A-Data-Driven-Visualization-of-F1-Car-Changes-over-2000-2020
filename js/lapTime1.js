@@ -64,30 +64,46 @@ class LapTime1 {
     vis.xScale.domain(d3.extent(vis.data, (c) => c.year));
     vis.yScale.domain(d3.extent(vis.data, (c) => c.laptimeMillis));
     // group the vis.data
-    vis.metrics = Array.from(d3.group(vis.data,
-      (d) => d.circuitName),
-    ([key, value]) => ({ key, value }));
-    vis.metrics.forEach((track) => track.value.sort((a, b) => d3.ascending(a.year, b.year)));
+    vis.tracks = Array.from(d3.group(vis.data, (d) => d.circuitName), ([key, value]) => ({ key, value }));
+    vis.tracks.sort((a, b) => d3.descending(a.value.length, b.value.length));
+    vis.tracks.forEach((track) => track.value.sort((a, b) => d3.ascending(a.year, b.year)));
 
     vis.svg = d3.select('#lap-time-1');
 
+    vis.svg = vis.svg.selectAll('svg');
+    vis.chart = vis.svg.data(vis.tracks)
+      .join('svg')
+      .attr('class', (d) => d.value[0].circuitRef)
+      .attr('width', vis.config.containerWidth)
+      .attr('height', vis.config.containerHeight)
+      .append('g');
+
+    vis.tracks.forEach((circuitGroup) => {
+      const currentCircuit = vis.circuitRef(circuitGroup);
+      const chart = d3.selectAll(currentCircuit);
+      chart.append('text')
+        .attr('text-anchor', 'start')
+        .attr('y', 0)
+        .attr('x', 0)
+        .attr('font-size', 12)
+        .text((d) => d.key)
+        .style('fill', 'black');
+      d3.select(currentCircuit)
+        .append('g')
+        .call(vis.yAxis);
+
+      d3.select(currentCircuit)
+        .append('g')
+        .attr('transform', `translate(0,${vis.height})`)
+        .call(vis.xAxis)
+    });
     vis.updateVis();
   }
 
   updateVis() {
     const vis = this;
-    vis.svg = vis.svg.selectAll('svg');
-    vis.chart = vis.svg.data(vis.metrics)
-      .join('svg')
-      .attr('class', (d) => d.value[0].circuitRef)
-      .attr('width', vis.config.containerWidth)
-      .attr('height', vis.config.containerHeight)
-      .style('padding-left', '15px')
-  .append('g')
-      // .attr('transform', `translate(${vis.config.margin.left},${vis.config.margin.top})`);
 
-    // loop over the vis.data and create the bars
-    vis.metrics.forEach((circuitGroup) => {
+    vis.tracks.forEach((circuitGroup) => {
       vis.renderVis(circuitGroup);
     });
   }
@@ -136,32 +152,5 @@ class LapTime1 {
           .style('left', `${event.pageX + vis.config.margin.left}px`)
           .style('top', `${event.pageY + vis.config.margin.top}px`);
       });
-
-    // call axis just on this SVG
-    // kind of a hack
-    if (counter < 35) {
-      chart.append('text')
-        .attr('text-anchor', 'start')
-        .attr('y', 20)
-        .attr('x', 0)
-        .attr('font-size', 12)
-        .text((d) => d.key)
-        .style('fill', 'black');
-
-      // console.log(counter);
-      counter++;
-      d3.select(`svg.${circuitGroup.value[0].circuitRef}`)
-        .append('g')
-        .call(vis.yAxis);
-
-      d3.select(`svg.${circuitGroup.value[0].circuitRef}`)
-        .append('g')
-        .attr('transform', `translate(0,${vis.height})`)
-        .call(vis.xAxis)
-        // .selectAll('text')
-        // .attr('font-size', 6)
-        // .attr('text-anchor', 'start')
-        // .attr('transform', 'translate(5, 5), rotate(45)');
-    }
   }
 }
