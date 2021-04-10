@@ -5,9 +5,9 @@ let mechanicalChangesData;
 let mechanicalChangesSelectedGroup = null;
 let lt0lt1SelectedYears = [];
 
-// TODO: Remove the eslint disables once ready
+let improvedMultiplier;
+
 let lapTime0;
-// eslint-disable-next-line no-unused-vars
 let lapTime1;
 let circuitData;
 
@@ -15,14 +15,16 @@ let circuitData;
 Promise.all([
   d3.json('data/circuitData.json'),
   d3.json('data/car_data.json'),
+  d3.json('data/lt0.json'),
 ])
   .then((data) => {
-    [circuitData, mechanicalChangesData] = data;
+    [circuitData, mechanicalChangesData, improvedMultiplier] = data;
+
+    // console.log(improvedMultiplier, averagedMultiplier);
 
     // console.log(d3.rollup(circuitData, d=>d.length, d=>d.year));
 
     // converting lap time from minute:second.10*millis to millis
-
     circuitData.map((d) => d.laptimeMillis = getMillisecondsFromTimeString(d));
 
     // Create Mechanical Changes Scatterplot
@@ -30,7 +32,7 @@ Promise.all([
     mechanicalChangesDetailView = new MechanicalChangesDetailView({ parentElement: '#mechanical-changes-detail-view' }, mechanicalChangesData.data);
 
     // Create LT0
-    lapTime0 = new LapTime0({ parentElement: '#lap-time-0' }, circuitData);
+    lapTime0 = new LapTime0({ parentElement: '#lap-time-0' }, improvedMultiplier);
 
     // Create LT1
     lapTime1 = new LapTime1({ parentElement: '#lap-time-1' }, circuitData);
