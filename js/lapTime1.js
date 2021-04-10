@@ -1,157 +1,140 @@
-// TODO: Better comments lol
+// eslint-disable-next-line no-unused-vars
+let counter = 0;
+
 class LapTime1 {
-  /**
-   * Class constructor with basic chart configuration
-   * @param {Object} _config
-   * @param {Array} _data
-   */
   constructor(_config, _data) {
+    // Set the sizing metrics
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 1000,
-      containerHeight: 350,
+      containerWidth: 180,
+      containerHeight: 180,
       tooltipPadding: 15,
+      // eslint-disable-next-line no-unused-vars
       margin: {
-        top: 30,
-        right: 50,
-        bottom: 190,
-        left: 70,
+        top: 15,
+        right: 10,
+        bottom: 40,
+        left: 50,
       },
     };
     this.data = _data;
-    this.processedData = null;
+    this.initData();
+  }
+
+  initData() {
+    const vis = this;
+
+    vis.yValue = (d) => d.laptimeMillis;
+    vis.xValue = (d) => d.year;
+    vis.keyValue = (d) => d.key;
+    vis.yearAccessor = (d) => d.year;
+
     this.initVis();
   }
 
-  /**
-   * Initialize scales/axes and append static elements, such as axis titles
-   */
+  // Create the axes
   initVis() {
     const vis = this;
 
-    // Calculate inner chart size. Margin specifies the space around the actual chart.
     vis.width = vis.config.containerWidth - vis.config.margin.left - vis.config.margin.right;
     vis.height = vis.config.containerHeight - vis.config.margin.top - vis.config.margin.bottom;
 
-    // Initialize scales
-    vis.xScale = d3.scaleBand()
+    vis.xScale = d3.scaleLinear()
+      .domain(d3.extent(vis.data, (d) => vis.xValue(d)))
       .range([0, vis.width]);
 
     vis.yScale = d3.scaleLinear()
+      .domain([d3.min(vis.data, (d) => vis.yValue(d)), d3.max(vis.data, (d) => vis.yValue(d))])
       .range([vis.height, 0]);
 
-    // Initialize axes
     vis.xAxis = d3.axisBottom(vis.xScale)
-      .tickSize(-vis.height)
+      .ticks(3)
+      .tickSizeOuter(0)
       .tickPadding(10)
-      .tickFormat((d) => d);
+      .tickFormat((x) => x);
 
+    // Initialize Y-Axis
     vis.yAxis = d3.axisLeft(vis.yScale)
-      .ticks(6)
-      .tickSize(-vis.width - 10)
-      .tickPadding(10)
-      .tickFormat((d) => getMinuteStringFromMillisecond(d));
+      .ticks(5)
+      .tickSizeOuter(0)
+      .tickPadding(-5)
+      .tickFormat((x) => getMinuteStringFromMillisecond(x));
 
-    // Define size of SVG drawing area
-    vis.svg = d3.select(vis.config.parentElement)
-      .attr('width', vis.config.containerWidth)
-      .attr('height', vis.config.containerHeight);
+    // set the x domain
+    vis.xScale.domain(d3.extent(vis.data, (c) => c.year));
+    vis.yScale.domain(d3.extent(vis.data, (c) => c.laptimeMillis));
+    // group the vis.data
+    vis.metrics = Array.from(d3.group(vis.data,
+      (d) => d.circuitName),
+    ([key, value]) => ({ key, value }));
+    vis.metrics.forEach((track) => track.value.sort((a, b) => d3.ascending(a.year, b.year)));
 
-    // Append group element that will contain our actual chart
-    // and position it according to the given margin config
-    vis.chart = vis.svg.append('g')
-      .attr('transform', `translate(${vis.config.margin.left},${vis.config.margin.top})`);
-
-    // Append empty x-axis group and move it to the bottom of the chart
-    // todo: rotate text
-    vis.xAxisG = vis.chart.append('g')
-      .attr('class', 'axis x-axis')
-      .attr('transform', `translate(0,${vis.height})`);
-
-    // Append y-axis group
-    vis.yAxisG = vis.chart.append('g')
-      .attr('class', 'axis y-axis');
-
-    // Chart Title
-    chartTitle(vis, 'Best Lap Times', 0);
-    axisLabel(vis, true, 'Tracks', 0, -50);
-    axisLabel(vis, false, 'Best Lap Time (in Minute)', 0, -30);
+    vis.svg = d3.select('#lap-time-1');
 
     vis.updateVis();
   }
 
-  /**
-   * Data updates and stuff
-   */
   updateVis() {
     const vis = this;
+    vis.svg = vis.svg.selectAll('svg');
+    vis.chart = vis.svg.data(vis.metrics)
+      .join('svg')
+      .attr('class', (d) => d.value[0].circuitRef)
+      .attr('width', vis.config.containerWidth)
+      .attr('height', vis.config.containerHeight)
+      .style('padding-left', '15px')
+  .append('g')
+      // .attr('transform', `translate(${vis.config.margin.left},${vis.config.margin.top})`);
 
-    // Accessor
-    vis.yValue = (d) => d.laptimeMillis;
-    vis.xValue = (d) => d.circuitName;
-    vis.yearAccessor = (d) => d.year;
-
-    // TODO: Move this out into main -- something similar used by LT2 as well
-    // group by circuitName
-    // get circuit names
-    let tracks = vis.data.map((entry) => entry.circuitName).sort();
-    tracks = new Set(tracks);
-    vis.xScale.domain(tracks);
-    // eslint-disable-next-line max-len
-    vis.yScale.domain([d3.min(vis.data, (d) => vis.yValue(d)), d3.max(vis.data, (d) => vis.yValue(d))]);
-
-    let lineChartData = vis.data.filter((d) => (lt0lt1SelectedYears.includes(d.year)));
-    lineChartData = lineChartData.sort((a, b) => d3.ascending(a.circuitName, b.circuitName));
-    lineChartData = d3.rollup(lineChartData, (d) => d, (d) => d.year);
-    vis.lineChartData = Array.from(lineChartData, ([year, values]) => ({ year, values }));
-
-    vis.processedData = vis.data;
-
-    vis.renderVis();
+    // loop over the vis.data and create the bars
+    vis.metrics.forEach((circuitGroup) => {
+      vis.renderVis(circuitGroup);
+    });
   }
 
-  /**
-   * Render visualization
-   */
-  renderVis() {
+  renderVis(circuitGroup) {
+    // console.log('hi');
+    const currentData = circuitGroup.value;
     const vis = this;
+    // select the right svg for this set of metrics
+    const chart = d3.selectAll(`svg.${circuitGroup.value[0].circuitRef}`);
 
-    const lt1Circles = getCircles(vis, 'lt1', lt0lt1SelectedYears, null);
-
-    const line = d3.line()
-      .x((d) => vis.xScale(vis.xValue(d)))
-      .y((d) => vis.yScale(vis.yValue(d)));
-
-    // todo: cite https://bl.ocks.org/sebg/0cc55428f83eb52bdfad6f5692023b07 for general guidance
-    const lt1Line = vis.chart.selectAll('.lap-time-1-line')
-      .data(vis.lineChartData)
+    const line = chart
+      .selectAll('.lap-time-1-line')
+      .data([currentData])
       .join('path')
       .attr('class', 'lap-time-1-line')
-      .attr('stroke', (d) => colorScale(vis.yearAccessor(d)))
-      .attr('d', (d) => line(d.values));
+      .attr('d', d3.line()
+        .x((d) => vis.xScale(vis.xValue(d)))
+        .y((d) => vis.yScale(vis.yValue(d)))
+        .curve(d3.curveMonotoneX));
 
-    // If in selection, raise points that may be covered by others
-    vis.chart.selectAll('.lt1-selected')
-      .raise();
+    // console.log(line.data()[0])
 
-    lt1Circles.on('click', (event, d) => {
-      if (lt0lt1SelectedYears.includes(d.year)) {
-        lt0lt1SelectedYears = lt0lt1SelectedYears.filter((year) => year !== d.year);
-      } else {
-        lt0lt1SelectedYears.push(d.year);
-      }
-      lapTime0.updateVis();
-      lapTime1.updateVis();
-    });
+    const circles = chart.selectAll('.lt1-point')
+      .data(line.data()[0])
+      .join('circle')
+      .attr('class', (d) => (lt0lt1SelectedYears.includes(vis.yearAccessor(d)) ? 'lt1-point lt1-selected' : 'lt1-point'))
+      .attr('r', 4)
+      .attr('cy', (d) => vis.yScale(vis.yValue(d)))
+      .attr('cx', (d) => vis.xScale(vis.xValue(d)))
+      // .attr('fill', (d) => {
+      //   if (lt0lt1SelectedYears.includes(vis.yearAccessor(d))) {
+      //     return colorScale(vis.yearAccessor(d));
+      //   }
+      //   return '#8e8e8e';
+      // });
 
-    lt1Circles.on('mouseover', (event, d) => {
-      lt1Circles.attr('cursor', 'pointer');
+    // console.log('lt1Circles', lt1Circles)
+
+    circles.on('mouseover', (e, d) => {
+      // console.log(d);
+      circles.attr('cursor', 'pointer');
       d3.select('#tooltip')
         .style('opacity', 1)
         .html((`
             <div class="tooltip-label">
-                <div class="tooltip-title">Laptime at ${d.circuitName} for ${d.year}</div>
-                ${d.bestLapTime}
+            ${d.year}
             </div>
            `));
     })
@@ -161,21 +144,35 @@ class LapTime1 {
       })
       .on('mousemove', (event) => {
         d3.select('#tooltip')
-          .style('left', `${event.pageX + vis.config.tooltipPadding}px`)
-          .style('top', `${event.pageY + vis.config.tooltipPadding}px`);
+          .style('left', `${event.pageX + vis.config.margin.left}px`)
+          .style('top', `${event.pageY + vis.config.margin.top}px`);
       });
 
-    vis.xAxisG
-      .call(vis.xAxis)
-      .selectAll('text')
-      .attr('text-anchor', 'start')
-      .attr('transform', 'translate(0, 5), rotate(45)');
-    // .call((g) => g.select('.domain')
-    //   .remove());
+    // call axis just on this SVG
+    // kind of a hack
+    if (counter < 35) {
+      chart.append('text')
+        .attr('text-anchor', 'start')
+        .attr('y', 20)
+        .attr('x', 0)
+        .attr('font-size', 12)
+        .text((d) => d.key)
+        .style('fill', 'black');
 
-    vis.yAxisG
-      .call(vis.yAxis);
-    // .call((g) => g.select('.domain')
-    //   .remove());
+      // console.log(counter);
+      counter++;
+      d3.select(`svg.${circuitGroup.value[0].circuitRef}`)
+        .append('g')
+        .call(vis.yAxis);
+
+      d3.select(`svg.${circuitGroup.value[0].circuitRef}`)
+        .append('g')
+        .attr('transform', `translate(0,${vis.height})`)
+        .call(vis.xAxis)
+        // .selectAll('text')
+        // .attr('font-size', 6)
+        // .attr('text-anchor', 'start')
+        // .attr('transform', 'translate(5, 5), rotate(45)');
+    }
   }
 }
