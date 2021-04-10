@@ -42,6 +42,7 @@ class RealTimeLap {
     vis.chart = vis.svg.append('g')
       .attr('transform', `translate(${vis.config.margin.left},${vis.config.margin.top})`);
 
+    vis.iterateNum = 0
     vis.selectedTrack = '';
     vis.startLap = -1;
     vis.trackColor = [['#800020', '#87ceff', '#FFD300'], ['#8000F0', '#86ce0f', '#FFD3F0']];
@@ -54,6 +55,7 @@ class RealTimeLap {
    */
   updateVis(_selectedTrack, _startLap) {
     const vis = this;
+    vis.iterateNum += 1;
     vis.selectedTrack = _selectedTrack;
     vis.startLap = _startLap;
     vis.renderVis();
@@ -125,36 +127,35 @@ class RealTimeLap {
               .attr('dy', '.35em')
               .text('Selected track is not available for animation');
           });
-      } else if (vis.startLap < 3) {
-        vis.updateAnimation();
       }
     }
     // start button
     d3.select('#startButton')
       // eslint-disable-next-line no-unused-vars
       .on('click', (_event, d) => {
-        vis.updateAnimation(0, 0);
-        vis.updateAnimation(1, 0);
+        vis.updateAnimation(0, 0, vis.iterateNum);
+        vis.updateAnimation(1, 0, vis.iterateNum);
       });
   }
 
-  updateAnimation(trackNum, sectorNum) {
+  updateAnimation(trackNum, sectorNum, iterateNum) {
     const vis = this;
-    const sectorLength = vis.animationPaths[trackNum][sectorNum].node().getTotalLength();
-    console.log(vis.animationPaths[trackNum][sectorNum])
-    vis.animationPaths[trackNum][sectorNum]
-      .attr('stroke-width', 3)
-      .attr('stroke', vis.trackColor[trackNum][sectorNum])
-      .attr('stroke-dasharray', `${sectorLength} ${sectorLength}`)
-      .attr('stroke-dashoffset', sectorLength)
-      .transition()
-      .duration(vis.sectorTime[trackNum][sectorNum])
-      .ease(d3.easeLinear)
-      .attr('stroke-dashoffset', 0)
-      .on('end', () => {
-        if (sectorNum < 2) {
-          vis.updateAnimation(trackNum, sectorNum + 1);
-        }
-      });
+    if (iterateNum >= vis.iterateNum) {
+      const sectorLength = vis.animationPaths[trackNum][sectorNum].node().getTotalLength();
+      vis.animationPaths[trackNum][sectorNum]
+        .attr('stroke-width', 3)
+        .attr('stroke', vis.trackColor[trackNum][sectorNum])
+        .attr('stroke-dasharray', `${sectorLength} ${sectorLength}`)
+        .attr('stroke-dashoffset', sectorLength)
+        .transition()
+        .duration(vis.sectorTime[trackNum][sectorNum])
+        .ease(d3.easeLinear)
+        .attr('stroke-dashoffset', 0)
+        .on('end', () => {
+          if (sectorNum < 2) {
+            vis.updateAnimation(trackNum, sectorNum + 1, iterateNum);
+          }
+        });
+    }
   }
 }
