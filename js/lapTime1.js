@@ -3,11 +3,10 @@ let counter = 0;
 
 class LapTime1 {
   constructor(_config, _data) {
-    // Set the sizing metrics
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 180,
-      containerHeight: 180,
+      containerWidth: 240,
+      containerHeight: 100,
       tooltipPadding: 15,
       // eslint-disable-next-line no-unused-vars
       margin: {
@@ -28,6 +27,7 @@ class LapTime1 {
     vis.xValue = (d) => d.year;
     vis.keyValue = (d) => d.key;
     vis.yearAccessor = (d) => d.year;
+    vis.circuitRef = (d) => (`svg.${d.value[0].circuitRef}`);
 
     this.initVis();
   }
@@ -93,11 +93,10 @@ class LapTime1 {
   }
 
   renderVis(circuitGroup) {
-    // console.log('hi');
     const currentData = circuitGroup.value;
     const vis = this;
-    // select the right svg for this set of metrics
-    const chart = d3.selectAll(`svg.${circuitGroup.value[0].circuitRef}`);
+    const currentCircuit = vis.circuitRef(circuitGroup);
+    const chart = d3.selectAll(currentCircuit);
 
     const line = chart
       .selectAll('.lap-time-1-line')
@@ -109,8 +108,6 @@ class LapTime1 {
         .y((d) => vis.yScale(vis.yValue(d)))
         .curve(d3.curveMonotoneX));
 
-    // console.log(line.data()[0])
-
     const circles = chart.selectAll('.lt1-point')
       .data(line.data()[0])
       .join('circle')
@@ -118,14 +115,6 @@ class LapTime1 {
       .attr('r', 4)
       .attr('cy', (d) => vis.yScale(vis.yValue(d)))
       .attr('cx', (d) => vis.xScale(vis.xValue(d)))
-      // .attr('fill', (d) => {
-      //   if (lt0lt1SelectedYears.includes(vis.yearAccessor(d))) {
-      //     return colorScale(vis.yearAccessor(d));
-      //   }
-      //   return '#8e8e8e';
-      // });
-
-    // console.log('lt1Circles', lt1Circles)
 
     circles.on('mouseover', (e, d) => {
       // console.log(d);
