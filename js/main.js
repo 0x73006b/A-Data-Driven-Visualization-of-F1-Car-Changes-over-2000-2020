@@ -11,7 +11,6 @@ let lapTime0;
 let lapTime1;
 let circuitData;
 
-// TODO: Setup charts here
 Promise.all([
   d3.json('data/circuitData.json'),
   d3.json('data/car_data.json'),
@@ -19,10 +18,6 @@ Promise.all([
 ])
   .then((data) => {
     [circuitData, mechanicalChangesData, improvedMultiplier] = data;
-
-    // console.log(improvedMultiplier, averagedMultiplier);
-
-    // console.log(d3.rollup(circuitData, d=>d.length, d=>d.year));
 
     // converting lap time from minute:second.10*millis to millis
     circuitData.map((d) => d.laptimeMillis = getMillisecondsFromTimeString(d));
