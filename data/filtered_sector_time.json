@@ -1,12 +1,12 @@
 [
   {
-    "year": 2018,
+    "year": 2014,
     "circuitName": "Circuit de Monaco",
-    "sector1": 18.638,
-    "sector2": 33.392,
-    "sector3": 18.779,
-    "Team": "Red Bull",
-    "Driver": "D. Ricciardo",
+    "sector1": 19.826,
+    "sector2": 35.241,
+    "sector3": 20.922,
+    "Team": "Mercedes",
+    "Driver": "N. Rosberg"
   },
   {
     "year": 2019,
@@ -15,16 +15,16 @@
     "sector2": 33.096,
     "sector3": 18.667,
     "Team": "Mercedes",
-    "Driver": "L. Hamilton",
+    "Driver": "L. Hamilton"
   },
   {
-    "year": 2018,
+    "year": 2014,
     "circuitName": "Suzuka Circuit",
-    "sector1": 30.913,
-    "sector2": 39.588,
-    "sector3": 17.253,
+    "sector1": 32.914,
+    "sector2": 41.484,
+    "sector3": 18.038,
     "Team": "Mercedes",
-    "Driver": "L. Hamilton"
+    "Driver": "N. Rosberg"
   },
   {
     "year": 2019,
@@ -34,5 +34,5 @@
     "sector3": 17.318,
     "Team": "Ferrari",
     "Driver": "S. Vettel"
-  },
+  }
 ]
