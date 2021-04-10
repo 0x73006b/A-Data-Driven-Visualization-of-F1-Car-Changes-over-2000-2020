@@ -4,7 +4,7 @@ body {
     display: flex;
     flex-flow: column;
     justify-content: center;
-    width: 1000px;
+    width: 1300px;
     margin: auto;
 }
 
@@ -33,25 +33,22 @@ body {
     opacity: 0.35;
 }
 
-.lap-time-0-line {
+.lap-time-0-line, .lap-time-1-line {
     fill: none;
-    stroke: lightgrey;
-    stroke-width: 2px;
+    stroke: #89898E;
+    stroke-width: 1.5px;
 }
 
-.lap-time-1-line {
-    fill: none;
-    stroke-width: 2px;
+.lap-time-1-svg {
+    /*padding-right: 10px*/
 }
 
 .lt0-point, .lt1-point {
-    fill-opacity: 0.25;
-    stroke-opacity: 0.15;
-    stroke: lightgrey;
+    fill-opacity: 0.3;
+    fill: #B8B8BB;
 }
 
 .lt0-selected, .lt1-selected {
+    fill: #FF1E00;
     fill-opacity: 1;
-    stroke-opacity: 1;
-    stroke: black;
 }
