@@ -8,8 +8,8 @@ class LapTime0 {
   constructor(_config, _data) {
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 1000,
-      containerHeight: 400,
+      containerWidth: 900,
+      containerHeight: 200,
       tooltipPadding: 15,
       margin: {
         top: 30,
@@ -50,12 +50,10 @@ class LapTime0 {
       .tickFormat((x) => x);
 
     vis.yAxis = d3.axisLeft(vis.yScale)
-      .ticks(10)
+      .ticks(5)
       .tickSizeOuter(0)
-      .tickPadding(10)
-      .tickFormat((x) => getMinuteStringFromMillisecond(x));
-
-    // TODO: cite https://sashamaps.net/docs/resources/20-colors/ for colors
+      .tickPadding(5)
+      .tickFormat((x) => getMinuteStringFromMillisecond(90000 * x));
 
     // Define size of SVG drawing area
     vis.svg = d3.select(vis.config.parentElement)
@@ -89,9 +87,9 @@ class LapTime0 {
 
     vis.tooltip.append('text');
 
-    chartTitle(vis, 'Averaged Best Lap Time by Year', 0);
-    axisLabel(vis, true, 'Years', 0, 0);
-    axisLabel(vis, false, 'Averaged Best Lap Time (Minute)', 0, 0);
+    chartTitle(vis, 'F1 Lap Time Progression From All Races (2000-2020)', 0);
+    axisLabel(vis, true, 'Years', 20, -20);
+    axisLabel(vis, false, 'Theoretical Time in Minute', 0, -vis.config.containerHeight / 3);
 
     vis.initData();
   }
@@ -99,17 +97,7 @@ class LapTime0 {
   initData() {
     const vis = this;
 
-    // TODO: Implement averaging properly -- this is solely for displaying line
-    vis.processedData = d3.rollups(vis.data, (d) => {
-      let cumulativeSum = 0;
-      d.forEach((v) => {
-        // for each year, get millisec. and add it to cumulative sum
-        cumulativeSum += v.laptimeMillis;
-      });
-      // average cumsum by amount of rounds, obtained through the length of that year's array
-      const averagedTime = Math.round(cumulativeSum / d.length);
-      return averagedTime;
-    }, (d) => d.year);
+    vis.processedData = vis.data;
 
     // need sort to make sure line displays properly when using rollupS
     vis.processedData = vis.processedData.sort();
@@ -152,7 +140,8 @@ class LapTime0 {
       .attr('class', 'lap-time-0-line')
       .attr('d', d3.line()
         .x((d) => vis.xScale(vis.xValue(d)))
-        .y((d) => vis.yScale(vis.yValue(d))));
+        .y((d) => vis.yScale(vis.yValue(d)))
+        .curve(d3.curveMonotoneX));
 
     // console.log(lt0lt1SelectedYears);
 
@@ -204,7 +193,6 @@ class LapTime0 {
       });
 
     // Update the axes
-    // We use the second .call() to remove the axis and just show gridlines
     vis.xAxisG.call(vis.xAxis);
     vis.yAxisG.call(vis.yAxis);
   }
