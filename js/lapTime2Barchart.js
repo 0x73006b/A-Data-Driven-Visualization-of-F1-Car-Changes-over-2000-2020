@@ -106,19 +106,21 @@ class Barchart {
     vis.circuitNames = Array.from(new Set(vis.data.map((d) => d.circuitName))).sort();
     vis.trackNames = vis.data.map((d) => [d.circuitName, d.circuitId]);
     vis.selectedTrackData = vis.data.filter((lt) => lt.circuitName === this.selectedTrack);
-    vis.selectedTrackData = vis.selectedTrackData.filter((lt) => lt.sector === 1);
-    console.log(vis.selectedTrackData)
     vis.years = Array.from(vis.data.map((d) => d.year)).sort();
 
     // Specificy accessor functions
     vis.colorValue = (d) => d.key;
     vis.xValue = (d) => d.year;
-    vis.yValue = (d) => d.Time * 1000;
+    vis.yValue = (d) => d.time * 1000;
 
+    const time2018 = vis.selectedTrackData.filter((lt) => lt.year === 2018).map((lt) => lt.time*1000);
+    const sumTime2018 = d3.sum(time2018);
+    const time2019 = vis.selectedTrackData.filter((lt) => lt.year === 2019).map((lt) => lt.time*1000);
+    const sumTime2019 = d3.sum(time2019);
     // Set the scale input domains
     vis.xScale.domain(vis.years);
     vis.yScale.domain(
-      [d3.min(vis.selectedTrackData, vis.yValue)-1000, d3.max(vis.selectedTrackData, vis.yValue)+1000],
+      [0, d3.max([sumTime2018, sumTime2019]) + 5000],
     );
     vis.renderVis();
   }
@@ -139,15 +141,12 @@ class Barchart {
 
     // Add rectangles
     vis.chart.selectAll('.bar')
-      .data(vis.selectedTrackData, vis.yValue)
+      .data(vis.selectedTrackData)
       .join('rect')
       .attr('class', 'bar')
-      .attr('x', (d) => vis.xScale(vis.xValue(d)))
-      .attr('width', 35)
-      .attr('height', (d) =>{ 
-        const a = vis.height - vis.yScale(vis.yValue(d));
-        return a;
-      })
+      .attr('x', (d) => vis.xScale(vis.xValue(d)) + 190)
+      .attr('width', 70)
+      .attr('height', (d) => vis.height - vis.yScale(vis.yValue(d)))
       .attr('y', (d) => vis.yScale(vis.yValue(d)))
       .attr('fill', () => '#800020')
       .attr('stroke', '#FF0000')
@@ -158,7 +157,6 @@ class Barchart {
         return '0';
       })
       .on('click', (event, d) => {
-        console.log(d)
         if (vis.lt2SelectedYears.includes(d.year)) {
           vis.lt2SelectedYears = vis.lt2SelectedYears.filter((year) => year !== d.year);
         } else {

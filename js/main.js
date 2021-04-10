@@ -24,7 +24,6 @@ Promise.all([
     // console.log(d3.rollup(circuitData, d=>d.length, d=>d.year));
 
     // converting lap time from minute:second.10*millis to millis
-    console.log(sectorData);
     circuitData.map((d) => d.laptimeMillis = getMillisecondsFromTimeString(d));
 
     // Create Mechanical Changes Scatterplot
