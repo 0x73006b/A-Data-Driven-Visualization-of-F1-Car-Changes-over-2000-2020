@@ -172,26 +172,8 @@ class Barchart {
     vis.xAxisG.call(vis.xAxis);
     vis.yAxisG.call(vis.yAxis);
 
-    // add the options to the button
-    if (!vis.dropDownReady) {
-      // add default option
-      vis.circuitNames.unshift('select a track');
-      d3.select('#selectButton')
-        .selectAll('myOptions')
-        .data(vis.circuitNames)
-        .join('option')
-        .text((d) => d) // text showed in the menu
-        .attr('value', (d) => d); // corresponding value returned by the button
-      vis.dropDownReady = true;
-    }
-
-    // eslint-disable-next-line func-names
-    d3.select('#selectButton').on('change', function () {
-      // recover the option that has been chosen
-      vis.selectedTrack = d3.select(this).property('value');
-      // clear the selected years for new track
-      vis.lt2SelectedYears = [];
-      // run the updateChart function with this selected option
+    d3.selectAll('input').on('change', function() {
+      vis.selectedTrack = this.value;
       vis.updateVis();
     });
 
