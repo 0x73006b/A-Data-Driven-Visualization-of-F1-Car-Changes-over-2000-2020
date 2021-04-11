@@ -151,7 +151,7 @@ class MechanicalChangesOverview {
                 <div class="tooltip-title">${d.car}</div>
                 Season: ${d.year}
                 <div><i>${d.power}, ${d.weight}</i></div>
-                PWR:WEIGHT: ${d.powerToWeightRatio} <br/>
+                PWR:WEIGHT: ${parseFloat(d.powerToWeightRatio).toFixed(2)} <br/>
             </div>
            `));
     })

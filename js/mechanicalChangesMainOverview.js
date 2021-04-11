@@ -85,7 +85,7 @@ class MechanicalChangesMainOverview {
     // Fix title, labels -- needs one for derived hp:weight
     chartTitle(vis, 'Average Power-to-Weight ratio over the Years', 0);
     axisLabel(vis, true, 'Years', 0, 10);
-    axisLabel(vis, false, 'Average-Power-to-Weight-Ration', 0, -150);
+    axisLabel(vis, false, 'Average-Power-to-Weight-Ratio', 0, -150);
 
     vis.initData();
   }
@@ -167,7 +167,9 @@ class MechanicalChangesMainOverview {
         .style('opacity', 1)
         .html((`
             <div class="tooltip-label">
-                ${d[0]}, ${d[1]}
+                <div class="tooltip-title">Season ${d[0]}</div>
+                Avg PWR:WEIGHT: 
+                ${d[1]} <br/>
             </div>
            `));
     })
