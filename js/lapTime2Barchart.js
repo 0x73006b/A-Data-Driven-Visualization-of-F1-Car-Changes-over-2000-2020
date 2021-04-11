@@ -171,9 +171,11 @@ class Barchart {
     // Update axes
     vis.xAxisG.call(vis.xAxis);
     vis.yAxisG.call(vis.yAxis);
-
+    
     // add the options to the button
     if (!vis.dropDownReady) {
+      // add default option
+      vis.circuitNames.unshift('select a track');
       d3.select('#selectButton')
         .selectAll('myOptions')
         .data(vis.circuitNames)

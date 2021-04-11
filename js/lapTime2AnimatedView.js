@@ -90,7 +90,7 @@ class RealTimeLap {
             // setup background
             const background = d3.select('#background');
             background
-              .attr('stroke-width', 18)
+              .attr('stroke-width', 14)
               .transition()
               .ease(d3.easeLinear)
               .attr('stroke-dashoffset', 0);
