@@ -42,11 +42,11 @@ class RealTimeLap {
     vis.chart = vis.svg.append('g')
       .attr('transform', `translate(${vis.config.margin.left},${vis.config.margin.top})`);
 
-    vis.iterateNum = 0
+    vis.iterateNum = 0;
     vis.selectedTrack = '';
     vis.startLap = -1;
-    vis.trackColor = [['#800020', '#87ceff', '#FFD300'], ['#8000F0', '#86ce0f', '#FFD3F0']];
-    vis.sectorTime = [[18594, 33446, 19061], [18638, 33392, 18779]];
+    vis.trackColor = [['#f20002', '#2fb2e3', '#fcd303'], ['#13C296', '#F5D900', '#F63EBA']];
+    vis.sectorTime = [[19826, 35241, 20922], [18638, 33392, 18779]];
     vis.updateVis();
   }
 
