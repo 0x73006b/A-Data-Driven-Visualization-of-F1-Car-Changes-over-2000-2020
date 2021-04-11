@@ -1,98 +1,38 @@
 [
   {
-    "year": 2018,
+    "year": 2014,
     "circuitName": "Circuit de Monaco",
-    "sector": 1,
-    "Team": "Red Bull",
-    "Driver": "D. Ricciardo",
-    "time": 18.638
-  },
-  {
-    "year": 2018,
-    "circuitName": "Circuit de Monaco",
-    "sector": 2,
-    "Team": "Red Bull",
-    "Driver": "D. Ricciardo",
-    "time": 33.392
-  },
-  {
-    "year": 2018,
-    "circuitName": "Circuit de Monaco",
-    "sector": 3,
-    "Team": "Red Bull",
-    "Driver": "D. Ricciardo",
-    "time": 18.779
+    "sector1": 19.826,
+    "sector2": 35.241,
+    "sector3": 20.922,
+    "Team": "Mercedes",
+    "Driver": "N. Rosberg"
   },
   {
     "year": 2019,
     "circuitName": "Circuit de Monaco",
-    "sector": 1,
+    "sector1": 18.28,
+    "sector2": 33.096,
+    "sector3": 18.667,
     "Team": "Mercedes",
-    "Driver": "L. Hamilton",
-    "time": 18.28
+    "Driver": "L. Hamilton"
   },
   {
-    "year": 2019,
-    "circuitName": "Circuit de Monaco",
-    "sector": 2,
-    "Team": "Mercedes",
-    "Driver": "L. Hamilton",
-    "time": 33.096
-  },
-  {
-    "year": 2019,
-    "circuitName": "Circuit de Monaco",
-    "sector": 3,
-    "Team": "Mercedes",
-    "Driver": "L. Hamilton",
-    "time": 18.667
-  },
-  {
-    "year": 2018,
+    "year": 2014,
     "circuitName": "Suzuka Circuit",
-    "sector": 1,
+    "sector1": 32.914,
+    "sector2": 41.484,
+    "sector3": 18.038,
     "Team": "Mercedes",
-    "Driver": "L. Hamilton",
-    "time": 30.913
-  },
-  {
-    "year": 2018,
-    "circuitName": "Suzuka Circuit",
-    "sector": 2,
-    "Team": "Mercedes",
-    "Driver": "L. Hamilton",
-    "time": 39.588
-  },
-  {
-    "year": 2018,
-    "circuitName": "Suzuka Circuit",
-    "sector": 3,
-    "Team": "Mercedes",
-    "Driver": "L. Hamilton",
-    "time": 17.253
+    "Driver": "N. Rosberg"
   },
   {
     "year": 2019,
     "circuitName": "Suzuka Circuit",
-    "sector": 1,
+    "sector1": 30.256,
+    "sector2": 39.372,
+    "sector3": 17.318,
     "Team": "Ferrari",
-    "Driver": "S. Vettel",
-    "time": 30.256
-  },
-  {
-    "year": 2019,
-    "circuitName": "Suzuka Circuit",
-    "sector": 2,
-    "Team": "Ferrari",
-    "Driver": "S. Vettel",
-    "time": 39.372
-  },
-  {
-    "year": 2019,
-    "circuitName": "Suzuka Circuit",
-    "sector": 3,
-    "Team": "Ferrari",
-    "Driver": "S. Vettel",
-    "time": 17.318
+    "Driver": "S. Vettel"
   }
 ]

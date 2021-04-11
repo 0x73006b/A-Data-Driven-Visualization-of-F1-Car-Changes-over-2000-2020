@@ -16,7 +16,7 @@ class RealTimeLap {
     this.config = {
       parentElement: _config.parentElement,
       // colorScale: _config.colorScale,
-      containerWidth: _config.containerWidth || 1000,
+      containerWidth: _config.containerWidth || 800,
       containerHeight: _config.containerHeight || 500,
       margin: _config.margin || {
         top: 25, right: 20, bottom: 20, left: 40,
@@ -42,11 +42,11 @@ class RealTimeLap {
     vis.chart = vis.svg.append('g')
       .attr('transform', `translate(${vis.config.margin.left},${vis.config.margin.top})`);
 
-    vis.iterateNum = 0
+    vis.iterateNum = 0;
     vis.selectedTrack = '';
     vis.startLap = -1;
-    vis.trackColor = [['#800020', '#87ceff', '#FFD300'], ['#8000F0', '#86ce0f', '#FFD3F0']];
-    vis.sectorTime = [[18594, 33446, 19061], [18638, 33392, 18779]];
+    vis.trackColor = [['#f20002', '#2fb2e3', '#fcd303'], ['#13C296', '#F5D900', '#F63EBA']];
+    vis.sectorTime = [[19826, 35241, 20922], [18638, 33392, 18779]];
     vis.updateVis();
   }
 
@@ -90,7 +90,7 @@ class RealTimeLap {
             // setup background
             const background = d3.select('#background');
             background
-              .attr('stroke-width', 3)
+              .attr('stroke-width', 18)
               .transition()
               .ease(d3.easeLinear)
               .attr('stroke-dashoffset', 0);
