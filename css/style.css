@@ -1,5 +1,7 @@
 /* Todo: set up styling */
-
+:root {
+    scroll-behavior: smooth;
+}
 body {
     display: flex;
     flex-flow: column;

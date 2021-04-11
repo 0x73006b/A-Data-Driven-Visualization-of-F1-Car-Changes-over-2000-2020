@@ -82,3 +82,8 @@ when we found it on wiki, it had extra marks besides the actual path, e.g. where
 * https://stackoverflow.com/questions/17498830/animate-svg-path-with-d3js
     * SVG animation reference
 * Previous assignments (Shabab, Robert)
+* https://stackoverflow.com/questions/17722497/scroll-smoothly-to-specific-element-on-page
+    * javascript for scrolling button
+
+
+
