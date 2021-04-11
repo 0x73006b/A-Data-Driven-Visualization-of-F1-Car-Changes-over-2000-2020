@@ -11,7 +11,7 @@ class Barchart {
     this.config = {
       parentElement: _config.parentElement,
       // colorScale: _config.colorScale,
-      containerWidth: _config.containerWidth || 400,
+      containerWidth: _config.containerWidth || 250,
       containerHeight: _config.containerHeight || 400,
       margin: _config.margin || {
         top: 25, right: 20, bottom: 20, left: 40,
@@ -171,7 +171,7 @@ class Barchart {
     // Update axes
     vis.xAxisG.call(vis.xAxis);
     vis.yAxisG.call(vis.yAxis);
-    
+
     // add the options to the button
     if (!vis.dropDownReady) {
       // add default option
