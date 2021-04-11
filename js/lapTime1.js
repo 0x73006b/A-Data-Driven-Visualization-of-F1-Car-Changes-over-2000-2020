@@ -128,7 +128,7 @@ class LapTime1 {
       .data(line.data()[0])
       .join('circle')
       .attr('class', (d) => (lt0lt1SelectedYears.includes(vis.yearAccessor(d)) ? 'lt1-point lt1-selected' : 'lt1-point'))
-      .attr('r', 4)
+      .attr('r', (d) => (lt0lt1SelectedYears.includes(vis.yearAccessor(d)) ? 4 : 0))
       .attr('cy', (d) => vis.yScale(vis.yValue(d)))
       .attr('cx', (d) => vis.xScale(vis.xValue(d)))
 
