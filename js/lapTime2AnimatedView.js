@@ -119,7 +119,7 @@ class RealTimeLap {
             const ANIMATION_SVG = d3.select('#laptime2-reatimeLap')
               .append('svg')
               .attr('width', 1000)
-              .attr('height', 1000);
+              .attr('height', 800);
 
             ANIMATION_SVG.append('text')
               .attr('x', 50)
