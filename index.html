@@ -8,42 +8,58 @@
 </head>
 <body>
 <!-- Add HTML content, SVG drawing area, ... -->
-<div class="step" id="step0">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-    magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
-    suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
-</div>
-<p/>
-<div class="step" id="step1" style="display: inherit">
-        <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate
-            dignissim suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
-            Diam in arcu cursus euismod quis viverra nibh cras pulvinar. Scelerisque mauris pellentesque pulvinar
-            pellentesque habitant.At imperdiet dui accumsan sit amet. Amet est placerat in egestas. Convallis tellus id
-            interdum velit laoreet id. Ornare quam viverra orci sagittis eu. Diam donec adipiscing tristique risus nec.
-            Lacus vel facilisis volutpat est velit egestas. Pulvinar elementum integer enim neque volutpat ac.
-            Praesent tristique magna sit amet purus gravida.
-        </span>
-    <span style="display: inherit; flex-flow: column">
-            <svg id="mechanical-changes-overview"></svg>
-            <svg id="mechanical-changes-detail-view"></svg>
-        </span>
-</div>
+<!--<div class="step" id="step0">-->
+<!--    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore-->
+<!--    magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim-->
+<!--    suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.-->
+<!--</div>-->
+<!--<p/>-->
+<!--<div class="step" id="step1" style="display: inherit">-->
+<!--        <span>-->
+<!--            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et-->
+<!--            dolore magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate-->
+<!--            dignissim suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.-->
+<!--            Diam in arcu cursus euismod quis viverra nibh cras pulvinar. Scelerisque mauris pellentesque pulvinar-->
+<!--            pellentesque habitant.At imperdiet dui accumsan sit amet. Amet est placerat in egestas. Convallis tellus id-->
+<!--            interdum velit laoreet id. Ornare quam viverra orci sagittis eu. Diam donec adipiscing tristique risus nec.-->
+<!--            Lacus vel facilisis volutpat est velit egestas. Pulvinar elementum integer enim neque volutpat ac.-->
+<!--            Praesent tristique magna sit amet purus gravida.-->
+<!--        </span>-->
+<!--    <span style="display: inherit; flex-flow: column">-->
+<!--            <svg id="mechanical-changes-overview"></svg>-->
+<!--            <svg id="mechanical-changes-detail-view"></svg>-->
+<!--        </span>-->
+<!--</div>-->
 
-<div class="step" id="step2">
-    <button type="button" id="lap-time-0-clear">Clear</button>
-    <button type="button" id="lap-time-0-reset">Reset</button>
-    <svg id="lap-time-0"></svg>
-    <svg id="lap-time-1"></svg>
-    <div id="tooltip"></div>
-</div>
+<!--<div class="step" id="step2">-->
+<!--    <button type="button" id="lap-time-0-clear">Clear</button>-->
+<!--    <button type="button" id="lap-time-0-reset">Reset</button>-->
+<!--    <svg id="lap-time-0"></svg>-->
+<!--    <svg id="lap-time-1"></svg>-->
+<!--    <div id="tooltip"></div>-->
+<!--</div>-->
 
 <div class="step" id="step3">
-    <select id="selectButton"></select>
-    <svg id="lap-time-2-barchart"></svg>
-    <button type="button" id="startButton">Start Race</button>
-    <div id="laptime2-reatimeLap"></div>
+    <div class="lt2-container">
+        <div id="lt2-container-left-col">
+            <div>
+                Proin dictum, tellus ac condimentum laoreet, urna risus cursus massa, eu pretium ante ipsum vitae diam.
+                Pellentesque eleifend ex condimentum nunc pretium egestas. Nunc ullamcorper nulla eros, sit amet vehicula
+                urna efficitur eu. Ut sollicitudin condimentum dui nec ultricies. Aliquam rhoncus venenatis mollis. Sed
+                tristique quis ex vitae porta. Nunc congue placerat blandit. Nullam venenatis dui sed tristique laoreet.
+                Donec sit amet urna et ipsum iaculis facilisis eget nec velit. Proin sapien libero, tristique sed libero sit
+                amet, iaculis consectetur quam. Quisque quis lectus eget diam aliquet convallis quis sit amet metus. Vivamus
+                luctus dictum tellus ac sagittis. Sed hendrerit sapien efficitur maximus sodales. Aliquam in consectetur
+                tortor. Curabitur euismod laoreet interdum.
+            </div>
+            <select id="selectButton"></select>
+            <svg id="lap-time-2-barchart"></svg>
+        </div>
+        <div>
+            <button type="button" id="startButton">Start Race</button>
+            <div id="laptime2-reatimeLap"></div>
+        </div>
+    </div>
 </div>
 
 <!-- D3 bundle -->

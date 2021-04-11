@@ -8,6 +8,13 @@ body {
     margin: auto;
 }
 
+.lt2-container {
+    display: flex;
+    flex-direction: row;
+    align-items: flex-end;
+    padding-top: 50px;
+}
+
 #tooltip {
     position: absolute;
     opacity: 0;
