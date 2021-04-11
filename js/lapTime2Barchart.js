@@ -11,8 +11,8 @@ class Barchart {
     this.config = {
       parentElement: _config.parentElement,
       // colorScale: _config.colorScale,
-      containerWidth: _config.containerWidth || 1000,
-      containerHeight: _config.containerHeight || 500,
+      containerWidth: _config.containerWidth || 400,
+      containerHeight: _config.containerHeight || 400,
       margin: _config.margin || {
         top: 25, right: 20, bottom: 20, left: 40,
       },
@@ -73,7 +73,7 @@ class Barchart {
       .attr('class', 'axis x-axis')
       .attr('transform', `translate(0,${vis.height})`);
 
-    // Append y-axis group 
+    // Append y-axis group
     vis.yAxisG = vis.chart.append('g')
       .attr('class', 'axis y-axis');
 
@@ -91,7 +91,35 @@ class Barchart {
       .attr('dy', '.71em')
       .text('Lap Time');
 
+    vis.stack = d3.stack().keys(['sector1', 'sector2', 'sector3']);
+
+    // todo: should this be empty? @ mr. rmzm
     vis.selectedTrack = '';
+
+    vis.initData();
+  }
+
+  /**
+   * Initialize data-related items that only needs to run once.
+   */
+  initData() {
+    const vis = this;
+
+    // Specificy accessor functions
+    vis.colorValue = (d) => d.key;
+    vis.xValue = (d) => d.year;
+    vis.yValue = (d) => d.time * 1000;
+
+    vis.circuitNames = Array.from(new Set(vis.data.map((d) => d.circuitName))).sort();
+    console.log('circuitNames', vis.circuitNames);
+
+    // todo: do we need this?
+    vis.trackNames = Array.from(new Set(vis.data.map((d) => [d.circuitName])));
+    console.log('trackNames', vis.trackNames);
+
+    vis.years = d3.extent(vis.data, (d) => d.year);
+    console.log('years', vis.years);
+    vis.xScale.domain(vis.years);
 
     vis.updateVis();
   }
@@ -102,26 +130,18 @@ class Barchart {
   updateVis() {
     const vis = this;
 
-    // prep data
-    vis.circuitNames = Array.from(new Set(vis.data.map((d) => d.circuitName))).sort();
-    vis.trackNames = vis.data.map((d) => [d.circuitName, d.circuitId]);
+    // // prep data
     vis.selectedTrackData = vis.data.filter((lt) => lt.circuitName === this.selectedTrack);
-    vis.years = Array.from(vis.data.map((d) => d.year)).sort();
+    console.log('selectedTrackData', vis.selectedTrackData);
 
-    // Specificy accessor functions
-    vis.colorValue = (d) => d.key;
-    vis.xValue = (d) => d.year;
-    vis.yValue = (d) => d.time * 1000;
+    const maxTime = d3.max(vis.selectedTrackData, (d) => (d.sector1 + d.sector2 + d.sector3));
 
-    const time2018 = vis.selectedTrackData.filter((lt) => lt.year === 2018).map((lt) => lt.time*1000);
-    const sumTime2018 = d3.sum(time2018);
-    const time2019 = vis.selectedTrackData.filter((lt) => lt.year === 2019).map((lt) => lt.time*1000);
-    const sumTime2019 = d3.sum(time2019);
     // Set the scale input domains
-    vis.xScale.domain(vis.years);
-    vis.yScale.domain(
-      [0, d3.max([sumTime2018, sumTime2019]) + 5000],
-    );
+    vis.yScale.domain([0, maxTime + 10]);
+
+    vis.stackedData = vis.stack(vis.selectedTrackData);
+    console.log('stackedData', vis.stackedData);
+
     vis.renderVis();
   }
 
@@ -131,39 +151,22 @@ class Barchart {
   renderVis() {
     const vis = this;
 
-    vis.chart.selectAll('.circuiteName')
-      .data(vis.selectedTrackData)
-      .join('text')
-      .attr('class', 'circuiteName')
-      .text((d) => d.circuitName)
-      // translate and rotate
-      .attr('transform', `translate(${40},${-10})`);
-
-    // Add rectangles
-    vis.chart.selectAll('.bar')
-      .data(vis.selectedTrackData)
+    // todo: reference stacked bar chart 436v tutorial
+    const stackedChart = vis.chart
+      .selectAll('.circuiteName')
+      .data(vis.stackedData)
+      .join('g')
+      .attr('class', (d) => `circuiteName bar-${d.key}`)
+      .selectAll('rect')
+      .data((d) => d)
       .join('rect')
-      .attr('class', 'bar')
-      .attr('x', (d) => vis.xScale(vis.xValue(d)) + 190)
-      .attr('width', 70)
-      .attr('height', (d) => vis.height - vis.yScale(vis.yValue(d)))
-      .attr('y', (d) => vis.yScale(vis.yValue(d)))
-      .attr('fill', () => '#800020')
-      .attr('stroke', '#FF0000')
-      .attr('stroke-width', (d) => {
-        if (vis.lt2SelectedYears.includes(d.year)) {
-          return '3';
-        }
-        return '0';
-      })
-      .on('click', (event, d) => {
-        if (vis.lt2SelectedYears.includes(d.year)) {
-          vis.lt2SelectedYears = vis.lt2SelectedYears.filter((year) => year !== d.year);
-        } else {
-          vis.lt2SelectedYears.push(d.year);
-        }
-        vis.updateVis();
-      });
+      .attr('x', (d) => vis.xScale(d.data.year))
+      .transition()
+      .duration(700)
+      .ease(d3.easeSinOut)
+      .attr('y', (d) => vis.yScale(d[1]))
+      .attr('height', (d) => vis.yScale(d[0]) - vis.yScale(d[1]))
+      .attr('width', vis.xScale.bandwidth());
 
     // Update axes
     vis.xAxisG.call(vis.xAxis);

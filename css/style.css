@@ -4,7 +4,7 @@ body {
     display: flex;
     flex-flow: column;
     justify-content: center;
-    width: 1000px;
+    width: 1300px;
     margin: auto;
 }
 
@@ -55,3 +55,16 @@ body {
     stroke-opacity: 1;
     stroke: black;
 }
+
+.bar-sector1 {
+    fill: #f20002;
+}
+
+.bar-sector2 {
+    fill: #2fb2e3;
+}
+
+.bar-sector3 {
+    fill: #fcd303;
+}
+
