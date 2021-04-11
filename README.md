@@ -84,6 +84,8 @@ when we found it on wiki, it had extra marks besides the actual path, e.g. where
 * Previous assignments (Shabab, Robert)
 * https://stackoverflow.com/questions/17722497/scroll-smoothly-to-specific-element-on-page
     * javascript for scrolling button
+* https://stackoverflow.com/questions/42344395/how-to-control-the-scroll-speed-in-window-scrolltox-coord-y-coord
+    * refining scroll behaviour
 
 
 
