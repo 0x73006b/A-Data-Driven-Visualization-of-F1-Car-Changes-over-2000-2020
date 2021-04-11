@@ -133,6 +133,12 @@ class RealTimeLap {
     d3.select('#startButton')
       // eslint-disable-next-line no-unused-vars
       .on('click', (_event, d) => {
+        for(var i = 0; i <3; i++) {
+          vis.animationPaths[0][i].interrupt();
+          vis.animationPaths[1][i].interrupt();
+          vis.animationPaths[0][i].attr('stroke-width', 0);
+          vis.animationPaths[1][i].attr('stroke-width', 0);
+        }
         vis.updateAnimation(0, 0, vis.iterateNum);
         vis.updateAnimation(1, 0, vis.iterateNum);
       });
