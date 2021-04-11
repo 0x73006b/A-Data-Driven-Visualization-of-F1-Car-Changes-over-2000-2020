@@ -16,7 +16,7 @@ class RealTimeLap {
     this.config = {
       parentElement: _config.parentElement,
       // colorScale: _config.colorScale,
-      containerWidth: _config.containerWidth || 1000,
+      containerWidth: _config.containerWidth || 800,
       containerHeight: _config.containerHeight || 500,
       margin: _config.margin || {
         top: 25, right: 20, bottom: 20, left: 40,
