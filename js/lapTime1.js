@@ -29,6 +29,23 @@ class LapTime1 {
     vis.yearAccessor = (d) => d.year;
     vis.circuitRef = (d) => (`svg.${d.value[0].circuitRef}`);
 
+    vis.makeLine = d3.line()
+      .defined((d) => {
+        console.log(!isNaN(vis.yValue(d)));
+        return !isNaN(vis.xValue(d));
+      })
+      .x((d) => vis.xScale(vis.xValue(d)))
+      .y((d) => vis.yScale(vis.yValue(d)))
+      .curve(d3.curveMonotoneX);
+
+    // vis.tracks = Array.from(d3.group(vis.data, (d) => d.circuitName), ([key, value]) => ({ key, value }));
+    // vis.tracks.sort((a, b) => d3.descending(a.value.length, b.value.length));
+    // vis.tracks.forEach((track) => track.value.sort((a, b) => d3.ascending(a.year, b.year)));
+
+    vis.tracks = trackData;
+
+    console.log(vis.tracks);
+
     this.initVis();
   }
 
@@ -64,9 +81,6 @@ class LapTime1 {
     vis.xScale.domain(d3.extent(vis.data, (c) => c.year));
     vis.yScale.domain(d3.extent(vis.data, (c) => c.laptimeMillis));
     // group the vis.data
-    vis.tracks = Array.from(d3.group(vis.data, (d) => d.circuitName), ([key, value]) => ({ key, value }));
-    vis.tracks.sort((a, b) => d3.descending(a.value.length, b.value.length));
-    vis.tracks.forEach((track) => track.value.sort((a, b) => d3.ascending(a.year, b.year)));
 
     vis.svg = d3.select('#lap-time-1');
 
@@ -119,10 +133,7 @@ class LapTime1 {
       .data([currentData])
       .join('path')
       .attr('class', 'lap-time-1-line')
-      .attr('d', d3.line()
-        .x((d) => vis.xScale(vis.xValue(d)))
-        .y((d) => vis.yScale(vis.yValue(d)))
-        .curve(d3.curveMonotoneX));
+      .attr('d', vis.makeLine);
 
     const circles = chart.selectAll('.lt1-point')
       .data(line.data()[0])

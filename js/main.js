@@ -10,14 +10,16 @@ let improvedMultiplier;
 let lapTime0;
 let lapTime1;
 let circuitData;
+let trackData;
 
 Promise.all([
   d3.json('data/circuitData.json'),
   d3.json('data/car_data.json'),
   d3.json('data/lt0.json'),
+  d3.json('data/circuitData_millis_nullFill_remDup.json'),
 ])
   .then((data) => {
-    [circuitData, mechanicalChangesData, improvedMultiplier] = data;
+    [circuitData, mechanicalChangesData, improvedMultiplier, trackData] = data;
 
     // converting lap time from minute:second.10*millis to millis
 
