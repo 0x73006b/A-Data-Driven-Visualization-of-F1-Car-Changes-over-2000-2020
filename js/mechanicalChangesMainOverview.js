@@ -166,10 +166,12 @@ class MechanicalChangesMainOverview {
       d3.select('#tooltip')
         .style('opacity', 1)
         .html((`
-            <div class="tooltip-label">
-                ${d[0]}, ${d[1]}
-            </div>
-           `));
+        <div class="tooltip-label">
+            <div class="tooltip-title">Season ${d[0]}</div>
+            Avg PWR:WEIGHT: 
+            ${d[1]} <br/>
+        </div>
+       `));
     })
       .on('mousemove', (event) => {
         d3.select('#tooltip')
