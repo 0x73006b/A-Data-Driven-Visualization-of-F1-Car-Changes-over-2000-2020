@@ -187,9 +187,19 @@ class LapTime0 {
         lapTime1.updateVis();
       });
 
+    /**
+     * reset button
+     * calls lt0 initData to reset max/min.
+     * calls lt1.updateVis() to re-render selected points in small mult.
+     */
     let resetButton = d3.select('#lap-time-0-reset')
       .on('click', () => {
-        vis.initData();
+        // resets lap-time-1-remove button state
+        pointsRemoved = false;
+        d3.select('#lap-time-1-remove').text('Disable Points');
+
+        lapTime0.initData();
+        lapTime1.updateVis();
       });
 
     // Update the axes

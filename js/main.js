@@ -9,6 +9,7 @@ let improvedMultiplier;
 
 let lapTime0;
 let lapTime1;
+let pointsRemoved = false;
 let circuitData;
 let trackData;
 

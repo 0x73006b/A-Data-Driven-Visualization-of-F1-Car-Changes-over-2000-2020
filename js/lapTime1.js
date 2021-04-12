@@ -85,6 +85,18 @@ class LapTime1 {
       .attr('width', vis.config.containerWidth + 40)
       .attr('height', vis.config.containerHeight + 20)
 
+    let resetButton = d3.select('#lap-time-1-remove')
+      .on('click', () => {
+        if (!pointsRemoved) {
+          d3.select('#lap-time-1-remove').text('Enable Points');
+          vis.chart.selectAll('.lt1-point').remove();
+        } else {
+          d3.select('#lap-time-1-remove').text('Disable Points');
+          vis.updateVis();
+        }
+        pointsRemoved = !pointsRemoved;
+      });
+
     vis.tracks.forEach((circuitGroup) => {
       const currentCircuit = vis.circuitRef(circuitGroup);
       const chart = d3.selectAll(currentCircuit);
