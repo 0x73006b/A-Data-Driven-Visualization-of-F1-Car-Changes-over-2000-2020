@@ -34,5 +34,23 @@
     "sector3": 17.318,
     "Team": "Ferrari",
     "Driver": "S. Vettel"
+  },
+  {
+    "year": 2014,
+    "circuitName": "Marina Bay Street Circuit",
+    "sector1": 28.207,
+    "sector2": 40.360,
+    "sector3": 18.038,
+    "Team": "Mercedes",
+    "Driver": "L. Hamilton"
+  },
+  {
+    "year": 2019,
+    "circuitName": "Marina Bay Street Circuit",
+    "sector1": 26.211,
+    "sector2": 37.127,
+    "sector3": 32.879,
+    "Team": "Ferrari",
+    "Driver": "C. Leclerc"
   }
 ]

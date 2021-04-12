@@ -71,7 +71,7 @@ class RealTimeLap {
       const ANIMATION_SVG = d3.select('#laptime2-reatimeLap')
         .append('svg')
         .attr('width', 1000)
-        .attr('height', 1000);
+        .attr('height', 800);
 
       ANIMATION_SVG.append('text')
         .attr('x', 50)
@@ -97,7 +97,6 @@ class RealTimeLap {
 
             vis.animationPaths = [[], []];
             // draw out actual lap
-
             for(var i = 0; i <3; i++) {
               vis.animationPaths[0][i] = d3.select(`#sector0${i}`);
               vis.animationPaths[1][i] = d3.select(`#sector1${i}`);
@@ -106,14 +105,6 @@ class RealTimeLap {
               vis.animationPaths[1][i]
                 .attr('stroke-width', 0);
             }
-            vis.path2 = d3.select('#sector01');
-            vis.path3 = d3.select('#sector02');
-            vis.animationPaths[0][0]
-              .attr('stroke-width', 0);
-            vis.path2
-              .attr('stroke-width', 0);
-            vis.path3
-              .attr('stroke-width', 0);
           }).catch(() => {
             d3.select('#laptime2-reatimeLap').selectAll('*').remove();
             const ANIMATION_SVG = d3.select('#laptime2-reatimeLap')
