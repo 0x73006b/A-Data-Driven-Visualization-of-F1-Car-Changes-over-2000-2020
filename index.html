@@ -31,22 +31,28 @@
 <p/>
 
 <div class="step" id="step1" style="display: inherit">
-        <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate
-            dignissim suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
-            Diam in arcu cursus euismod quis viverra nibh cras pulvinar. Scelerisque mauris pellentesque pulvinar
-            pellentesque habitant.At imperdiet dui accumsan sit amet. Amet est placerat in egestas. Convallis tellus id
-            interdum velit laoreet id. Ornare quam viverra orci sagittis eu. Diam donec adipiscing tristique risus nec.
-            Lacus vel facilisis volutpat est velit egestas. Pulvinar elementum integer enim neque volutpat ac.
-            Praesent tristique magna sit amet purus gravida.
-        </span>
-    <span style="display: inherit; flex-flow: column">
+    <div class="mechanical-change">
+        <div id="mc-title">
+            <h1>Mechanical Changes</h1>
+        </div>
+        <div id="mc-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
+        suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
+        </div> 
+        
         <img src="data/Legends_mc.png" alt="mc_legend" width="350" height="100">
-            <svg id='mechanical-changes-main-overview'></svg>
-            <svg id="mechanical-changes-overview"></svg>
-            <svg id="mechanical-changes-detail-view"></svg>
-        </span>
+            <div id="mc_top">
+                <svg class='mc' id='mechanical-changes-main-overview'></svg>
+                <svg class='mc' id="mechanical-changes-overview"></svg>
+            </div>
+            <div id="mc_bottom">
+                <svg class='mc' id="mechanical-changes-detail-view"></svg>
+            </div>
+            
+    </div>
+       
+    </div>
 </div>
 <p/>
 <input class="next" type="button" onClick="smoothScroll('step2');"  value ="Next"/>

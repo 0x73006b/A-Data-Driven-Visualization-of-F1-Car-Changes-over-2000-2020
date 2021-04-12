@@ -47,6 +47,36 @@ body {
     font-size: 2em;
 }
 
+#step1 {
+    display: flex;
+    flex-flow: row;
+    width: 1300px;
+    color: rgb(0, 0, 0);
+    font-size: 2em;
+}
+
+#mc-text {
+    padding: -10px;
+    font-size: 20px;
+}
+
+#mc-title {
+    text-align: center;
+}
+
+#mechanical-change {
+    display: flex;
+}
+
+#mc_bottom {
+    display: flex;
+    justify-content: center;
+}
+
+#mc {
+    padding: 20px;
+}
+
 #tooltip {
     position: absolute;
     opacity: 0;
@@ -94,4 +124,11 @@ body {
     fill-opacity: 1;
     stroke-opacity: 1;
     stroke: black;
+}
+.chart-title{
+    font-size: 15px;
+    font-weight: bold;
+}
+.axis-title{
+    font-size: 13px;
 }
