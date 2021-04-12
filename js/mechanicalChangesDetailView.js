@@ -173,13 +173,14 @@ class MechanicalChangesDetailView {
       d3.select('#tooltip')
         .style('opacity', 1)
         .html((`
-        <div class="tooltip-label">
-            <div class="tooltip-title">${d.car}</div>
-            Season: ${d.year}
-            <div><i>${d.power}, ${d.weight}</i></div>
-            PWR:WEIGHT: ${parseFloat(d.powerToWeightRatio).toFixed(2)} <br/>
-        </div>
-       `));
+
+            <div class="tooltip-label">
+                <div class="tooltip-title">${d.car}</div>
+                Season: ${d.year}
+                <div><i>${d.power}, ${d.weight}</i></div>
+                PWR:WEIGHT: ${parseFloat(d.powerToWeightRatio).toFixed(2)} <br/>
+            </div>
+           `));
     })
       .on('mousemove', (event) => {
         d3.select('#tooltip')
