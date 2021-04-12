@@ -140,8 +140,7 @@ class LapTime0 {
       .attr('class', 'lap-time-0-line')
       .attr('d', d3.line()
         .x((d) => vis.xScale(vis.xValue(d)))
-        .y((d) => vis.yScale(vis.yValue(d)))
-        .curve(d3.curveMonotoneX));
+        .y((d) => vis.yScale(vis.yValue(d))));
 
     // console.log(lt0lt1SelectedYears);
 
