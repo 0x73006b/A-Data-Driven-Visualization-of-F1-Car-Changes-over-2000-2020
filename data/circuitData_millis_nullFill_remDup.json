@@ -6162,7 +6162,7 @@
     ]
   },
   {
-    "key": "Bahrain International Circuit 1",
+    "key": "Bahrain International Circuit (Alt)",
     "value": [
       {
         "circuitRef": "bahrain1",
@@ -6175,7 +6175,7 @@
         "year": 2020,
         "constructorId": 131,
         "bestLapTime": "00:53.4",
-        "circuitName": "Bahrain International Circuit 1",
+        "circuitName": "Bahrain International Circuit (Alt)",
         "laptimeMillis": 53004
       }
     ]
