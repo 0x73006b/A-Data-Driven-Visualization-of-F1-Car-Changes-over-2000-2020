@@ -85,7 +85,7 @@ class MechanicalChangesDetailView {
     // Append y-axis groups
     vis.yAxisTopG = vis.chart.append('g')
       .attr('class', 'axis y-axis')
-      .attr("transform", "translate(0, -20)");
+      .attr('transform', 'translate(0, -20)');
 
     vis.yAxisBottomG = vis.chart.append('g')
       .attr('class', 'axis y-axis-bottom')
@@ -174,7 +174,10 @@ class MechanicalChangesDetailView {
         .style('opacity', 1)
         .html((`
             <div class="tooltip-label">
-                horsePowerCircle
+                <div class="tooltip-title">${d.car}</div>
+                Season: ${d.year}
+                <div><i>${d.power}, ${d.weight}</i></div>
+                PWR:WEIGHT: ${parseFloat(d.powerToWeightRatio).toFixed(2)} <br/>
             </div>
            `));
     })
@@ -232,10 +235,13 @@ class MechanicalChangesDetailView {
       d3.select('#tooltip')
         .style('opacity', 1)
         .html((`
-            <div class="tooltip-label">
-                ${d.year} ${d.car} ${d.powerToWeightRatio}
-            </div>
-           `));
+        <div class="tooltip-label">
+            <div class="tooltip-title">${d.car}</div>
+            Season: ${d.year}
+            <div><i>${d.power}, ${d.weight}</i></div>
+            PWR:WEIGHT: ${parseFloat(d.powerToWeightRatio).toFixed(2)} <br/>
+        </div>
+       `));
     })
       .on('mousemove', (event) => {
         d3.select('#tooltip')
