@@ -53,7 +53,7 @@ class LapTime0 {
       .ticks(5)
       .tickSizeOuter(0)
       .tickPadding(5)
-      .tickFormat((x) => getMinuteStringFromMillisecond(90000 * x));
+      .tickFormat((x) => getMinuteStringFromMillisecond(900 * x));
 
     // Define size of SVG drawing area
     vis.svg = d3.select(vis.config.parentElement)
