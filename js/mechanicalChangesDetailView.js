@@ -85,7 +85,7 @@ class MechanicalChangesDetailView {
     // Append y-axis groups
     vis.yAxisTopG = vis.chart.append('g')
       .attr('class', 'axis y-axis')
-      .attr("transform", "translate(0, -20)");
+      .attr('transform', 'translate(0, -20)');
 
     vis.yAxisBottomG = vis.chart.append('g')
       .attr('class', 'axis y-axis-bottom')
