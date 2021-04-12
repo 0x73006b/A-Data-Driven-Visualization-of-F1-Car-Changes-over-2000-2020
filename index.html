@@ -8,15 +8,27 @@
 </head>
 <body>
 <!-- Add HTML content, SVG drawing area, ... -->
-<h1>A Data Driven Visualization of F1 Car Changes over 2000-2020</h1>
-<div class="step" id="step0">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-    magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
-    suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
+
+<div class="opening-background">
+    <div class="step" id="step0">
+        <div class="opening-left-col">
+            <div id="title">
+                <h1>A Data Driven Visualization of F1 Car Changes over 2000-2020</h1>
+            </div>
+            <div id="opening-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
+            suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
+            </div>
+            <div class="button-container">
+                <input class="next" type="button" onClick="smoothScroll('step1');" value ="Next"/>
+            </div>
+        </div>
+        <div class="opening-right-col">
+        </div>
+    </div>
 </div>
 <p/>
-
-<input class="next" type="button" onClick="smoothScroll('step1');" value ="Next"/> 
 
 <div class="step" id="step1" style="display: inherit">
         <span>
@@ -37,7 +49,7 @@
         </span>
 </div>
 <p/>
-<input class="next" type="button" onClick="smoothScroll('step2');"  value ="Next"/> 
+<input class="next" type="button" onClick="smoothScroll('step2');"  value ="Next"/>
 
 <div class="step" id="step2">
     <button type="button" id="lap-time-0-clear">Clear</button>
@@ -51,7 +63,7 @@
 </div>
 
 <p/>
-<input class="next" type="button" onClick="smoothScroll('step3');" value ="Next"/> 
+<input class="next" type="button" onClick="smoothScroll('step3');" value ="Next"/>
 
 <div class="step" id="step3">
     <select id="selectButton"></select>
