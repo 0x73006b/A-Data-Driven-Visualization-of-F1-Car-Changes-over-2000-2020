@@ -127,7 +127,7 @@ class MechanicalChangesOverview {
         if (d.group === mechanicalChangesSelectedGroup) {
           return 'black';
         }
-        return colorScaleGroup(vis.groupAccessor(d));
+        return d.color;
       })
       .style('opacity', (d) => (d.group === mechanicalChangesSelectedGroup ? 1 : 0.8));
     // Detail View Selector

@@ -99,8 +99,7 @@ body {
 }
 
 .mech-overview-point {
-    opacity: 0.8;
-    stroke: black;
+    opacity: 1;
 }
 
 .lap-time-0-line {
