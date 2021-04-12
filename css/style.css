@@ -33,10 +33,57 @@ body {
     opacity: 0.35;
 }
 
+#lt0-lt1-container{
+    display: flex;
+    flex-direction: column;
+}
+
+.lap-time-0-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#lap-time-1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+}
+
+.lt1-chart {
+    /*width:240px;*/
+    /*height:100px;*/
+}
+
+.lt0-lt1-top{
+    display:inherit;
+    flex-flow: row;
+    justify-content: space-between;
+}
+
+.lap-time-1-explanation{
+    /*width: 40%*/
+}
+
+#lap-time-0, #lap-time-1{
+    text-align: center;
+}
+
 .lap-time-0-line, .lap-time-1-line {
     fill: none;
-    stroke: #89898E;
-    stroke-width: 1.5px;
+    stroke: black;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.lap-time-1-line {
+    stroke-width: 2;
+}
+
+.lap-time-1-line-dashed {
+    fill: none;
+    stroke: black;
+    stroke-width: 1 !important;
+    stroke-dasharray: 3;
 }
 
 .lap-time-1-svg {
@@ -44,11 +91,12 @@ body {
 }
 
 .lt0-point, .lt1-point {
-    fill-opacity: 0.3;
-    fill: #B8B8BB;
+    fill-opacity: 1;
+    fill: black;
 }
 
 .lt0-selected, .lt1-selected {
     fill: #FF1E00;
     fill-opacity: 1;
 }
+

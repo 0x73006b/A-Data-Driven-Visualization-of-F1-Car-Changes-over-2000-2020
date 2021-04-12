@@ -14,7 +14,6 @@
 <!--    magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim-->
 <!--    suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.-->
 <!--</div>-->
-<p/>
 <!--<div class="step" id="step1" style="display: inherit">-->
 <!--        <span>-->
 <!--            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et-->
@@ -35,12 +34,22 @@
 
 <div class="step" id="step2">
     <h1>Lap Time 0 + Lap Time 1</h1>
-    <button type="button" id="lap-time-0-clear">Clear</button>
-    <button type="button" id="lap-time-0-reset">Reset</button>
-    <div id="lt0-lt1-container" style="display: flex; flex-direction: column">
-        <div id="lt0-lt1-top">
-            sfsdfsdfsf
-            <svg id="lap-time-0"></svg>
+    <div id="lt0-lt1-container">
+        <div class="lt0-lt1-top">
+            <div class="lap-time-0-container">
+                <svg id="lap-time-0"></svg>
+            </div>
+            <div class="lap-time-1-explanation">
+                Lap times are a key metric in determining improvement; they are the result of power, aerodynamics,
+                tuning, driver ability and other things. We have charted the average improvement per season to the right,
+                and we can see that the cars often get faster as their engine development gets more mature.
+                <p/>
+                Below, you will see a disaggregated view of lap times, split into their respective tracks, over 2000-2020.
+                <div>
+                    <button type="button" id="lap-time-0-clear">Clear</button>
+                    <button type="button" id="lap-time-0-reset">Reset</button>
+                </div>
+            </div>
         </div>
         <div id="lap-time-1"></div>
     </div>

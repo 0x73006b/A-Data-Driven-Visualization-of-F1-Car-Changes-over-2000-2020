@@ -14,7 +14,7 @@ class LapTime0 {
       margin: {
         top: 30,
         right: 50,
-        bottom: 70,
+        bottom: 30,
         left: 70,
       },
     };
@@ -88,7 +88,7 @@ class LapTime0 {
     vis.tooltip.append('text');
 
     chartTitle(vis, 'F1 Lap Time Progression From All Races (2000-2020)', 0);
-    axisLabel(vis, true, 'Years', 20, -20);
+    // axisLabel(vis, true, 'Years', 20, -20);
     axisLabel(vis, false, 'Theoretical Time in Minute', 0, -vis.config.containerHeight / 3);
 
     vis.initData();

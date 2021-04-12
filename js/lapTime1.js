@@ -1,19 +1,14 @@
 // eslint-disable-next-line no-unused-vars
-let counter = 0;
-
 class LapTime1 {
   constructor(_config, _data) {
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 240,
-      containerHeight: 100,
+      containerWidth: 200,
+      containerHeight: 80,
       tooltipPadding: 15,
       // eslint-disable-next-line no-unused-vars
       margin: {
-        top: 15,
-        right: 10,
-        bottom: 40,
-        left: 50,
+        top: 15, right: 10, bottom: 10, left: 0,
       },
     };
     this.data = _data;
@@ -84,13 +79,12 @@ class LapTime1 {
 
     vis.svg = d3.select('#lap-time-1');
 
-    vis.svg = vis.svg.selectAll('svg');
+    vis.svg = vis.svg.selectAll('svg').append('g');
     vis.chart = vis.svg.data(vis.tracks)
       .join('svg')
-      .attr('class', (d) => d.value[0].circuitRef)
-      .attr('width', vis.config.containerWidth)
-      .attr('height', vis.config.containerHeight)
-      .append('g');
+      .attr('class', (d) => `lt1-chart ${d.value[0].circuitRef}`)
+      .attr('width', vis.config.containerWidth + 40)
+      .attr('height', vis.config.containerHeight + 20)
 
     vis.tracks.forEach((circuitGroup) => {
       const currentCircuit = vis.circuitRef(circuitGroup);
