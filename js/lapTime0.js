@@ -150,23 +150,24 @@ class LapTime0 {
     lt0Circles
       .on('mouseover', (event, d) => {
         lt0Circles.attr('cursor', 'pointer');
-      //   d3.select('#tooltip')
-      //     .style('opacity', 1)
-      //     .html((`
-      //       <div class="tooltip-label">
-      //           <div class="tooltip-title">Average best laptime for ${d[0]}</div>
-      //           ${d[1]}
-      //       </div>
-      //      `));
-      // })
-      // .on('mouseleave', (event, d) => {
-      //   d3.select('#tooltip')
-      //     .style('opacity', 0);
-      // })
-      // .on('mousemove', (event) => {
-      //   d3.select('#tooltip')
-      //     .style('left', `${event.pageX + vis.config.tooltipPadding}px`)
-      //     .style('top', `${event.pageY + vis.config.tooltipPadding}px`);
+        d3.select('#tooltip')
+          .style('opacity', 1)
+          .html((`
+            <div class="tooltip-label">
+                <div class="tooltip-title">Average best laptime for ${d[0]}</div>
+                ${d[1]}
+            </div>
+           `));
+      })
+      .on('mouseleave', (event, d) => {
+        d3.select('#tooltip')
+          .style('opacity', 0)
+          .html(clearTooltip());
+      })
+      .on('mousemove', (event) => {
+        d3.select('#tooltip')
+          .style('left', `${event.pageX + vis.config.tooltipPadding}px`)
+          .style('top', `${event.pageY + vis.config.tooltipPadding}px`);
       })
       .on('click', (event, d) => {
         if (lt0lt1SelectedYears.includes(d[0])) {
