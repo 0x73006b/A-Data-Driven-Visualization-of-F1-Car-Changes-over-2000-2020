@@ -15,7 +15,7 @@ body {
     box-shadow: 2px 2px 3px 0px rgb(92 92 92);
     border: 1px solid #444;
     font-weight: 600;
-    padding: 2px 8px;
+    padding: 10px;
     left: 0px;
     top: 0px;
 }
@@ -54,7 +54,7 @@ body {
     /*height:100px;*/
 }
 
-.lt0-lt1-top{
+.lt0-lt1-top {
     display:inherit;
     flex-flow: row;
     justify-content: space-between;
