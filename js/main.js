@@ -37,7 +37,7 @@ Promise.all([
     lapTime1 = new LapTime1({ parentElement: '#lap-time-1' }, circuitData);
 
     // Create LT2
-    reatimeMap = new RealTimeLap({ parentElement: '#laptime2-reatimeLap' }, circuitData);
+    reatimeMap = new RealTimeLap({ parentElement: '#laptime2-reatimeLap' }, sectorData);
     barchart = new Barchart({ parentElement: '#lap-time-2-barchart' }, sectorData, reatimeMap);
   })
   // eslint-disable-next-line no-console
