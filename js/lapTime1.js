@@ -149,20 +149,51 @@ class LapTime1 {
       vis.renderVis(circuitGroup, DASHED);
       d3.selectAll(vis.circuitRef(circuitGroup)).selectAll('.lap-time-1-line-dashed').lower();
     });
+
+    console.log('tracks', vis.tracks);
+    console.log('noNull', vis.tracksNoNull);
+
+    // if (lt0lt1SelectedYears.length >= 2) {
+    //   //
+    //   const tracksFiltered = vis.tracks.map((track) => ({
+    //     key: track.key,
+    //     value: (track.value.filter((d) => lt0lt1SelectedYears.includes(vis.yearAccessor(d)))),
+    //   }));
+    //   const tracksNoNullFiltered = vis.tracksNoNull.map((track) => ({
+    //     key: track.key,
+    //     value: (track.value.filter((d) => lt0lt1SelectedYears.includes(vis.yearAccessor(d)))),
+    //   }));
+    //   console.log('tracksFiltered', tracksFiltered);
+    //   console.log('tracksNoNullFiltered', tracksNoNullFiltered);
+    //
+    //   // draws line with gaps where no data exists
+    //   tracksFiltered.forEach((circuitGroup) => {
+    //     vis.renderVis(circuitGroup, NOT_DASHED, 'red');
+    //   });
+    //
+    //   // draws dashed line to show data gaps
+    //   tracksNoNullFiltered.forEach((circuitGroup) => {
+    //     vis.renderVis(circuitGroup, DASHED);
+    //     d3.selectAll(vis.circuitRef(circuitGroup)).selectAll('.lap-time-1-line-dashed').lower();
+    //   });
+    // }
   }
 
-  renderVis(circuitGroup, isDashedLine) {
+  renderVis(circuitGroup, isDashedLine, red) {
     const currentData = circuitGroup.value;
     const vis = this;
     const currentCircuit = vis.circuitRef(circuitGroup);
     const chart = d3.selectAll(currentCircuit);
 
+    // todo: just make dashed a string const
     const line = chart
       .selectAll(`.lap-time-1-line${isDashedLine ? '-dashed' : ''}`)
       .data([currentData])
       .join('path')
       .attr('class', `lap-time-1-line${isDashedLine ? '-dashed' : ''}`)
       .attr('d', vis.makeLine);
+
+    if (red) { line.style('stroke', red); }
 
     if (!isDashedLine) {
       const circles = chart.selectAll('.lt1-point')

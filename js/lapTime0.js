@@ -101,6 +101,15 @@ class LapTime0 {
     lt0lt1SelectedYears = [];
     lt0lt1SelectedYears.push(vis.processedData[d3.minIndex(vis.processedData, (d) => d[1])][0]);
     lt0lt1SelectedYears.push(vis.processedData[d3.maxIndex(vis.processedData, (d) => d[1])][0]);
+    lt0lt1SelectedYears.sort();
+
+    const start = lt0lt1SelectedYears[0];
+    const limit = lt0lt1SelectedYears[lt0lt1SelectedYears.length - 1];
+    // eslint-disable-next-line no-plusplus
+    for (let i = start; i < limit; i++) { lt0lt1SelectedYears.push(i); }
+
+    console.log(lt0lt1SelectedYears);
+
     vis.updateVis();
   }
 
@@ -170,12 +179,25 @@ class LapTime0 {
           lt0lt1SelectedYears = lt0lt1SelectedYears.filter((year) => year !== d[0]);
         } else {
           lt0lt1SelectedYears.push(d[0]);
+          lt0lt1SelectedYears.sort();
         }
+
+        console.log(lt0lt1SelectedYears.length);
+
+        if (lt0lt1SelectedYears.length >= 2) {
+          const start = lt0lt1SelectedYears[0];
+          const limit = lt0lt1SelectedYears[lt0lt1SelectedYears.length - 1];
+          // eslint-disable-next-line no-plusplus
+          for (let i = start; i < limit; i++) { lt0lt1SelectedYears.push(i); }
+        }
+
+        console.log(lt0lt1SelectedYears);
+
         lapTime0.updateVis();
         lapTime1.updateVis();
       });
 
-    let clearButton = d3.select('#lap-time-0-clear')
+    const clearButton = d3.select('#lap-time-0-clear')
       .on('click', () => {
         // clear selectedYears array
         lt0lt1SelectedYears = [];
@@ -189,7 +211,7 @@ class LapTime0 {
      * calls lt0 initData to reset max/min.
      * calls lt1.updateVis() to re-render selected points in small mult.
      */
-    let resetButton = d3.select('#lap-time-0-reset')
+    const resetButton = d3.select('#lap-time-0-reset')
       .on('click', () => {
         // resets lap-time-1-remove button state
         pointsRemoved = false;
