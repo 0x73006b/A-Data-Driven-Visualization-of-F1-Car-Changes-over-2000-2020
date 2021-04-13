@@ -19,9 +19,9 @@ class MechanicalChangesOverview {
         bottom: 40,
         left: 50,
       },
-      legendWidth: 170,
-      legendHeight: 8,
-      legendRadius: 5,
+      legendWidth: 300,
+      legendHeight: 100,
+      legendRadius: 3,
     };
     this.data = _data;
     this.initVis();
@@ -44,6 +44,30 @@ class MechanicalChangesOverview {
     vis.yScale = d3.scaleLinear()
       .range([vis.height, 0]);
 
+    // for legend display colors
+    vis.colorScaleMC = d3.scaleOrdinal()
+      .domain([
+        'group 0: Arrows',
+        'group 1: McLaren',
+        'group 2: Sauber, BMW Sauber, Alfa Romeo',
+        'group 3: Williams-Mercedes, Williams',
+        'group 4: Benetton, Lotus F1, Renault',
+        'group 5: Minardi, Scuderia Toro Rosso, AlphaTauri',
+        'group 6: Scuderia Ferrari',
+        'group 7: Toyota',
+        'group 8: Super Aguri F1',
+        'group 9: Jaguar, Red Bull Racing',
+        'group 10: British American Racing, BAR-Honda, Honda, Brawn GP, Mercedes',
+        'group 11: Team Lotus, Caterham',
+        'group 12: Dallara, HRT',
+        'group 13: Virgin Racing, Marussia, Manor',
+        'group 14: Prost',
+        'group 15: Jordan Grand Prix, Midland F1 Racing,Spyker/Force India, Force India, Racing Point',
+        'group 16: Haas',
+      ])
+      .range(['#f8a947', '#900000', '#1a5aff', '#FFE368', '#193A5B', '#D40000', 'white', '#808080', '#4a5074', '#3fdbc8',
+        '#1b7a37', '#D4AF37', '#f95c31', '#051773', '#f7a9d1', '#f9f8fd',
+      ]);
     // Initialize axes
     vis.xAxis = d3.axisBottom(vis.xScale)
       .tickSize(-vis.height)
@@ -83,7 +107,7 @@ class MechanicalChangesOverview {
 
     // legend
     vis.legend = vis.svg.append('g')
-      .attr('transform', 'translate(-80,0)');
+      .attr('transform', 'translate(0, -20)');
 
     // Specify accessor functions
     vis.xValue = (d) => d.power;
@@ -209,5 +233,63 @@ class MechanicalChangesOverview {
       'group 16: Haas',
 
     ];
+
+    const legendArea = vis.legend.selectAll('.legendArea')
+      .data(keys)
+      .append('g')
+      .attr('class', 'legendArea')
+      .attr('height', vis.config.legendHeight)
+      .attr('width', vis.config.legendWidth);
+
+    const legendAreaCircles = legendArea
+      .data(keys)
+      .join('circle')
+      .attr('class', 'legend-dots')
+      .attr('cx', (d, i) => {
+        if (i % 2 === 0) {
+        // if even index
+          return 100;
+        }
+        // odd case
+        return 100 + vis.config.legendWidth;
+      })
+      .attr('cy', (d, i) => {
+        if (i % 2 === 0) {
+        // if even index
+          return 20 + (i / 2) * 25;
+        }
+
+        // item 2 and 4 = index 1,3
+        // floor makes the index 0, 1
+        return 20 + (Math.floor(i / 2)) * 25;
+      })
+      .attr('r', vis.config.legendRadius)
+      .style('stroke', 'black')
+      .style('stroke-width', '0.5')
+      .style('fill', (d) => vis.colorScaleMC(d));
+
+    const legendAreaText = legendArea
+      .data(keys)
+      .join('text')
+      .attr('class', 'legend-text')
+      .attr('x', (d, i) => {
+        if (i % 2 === 0) {
+          // if even index
+          return 120;
+        }
+        return 120 + vis.config.legendWidth;
+      })
+      .attr('y', (d, i) => {
+        if (i % 2 === 0) {
+          // if even index
+          return 25 + (i / 2) * 25;
+        }
+
+        // item 2 and 4 = index 1,3
+        // floor makes the index 0, 1
+        return 25 + (Math.floor(i / 2)) * 25;
+      })
+      .text((d) => d)
+      .attr('font-size', 8);
   }
 }
