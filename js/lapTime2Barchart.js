@@ -75,7 +75,8 @@ class Barchart {
 
     // Append y-axis group
     vis.yAxisG = vis.chart.append('g')
-      .attr('class', 'axis y-axis');
+      .attr('class', 'axis y-axis')
+      .attr('transform', `translate(-1,0)`);
 
     // Append axis title
     vis.svg.append('text')
