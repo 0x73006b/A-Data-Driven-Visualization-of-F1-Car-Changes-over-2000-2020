@@ -177,15 +177,10 @@ class LapTime1 {
         .attr('cx', (d) => vis.xScale(vis.xValue(d)));
 
       circles.on('mouseover', (e, d) => {
-        // console.log(d);
         circles.attr('cursor', 'pointer');
         d3.select('#tooltip')
           .style('opacity', 1)
-          .html((`
-            <div class="tooltip-label">
-            ${d.year}
-            </div>
-           `));
+          .html((`<div class="tooltip-label">${d.year}: ${d.bestLapTime}</div>`));
       })
         .on('mouseleave', () => {
           d3.select('#tooltip')
