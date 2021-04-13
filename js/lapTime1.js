@@ -220,6 +220,15 @@ class LapTime1 {
           d3.select('#tooltip')
             .style('left', `${event.pageX + vis.config.margin.left}px`)
             .style('top', `${event.pageY + vis.config.margin.top}px`);
+        })
+        .on('click', (event, d) => {
+          if (lt0lt1SelectedYears.includes(vis.yearAccessor(d))) {
+            lt0lt1SelectedYears = lt0lt1SelectedYears.filter((year) => year !== vis.yearAccessor(d));
+          } else {
+            lt0lt1SelectedYears.push(vis.yearAccessor(d));
+          }
+          lapTime0.updateVis();
+          lapTime1.updateVis();
         });
     }
   }
