@@ -12,10 +12,7 @@ class LapTime0 {
       containerHeight: 200,
       tooltipPadding: 15,
       margin: {
-        top: 30,
-        right: 50,
-        bottom: 30,
-        left: 70,
+        top: 30, right: 50, bottom: 30, left: 70,
       },
     };
     this.data = _data;
@@ -158,7 +155,7 @@ class LapTime0 {
             </div>
            `));
       })
-      .on('mouseleave', (event, d) => {
+      .on('mouseleave', () => {
         d3.select('#tooltip')
           .style('opacity', 0)
           .html(clearTooltip());
@@ -197,7 +194,6 @@ class LapTime0 {
         // resets lap-time-1-remove button state
         pointsRemoved = false;
         d3.select('#lap-time-1-remove').text('Disable Points');
-
         lapTime0.initData();
         lapTime1.updateVis();
       });
