@@ -114,6 +114,7 @@ function getCircles(vis, chartName, dataArray, radius) {
  * Helper to clear tool tip of any string, etc.
  * @returns {string}
  */
+// eslint-disable-next-line no-unused-vars
 function clearTooltip() {
   return '<div class="tooltip-label"></div>';
 }
