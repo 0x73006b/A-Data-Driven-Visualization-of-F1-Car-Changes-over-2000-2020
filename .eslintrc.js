@@ -17,6 +17,7 @@ module.exports = {
         "axisLabel":true,
         "colorScale":true,
         "colorScaleGroup":true,
+        "clearTooltip":true,
 
         "getMinuteStringFromMillisecond": true,
         "getMillisecondsFromTimeString":true,

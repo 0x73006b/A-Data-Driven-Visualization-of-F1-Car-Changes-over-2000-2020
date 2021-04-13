@@ -116,3 +116,11 @@ function getCircles(vis, chartName, dataArray, radius) {
       return '#8e8e8e';
     });
 }
+
+/**
+ * Helper to clear tool tip of any string, etc.
+ * @returns {string}
+ */
+function clearTooltip() {
+  return '<div class="tooltip-label"></div>';
+}

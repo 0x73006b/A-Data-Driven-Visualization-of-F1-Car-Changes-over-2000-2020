@@ -135,7 +135,8 @@ class MechanicalChangesDetailView {
       .join('path')
       .attr('class', 'chart-line')
       .attr('fill', 'none')
-      .attr('stroke', 'red');
+      .attr('stroke', 'black')
+      .attr('stroke-width', 3);
 
     // TODO: how does merge work on transition?
     horsePowerLine
@@ -156,7 +157,7 @@ class MechanicalChangesDetailView {
       .data(vis.filteredData)
       .join('circle')
       .attr('class', 'point-hp')
-      .attr('r', 6)
+      .attr('r', 4)
       .attr('cy', (d) => vis.yScaleTop(vis.yValueTop(d)) - 20)
       .attr('cx', (d) => vis.xScale(vis.xValue(d)));
 
@@ -164,8 +165,8 @@ class MechanicalChangesDetailView {
       .transition()
       .duration(1000)
       .ease(d3.easeSinOut)
-      .attr('fill-opacity', 0.5)
-      .attr('fill', 'red');
+      .attr('fill-opacity', 1)
+      .attr('fill', 'black');
 
     // eslint-disable-next-line no-unused-vars
     horsePowerCircle.on('mouseover', (event, d) => {
@@ -189,9 +190,8 @@ class MechanicalChangesDetailView {
       })
       .on('mouseleave', () => {
         d3.select('#tooltip')
-          .style('left', `${0}px`)
-          .style('top', `${0}px`)
-          .style('opacity', 0);
+          .style('opacity', 0)
+          .html(clearTooltip());
       });
 
     // Add line path
@@ -201,7 +201,8 @@ class MechanicalChangesDetailView {
       .join('path')
       .attr('class', 'chart-line-pwr')
       .attr('fill', 'none')
-      .attr('stroke', 'red');
+      .attr('stroke', 'black')
+      .attr('stroke-width', 3);
 
     // TODO: how does merge work on transition?
     powerWeightRatioLine
@@ -219,7 +220,7 @@ class MechanicalChangesDetailView {
       .data(vis.filteredData, (d) => d)
       .join('circle')
       .attr('class', 'point-pwr')
-      .attr('r', 6)
+      .attr('r', 4)
       .attr('transform', `translate(0, ${vis.halfHeight})`)
       .attr('cy', (d) => vis.yScaleBottom(vis.yValueBottom(d)) + 10)
       .attr('cx', (d) => vis.xScale(vis.xValue(d)));
@@ -228,8 +229,8 @@ class MechanicalChangesDetailView {
       .transition()
       .duration(1000)
       .ease(d3.easeSinOut)
-      .attr('fill-opacity', 0.5)
-      .attr('fill', 'red');
+      .attr('fill-opacity', 1)
+      .attr('fill', 'black');
 
     powerWeightRatioCircle.on('mouseover', (event, d) => {
       powerWeightRatioCircle.attr('cursor', 'pointer');

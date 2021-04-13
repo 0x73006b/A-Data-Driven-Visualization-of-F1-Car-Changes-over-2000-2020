@@ -136,7 +136,8 @@ class MechanicalChangesMainOverview {
       .join('path')
       .attr('class', 'chart-line-pwr')
       .attr('fill', 'none')
-      .attr('stroke', 'grey');
+      .attr('stroke', 'black')
+      .attr('stroke-width', '3');
 
     // TODO: how does merge work on transition?
     powerWeightRatioLine
@@ -156,9 +157,9 @@ class MechanicalChangesMainOverview {
       .attr('cx', (d) => vis.xScale(vis.xValue(d)))
       .attr('fill', (d) => {
         if (mechanicalChangesSelectedYears.includes(vis.xValue(d))) {
-          return 'green';
+          return 'red';
         }
-        return '#8e8e8e';
+        return 'black';
       });
 
     powerWeightRatioCircle.on('mouseover', (event, d) => {
@@ -180,9 +181,8 @@ class MechanicalChangesMainOverview {
       })
       .on('mouseleave', () => {
         d3.select('#tooltip')
-          .style('left', `${0}px`)
-          .style('top', `${0}px`)
-          .style('opacity', 0);
+          .style('opacity', 0)
+          .html(clearTooltip());
       })
       .on('click', (event, d) => {
         if (mechanicalChangesSelectedYears.includes(d[0])) {

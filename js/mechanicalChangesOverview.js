@@ -19,6 +19,9 @@ class MechanicalChangesOverview {
         bottom: 40,
         left: 50,
       },
+      legendWidth: 170,
+      legendHeight: 8,
+      legendRadius: 5,
     };
     this.data = _data;
     this.initVis();
@@ -71,12 +74,16 @@ class MechanicalChangesOverview {
     vis.yAxisG = vis.chart.append('g')
       .attr('class', 'axis y-axis');
 
-    // TODO: Append X axis title (weight)
-    // TODO: Append Y axis title (power)
+    // Append X axis title (weight)
+    // Append Y axis title (power)
 
     chartTitle(vis, 'Power-to-Weight of All F1 Cars from 2000 to 2020', 0);
     axisLabel(vis, true, 'Power', 0, 0);
     axisLabel(vis, false, 'Weight', 0, 0);
+
+    // legend
+    vis.legend = vis.svg.append('g')
+      .attr('transform', 'translate(-80,0)');
 
     // Specify accessor functions
     vis.xValue = (d) => d.power;
@@ -109,6 +116,7 @@ class MechanicalChangesOverview {
     vis.groupAccessor = (d) => d.group;
 
     vis.renderVis();
+    vis.renderLegend();
   }
 
   renderVis() {
@@ -162,9 +170,8 @@ class MechanicalChangesOverview {
       })
       .on('mouseleave', () => {
         d3.select('#tooltip')
-          .style('left', `${0}px`)
-          .style('top', `${0}px`)
-          .style('opacity', 0);
+          .style('opacity', 0)
+          .html(clearTooltip());
       });
 
     // Update the axes/gridlines
@@ -178,5 +185,29 @@ class MechanicalChangesOverview {
       .call(vis.yAxis)
       .call((g) => g.select('.domain')
         .remove());
+  }
+
+  renderLegend() {
+    const vis = this;
+    const keys = [
+      'group 0: Arrows',
+      'group 1: McLaren',
+      'group 2: Sauber, BMW Sauber, Alfa Romeo',
+      'group 3: Williams-Mercedes, Williams',
+      'group 4: Benetton, Lotus F1, Renault',
+      'group 5: Minardi, Scuderia Toro Rosso, AlphaTauri',
+      'group 6: Scuderia Ferrari',
+      'group 7: Toyota',
+      'group 8: Super Aguri F1',
+      'group 9: Jaguar, Red Bull Racing',
+      'group 10: British American Racing, BAR-Honda, Honda, Brawn GP, Mercedes',
+      'group 11: Team Lotus, Caterham',
+      'group 12: Dallara, HRT',
+      'group 13: Virgin Racing, Marussia, Manor',
+      'group 14: Prost',
+      'group 15: Jordan Grand Prix, Midland F1 Racing,Spyker/Force India, Force India, Racing Point',
+      'group 16: Haas',
+
+    ];
   }
 }
