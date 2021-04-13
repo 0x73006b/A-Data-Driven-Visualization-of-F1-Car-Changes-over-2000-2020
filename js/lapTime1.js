@@ -31,8 +31,7 @@ class LapTime1 {
     vis.makeLine = d3.line()
       .defined((d) => (vis.yValue(d) ? 1 : 0))
       .x((d) => vis.xScale(vis.xValue(d)))
-      .y((d) => vis.yScale(vis.yValue(d)))
-      // .curve(d3.curveMonotoneX);
+      .y((d) => vis.yScale(vis.yValue(d)));
 
     // with null fill
     vis.tracks = trackData;
@@ -120,8 +119,6 @@ class LapTime1 {
         .attr('font-size', 12)
         .text((d) => d.key)
         .style('fill', 'black');
-
-      chart.attr('transform', `translate(${vis.config.margin.left},${vis.config.margin.top})`)
 
       // append y-axis
       d3.select(currentCircuit)
