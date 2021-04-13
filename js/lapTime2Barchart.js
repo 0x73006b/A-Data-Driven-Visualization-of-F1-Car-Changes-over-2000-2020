@@ -76,7 +76,7 @@ class Barchart {
     // Append y-axis group
     vis.yAxisG = vis.chart.append('g')
       .attr('class', 'axis y-axis')
-      .attr('transform', `translate(-1,0)`);
+      .attr('transform', 'translate(-1,0)');
 
     // Append axis title
     vis.svg.append('text')
@@ -91,6 +91,25 @@ class Barchart {
       .attr('y', 0)
       .attr('dy', '.71em')
       .text('Lap Time');
+
+    // Handmade legend
+    const legendx = 160;
+    const legendy = 10;
+    vis.svg.append('circle').attr('cx', legendx).attr('cy', legendy).attr('r', 6)
+      .attr('class', 'circuiteName bar-sector1');
+    vis.svg.append('circle').attr('cx', legendx).attr('cy', legendy + 15).attr('r', 6)
+      .attr('class', 'circuiteName bar-sector2');
+    vis.svg.append('circle').attr('cx', legendx).attr('cy', legendy + 30).attr('r', 6)
+      .attr('class', 'circuiteName bar-sector3');
+    vis.svg.append('text').attr('x', legendx + 10).attr('y', legendy).text('Sector 1')
+      .style('font-size', '15px')
+      .attr('alignment-baseline', 'middle');
+    vis.svg.append('text').attr('x', legendx + 10).attr('y', legendy + 15).text('Sector 2')
+      .style('font-size', '15px')
+      .attr('alignment-baseline', 'middle');
+    vis.svg.append('text').attr('x', legendx + 10).attr('y', legendy + 30).text('Sector 3')
+      .style('font-size', '15px')
+      .attr('alignment-baseline', 'middle');
 
     vis.stack = d3.stack().keys(['sector1', 'sector2', 'sector3']);
 
@@ -136,9 +155,9 @@ class Barchart {
     console.log('selectedTrackData', vis.selectedTrackData);
 
     const maxTime = d3.max(vis.selectedTrackData, (d) => (d.sector1 + d.sector2 + d.sector3));
-
+    console.log(maxTime);
     // Set the scale input domains
-    vis.yScale.domain([0, maxTime + 10]);
+    vis.yScale.domain([0, maxTime + 10000]);
 
     vis.stackedData = vis.stack(vis.selectedTrackData);
     console.log('stackedData', vis.stackedData);
@@ -173,7 +192,7 @@ class Barchart {
     vis.xAxisG.call(vis.xAxis);
     vis.yAxisG.call(vis.yAxis);
 
-    d3.selectAll('input').on('change', function() {
+    d3.selectAll('input').on('change', function () {
       vis.selectedTrack = this.value;
       vis.updateVis();
     });

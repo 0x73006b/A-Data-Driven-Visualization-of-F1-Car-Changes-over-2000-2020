@@ -25,6 +25,11 @@ Promise.all([
 
     // converting lap time from minute:second.10*millis to millis
     circuitData.map((d) => d.laptimeMillis = getMillisecondsFromTimeString(d));
+    sectorData.map((d) =>{
+      d.sector1*=1000
+      d.sector2*=1000
+      d.sector3*=1000
+    });
 
     // Create Mechanical Changes Scatterplot
     mechanicalChangesOverview = new MechanicalChangesOverview({ parentElement: '#mechanical-changes-overview' }, mechanicalChangesData.data);

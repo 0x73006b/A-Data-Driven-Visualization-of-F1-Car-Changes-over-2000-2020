@@ -137,7 +137,7 @@ class RealTimeLap {
         .attr('stroke-dasharray', `${sectorLength} ${sectorLength}`)
         .attr('stroke-dashoffset', sectorLength)
         .transition()
-        .duration(vis.laps[trackNum]['sector' + (sectorNum + 1) ] * 1000)
+        .duration(vis.laps[trackNum]['sector' + (sectorNum + 1) ])
         .ease(d3.easeLinear)
         .attr('stroke-dashoffset', 0)
         .on('end', () => {
