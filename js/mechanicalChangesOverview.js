@@ -225,12 +225,14 @@ class MechanicalChangesOverview {
       'group 7: Toyota',
       'group 8: Super Aguri F1',
       'group 9: Jaguar, Red Bull Racing',
-      'group 10: British American Racing, BAR-Honda, Honda, Brawn GP, Mercedes',
+      `group 10: British American Racing, BAR-Honda,
+       Honda, Brawn GP, Mercedes`,
       'group 11: Team Lotus, Caterham',
       'group 12: Dallara, HRT',
       'group 13: Virgin Racing, Marussia, Manor',
       'group 14: Prost',
-      'group 15: Jordan Grand Prix, Midland F1 Racing,Spyker/Force India, Force India, Racing Point',
+      `group 15: Jordan Grand Prix, Midland F1 Racing, 
+      \nSpyker/Force India, Force India, Racing Point`,
       'group 16: Haas',
 
     ];
@@ -251,7 +253,7 @@ class MechanicalChangesOverview {
           return 100;
         }
         // odd case
-        return 100 + vis.config.legendWidth;
+        return 100 + vis.config.legendWidth - 40;
       })
       .attr('cy', (d, i) => {
         if (i % 2 === 0) {
@@ -275,9 +277,9 @@ class MechanicalChangesOverview {
       .attr('x', (d, i) => {
         if (i % 2 === 0) {
           // if even index
-          return 120;
+          return 110;
         }
-        return 120 + vis.config.legendWidth;
+        return 110 + vis.config.legendWidth - 40;
       })
       .attr('y', (d, i) => {
         if (i % 2 === 0) {
@@ -290,7 +292,7 @@ class MechanicalChangesOverview {
         return 22 + (Math.floor(i / 2)) * 10;
       })
       .text((d) => d)
-      .attr('font-size', 7)
+      .attr('font-size', 6.5)
       .style('font-weight', 'bold');
   }
 }

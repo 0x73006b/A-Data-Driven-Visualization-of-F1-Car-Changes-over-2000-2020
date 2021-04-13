@@ -158,7 +158,7 @@ function renderUtilLegend(vis) {
     .attr('x', (d, i) => 120 + i * vis.config.legendWidth)
     .attr('y', 22)
     .text((d) => d)
-    .attr('font-size', 10)
+    .attr('font-size', 15)
     .style('font-weight', 'bold');
 
   return legendArea;

@@ -26,7 +26,7 @@ class MechanicalChangesMainOverview {
       },
       legendWidth: 300,
       legendHeight: 40,
-      legendRadius: 5,
+      legendRadius: 7,
     };
     this.data = _data;
     this.processedData = null;
@@ -97,7 +97,7 @@ class MechanicalChangesMainOverview {
 
     // legend
     vis.legend = vis.svg.append('g')
-      .attr('transform', 'translate(0, 10)')
+      .attr('transform', 'translate(0, 30)')
       .attr('class', 'legendArea');
 
     vis.initData();
