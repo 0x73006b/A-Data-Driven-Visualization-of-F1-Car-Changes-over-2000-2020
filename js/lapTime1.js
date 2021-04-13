@@ -79,9 +79,10 @@ class LapTime1 {
       .tickFormat((x) => x);
 
     // Initialize Y-Axis
+    // Set explicity tick values of 1 minute, 1 minute 30 seconds, 2 minutes
     vis.yAxis = d3.axisLeft(vis.yScale)
-      .ticks(3)
-      .tickSizeOuter(0)
+      .tickValues([60 * 1000, 90 * 1000, 120 * 1000])
+      // .tickSizeOuter(0)
       .tickPadding(0)
       .tickFormat((x) => getMinuteStringFromMillisecond(x));
 
