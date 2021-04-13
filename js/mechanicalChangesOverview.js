@@ -10,17 +10,17 @@ class MechanicalChangesOverview {
   constructor(_config, _data) {
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 600,
-      containerHeight: 350,
+      containerWidth: 650,
+      containerHeight: 450,
       tooltipPadding: 15,
       margin: {
-        top: 30,
+        top: 130,
         right: 50,
         bottom: 40,
         left: 50,
       },
       legendWidth: 300,
-      legendHeight: 100,
+      legendHeight: 40,
       legendRadius: 3,
     };
     this.data = _data;
@@ -65,7 +65,7 @@ class MechanicalChangesOverview {
         'group 15: Jordan Grand Prix, Midland F1 Racing,Spyker/Force India, Force India, Racing Point',
         'group 16: Haas',
       ])
-      .range(['#f8a947', '#900000', '#1a5aff', '#FFE368', '#193A5B', '#D40000', 'white', '#808080', '#4a5074', '#3fdbc8',
+      .range(['black', '#f8a947', '#900000', '#1a5aff', '#FFE368', '#193A5B', '#D40000', 'white', '#808080', '#4a5074', '#3fdbc8',
         '#1b7a37', '#D4AF37', '#f95c31', '#051773', '#f7a9d1', '#f9f8fd',
       ]);
     // Initialize axes
@@ -101,13 +101,14 @@ class MechanicalChangesOverview {
     // Append X axis title (weight)
     // Append Y axis title (power)
 
-    chartTitle(vis, 'Power-to-Weight of All F1 Cars from 2000 to 2020', 0);
+    chartTitle(vis, 'Power-to-Weight of All F1 Cars from 2000 to 2020', 5);
     axisLabel(vis, true, 'Power', 0, 0);
-    axisLabel(vis, false, 'Weight', 0, 0);
+    axisLabel(vis, false, 'Weight', 0, -100);
 
     // legend
     vis.legend = vis.svg.append('g')
-      .attr('transform', 'translate(0, -20)');
+      .attr('transform', 'translate(0, 10)')
+      .attr('class', 'legendArea');
 
     // Specify accessor functions
     vis.xValue = (d) => d.power;
@@ -237,7 +238,6 @@ class MechanicalChangesOverview {
     const legendArea = vis.legend.selectAll('.legendArea')
       .data(keys)
       .append('g')
-      .attr('class', 'legendArea')
       .attr('height', vis.config.legendHeight)
       .attr('width', vis.config.legendWidth);
 
@@ -256,12 +256,12 @@ class MechanicalChangesOverview {
       .attr('cy', (d, i) => {
         if (i % 2 === 0) {
         // if even index
-          return 20 + (i / 2) * 25;
+          return 20 + (i / 2) * 10;
         }
 
         // item 2 and 4 = index 1,3
         // floor makes the index 0, 1
-        return 20 + (Math.floor(i / 2)) * 25;
+        return 20 + (Math.floor(i / 2)) * 10;
       })
       .attr('r', vis.config.legendRadius)
       .style('stroke', 'black')
@@ -282,14 +282,15 @@ class MechanicalChangesOverview {
       .attr('y', (d, i) => {
         if (i % 2 === 0) {
           // if even index
-          return 25 + (i / 2) * 25;
+          return 22 + (i / 2) * 10;
         }
 
         // item 2 and 4 = index 1,3
         // floor makes the index 0, 1
-        return 25 + (Math.floor(i / 2)) * 25;
+        return 22 + (Math.floor(i / 2)) * 10;
       })
       .text((d) => d)
-      .attr('font-size', 8);
+      .attr('font-size', 7)
+      .style('font-weight', 'bold');
   }
 }

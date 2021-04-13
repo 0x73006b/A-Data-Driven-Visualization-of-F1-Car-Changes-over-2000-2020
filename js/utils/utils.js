@@ -121,6 +121,45 @@ function getCircles(vis, chartName, dataArray, radius) {
  * Helper to clear tool tip of any string, etc.
  * @returns {string}
  */
+// eslint-disable-next-line no-unused-vars
 function clearTooltip() {
   return '<div class="tooltip-label"></div>';
+}
+
+/**
+ * Helper to clear tool tip of any string, etc.
+ * @param vis{Object} - A given visualization.
+ * @returns {*}
+ */
+// eslint-disable-next-line no-unused-vars
+function renderUtilLegend(vis) {
+  const keys = ['selected', 'unselected'];
+  const legendArea = vis.legend.selectAll('.legendArea')
+    .data(keys)
+    .append('g')
+    .attr('height', vis.config.legendHeight)
+    .attr('width', vis.config.legendWidth);
+
+  legendArea
+    .data(keys)
+    .join('circle')
+    .attr('class', 'util-legend-dots')
+    .attr('cx', (d, i) => 100 + i * vis.config.legendWidth)
+    .attr('cy', 20)
+    .attr('r', vis.config.legendRadius)
+    .style('stroke', 'black')
+    .style('stroke-width', '0.5')
+    .style('fill', (d) => vis.colorScale(d));
+
+  legendArea
+    .data(keys)
+    .join('text')
+    .attr('class', 'legend-text')
+    .attr('x', (d, i) => 120 + i * vis.config.legendWidth)
+    .attr('y', 22)
+    .text((d) => d)
+    .attr('font-size', 10)
+    .style('font-weight', 'bold');
+
+  return legendArea;
 }

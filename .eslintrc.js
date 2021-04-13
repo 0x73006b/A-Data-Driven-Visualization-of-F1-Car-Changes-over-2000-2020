@@ -18,6 +18,7 @@ module.exports = {
         "colorScale":true,
         "colorScaleGroup":true,
         "clearTooltip":true,
+        "renderUtilLegend":true,
 
         "getMinuteStringFromMillisecond": true,
         "getMillisecondsFromTimeString":true,

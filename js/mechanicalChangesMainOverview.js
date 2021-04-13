@@ -16,14 +16,17 @@ class MechanicalChangesMainOverview {
     this.config = {
       parentElement: _config.parentElement,
       containerWidth: 600,
-      containerHeight: 350,
+      containerHeight: 450,
       tooltipPadding: 15,
       margin: {
-        top: 30,
+        top: 130,
         right: 50,
         bottom: 40,
         left: 50,
       },
+      legendWidth: 300,
+      legendHeight: 40,
+      legendRadius: 5,
     };
     this.data = _data;
     this.processedData = null;
@@ -49,6 +52,11 @@ class MechanicalChangesMainOverview {
       .range([vis.height, 0])
       .nice()
       .domain(d3.extent(vis.data, vis.yValue1));
+
+    // for legend display colors
+    vis.colorScale = d3.scaleOrdinal()
+      .domain(['selected', 'unselected'])
+      .range(['red', 'black']);
 
     // Initialize axes
     vis.xAxis = d3.axisBottom(vis.xScale)
@@ -87,6 +95,11 @@ class MechanicalChangesMainOverview {
     axisLabel(vis, true, 'Years', 0, 10);
     axisLabel(vis, false, 'Average-Power-to-Weight-Ratio', 0, -150);
 
+    // legend
+    vis.legend = vis.svg.append('g')
+      .attr('transform', 'translate(0, 10)')
+      .attr('class', 'legendArea');
+
     vis.initData();
   }
 
@@ -124,6 +137,7 @@ class MechanicalChangesMainOverview {
     vis.yValue = (d) => d[1]; // y-axis accesor for rollup data
 
     vis.renderVis();
+    renderUtilLegend(vis);
   }
 
   renderVis() {
@@ -147,7 +161,7 @@ class MechanicalChangesMainOverview {
         .x((d) => vis.xScale(vis.xValue(d)))
         .y((d) => vis.yScale(vis.yValue(d))));
 
-    const powerWeightRatioCircle = vis.chart.selectAll(`.mc-main-overview-point`)
+    const powerWeightRatioCircle = vis.chart.selectAll('.mc-main-overview-point')
       .data(vis.processedData)
       .join('circle')
       .attr('class', (d) => (mechanicalChangesSelectedYears.includes(vis.xValue(d)) ? 'mc-main-overview-point mc-main-overview-selected' : 'mc-main-overview-point'))
