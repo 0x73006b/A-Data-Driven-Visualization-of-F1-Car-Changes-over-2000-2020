@@ -6,12 +6,13 @@ class LapTime1 {
   constructor(_config, _data) {
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 200,
-      containerHeight: 80,
+      smallMultiplecontainerWidth: 300,
+      smallMultiplecontainerHeight: 100,
       tooltipPadding: 15,
-      // eslint-disable-next-line no-unused-vars
+      containerWidth: 220,
+      containerHeight: 95,
       margin: {
-        top: 15, right: 10, bottom: 10, left: 0,
+        top: 20, right: 15, bottom: 20, left: 15,
       },
     };
     this.data = _data;
@@ -66,9 +67,9 @@ class LapTime1 {
 
     // Initialize Y-Axis
     vis.yAxis = d3.axisLeft(vis.yScale)
-      .ticks(5)
+      .ticks(3)
       .tickSizeOuter(0)
-      .tickPadding(-5)
+      .tickPadding(0)
       .tickFormat((x) => getMinuteStringFromMillisecond(x));
 
     // set the x domain
@@ -76,37 +77,37 @@ class LapTime1 {
     vis.yScale.domain(d3.extent(vis.data, (c) => c.laptimeMillis));
     // group the vis.data
 
-    vis.svg = d3.select('#lap-time-1');
+    vis.idSelected = d3.select('#lap-time-1');
 
-    vis.svg = vis.svg.selectAll('svg').append('g');
-    vis.chart = vis.svg.data(vis.tracks)
-      .join('svg')
+    vis.svg = vis.idSelected.selectAll('svg');
+
+    vis.chart = vis.svg
+      .data(vis.tracks)
+      .join((g) => g
+        .append('div')
+        .attr('class', 'small-multiple-div')
+        .attr('width', vis.config.smallMultiplecontainerWidth)
+        .attr('height', vis.config.smallMultiplecontainerHeight)
+        .append('svg'))
       .attr('class', (d) => `lt1-chart ${d.value[0].circuitRef}`)
-      .attr('width', vis.config.containerWidth + 40)
-      .attr('height', vis.config.containerHeight + 20)
-
-    let resetButton = d3.select('#lap-time-1-remove')
-      .on('click', () => {
-        if (!pointsRemoved) {
-          d3.select('#lap-time-1-remove').text('Enable Points');
-          vis.chart.selectAll('.lt1-point').remove();
-        } else {
-          d3.select('#lap-time-1-remove').text('Disable Points');
-          vis.updateVis();
-        }
-        pointsRemoved = !pointsRemoved;
-      });
-
+      .attr('width', vis.config.containerWidth)
+      .attr('height', vis.config.containerHeight)
+      .attr('overflow', 'visible');
     vis.tracks.forEach((circuitGroup) => {
       const currentCircuit = vis.circuitRef(circuitGroup);
       const chart = d3.selectAll(currentCircuit);
+
       chart.append('text')
+        .attr('class', 'small-multiple-title')
+        .attr('id', (d) => `title-${d.key}`)
         .attr('text-anchor', 'start')
         .attr('y', 0)
         .attr('x', 0)
         .attr('font-size', 12)
         .text((d) => d.key)
         .style('fill', 'black');
+
+      chart.attr('transform', `translate(${vis.config.margin.left},${vis.config.margin.top})`)
 
       // append y-axis
       d3.select(currentCircuit)
@@ -119,6 +120,7 @@ class LapTime1 {
         .attr('transform', `translate(0,${vis.height})`)
         .call(vis.xAxis);
     });
+
     vis.updateVis();
   }
 
