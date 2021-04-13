@@ -41,6 +41,20 @@ class LapTime1 {
     vis.tracksNoNull = Array.from(d3.group(vis.data, (d) => d.circuitName),
       ([key, value]) => ({ key, value }));
 
+    // setup point display handler
+    // eslint-disable-next-line no-unused-vars
+    const disableEnableButton = d3.select('#lap-time-1-disableEnable')
+      .on('click', () => {
+        if (!pointsRemoved) {
+          d3.select('#lap-time-1-disableEnable').text('Enable Points');
+          vis.chart.selectAll('.lt1-point').remove();
+        } else {
+          d3.select('#lap-time-1-disableEnable').text('Disable Points');
+          vis.updateVis();
+        }
+        pointsRemoved = !pointsRemoved;
+      });
+
     this.initVis();
   }
 
