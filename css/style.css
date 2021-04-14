@@ -8,13 +8,6 @@ body {
     margin: auto;
 }
 
-.lt2-container {
-    display: flex;
-    flex-direction: row;
-    align-items: flex-end;
-    padding-top: 50px;
-}
-
 #tooltip {
     position: absolute;
     opacity: 0;
@@ -61,6 +54,38 @@ body {
     fill-opacity: 1;
     stroke-opacity: 1;
     stroke: black;
+}
+
+.lt2-outer-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+.lt2-inner-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#lt2-explainer {
+    margin-bottom: 15px;
+}
+
+#lt2-radio-button-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+#lt2-container-left-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+#animation-title {
+    position: relative;
+    margin-left: 20px;
 }
 
 .bar-sector1 {
