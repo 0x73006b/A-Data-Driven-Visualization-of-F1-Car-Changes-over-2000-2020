@@ -112,11 +112,13 @@ class RealTimeLap {
 
           // Legend for Animated View
           vis.tracksvg.append('text')
+            .attr('class', 'legend-title')
             .attr('x', 50)
             .attr('y', vis.config.legendY + 5)
             .text('2014:')
             .style('font-size', '15px');
           vis.tracksvg.append('text')
+            .attr('class', 'legend-title')
             .attr('x', 50)
             .attr('y', vis.config.legendY + 5 + vis.config.yGap)
             .text('2019:')
@@ -130,6 +132,7 @@ class RealTimeLap {
                 .attr('cy', vis.config.legendY + i * vis.config.yGap)
                 .attr('r', 6);
               vis.tracksvg.append('text')
+                .attr('class', 'legend-text')
                 .attr('x', vis.config.legendX + vis.config.legendGap * j + vis.config.iconGap)
                 .attr('y', vis.config.legendY + i * vis.config.yGap + 5)
                 .text(`Sector ${j + 1}`)
