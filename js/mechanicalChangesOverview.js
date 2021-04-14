@@ -1,5 +1,10 @@
-// Todo: Implement mechanical change scatterplot;
-// x-axis: Horsepower; y-axis: weight(kg)
+// TODO: implemented class should populate the scatterplot overview
+// x-axis years; y-axis average power to weight ratio
+// a line chart
+
+// TODO: edit from Detailedview to get general linechart overview
+// TODO: calculate average from the power-to-weight ratio
+// TODO: fix all comments
 
 class MechanicalChangesOverview {
   /**
@@ -10,7 +15,7 @@ class MechanicalChangesOverview {
   constructor(_config, _data) {
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 650,
+      containerWidth: 600,
       containerHeight: 450,
       tooltipPadding: 15,
       margin: {
@@ -21,62 +26,48 @@ class MechanicalChangesOverview {
       },
       legendWidth: 300,
       legendHeight: 40,
-      legendRadius: 5,
+      legendRadius: 7,
     };
     this.data = _data;
+    this.processedData = null;
     this.initVis();
   }
 
-  /**
-   * Initialize scales/axes and append static elements, such as axis titles
-   */
   initVis() {
     const vis = this;
 
-    // Calculate inner chart size. Margin specifies the space around the actual chart.
     vis.width = vis.config.containerWidth - vis.config.margin.left - vis.config.margin.right;
     vis.height = vis.config.containerHeight - vis.config.margin.top - vis.config.margin.bottom;
 
-    // Initialize scales
+    // We want X-Axis and Y-Axis to stay consistent
+    // accessor functions
+    vis.xValue1 = (d) => d.year; // year
+    vis.yValue1 = (d) => d.powerToWeightRatio; // average power-to-weight ratio
+
     vis.xScale = d3.scaleLinear()
-      .range([0, vis.width]);
+      .range([0, vis.width])
+      .domain(d3.extent(vis.data, vis.xValue1));
 
     vis.yScale = d3.scaleLinear()
-      .range([vis.height, 0]);
+      .range([vis.height, 0])
+      .nice()
+      .domain(d3.extent(vis.data, vis.yValue1));
 
     // for legend display colors
-    vis.colorScaleMC = d3.scaleOrdinal()
-      .domain([
-        'Arrows',
-        'McLaren',
-        'Sauber, BMW Sauber, Alfa Romeo',
-        'Williams-Mercedes, Williams',
-        'Benetton, Lotus F1, Renault',
-        'Minardi, Toro Rosso, AlphaTauri',
-        'Ferrari',
-        'Toyota',
-        'Super Aguri F1',
-        'Jaguar, Red Bull Racing',
-        'BAR, BAR-Honda, Honda, Brawn GP, Mercedes',
-        'Team Lotus, Caterham',
-        'Dallara, HRT',
-        'Racing, Marussia, Manor',
-        'Prost',
-        'Jordan, Midland F1, Spyker/Force India, Force India, Racing Point',
-        'Haas',
-      ])
-      .range(['black', '#f8a947', '#900000', '#1a5aff', '#FFE368', '#193A5B', '#D40000', 'white', '#808080', '#4a5074', '#3fdbc8',
-        '#1b7a37', '#D4AF37', '#f95c31', '#051773', '#f7a9d1', '#f9f8fd',
-      ]);
+    vis.colorScale = d3.scaleOrdinal()
+      .domain(['selected', 'unselected'])
+      .range(['red', 'black']);
+
     // Initialize axes
     vis.xAxis = d3.axisBottom(vis.xScale)
-      .tickSize(-vis.height)
-      .tickPadding(10)
-      .tickFormat((d) => d);
+      .ticks(10)
+      .tickSizeOuter(0)
+      .tickPadding(5)
+      .tickFormat(d3.format('d'));
 
-    vis.yAxis = d3.axisLeft(vis.yScale)
-      .ticks(6)
-      .tickSize(-vis.width - 10)
+    vis.yAxisBottom = d3.axisLeft(vis.yScale)
+      .ticks(4)
+      .tickSizeOuter(0)
       .tickPadding(10);
 
     // Define size of SVG drawing area
@@ -84,109 +75,118 @@ class MechanicalChangesOverview {
       .attr('width', vis.config.containerWidth)
       .attr('height', vis.config.containerHeight);
 
-    // Append group element that will contain our actual chart
-    // and position it according to the given margin config
+    // Append group element that will contain our actual chart (see margin convention)
     vis.chart = vis.svg.append('g')
       .attr('transform', `translate(${vis.config.margin.left},${vis.config.margin.top})`);
 
     // Append empty x-axis group and move it to the bottom of the chart
     vis.xAxisG = vis.chart.append('g')
       .attr('class', 'axis x-axis')
-      .attr('transform', `translate(0,${vis.height})`);
+      .attr('transform', `translate(0,${vis.height + 10})`);
 
-    // Append y-axis group
-    vis.yAxisG = vis.chart.append('g')
-      .attr('class', 'axis y-axis');
+    vis.yAxisBottomG = vis.chart.append('g')
+      .attr('class', 'axis y-axis-bottom');
 
-    // Append X axis title (weight)
-    // Append Y axis title (power)
+    // We need to make sure that the tracking area is on top of other chart elements
+    vis.marks = vis.chart.append('g');
 
-    chartTitle(vis, 'Power-to-Weight of All F1 Cars from 2000 to 2020', 5);
-    axisLabel(vis, true, 'Power', 0, 0);
-    axisLabel(vis, false, 'Weight', 0, -100);
+    // Fix title, labels -- needs one for derived hp:weight
+    chartTitle(vis, 'Average Power-to-Weight ratio over the Years', 0);
+    axisLabel(vis, true, 'Years', 0, 10);
+    axisLabel(vis, false, 'Average-Power-to-Weight-Ratio', 0, -150);
 
     // legend
     vis.legend = vis.svg.append('g')
-      .attr('transform', 'translate(0, 10)')
+      .attr('transform', 'translate(0, 30)')
       .attr('class', 'legendArea');
 
-    // Specify accessor functions
-    vis.xValue = (d) => d.power;
-    vis.yValue = (d) => d.weight;
-    // Set the scale input domains
-    vis.xScale.domain([d3.min(vis.data, vis.xValue), d3.max(vis.data, vis.xValue)]);
-    vis.yScale.domain([d3.min(vis.data, vis.yValue), d3.max(vis.data, vis.yValue)]);
+    vis.initData();
+  }
 
+  initData() {
+    const vis = this;
+    // Should have averaged power-to-weight by each year
+
+    vis.processedData = d3.rollups(vis.data, (d) => {
+      let cumulativeSum = 0;
+      d.forEach((v) => {
+        // for each year, get all the ptw. ratio and add it to cumulative sum
+        cumulativeSum += v.powerToWeightRatio;
+      });
+      // average cumsum by amount of rounds, obtained through the length of that year's array
+      const averagedRatio = cumulativeSum / d.length;
+      // Currently rounded to 3 decimal places
+      return parseFloat(averagedRatio.toFixed(3));
+    }, (d) => d.year);
+
+    vis.processedData = vis.processedData.sort();
+    mechanicalChangesSelectedYears = [];
+    // some sort of default years selected?
+    // eslint-disable-next-line max-len
+    mechanicalChangesSelectedYears.push(vis.processedData[d3.minIndex(vis.processedData, (d) => d[1])][0]);
+    // eslint-disable-next-line max-len
+    mechanicalChangesSelectedYears.push(vis.processedData[d3.maxIndex(vis.processedData, (d) => d[1])][0]);
     vis.updateVis();
   }
 
   updateVis() {
     const vis = this;
 
-    // TODO: Remove this?
-    // Filter data to show only points where the GDP is known
-    // vis.filteredData = vis.data;
-
-    if (mechanicalChangesSelectedYears) {
-      vis.filteredData = vis.data.filter((d) => mechanicalChangesSelectedYears.includes(d.year));
-    } else {
-      vis.marks.selectAll('.mech-overview-point')
-        .remove();
-      this.drawAxis();
-    }
-    // Specify accessor functions
-    vis.xValue = (d) => d.power;
-    vis.yValue = (d) => d.weight;
-    // TODO: change
-    vis.groupAccessor = (d) => d.group;
+    // accessors for the data
+    vis.xValue = (d) => d[0]; // x-axis accesor for rollup data
+    vis.yValue = (d) => d[1]; // y-axis accesor for rollup data
 
     vis.renderVis();
-    vis.renderLegend();
+    renderUtilLegend(vis);
   }
 
   renderVis() {
-    // Bind data to visual elements, update axes
     const vis = this;
 
-    // Add circles
-    const circles = vis.chart.selectAll('.mech-overview-point')
-      .data(vis.filteredData, (d) => d)
+    // Add line path
+    // eslint-disable-next-line no-unused-vars
+    const powerWeightRatioLine = vis.marks.selectAll('.chart-line-pwr')
+      .data([vis.processedData], (d) => d)
+      .join('path')
+      .attr('class', 'chart-line-pwr')
+      .attr('fill', 'none')
+      .attr('stroke', 'black')
+      .attr('stroke-width', '3');
+
+    // TODO: how does merge work on transition?
+    powerWeightRatioLine
+      .merge(powerWeightRatioLine)
+      .attr('d', d3.line()
+        // .curve(d3.curveNatural)
+        .x((d) => vis.xScale(vis.xValue(d)))
+        .y((d) => vis.yScale(vis.yValue(d))));
+
+    const powerWeightRatioCircle = vis.chart.selectAll('.mc-main-overview-point')
+      .data(vis.processedData)
       .join('circle')
-      .attr('class', 'mech-overview-point')
-      .attr('r', 5)
+      .attr('class', (d) => (mechanicalChangesSelectedYears.includes(vis.xValue(d)) ? 'mc-main-overview-point mc-main-overview-selected' : 'mc-main-overview-point'))
+      .attr('id', (d) => `mc-main-overview-point-${vis.yValue(d)}-${vis.xValue(d)}`)
+      .attr('r', () => 5)
       .attr('cy', (d) => vis.yScale(vis.yValue(d)))
       .attr('cx', (d) => vis.xScale(vis.xValue(d)))
       .attr('fill', (d) => {
-        if (d.group === mechanicalChangesSelectedGroup) {
-          return 'black';
+        if (mechanicalChangesSelectedYears.includes(vis.xValue(d))) {
+          return 'red';
         }
-        return d.color;
-      })
-      .style('opacity', (d) => (d.group === mechanicalChangesSelectedGroup ? 1 : 0.8));
-    // Detail View Selector
-    circles.on('click', (e, d) => {
-      if (mechanicalChangesSelectedGroup === d.group) {
-        mechanicalChangesSelectedGroup = null;
-      } else {
-        mechanicalChangesSelectedGroup = d.group;
-      }
-      mechanicalChangesOverview.updateVis();
-      mechanicalChangesDetailView.updateVis();
-    });
+        return 'black';
+      });
 
-    // TODO: Make tool tip better
-    circles.on('mouseover', (event, d) => {
-      circles.attr('cursor', 'pointer');
+    powerWeightRatioCircle.on('mouseover', (event, d) => {
+      powerWeightRatioCircle.attr('cursor', 'pointer');
       d3.select('#tooltip')
         .style('opacity', 1)
         .html((`
-            <div class="tooltip-label">
-                <div class="tooltip-title">${d.car}</div>
-                Season: ${d.year}
-                <div><i>${d.power}, ${d.weight}</i></div>
-                PWR:WEIGHT: ${parseFloat(d.powerToWeightRatio).toFixed(2)} <br/>
-            </div>
-           `));
+        <div class="tooltip-label">
+            <div class="tooltip-title">Season ${d[0]}</div>
+            Avg PWR:WEIGHT: 
+            ${d[1]} <br/>
+        </div>
+       `));
     })
       .on('mousemove', (event) => {
         d3.select('#tooltip')
@@ -197,100 +197,26 @@ class MechanicalChangesOverview {
         d3.select('#tooltip')
           .style('opacity', 0)
           .html(clearTooltip());
+      })
+      .on('click', (event, d) => {
+        if (mechanicalChangesSelectedYears.includes(d[0])) {
+          // eslint-disable-next-line max-len
+          mechanicalChangesSelectedYears = mechanicalChangesSelectedYears.filter((year) => year !== d[0]);
+        } else {
+          mechanicalChangesSelectedYears.push(d[0]);
+        }
+        mechanicalChangesOverview.updateVis();
+        mechanicalChangesSubOverview.updateVis();
+        mechanicalChangesDetailView.updateVis();
       });
 
-    // Update the axes/gridlines
-    // We use the second .call() to remove the axis and just show gridlines
-    vis.xAxisG
-      .call(vis.xAxis)
-      .call((g) => g.select('.domain')
-        .remove());
-
-    vis.yAxisG
-      .call(vis.yAxis)
-      .call((g) => g.select('.domain')
-        .remove());
+    // Update the axes
+    this.drawAxis();
   }
 
-  renderLegend() {
+  drawAxis() {
     const vis = this;
-    const keys = [
-      'Arrows',
-      'McLaren',
-      'Sauber, BMW Sauber, Alfa Romeo',
-      'Williams-Mercedes, Williams',
-      'Benetton, Lotus F1, Renault',
-      'Minardi, Toro Rosso, AlphaTauri',
-      'Ferrari',
-      'Toyota',
-      'Super Aguri F1',
-      'Jaguar, Red Bull Racing',
-      'BAR, BAR-Honda, Honda, Brawn GP, Mercedes',
-      'Team Lotus, Caterham',
-      'Dallara, HRT',
-      'Racing, Marussia, Manor',
-      'Prost',
-      'Jordan, Midland F1, Spyker/Force India, Force India, Racing Point',
-      'Haas',
-
-    ];
-
-    const legendArea = vis.legend.selectAll('.legendArea')
-      .data(keys)
-      .append('g')
-      .attr('height', vis.config.legendHeight)
-      .attr('width', vis.config.legendWidth);
-
-    const legendAreaCircles = legendArea
-      .data(keys)
-      .join('circle')
-      .attr('class', 'legend-dots')
-      .attr('cx', (d, i) => {
-        if (i % 2 === 0) {
-        // if even index
-          return 100;
-        }
-        // odd case
-        return 100 + vis.config.legendWidth - 40;
-      })
-      .attr('cy', (d, i) => {
-        if (i % 2 === 0) {
-        // if even index
-          return 20 + (i / 2) * 15;
-        }
-
-        // item 2 and 4 = index 1,3
-        // floor makes the index 0, 1
-        return 20 + (Math.floor(i / 2)) * 15;
-      })
-      .attr('r', vis.config.legendRadius)
-      .style('stroke', 'black')
-      .style('stroke-width', '0.5')
-      .style('fill', (d) => vis.colorScaleMC(d));
-
-    const legendAreaText = legendArea
-      .data(keys)
-      .join('text')
-      .attr('class', 'legend-text')
-      .attr('x', (d, i) => {
-        if (i % 2 === 0) {
-          // if even index
-          return 110;
-        }
-        return 110 + vis.config.legendWidth - 40;
-      })
-      .attr('y', (d, i) => {
-        if (i % 2 === 0) {
-          // if even index
-          return 22 + (i / 2) * 15;
-        }
-
-        // item 2 and 4 = index 1,3
-        // floor makes the index 0, 1
-        return 22 + (Math.floor(i / 2)) * 15;
-      })
-      .text((d) => d)
-      .attr('font-size', 8)
-      .style('font-weight', 'bold');
+    vis.xAxisG.call(vis.xAxis);
+    vis.yAxisBottomG.call(vis.yAxisBottom);
   }
 }

@@ -11,7 +11,7 @@ Main "entry" file that contains the data loading, the chart instantiation and al
 ### Mechanical Changes
 Mechanical changes takes in data from `car_data.json` (loaded in the `main.js` promise).
 
-#### `mechanicalChangesOverview.js`:
+#### `mechanicalChangesSubOverview.js`:
 This is the "main" scatterplot for mechanical changes -- it is given the title "Power-to-Weight of All F1 Cars from 2000 to 2020". Its x-axis is `power`, its y-axis `weight`.
 
 The control flow is `initVis->updateVis->renderVis` and `updateVis->renderVis` when it needs to update.
