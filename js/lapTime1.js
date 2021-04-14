@@ -45,13 +45,14 @@ class LapTime1 {
     const disableEnableButton = d3.select('#lap-time-1-disableEnable')
       .on('click', () => {
         if (!pointsRemoved) {
-          d3.select('#lap-time-1-disableEnable').text('Enable Points');
+          d3.select('#lap-time-1-disableEnable').text('Enable Small Multiple Points');
           vis.chart.selectAll('.lt1-point').remove();
+          pointsRemoved = !pointsRemoved;
         } else {
-          d3.select('#lap-time-1-disableEnable').text('Disable Points');
+          d3.select('#lap-time-1-disableEnable').text('Disable Small Multiple Points');
+          pointsRemoved = !pointsRemoved;
           vis.updateVis();
         }
-        pointsRemoved = !pointsRemoved;
       });
 
     this.initVis();
@@ -156,31 +157,6 @@ class LapTime1 {
 
     console.log('tracks', vis.tracks);
     console.log('noNull', vis.tracksNoNull);
-
-    // if (lt0lt1SelectedYears.length >= 2) {
-    //   //
-    //   const tracksFiltered = vis.tracks.map((track) => ({
-    //     key: track.key,
-    //     value: (track.value.filter((d) => lt0lt1SelectedYears.includes(vis.yearAccessor(d)))),
-    //   }));
-    //   const tracksNoNullFiltered = vis.tracksNoNull.map((track) => ({
-    //     key: track.key,
-    //     value: (track.value.filter((d) => lt0lt1SelectedYears.includes(vis.yearAccessor(d)))),
-    //   }));
-    //   console.log('tracksFiltered', tracksFiltered);
-    //   console.log('tracksNoNullFiltered', tracksNoNullFiltered);
-    //
-    //   // draws line with gaps where no data exists
-    //   tracksFiltered.forEach((circuitGroup) => {
-    //     vis.renderVis(circuitGroup, NOT_DASHED, 'red');
-    //   });
-    //
-    //   // draws dashed line to show data gaps
-    //   tracksNoNullFiltered.forEach((circuitGroup) => {
-    //     vis.renderVis(circuitGroup, DASHED);
-    //     d3.selectAll(vis.circuitRef(circuitGroup)).selectAll('.lap-time-1-line-dashed').lower();
-    //   });
-    // }
   }
 
   renderVis(circuitGroup, isDashedLine, red) {
@@ -199,7 +175,7 @@ class LapTime1 {
 
     if (red) { line.style('stroke', red); }
 
-    if (!isDashedLine) {
+    if (!isDashedLine && !pointsRemoved) {
       const circles = chart.selectAll('.lt1-point')
         .data(line.data()[0].filter((d) => !!vis.yValue(d)))
         .join('circle')

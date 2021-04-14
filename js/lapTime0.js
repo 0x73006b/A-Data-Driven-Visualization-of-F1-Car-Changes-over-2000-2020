@@ -195,7 +195,7 @@ class LapTime0 {
       .on('click', () => {
         // resets lap-time-1-remove button state
         pointsRemoved = false;
-        d3.select('#lap-time-1-remove').text('Disable Points');
+        d3.select('#lap-time-1-disableEnable').text('Disable Small Multiple Points');
         lapTime0.initData();
         lapTime1.updateVis();
       });
