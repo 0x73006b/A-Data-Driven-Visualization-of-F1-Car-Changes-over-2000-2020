@@ -212,8 +212,8 @@ class LapTime1 {
         })
         .on('mousemove', (event) => {
           d3.select('#tooltip')
-            .style('left', `${event.pageX + vis.config.margin.left}px`)
-            .style('top', `${event.pageY + vis.config.margin.top}px`);
+            .style('left', `${event.pageX + vis.config.tooltipPadding}px`)
+            .style('top', `${event.pageY + vis.config.tooltipPadding}px`);
         })
         .on('click', (event, d) => {
           if (lt0lt1SelectedYears.includes(vis.yearAccessor(d))) {
