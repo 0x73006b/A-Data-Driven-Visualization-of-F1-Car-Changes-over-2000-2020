@@ -123,6 +123,22 @@ class LapTime1 {
         .attr('x', (i === 0 || !(i % 5)) ? -47 : -2)
         .text((d) => d.key);
 
+      if (i === 15) {
+        chart.append('text')
+          .attr('class', 'axis-title')
+          .attr('y', -56.5)
+          .attr('transform', `rotate(${-90})`)
+          .attr('x', -20)
+          .text('Lap Time (Minutes)');
+      }
+      if (i === 32) {
+        chart.append('text')
+          .attr('class', 'axis-title')
+          .attr('y', vis.config.smallMultiplecontainerHeight-5)
+          .attr('x', vis.width / 2)
+          .text('Years');
+      }
+
       // append y-axis
       d3.select(currentCircuit)
         .append('g')
