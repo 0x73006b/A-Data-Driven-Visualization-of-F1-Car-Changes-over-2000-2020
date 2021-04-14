@@ -22,7 +22,23 @@ class MechanicalChangesSubOverview {
       legendRadius: 5,
     };
     this.data = _data;
-    this.initVis();
+    this.calculateLegendYPosition = (i, even) => (even ? 20 + (i / 2) * 15 : 18 + (Math.floor(i / 2)) * 15);
+    this.initData();
+  }
+
+  initData() {
+    const vis = this;
+    // Specify accessor functions
+    vis.xValue = (d) => d.power;
+    vis.yValue = (d) => d.weight;
+
+    console.log(vis.data);
+    vis.data.forEach((car, i) => vis.data[i].weight = (car.weight + (Math.random() * 5)));
+    vis.data.forEach((car, i) => vis.data[i].power = (car.power + (Math.random() * 5)));
+
+    console.log(vis.data);
+
+    vis.initVis();
   }
 
   /**
