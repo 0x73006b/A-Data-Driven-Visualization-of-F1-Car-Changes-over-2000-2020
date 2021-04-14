@@ -9,7 +9,7 @@ class LapTime1 {
       smallMultiplecontainerWidth: 300,
       smallMultiplecontainerHeight: 100,
       tooltipPadding: 15,
-      containerWidth: 220,
+      containerWidth: 200,
       containerHeight: 95,
       margin: {
         top: 20, right: 15, bottom: 20, left: 15,
@@ -72,34 +72,36 @@ class LapTime1 {
       .domain([d3.min(vis.data, (d) => vis.yValue(d)), d3.max(vis.data, (d) => vis.yValue(d))])
       .range([vis.height, 0]);
 
-    vis.xAxis = d3.axisBottom(vis.xScale)
-      .ticks(3)
+    // Initialize xAxis
+    // Sets ticks to passed in value
+    vis.xAxis = (tickCount) => d3.axisBottom(vis.xScale)
+      .ticks(tickCount)
       .tickSizeOuter(0)
       .tickPadding(10)
       .tickFormat((x) => x);
 
     // Initialize Y-Axis
-    // Set explicity tick values of 1 minute, 1 minute 30 seconds, 2 minutes
-    vis.yAxis = d3.axisLeft(vis.yScale)
-      .tickValues([60 * 1000, 90 * 1000, 120 * 1000])
+    // Set tick values of none or 1 minute, 1 minute 30 seconds, 2 minutes
+    vis.yAxis = (tickCount) => d3.axisLeft(vis.yScale)
+      .tickValues(tickCount ? [60 * 1000, 90 * 1000, 120 * 1000] : [])
       // .tickSizeOuter(0)
-      .tickPadding(0)
+      .tickSizeOuter(0)
+      .tickPadding(5)
       .tickFormat((x) => getMinuteStringFromMillisecond(x));
 
     // set the x domain
     vis.xScale.domain(d3.extent(vis.data, (c) => c.year));
     vis.yScale.domain(d3.extent(vis.data, (c) => c.laptimeMillis));
-    // group the vis.data
 
+    // Setup SVG group
     vis.idSelected = d3.select('#lap-time-1');
-
     vis.svg = vis.idSelected.selectAll('svg');
 
     vis.chart = vis.svg
       .data(vis.tracks)
       .join((g) => g
         .append('div')
-        .attr('class', 'small-multiple-div')
+        .attr('class', 'lt1-small-multiple-container')
         .attr('width', vis.config.smallMultiplecontainerWidth)
         .attr('height', vis.config.smallMultiplecontainerHeight)
         .append('svg'))
@@ -107,30 +109,32 @@ class LapTime1 {
       .attr('width', vis.config.containerWidth)
       .attr('height', vis.config.containerHeight)
       .attr('overflow', 'visible');
-    vis.tracks.forEach((circuitGroup) => {
+
+    vis.tracks.forEach((circuitGroup, i) => {
       const currentCircuit = vis.circuitRef(circuitGroup);
       const chart = d3.selectAll(currentCircuit);
 
       chart.append('text')
-        .attr('class', 'small-multiple-title')
+        .attr('class', 'lt1-small-multiple-title')
         .attr('id', (d) => `title-${d.key}`)
         .attr('text-anchor', 'start')
-        .attr('y', 0)
-        .attr('x', 0)
-        .attr('font-size', 12)
-        .text((d) => d.key)
-        .style('fill', 'black');
+        .attr('y', -7)
+        .attr('x', (i === 0 || !(i % 5)) ? -47 : -2)
+        .text((d) => d.key);
 
       // append y-axis
       d3.select(currentCircuit)
         .append('g')
-        .call(vis.yAxis);
+        .call(vis.yAxis((i === 0 || !(i % 5)) ? 1 : 0))
+        .attr('class', 'axis y-axis')
+        .attr('id', `y-axis-${i}`);
 
       // append x-axis
       d3.select(currentCircuit)
         .append('g')
         .attr('transform', `translate(0,${vis.height})`)
-        .call(vis.xAxis);
+        .call(vis.xAxis((i >= 30) ? 3 : 0))
+        .attr('class', 'axis x-axis');
     });
 
     vis.updateVis();
