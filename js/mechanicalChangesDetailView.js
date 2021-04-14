@@ -85,7 +85,7 @@ class MechanicalChangesDetailView {
     // Append y-axis groups
     vis.yAxisTopG = vis.chart.append('g')
       .attr('class', 'axis y-axis')
-      .attr("transform", "translate(0, -20)");
+      .attr('transform', 'translate(0, -20)');
 
     vis.yAxisBottomG = vis.chart.append('g')
       .attr('class', 'axis y-axis-bottom')
@@ -96,7 +96,7 @@ class MechanicalChangesDetailView {
 
     // TODO: Fix title, labels -- needs one for derived hp:weight
     chartTitle(vis, 'Power Progression for Selected Constructor, through the Years', 0);
-    chartTitle(vis, 'Power-to-Weight Ratio Progression for Selected Constructor, through the Years', 150);
+    chartTitle(vis, 'Pwr:Weight Progression for Selected Constructor, through the Years', 150);
     axisLabel(vis, true, 'Years', 0, 10);
     axisLabel(vis, false, 'Power-to-Weight                                                   Power', 0, -150).attr('style', 'white-space:pre');
 
@@ -107,6 +107,7 @@ class MechanicalChangesDetailView {
     const vis = this;
 
     // TODO: Setup proper filter
+    // TODO: !! This should be filtered on both mcselectedYears and mcselectedGroups
     if (mechanicalChangesSelectedGroup) {
       vis.filteredData = d3.filter(vis.data, (d) => d.group === mechanicalChangesSelectedGroup);
       vis.renderVis();
@@ -134,7 +135,8 @@ class MechanicalChangesDetailView {
       .join('path')
       .attr('class', 'chart-line')
       .attr('fill', 'none')
-      .attr('stroke', 'red');
+      .attr('stroke', 'black')
+      .attr('stroke-width', 3);
 
     // TODO: how does merge work on transition?
     horsePowerLine
@@ -155,7 +157,7 @@ class MechanicalChangesDetailView {
       .data(vis.filteredData)
       .join('circle')
       .attr('class', 'point-hp')
-      .attr('r', 6)
+      .attr('r', 4)
       .attr('cy', (d) => vis.yScaleTop(vis.yValueTop(d)) - 20)
       .attr('cx', (d) => vis.xScale(vis.xValue(d)));
 
@@ -163,16 +165,21 @@ class MechanicalChangesDetailView {
       .transition()
       .duration(1000)
       .ease(d3.easeSinOut)
-      .attr('fill-opacity', 0.5)
-      .attr('fill', 'red');
+      .attr('fill-opacity', 1)
+      .attr('fill', 'black');
 
+    // eslint-disable-next-line no-unused-vars
     horsePowerCircle.on('mouseover', (event, d) => {
       horsePowerCircle.attr('cursor', 'pointer');
       d3.select('#tooltip')
         .style('opacity', 1)
         .html((`
+
             <div class="tooltip-label">
-                horsePowerCircle
+                <div class="tooltip-title">${d.car}</div>
+                Season: ${d.year}
+                <div><i>${d.power}, ${d.weight}</i></div>
+                PWR:WEIGHT: ${parseFloat(d.powerToWeightRatio).toFixed(2)} <br/>
             </div>
            `));
     })
@@ -183,9 +190,8 @@ class MechanicalChangesDetailView {
       })
       .on('mouseleave', () => {
         d3.select('#tooltip')
-          .style('left', `${0}px`)
-          .style('top', `${0}px`)
-          .style('opacity', 0);
+          .style('opacity', 0)
+          .html(clearTooltip());
       });
 
     // Add line path
@@ -195,7 +201,8 @@ class MechanicalChangesDetailView {
       .join('path')
       .attr('class', 'chart-line-pwr')
       .attr('fill', 'none')
-      .attr('stroke', 'red');
+      .attr('stroke', 'black')
+      .attr('stroke-width', 3);
 
     // TODO: how does merge work on transition?
     powerWeightRatioLine
@@ -213,7 +220,7 @@ class MechanicalChangesDetailView {
       .data(vis.filteredData, (d) => d)
       .join('circle')
       .attr('class', 'point-pwr')
-      .attr('r', 6)
+      .attr('r', 4)
       .attr('transform', `translate(0, ${vis.halfHeight})`)
       .attr('cy', (d) => vis.yScaleBottom(vis.yValueBottom(d)) + 10)
       .attr('cx', (d) => vis.xScale(vis.xValue(d)));
@@ -222,18 +229,21 @@ class MechanicalChangesDetailView {
       .transition()
       .duration(1000)
       .ease(d3.easeSinOut)
-      .attr('fill-opacity', 0.5)
-      .attr('fill', 'red');
+      .attr('fill-opacity', 1)
+      .attr('fill', 'black');
 
     powerWeightRatioCircle.on('mouseover', (event, d) => {
       powerWeightRatioCircle.attr('cursor', 'pointer');
       d3.select('#tooltip')
         .style('opacity', 1)
         .html((`
-            <div class="tooltip-label">
-                ${d.year} ${d.car} ${d.powerToWeightRatio}
-            </div>
-           `));
+        <div class="tooltip-label">
+            <div class="tooltip-title">${d.car}</div>
+            Season: ${d.year}
+            <div><i>${d.power}, ${d.weight}</i></div>
+            PWR:WEIGHT: ${parseFloat(d.powerToWeightRatio).toFixed(2)} <br/>
+        </div>
+       `));
     })
       .on('mousemove', (event) => {
         d3.select('#tooltip')

@@ -1,7 +1,9 @@
 // TODO: Need to name these better
-let mechanicalChangesOverview;
+let mechanicalChangesSubOverview;
 let mechanicalChangesDetailView;
+let mechanicalChangesOverview;
 let mechanicalChangesData;
+let mechanicalChangesSelectedYears = [];
 let mechanicalChangesSelectedGroup = null;
 let lt0lt1SelectedYears = [];
 
@@ -25,8 +27,9 @@ Promise.all([
 
     circuitData.map((d) => d.laptimeMillis = getMillisecondsFromTimeString(d));
 
-    // Create Mechanical Changes Scatterplot
-    mechanicalChangesOverview = new MechanicalChangesOverview({ parentElement: '#mechanical-changes-overview' }, mechanicalChangesData.data);
+    // Create Mechanical Changes Overview: Linechart, Scatterplot, detail: Linecharts
+    mechanicalChangesOverview = new MechanicalChangesOverview({ parentElement: '#mechanical-changes-main-overview' }, mechanicalChangesData.data);
+    mechanicalChangesSubOverview = new MechanicalChangesSubOverview({ parentElement: '#mechanical-changes-overview' }, mechanicalChangesData.data);
     mechanicalChangesDetailView = new MechanicalChangesDetailView({ parentElement: '#mechanical-changes-detail-view' }, mechanicalChangesData.data);
 
     // Create LT0

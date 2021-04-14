@@ -4,6 +4,8 @@ module.exports = {
         "d3": true,
         "mechanicalChangesOverview": true, "MechanicalChangesOverview": true,
         "mechanicalChangesDetailView": true, "MechanicalChangesDetailView": true,
+        "mechanicalChangesMainOverview": true, "MechanicalChangesMainOverview": true,
+        "mechanicalChangesSelectedYears": true,
         "mechanicalChangesSelectedGroup": true,
 
         "lapTime0": true, "LapTime0": true,
@@ -14,6 +16,9 @@ module.exports = {
         "chartTitle":true,
         "axisLabel":true,
         "colorScale":true,
+        "colorScaleGroup":true,
+        "clearTooltip":true,
+        "renderUtilLegend":true,
 
         "getMinuteStringFromMillisecond": true,
         "getMillisecondsFromTimeString":true,

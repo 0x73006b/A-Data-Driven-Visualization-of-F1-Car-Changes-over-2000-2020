@@ -8,30 +8,52 @@
 </head>
 <body>
 <!-- Add HTML content, SVG drawing area, ... -->
-<h1>A Data Driven Visualization of F1 Car Changes over 2000-2020</h1>
-<div class="step" id="step0">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-    magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
-    suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
+
+<div class="opening-background">
+    <div class="step" id="step0">
+        <div class="opening-left-col">
+            <div id="title">
+                <h1>A Data Driven Visualization of F1 Car Changes over 2000-2020</h1>
+            </div>
+            <div id="opening-text">
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
+            suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
+            </div>
+            <div class="button-container">
+                <input class="next" type="button" onClick="smoothScroll('step1');" value ="Next"/>
+            </div>
+        </div>
+        <div class="opening-right-col">
+        </div>
+    </div>
 </div>
 <p/>
+
 <div class="step" id="step1" style="display: inherit">
-        <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate
-            dignissim suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
-            Diam in arcu cursus euismod quis viverra nibh cras pulvinar. Scelerisque mauris pellentesque pulvinar
-            pellentesque habitant.At imperdiet dui accumsan sit amet. Amet est placerat in egestas. Convallis tellus id
-            interdum velit laoreet id. Ornare quam viverra orci sagittis eu. Diam donec adipiscing tristique risus nec.
-            Lacus vel facilisis volutpat est velit egestas. Pulvinar elementum integer enim neque volutpat ac.
-            Praesent tristique magna sit amet purus gravida.
-        </span>
-    <span style="display: inherit; flex-flow: column">
-        <img src="data/Legends_mc.png" alt="mc_legend" width="350" height="100">
-            <svg id="mechanical-changes-overview"></svg>
-            <svg id="mechanical-changes-detail-view"></svg>
-        </span>
+    <div class="mechanical-change">
+        <div id="mc-title">
+            <h1>Mechanical Changes</h1>
+        </div>
+        <div id="mc-text">
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+        magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
+        suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
+        </div> 
+            <div id="mc_top">
+                <svg class='mc' id='mechanical-changes-main-overview'></svg>
+                <svg class='mc' id="mechanical-changes-overview"></svg>
+            </div>
+            <div id="mc_bottom">
+                <svg class='mc' id="mechanical-changes-detail-view"></svg>
+            </div>
+            
+    </div>
+       
+    </div>
 </div>
+<p/>
+<input class="next" type="button" onClick="smoothScroll('step2');"  value ="Next"/>
 
 <div class="step" id="step2">
     <button type="button" id="lap-time-0-clear">Clear</button>
@@ -43,6 +65,9 @@
     <svg id="lap-time-1"></svg>
     <div id="tooltip"></div>
 </div>
+
+<p/>
+<input class="next" type="button" onClick="smoothScroll('step3');" value ="Next"/>
 
 <div class="step" id="step3">
     <select id="selectButton"></select>
@@ -56,11 +81,16 @@
 <!-- D3 bundle -->
 <script src="js/d3.v6.min.js"></script>
 
+<!-- jquery access-->>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
+<script src="js/utils/buttonScroll.js"></script>
+
 <!-- Our JS code -->
 <script src="js/main.js"></script>
 <script src="js/utils/utils.js"></script>
 
-<script src="js/mechanicalChangesOverview.js"></script>
+<script src= "js/mechanicalChangesOverview.js"></script>
+<script src="js/mechanicalChangesSubOverview.js"></script>
 <script src="js/mechanicalChangesDetailView.js"></script>
 
 <script src="js/lapTime0.js"></script>

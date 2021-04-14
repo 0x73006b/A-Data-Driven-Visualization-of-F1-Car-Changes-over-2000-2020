@@ -1,11 +1,77 @@
 /* Todo: set up styling */
-
 body {
     display: flex;
     flex-flow: column;
     justify-content: center;
-    width: 1000px;
+    width: 1300px;
     margin: auto;
+    overflow-x: hidden;
+    scroll-behavior: smooth;
+}
+
+.opening-background {
+    width: 100vw;
+    margin-left: -310px;
+    height: 1080px;
+    display: flex;
+    flex-flow: column;
+    align-items: center;
+    /*padding-bottom: 25px;*/
+    background-color: #d8d8d8;
+    background-image: url("/data/images/senna.jpg");
+    background-size: cover;
+    background-position: center;
+    mix-blend-mode: color;
+    background-blend-mode: multiply;
+}
+
+.opening-left-col {
+    padding-top: 15vh;
+    width: 650px
+}
+
+#opening-text {
+    color: white;
+    background-color: #000000a3;
+    margin-top: -25px;
+}
+
+#step0 {
+    display: flex;
+    flex-flow: row;
+    width: 1300px;
+    color: white;
+    font-size: 2em;
+}
+
+#step1 {
+    display: flex;
+    flex-flow: row;
+    width: 1300px;
+    color: rgb(0, 0, 0);
+    font-size: 2em;
+}
+
+#mc-text {
+    padding: -10px;
+    font-size: 20px;
+}
+
+#mc-title {
+    text-align: center;
+}
+
+#mechanical-change {
+    display: flex;
+}
+
+#mc_bottom {
+    display: flex;
+    justify-content: center;
+}
+
+#mc {
+    padding: 20px;
 }
 
 #tooltip {
@@ -30,7 +96,7 @@ body {
 }
 
 .mech-overview-point {
-    opacity: 0.35;
+    opacity: 1;
 }
 
 .lap-time-0-line {
@@ -54,4 +120,11 @@ body {
     fill-opacity: 1;
     stroke-opacity: 1;
     stroke: black;
+}
+.chart-title{
+    font-size: 15px;
+    font-weight: bold;
+}
+.axis-title{
+    font-size: 13px;
 }

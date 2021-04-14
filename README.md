@@ -11,7 +11,7 @@ Main "entry" file that contains the data loading, the chart instantiation and al
 ### Mechanical Changes
 Mechanical changes takes in data from `car_data.json` (loaded in the `main.js` promise).
 
-#### `mechanicalChangesOverview.js`:
+#### `mechanicalChangesSubOverview.js`:
 This is the "main" scatterplot for mechanical changes -- it is given the title "Power-to-Weight of All F1 Cars from 2000 to 2020". Its x-axis is `power`, its y-axis `weight`.
 
 The control flow is `initVis->updateVis->renderVis` and `updateVis->renderVis` when it needs to update.
@@ -81,4 +81,11 @@ when we found it on wiki, it had extra marks besides the actual path, e.g. where
     * SVG animation reference
 * https://stackoverflow.com/questions/17498830/animate-svg-path-with-d3js
     * SVG animation reference
-* Previous assignments (Shabab, Robert)
+* Previous assignments (Shabab, Robert, Lydia)
+* https://stackoverflow.com/questions/17722497/scroll-smoothly-to-specific-element-on-page
+    * javascript for scrolling button
+* https://stackoverflow.com/questions/42344395/how-to-control-the-scroll-speed-in-window-scrolltox-coord-y-coord
+    * refining scroll behaviour
+
+
+

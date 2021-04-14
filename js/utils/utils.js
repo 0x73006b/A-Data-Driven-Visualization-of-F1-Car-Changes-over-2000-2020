@@ -19,6 +19,12 @@ const colorScale = d3.scaleOrdinal()
   .range(colors)
   .domain([2000, 2021]);
 
+// color scale for mechanical changes Overview, by constructor group
+// eslint-disable-next-line no-unused-vars
+const colorScaleGroup = d3.scaleOrdinal()
+  .range(colors)
+  .domain([1, 16]);
+
 /**
  * Take in lap time string in Minutes:Seconds:Milliseconds and convert it to milliseconds number.
  * @param d
@@ -92,6 +98,7 @@ function axisLabel(vis, isX, title, xOffset, yOffset) {
  * @param radius {null|number} - Circle's radius.
  * @returns {*}
  */
+// accessor is typically year, but can be group too (Mechanical changes)
 // eslint-disable-next-line no-unused-vars
 function getCircles(vis, chartName, dataArray, radius) {
   return vis.chart.selectAll(`.${chartName}-point`)
@@ -108,4 +115,51 @@ function getCircles(vis, chartName, dataArray, radius) {
       }
       return '#8e8e8e';
     });
+}
+
+/**
+ * Helper to clear tool tip of any string, etc.
+ * @returns {string}
+ */
+// eslint-disable-next-line no-unused-vars
+function clearTooltip() {
+  return '<div class="tooltip-label"></div>';
+}
+
+/**
+ * Helper to clear tool tip of any string, etc.
+ * @param vis{Object} - A given visualization.
+ * @returns {*}
+ */
+// eslint-disable-next-line no-unused-vars
+function renderUtilLegend(vis) {
+  const keys = ['selected', 'unselected'];
+  const legendArea = vis.legend.selectAll('.legendArea')
+    .data(keys)
+    .append('g')
+    .attr('height', vis.config.legendHeight)
+    .attr('width', vis.config.legendWidth);
+
+  legendArea
+    .data(keys)
+    .join('circle')
+    .attr('class', 'util-legend-dots')
+    .attr('cx', (d, i) => 100 + i * vis.config.legendWidth)
+    .attr('cy', 20)
+    .attr('r', vis.config.legendRadius)
+    .style('stroke', 'black')
+    .style('stroke-width', '0.5')
+    .style('fill', (d) => vis.colorScale(d));
+
+  legendArea
+    .data(keys)
+    .join('text')
+    .attr('class', 'legend-text')
+    .attr('x', (d, i) => 120 + i * vis.config.legendWidth)
+    .attr('y', 22)
+    .text((d) => d)
+    .attr('font-size', 15)
+    .style('font-weight', 'bold');
+
+  return legendArea;
 }
