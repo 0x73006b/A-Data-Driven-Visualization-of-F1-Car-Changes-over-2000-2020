@@ -86,8 +86,6 @@ function axisLabel(vis, isX, title, xOffset, yOffset) {
     .attr('class', 'axis-title')
     .attr('x', `${isX ? x : y}`)
     .attr('y', `${isX ? y : x}`)
-    .attr('text-anchor', 'middle')
-    .attr('font-size', '0.75em')
     .attr('transform', `rotate(${rotate})`)
     .text(title);
 }

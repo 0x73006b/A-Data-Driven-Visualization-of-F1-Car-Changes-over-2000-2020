@@ -8,7 +8,7 @@ class MechanicalChangesSubOverview {
   constructor(_config, _data) {
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 650,
+      containerWidth: 600,
       containerHeight: 500,
       tooltipPadding: 15,
       margin: {
@@ -125,13 +125,10 @@ class MechanicalChangesSubOverview {
 
     // legend
     vis.legend = vis.svg.append('g')
-      .attr('transform', 'translate(0, 10)')
+      .attr('transform', 'translate(-94, 10)')
       .attr('class', 'legendArea');
     vis.renderLegend();
 
-    // Specify accessor functions
-    vis.xValue = (d) => d.power;
-    vis.yValue = (d) => d.weight;
     // Set the scale input domains
     vis.xScale.domain([d3.min(vis.data, vis.xValue), d3.max(vis.data, vis.xValue)]);
     vis.yScale.domain([d3.min(vis.data, vis.yValue), d3.max(vis.data, vis.yValue)]);
@@ -141,10 +138,6 @@ class MechanicalChangesSubOverview {
 
   updateVis() {
     const vis = this;
-
-    // TODO: Remove this?
-    // Filter data to show only points where the GDP is known
-    // vis.filteredData = vis.data;
 
     if (mechanicalChangesSelectedYears) {
       vis.filteredData = vis.data.filter((d) => mechanicalChangesSelectedYears.includes(d.year));
@@ -179,8 +172,7 @@ class MechanicalChangesSubOverview {
           return 'black';
         }
         return d.color;
-      })
-      .style('opacity', (d) => (d.group === mechanicalChangesSelectedGroup ? 1 : 0.8));
+      });
     // Detail View Selector
     circles.on('click', (e, d) => {
       if (mechanicalChangesSelectedGroup === d.group) {
@@ -192,7 +184,6 @@ class MechanicalChangesSubOverview {
       mechanicalChangesDetailView.updateVis();
     });
 
-    // TODO: Make tool tip better
     circles.on('mouseover', (event, d) => {
       circles.attr('cursor', 'pointer');
       d3.select('#tooltip')
@@ -249,7 +240,7 @@ class MechanicalChangesSubOverview {
           return 100;
         }
         // odd case
-        return 100 + vis.config.legendWidth - 40;
+        return 100 + vis.config.legendWidth - 20;
       })
       .attr('cy', (d, i) => {
         if (i % 2 === 0) {
@@ -275,7 +266,7 @@ class MechanicalChangesSubOverview {
           // if even index
           return 110;
         }
-        return 110 + vis.config.legendWidth - 40;
+        return 110 + vis.config.legendWidth - 20;
       })
       .attr('y', (d, i) => {
         if (i % 2 === 0) {
@@ -288,7 +279,7 @@ class MechanicalChangesSubOverview {
         return 22 + (Math.floor(i / 2)) * 15;
       })
       .text((d) => d)
-      .attr('font-size', 10)
-      .style('font-weight', 'bold');
+      .attr('font-size', 13)
+      // .style('font-weight', 'bold');
   }
 }

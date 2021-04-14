@@ -24,7 +24,7 @@ class MechanicalChangesOverview {
         bottom: 40,
         left: 50,
       },
-      legendWidth: 300,
+      legendWidth: 100,
       legendHeight: 40,
       legendRadius: 7,
     };
@@ -53,7 +53,7 @@ class MechanicalChangesOverview {
       .nice()
       .domain(d3.extent(vis.data, vis.yValue1));
 
-    // for legend display colors
+    // Create color scale for legend
     vis.colorScale = d3.scaleOrdinal()
       .domain(['selected', 'unselected'])
       .range(['red', 'black']);
@@ -82,7 +82,7 @@ class MechanicalChangesOverview {
     // Append empty x-axis group and move it to the bottom of the chart
     vis.xAxisG = vis.chart.append('g')
       .attr('class', 'axis x-axis')
-      .attr('transform', `translate(0,${vis.height + 10})`);
+      .attr('transform', `translate(0,${vis.height})`);
 
     vis.yAxisBottomG = vis.chart.append('g')
       .attr('class', 'axis y-axis-bottom');

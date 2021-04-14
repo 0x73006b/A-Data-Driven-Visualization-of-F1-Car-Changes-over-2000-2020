@@ -15,7 +15,7 @@ class MechanicalChangesDetailView {
       containerHeight: 350,
       tooltipPadding: 15,
       margin: {
-        top: 30,
+        top: 60,
         right: 50,
         bottom: 40,
         left: 50,
@@ -61,12 +61,12 @@ class MechanicalChangesDetailView {
     vis.yAxisTop = d3.axisLeft(vis.yScaleTop)
       .ticks(4)
       .tickSizeOuter(0)
-      .tickPadding(10);
+      .tickPadding(5);
 
     vis.yAxisBottom = d3.axisLeft(vis.yScaleBottom)
       .ticks(4)
       .tickSizeOuter(0)
-      .tickPadding(10);
+      .tickPadding(5);
 
     // Define size of SVG drawing area
     vis.svg = d3.select(vis.config.parentElement)
@@ -97,7 +97,8 @@ class MechanicalChangesDetailView {
     chartTitle(vis, 'Power Progression for Selected Constructor', 0, 10, 'start');
     chartTitle(vis, 'Pwr:Weight Progression for Selected Constructor', 0, 170, 'start');
     axisLabel(vis, true, 'Years', 0, 10);
-    axisLabel(vis, false, 'Power-to-Weight                                                   Power', 0, -150).attr('style', 'white-space:pre');
+    axisLabel(vis, false, 'Power', 0, -65);
+    axisLabel(vis, false, 'Power-to-Weight', 0, -220);
 
     vis.updateVis();
   }
@@ -105,8 +106,6 @@ class MechanicalChangesDetailView {
   updateVis() {
     const vis = this;
 
-    // TODO: Setup proper filter
-    // TODO: !! This should be filtered on both mcselectedYears and mcselectedGroups
     if (mechanicalChangesSelectedGroup) {
       vis.filteredData = d3.filter(vis.data, (d) => d.group === mechanicalChangesSelectedGroup);
       vis.renderVis();
@@ -169,7 +168,6 @@ class MechanicalChangesDetailView {
 
     // eslint-disable-next-line no-unused-vars
     horsePowerCircle.on('mouseover', (event, d) => {
-      horsePowerCircle.attr('cursor', 'pointer');
       d3.select('#tooltip')
         .style('opacity', 1)
         .html((`
