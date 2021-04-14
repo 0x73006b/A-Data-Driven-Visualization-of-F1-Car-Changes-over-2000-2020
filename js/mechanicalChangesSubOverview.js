@@ -254,12 +254,12 @@ class MechanicalChangesSubOverview {
       .attr('cy', (d, i) => {
         if (i % 2 === 0) {
         // if even index
-          return 20 + (i / 2) * 15;
+          return vis.calculateLegendYPosition(i, 1);
         }
 
         // item 2 and 4 = index 1,3
         // floor makes the index 0, 1
-        return 20 + (Math.floor(i / 2)) * 15;
+        return vis.calculateLegendYPosition(i);
       })
       .attr('r', vis.config.legendRadius)
       .style('stroke', 'black')
