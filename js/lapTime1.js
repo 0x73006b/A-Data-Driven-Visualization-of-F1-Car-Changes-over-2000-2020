@@ -170,9 +170,6 @@ class LapTime1 {
       vis.renderVis(circuitGroup, DASHED);
       d3.selectAll(vis.circuitRef(circuitGroup)).selectAll('.lap-time-1-line-dashed').lower();
     });
-
-    console.log('tracks', vis.tracks);
-    console.log('noNull', vis.tracksNoNull);
   }
 
   renderVis(circuitGroup, isDashedLine, red) {

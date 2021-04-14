@@ -210,8 +210,6 @@ class LapTime0 {
         .x((d) => vis.xScale(vis.xValue(d)))
         .y((d) => vis.yScale(vis.yValue(d))));
 
-    // console.log(lt0lt1SelectedYears);
-
     const lt0Circles = getCircles(vis, 'lt0', lt0lt1SelectedYears, null);
 
     lt0Circles

@@ -32,11 +32,8 @@ class MechanicalChangesSubOverview {
     vis.xValue = (d) => d.power;
     vis.yValue = (d) => d.weight;
 
-    console.log(vis.data);
     vis.data.forEach((car, i) => vis.data[i].weight = (car.weight + (Math.random() * 5)));
     vis.data.forEach((car, i) => vis.data[i].power = (car.power + (Math.random() * 5)));
-
-    console.log(vis.data);
 
     vis.initVis();
   }
