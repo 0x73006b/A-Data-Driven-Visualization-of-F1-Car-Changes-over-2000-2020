@@ -1,10 +1,10 @@
-// Todo: Implement laptime 2 animated view and dropdown
 // dropdown filters for which track;
 // the geomap will have animations drawn to demonstrate the times for the race
 // The default state with nothing selected for dropdown would have nothing showing
 // The default state with only dropdown selected the barchart without highlights,
 // and the track map without any animation drawn in.
 
+// eslint-disable-next-line no-unused-vars
 class RealTimeLap {
   /**
    * Class constructor with basic chart configuration
@@ -19,14 +19,18 @@ class RealTimeLap {
       containerWidth: _config.containerWidth || 800,
       containerHeight: _config.containerHeight || 500,
       margin: _config.margin || {
-        top: 25, right: 20, bottom: 20, left: 40,
+        top: 25,
+        right: 20,
+        bottom: 20,
+        left: 40,
       },
+      legendX: 100,
+      legendY: 30,
+      yGap: 20,
+      legendGap: 70,
+      iconGap: 10,
     };
-    this.legendX = 100;
-    this.legendY = 30;
-    this.yGap = 20;
-    this.legendGap = 70;
-    this.iconGap = 10;
+
     this.data = _data;
     this.initVis();
   }
@@ -71,7 +75,9 @@ class RealTimeLap {
     vis.laps = vis.data.filter((d) => d.circuitName === vis.selectedTrack);
 
     if (this.selectedTrack === '') {
-      d3.select('#laptime2-reatimeLap').selectAll('*').remove();
+      d3.select('#laptime2-reatimeLap')
+        .selectAll('*')
+        .remove();
       const ANIMATION_SVG = d3.select('#laptime2-reatimeLap')
         .append('svg')
         .attr('width', 1000)
@@ -86,9 +92,13 @@ class RealTimeLap {
       const fileName = `data/maps/${vis.laps[0].circuitName}.svg`;
       d3.xml(fileName)
         .then((data) => {
-        // clean up previous drawings
-          d3.select('#laptime2-reatimeLap').selectAll('*').remove();
-          d3.select('#laptime2-reatimeLap').node().append(data.documentElement);
+          // clean up previous drawings
+          d3.select('#laptime2-reatimeLap')
+            .selectAll('*')
+            .remove();
+          d3.select('#laptime2-reatimeLap')
+            .node()
+            .append(data.documentElement);
 
           vis.tracksvg = d3.select('#tracksvg');
 
@@ -100,24 +110,29 @@ class RealTimeLap {
             .attr('dy', '.71em')
             .text(`Lap Time Visual Comparison Tool "Animated View" for ${vis.laps[0].circuitName}`);
 
-
-
+          // Legend for Animated View
           vis.tracksvg.append('text')
-            .attr('x', 50).attr('y', vis.legendY + 5).text("2014:")
+            .attr('x', 50)
+            .attr('y', vis.config.legendY + 5)
+            .text('2014:')
             .style('font-size', '15px');
           vis.tracksvg.append('text')
-            .attr('x', 50).attr('y', vis.legendY + 5 + vis.yGap).text("2019:")
+            .attr('x', 50)
+            .attr('y', vis.config.legendY + 5 + vis.config.yGap)
+            .text('2019:')
             .style('font-size', '15px');
 
           for (let i = 0; i < 2; i += 1) {
             for (let j = 0; j < 3; j += 1) {
               vis.tracksvg.append('circle')
-                .attr('class', `circuiteName lt2-${i}-sector${j+1}`)
-                .attr('cx', vis.legendX + vis.legendGap * j)
-                .attr('cy', vis.legendY + i * vis.yGap)
+                .attr('class', `circuiteName lt2-${i}-sector${j + 1}`)
+                .attr('cx', vis.config.legendX + vis.config.legendGap * j)
+                .attr('cy', vis.config.legendY + i * vis.config.yGap)
                 .attr('r', 6);
               vis.tracksvg.append('text')
-                .attr('x', vis.legendX + vis.legendGap * j + vis.iconGap).attr('y', vis.legendY + i * vis.yGap + 5).text(`Sector ${j + 1}`)
+                .attr('x', vis.config.legendX + vis.config.legendGap * j + vis.config.iconGap)
+                .attr('y', vis.config.legendY + i * vis.config.yGap + 5)
+                .text(`Sector ${j + 1}`)
                 .style('font-size', '15px');
             }
           }
@@ -140,8 +155,12 @@ class RealTimeLap {
             vis.animationPaths[1][i]
               .attr('stroke-width', 0);
           }
-        }).catch(() => {
-          d3.select('#laptime2-reatimeLap').selectAll('*').remove();
+        })
+        .catch(() => {
+          d3.select('#laptime2-reatimeLap')
+            .selectAll('*')
+            .remove();
+
           const ANIMATION_SVG = d3.select('#laptime2-reatimeLap')
             .append('svg')
             .attr('width', 1000)
@@ -172,14 +191,15 @@ class RealTimeLap {
   updateAnimation(trackNum, sectorNum, iterateNum) {
     const vis = this;
     if (iterateNum >= vis.iterateNum) {
-      const sectorLength = vis.animationPaths[trackNum][sectorNum].node().getTotalLength();
+      const sectorLength = vis.animationPaths[trackNum][sectorNum].node()
+        .getTotalLength();
       vis.animationPaths[trackNum][sectorNum]
         .attr('stroke-width', 3)
         .attr('stroke', vis.trackColor[trackNum][sectorNum])
         .attr('stroke-dasharray', `${sectorLength} ${sectorLength}`)
         .attr('stroke-dashoffset', sectorLength)
         .transition()
-        .duration(vis.laps[trackNum]['sector' + (sectorNum + 1) ])
+        .duration(vis.laps[trackNum]['sector' + (sectorNum + 1)])
         .ease(d3.easeLinear)
         .attr('stroke-dashoffset', 0)
         .on('end', () => {
