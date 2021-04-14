@@ -154,7 +154,7 @@ class LapTime0 {
     }
 
     // Titles
-    chartTitle(vis, 'F1 Lap Time Progression Based on All Races (2000-2020) (aka LT0)', vis.width / 2 + 56, -3);
+    chartTitle(vis, 'Theoretical Yearly Lap Time Progression (aka LT0)', vis.width/2-13, 0);
     // axisLabel(vis, true, 'Years', 20, -20);
     axisLabel(vis, false, 'Theoretical Time (Minutes)', 0, -vis.config.containerHeight / 3);
 
