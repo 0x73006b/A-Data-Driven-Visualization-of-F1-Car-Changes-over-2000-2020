@@ -22,6 +22,11 @@ class RealTimeLap {
         top: 25, right: 20, bottom: 20, left: 40,
       },
     };
+    this.legendX = 100;
+    this.legendY = 30;
+    this.yGap = 20;
+    this.legendGap = 70;
+    this.iconGap = 10;
     this.data = _data;
     this.initVis();
   }
@@ -44,7 +49,9 @@ class RealTimeLap {
 
     vis.iterateNum = 0;
     vis.selectedTrack = 'Suzuka Circuit';
-    vis.trackColor = [['#f20002', '#2fb2e3', '#fcd303'], ['#13C296', '#F5D900', '#F63EBA']];
+    vis.trackColor = [
+      ['#f20002', '#2fb2e3', '#fcd303'],
+      ['#13C296', '#ff7f00', '#F63EBA']];
     vis.updateVis();
   }
 
@@ -60,7 +67,9 @@ class RealTimeLap {
 
   renderVis() {
     const vis = this;
+
     vis.laps = vis.data.filter((d) => d.circuitName === vis.selectedTrack);
+
     if (this.selectedTrack === '') {
       d3.select('#laptime2-reatimeLap').selectAll('*').remove();
       const ANIMATION_SVG = d3.select('#laptime2-reatimeLap')
@@ -89,30 +98,26 @@ class RealTimeLap {
             .attr('x', 50)
             .attr('y', 5)
             .attr('dy', '.71em')
-            .text('Lap Time Visual Comparison Tool \"Animated View\"');
+            .text(`Lap Time Visual Comparison Tool "Animated View" for ${vis.laps[0].circuitName}`);
 
-          const legendx = 100;
-          const legendy = 30;
-          const yGap = 20;
-          const legendGap = 70;
-          const iconGap = 10;
+
 
           vis.tracksvg.append('text')
-            .attr('x', 50).attr('y', legendy + 5).text("2014:")
+            .attr('x', 50).attr('y', vis.legendY + 5).text("2014:")
             .style('font-size', '15px');
           vis.tracksvg.append('text')
-            .attr('x', 50).attr('y', legendy + 5 + yGap).text("2019:")
+            .attr('x', 50).attr('y', vis.legendY + 5 + vis.yGap).text("2019:")
             .style('font-size', '15px');
 
           for (let i = 0; i < 2; i += 1) {
             for (let j = 0; j < 3; j += 1) {
               vis.tracksvg.append('circle')
                 .attr('class', `circuiteName lt2-${i}-sector${j+1}`)
-                .attr('cx', legendx + legendGap * j)
-                .attr('cy', legendy + i * yGap)
+                .attr('cx', vis.legendX + vis.legendGap * j)
+                .attr('cy', vis.legendY + i * vis.yGap)
                 .attr('r', 6);
               vis.tracksvg.append('text')
-                .attr('x', legendx + legendGap * j + iconGap).attr('y', legendy + i * yGap + 5).text(`Sector ${j + 1}`)
+                .attr('x', vis.legendX + vis.legendGap * j + vis.iconGap).attr('y', vis.legendY + i * vis.yGap + 5).text(`Sector ${j + 1}`)
                 .style('font-size', '15px');
             }
           }
