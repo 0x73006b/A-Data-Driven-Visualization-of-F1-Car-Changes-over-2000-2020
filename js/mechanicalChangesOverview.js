@@ -21,7 +21,7 @@ class MechanicalChangesOverview {
       },
       legendWidth: 300,
       legendHeight: 40,
-      legendRadius: 3,
+      legendRadius: 5,
     };
     this.data = _data;
     this.initVis();
@@ -47,23 +47,23 @@ class MechanicalChangesOverview {
     // for legend display colors
     vis.colorScaleMC = d3.scaleOrdinal()
       .domain([
-        'group 0: Arrows',
-        'group 1: McLaren',
-        'group 2: Sauber, BMW Sauber, Alfa Romeo',
-        'group 3: Williams-Mercedes, Williams',
-        'group 4: Benetton, Lotus F1, Renault',
-        'group 5: Minardi, Scuderia Toro Rosso, AlphaTauri',
-        'group 6: Scuderia Ferrari',
-        'group 7: Toyota',
-        'group 8: Super Aguri F1',
-        'group 9: Jaguar, Red Bull Racing',
-        'group 10: British American Racing, BAR-Honda, Honda, Brawn GP, Mercedes',
-        'group 11: Team Lotus, Caterham',
-        'group 12: Dallara, HRT',
-        'group 13: Virgin Racing, Marussia, Manor',
-        'group 14: Prost',
-        'group 15: Jordan Grand Prix, Midland F1 Racing,Spyker/Force India, Force India, Racing Point',
-        'group 16: Haas',
+        'Arrows',
+        'McLaren',
+        'Sauber, BMW Sauber, Alfa Romeo',
+        'Williams-Mercedes, Williams',
+        'Benetton, Lotus F1, Renault',
+        'Minardi, Toro Rosso, AlphaTauri',
+        'Ferrari',
+        'Toyota',
+        'Super Aguri F1',
+        'Jaguar, Red Bull Racing',
+        'BAR, BAR-Honda, Honda, Brawn GP, Mercedes',
+        'Team Lotus, Caterham',
+        'Dallara, HRT',
+        'Racing, Marussia, Manor',
+        'Prost',
+        'Jordan, Midland F1, Spyker/Force India, Force India, Racing Point',
+        'Haas',
       ])
       .range(['black', '#f8a947', '#900000', '#1a5aff', '#FFE368', '#193A5B', '#D40000', 'white', '#808080', '#4a5074', '#3fdbc8',
         '#1b7a37', '#D4AF37', '#f95c31', '#051773', '#f7a9d1', '#f9f8fd',
@@ -215,25 +215,23 @@ class MechanicalChangesOverview {
   renderLegend() {
     const vis = this;
     const keys = [
-      'group 0: Arrows',
-      'group 1: McLaren',
-      'group 2: Sauber, BMW Sauber, Alfa Romeo',
-      'group 3: Williams-Mercedes, Williams',
-      'group 4: Benetton, Lotus F1, Renault',
-      'group 5: Minardi, Scuderia Toro Rosso, AlphaTauri',
-      'group 6: Scuderia Ferrari',
-      'group 7: Toyota',
-      'group 8: Super Aguri F1',
-      'group 9: Jaguar, Red Bull Racing',
-      `group 10: British American Racing, BAR-Honda,
-       Honda, Brawn GP, Mercedes`,
-      'group 11: Team Lotus, Caterham',
-      'group 12: Dallara, HRT',
-      'group 13: Virgin Racing, Marussia, Manor',
-      'group 14: Prost',
-      `group 15: Jordan Grand Prix, Midland F1 Racing, 
-      \nSpyker/Force India, Force India, Racing Point`,
-      'group 16: Haas',
+      'Arrows',
+      'McLaren',
+      'Sauber, BMW Sauber, Alfa Romeo',
+      'Williams-Mercedes, Williams',
+      'Benetton, Lotus F1, Renault',
+      'Minardi, Toro Rosso, AlphaTauri',
+      'Ferrari',
+      'Toyota',
+      'Super Aguri F1',
+      'Jaguar, Red Bull Racing',
+      'BAR, BAR-Honda, Honda, Brawn GP, Mercedes',
+      'Team Lotus, Caterham',
+      'Dallara, HRT',
+      'Racing, Marussia, Manor',
+      'Prost',
+      'Jordan, Midland F1, Spyker/Force India, Force India, Racing Point',
+      'Haas',
 
     ];
 
@@ -258,12 +256,12 @@ class MechanicalChangesOverview {
       .attr('cy', (d, i) => {
         if (i % 2 === 0) {
         // if even index
-          return 20 + (i / 2) * 10;
+          return 20 + (i / 2) * 15;
         }
 
         // item 2 and 4 = index 1,3
         // floor makes the index 0, 1
-        return 20 + (Math.floor(i / 2)) * 10;
+        return 20 + (Math.floor(i / 2)) * 15;
       })
       .attr('r', vis.config.legendRadius)
       .style('stroke', 'black')
@@ -284,15 +282,15 @@ class MechanicalChangesOverview {
       .attr('y', (d, i) => {
         if (i % 2 === 0) {
           // if even index
-          return 22 + (i / 2) * 10;
+          return 22 + (i / 2) * 15;
         }
 
         // item 2 and 4 = index 1,3
         // floor makes the index 0, 1
-        return 22 + (Math.floor(i / 2)) * 10;
+        return 22 + (Math.floor(i / 2)) * 15;
       })
       .text((d) => d)
-      .attr('font-size', 6.5)
+      .attr('font-size', 8)
       .style('font-weight', 'bold');
   }
 }
