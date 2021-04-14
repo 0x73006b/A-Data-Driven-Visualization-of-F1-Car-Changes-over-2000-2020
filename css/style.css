@@ -64,7 +64,8 @@ h1 {
 }
 
 .axis {
-    font-family: F1Regular;
+    font-family: Titillium;
+    font-size: 0.9em;
 }
 
 .chart-title{
@@ -72,8 +73,8 @@ h1 {
     font-size: 1em;
 }
 .axis-title {
-    font-family: F1Regular;
-    font-size: 0.75em;
+    font-family: Titillium;
+    font-size: 0.9em;
     text-anchor: middle;
 }
 /* General End */
