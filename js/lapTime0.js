@@ -8,11 +8,15 @@ class LapTime0 {
   constructor(_config, _data) {
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 600,
+      containerWidth: 780,
       containerHeight: 200,
+      legendTopY: -200,
       tooltipPadding: 15,
       margin: {
-        top: 30, right: 50, bottom: 30, left: 70,
+        top: 40,
+        right: 230,
+        bottom: 30,
+        left: 70,
       },
     };
     this.data = _data;
@@ -57,7 +61,7 @@ class LapTime0 {
       .attr('width', vis.config.containerWidth)
       .attr('height', vis.config.containerHeight);
 
-    // Append group element that will contain our actual chart (see margin convention)
+    // Append group element that will contain our actual chart
     vis.chart = vis.svg.append('g')
       .attr('transform', `translate(${vis.config.margin.left},${vis.config.margin.top})`);
 
@@ -84,9 +88,75 @@ class LapTime0 {
 
     vis.tooltip.append('text');
 
-    chartTitle(vis, 'F1 Lap Time Progression From All Races (2000-2020)', null, 0);
+    /**
+     * Legend creation
+     * spacer Y makes an even 30px gap between, spacerY itself modified conditionally
+     * offsetUp and offsetDown adjust the position
+     */
+    const spacerY = 30;
+    const offsetUp = 0.5;
+    const offsetDown = 0.35;
+    vis.legend = vis.svg.append('g')
+      .attr('class', 'legend')
+      .attr('transform', `translate(${vis.config.containerWidth + 27.5},${vis.config.containerHeight-10})`);
+
+    /**
+     * Circle creation loop, 1 based counting
+     * OffsetModifier checks if index 4 or 6 -- those are the Interpolated Data circles
+     * lt1Only is active if i has already drawn the first two circles (which are LT0+LT1)
+     * The i%6 moves circles:
+     *      - Up for existing data circle
+     *      - Down for interpolated data's right circle
+     * The i%2 is for unselected/selected and does the same as above.
+     */
+    for (let i = 1; i <= 6; i++) {
+      const offsetModifier = (i === 4 || i === 6) ? 0.5 : 0;
+      const lt1Only = i >= 3 ? 1 : 0;
+      const circle = vis.legend.append('circle').attr('id', 'legend-lt0-lt1-shared').attr('r', 5)
+        .attr('class', i === 2 ? 'lt1-selected' : 'lt1-point');
+      if (i > 4) {
+        circle
+          .attr('cx', -(vis.config.margin.right - 150))
+          .attr('cy', (vis.config.legendTopY + spacerY * (i - 1 + offsetModifier + (i % 6 ? offsetUp : offsetDown))));
+      } else {
+        circle
+          .attr('cx', -(vis.config.margin.right - 50))
+          .attr('cy', (vis.config.legendTopY + spacerY * (i + lt1Only + offsetModifier + (i % 2 ? offsetUp : offsetDown))));
+      }
+    }
+
+    /**
+     * Loop to create text, lines. exists outside the other loop because it only runs twice.
+     * It appends the text and the lines.
+     */
+    for (let i = 1; i <= 2; i++) {
+      vis.legend.append('text').attr('class', 'legend-title')
+        .attr('x', -(vis.config.margin.right - 45))
+        .attr('y', (vis.config.legendTopY + spacerY + (i % 2 ? 0 : 75)))// the +5 is to vertically center text
+        .text(i % 2 ? 'LT0 and LT1:' : 'LT1 Only:');
+
+      vis.legend.append('text').attr('class', 'legend-text')
+        .attr('x', -(vis.config.margin.right - 60))
+        .attr('y', (vis.config.legendTopY + spacerY * (i + (i % 2 ? offsetUp : offsetDown)) + 5)) // the +5 is to vertically center text
+        .text(i % 2 ? 'Unselected' : 'Selected');
+
+      vis.legend.append('text').attr('class', 'legend-text')
+        .attr('x', -(vis.config.margin.right - 45))
+        .attr('y', (vis.config.legendTopY + (spacerY + (i % 2 ? 6 : 8)) * (i % 2 ? 3 + offsetUp : 4 + offsetDown)))
+        .text(i % 2 ? 'Existing Data' : 'Interpolated Data');
+
+      vis.legend.append('line').attr('id', 'legend-line')
+        .attr('class', i % 2 ? 'lap-time-1-line' : 'lap-time-1-line-dashed')
+        .attr('x1', -(vis.config.margin.right - 50))
+        .attr('y1', (vis.config.legendTopY + spacerY * (i % 2 ? (4 + offsetUp) : (5.5 + offsetDown))))
+        .attr('x2', -(vis.config.margin.right - 50 - 100))
+        .attr('y2', (vis.config.legendTopY + spacerY * (i % 2 ? (4 + offsetUp) : (5.5 + offsetDown))));
+    }
+
+    // Titles
+    chartTitle(vis, 'F1 Lap Time Progression Based on All Races (2000-2020) (aka LT0)', vis.width / 2 + 56, -3);
     // axisLabel(vis, true, 'Years', 20, -20);
-    axisLabel(vis, false, 'Theoretical Time in Minute', 0, -vis.config.containerHeight / 3);
+    axisLabel(vis, false, 'Theoretical Time (Minutes)', 0, -vis.config.containerHeight / 3);
 
     vis.initData();
   }
@@ -195,7 +265,8 @@ class LapTime0 {
       .on('click', () => {
         // resets lap-time-1-remove button state
         pointsRemoved = false;
-        d3.select('#lap-time-1-disableEnable').text('Disable Small Multiple Points');
+        d3.select('#lap-time-1-disableEnable')
+          .text('Disable Small Multiple Points');
         lapTime0.initData();
         lapTime1.updateVis();
       });
