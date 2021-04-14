@@ -1,5 +1,4 @@
-/* Todo: set up styling */
-
+/* Fonts */
 @font-face {
     font-family: F1Regular;
     src: url("/data/fonts/Formula1-Regular.woff")
@@ -22,6 +21,7 @@
     src: url("/data/fonts/Titillium-Bold.woff")
 }
 
+/* General Start */
 :root {
     font-family: Titillium;
 }
@@ -36,80 +36,10 @@ body {
     scroll-behavior: smooth;
 }
 
-.opening-background {
-    position: absolute;
-    top: 0;
-    left: 0%;
-    width: 100vw;
-    margin: 0 auto;
-    height: 1080px;
-    display: flex;
-    flex-flow: column;
-    align-items: center;
-    background-color: #d8d8d8;
-    background-image: url("/data/images/senna.jpg");
-    background-size: cover;
-    background-position: center;
-    mix-blend-mode: color;
-    background-blend-mode: multiply;
-
-}
-
-.opening-left-col {
-    padding-top: 15vh;
-    width: 650px
-}
-
-#opening-text {
-    color: white;
-    background-color: #000000a3;
-    margin-top: -25px;
-}
-
-#step0 {
-    display: flex;
-    flex-flow: row;
-    width: 1300px;
-    color: white;
-    font-size: 2em;
-}
-
-#step1 {
-    display: flex;
-    flex-flow: row;
-    width: 1300px;
-    color: rgb(0, 0, 0);
-    font-size: 2em;
-    margin-top: 1080px;
-}
-
-#mc-text {
-    padding: -10px;
-    font-size: 20px;
-}
-
-#mc-title {
-    text-align: center;
-}
-
-#mechanical-change {
-    display: flex;
-}
-
-#mc_bottom {
-    display: flex;
-    justify-content: center;
-}
-
-#mc {
-    padding: 20px;
-}
-
 h1 {
     font-family: F1Wide;
     font-size: 1.5em;
 }
-
 
 #tooltip {
     position: absolute;
@@ -136,10 +66,84 @@ h1 {
     font-family: F1Regular;
 }
 
+.chart-title{
+    font-family: F1Regular;
+    font-size: 1em;
+}
+.axis-title {
+    font-size: 13px;
+}
+/* General End */
+
+/* Title Page */
+.opening-background {
+
+}
+
+.opening-left-col {
+    width: 650px
+}
+
+#opening-text {
+    /*color: white;*/
+    /*background-color: #000000a3;*/
+    margin-top: -25px;
+}
+/* Title End */
+
+/* Step IDs */
+#step0 {
+    display: flex;
+    flex-flow: row;
+    width: 1300px;
+    font-size: 2em;
+}
+
+#step1 {
+    display: flex;
+    flex-flow: row;
+    width: 1300px;
+    color: rgb(0, 0, 0);
+    /*font-size: 2em;*/
+    /*margin-top: 1080px;*/
+}
+
+#step2 {
+
+}
+
+#step3 {
+    margin-bottom: 150px;
+}
+/* Step IDs End */
+
+/* Mechanical Changes */
+#mechanical-changes {
+    display: flex;
+}
+
+.mc-explainer {
+    width:50%;
+}
+
+#mc-title {
+
+}
+
+#mc_bottom {
+    display: flex;
+}
+
+#mc {
+    padding: 20px;
+}
+
 .mech-overview-point {
     opacity: 1;
 }
+/* Mechanical Changes End*/
 
+/* LT0 + LT1 */
 #lt0-lt1-container{
     display: flex;
     flex-direction: column;
@@ -171,12 +175,16 @@ h1 {
     stroke-width: 3;
     stroke-linecap: round;
 }
+/* LT0 + LT1 End*/
 
+/* LT0 Only */
 .lap-time-0-container {
     display: flex;
     flex-direction: column;
 }
+/* LT0 Only End */
 
+/* LT1 Only */
 #lap-time-1 {
     display: flex;
     flex-wrap: wrap;
@@ -215,25 +223,15 @@ h1 {
     stroke-dasharray: 3;
 }
 
-.chart-title{
-    font-size: 15px;
-    font-weight: bold;
-}
-.axis-title{
-    font-size: 13px;
-}
-
 .lap-time-1-svg {
     /*padding-right: 10px*/
 }
+/* LT1 Only End */
 
-
-
-
+/* LT2 */
 .lt2-outer-container {
     display: flex;
     flex-direction: column;
-    padding-top: 50px;
 }
 
 .lt2-inner-container {
@@ -250,7 +248,6 @@ h1 {
     margin-top: 15px;
     display: flex;
     flex-direction: column;
-    align-items: left;
 }
 
 #lt2-container-left-col {
@@ -293,3 +290,4 @@ h1 {
 .lt2-1-sector3 {
     fill: #F63EBA;
 }
+/* LT2 End */
