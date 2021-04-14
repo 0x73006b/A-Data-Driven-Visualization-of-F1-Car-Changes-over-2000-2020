@@ -14,7 +14,7 @@ class Barchart {
       containerWidth: _config.containerWidth || 250,
       containerHeight: _config.containerHeight || 400,
       margin: _config.margin || {
-        top: 25, right: 20, bottom: 20, left: 40,
+        top: 25, right: 20, bottom: 50, left: 40,
       },
     };
     this.data = _data;
@@ -84,37 +84,38 @@ class Barchart {
       .attr('x', 0)
       .attr('y', 0)
       .attr('dy', '.71em')
-      .text('Lap Time');
+      .text('Sector Time Comparison');
     vis.svg.append('text')
       .attr('class', 'axis-title')
-      .attr('x', 0)
-      .attr('y', 0)
+      .attr('x', vis.width + 20)
+      .attr('y', vis.height + 30)
       .attr('dy', '.71em')
-      .text('Lap Time');
+      .text('Year');
 
     // Handmade legend
-    const legendx = 160;
-    const legendy = 10;
+    const legendx = 20;
+    const gap = 10
+    const legendy = vis.height+50;
     vis.svg.append('circle').attr('cx', legendx).attr('cy', legendy).attr('r', 6)
       .attr('class', 'circuiteName bar-sector1');
-    vis.svg.append('circle').attr('cx', legendx).attr('cy', legendy + 15).attr('r', 6)
+    vis.svg.append('circle').attr('cx', legendx+70).attr('cy', legendy).attr('r', 6)
       .attr('class', 'circuiteName bar-sector2');
-    vis.svg.append('circle').attr('cx', legendx).attr('cy', legendy + 30).attr('r', 6)
+    vis.svg.append('circle').attr('cx', legendx+140).attr('cy', legendy).attr('r', 6)
       .attr('class', 'circuiteName bar-sector3');
-    vis.svg.append('text').attr('x', legendx + 10).attr('y', legendy).text('Sector 1')
+    vis.svg.append('text').attr('x', legendx + gap).attr('y', legendy).text('Sector 1')
       .style('font-size', '15px')
       .attr('alignment-baseline', 'middle');
-    vis.svg.append('text').attr('x', legendx + 10).attr('y', legendy + 15).text('Sector 2')
+    vis.svg.append('text').attr('x', legendx + gap + 70).attr('y', legendy).text('Sector 2')
       .style('font-size', '15px')
       .attr('alignment-baseline', 'middle');
-    vis.svg.append('text').attr('x', legendx + 10).attr('y', legendy + 30).text('Sector 3')
+    vis.svg.append('text').attr('x', legendx + gap + 140).attr('y', legendy).text('Sector 3')
       .style('font-size', '15px')
       .attr('alignment-baseline', 'middle');
 
     vis.stack = d3.stack().keys(['sector1', 'sector2', 'sector3']);
 
     // todo: should this be empty? @ mr. rmzm
-    vis.selectedTrack = '';
+    vis.selectedTrack = 'Suzuka Circuit';
 
     vis.initData();
   }
