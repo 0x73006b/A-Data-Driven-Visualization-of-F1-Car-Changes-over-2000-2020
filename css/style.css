@@ -37,19 +37,22 @@ body {
 }
 
 .opening-background {
+    position: absolute;
+    top: 0;
+    left: 0%;
     width: 100vw;
-    margin-left: -310px;
+    margin: 0 auto;
     height: 1080px;
     display: flex;
     flex-flow: column;
     align-items: center;
-    /*padding-bottom: 25px;*/
     background-color: #d8d8d8;
     background-image: url("/data/images/senna.jpg");
     background-size: cover;
     background-position: center;
     mix-blend-mode: color;
     background-blend-mode: multiply;
+
 }
 
 .opening-left-col {
@@ -77,6 +80,7 @@ body {
     width: 1300px;
     color: rgb(0, 0, 0);
     font-size: 2em;
+    margin-top: 1080px;
 }
 
 #mc-text {
