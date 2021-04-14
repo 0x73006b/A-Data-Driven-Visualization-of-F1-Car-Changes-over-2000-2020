@@ -77,6 +77,10 @@ h1 {
     font-size: 0.9em;
     text-anchor: middle;
 }
+
+.legend-text, .legend-title, .axis-title, .chart-title, .axis {
+    pointer-events: none;
+}
 /* General End */
 
 /* Title Page */
@@ -117,6 +121,7 @@ h1 {
     color: rgb(0, 0, 0);
     /*font-size: 2em;*/
     /*margin-top: 1080px;*/
+    margin-bottom: 150px;
 }
 
 #step2 {
@@ -124,7 +129,7 @@ h1 {
 }
 
 #step3 {
-    margin-bottom: 150px;
+    margin-bottom: 20vh;
 }
 /* Step IDs End */
 
@@ -197,6 +202,7 @@ h1 {
 
 .lt1-small-multiple-title {
     font-family: F1Regular;
+    pointer-events: none;
     font-size: 13px;
 }
 
