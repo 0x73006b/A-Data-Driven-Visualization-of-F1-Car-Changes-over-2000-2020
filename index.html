@@ -1,53 +1,48 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>D3 Project Starter Template</title>
+    <title>A Data Driven Visualization of F1 Car Changes over 2000-2020</title>
     <meta charset="UTF-8">
     <link rel="icon" href="data:;base64,iVBORwOKGO="/>
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<!-- Add HTML content, SVG drawing area, ... -->
-<div class="step" id="step0">
-    Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-    magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
-    suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
-</div>
-<p/>
-<div class="step" id="step1" style="display: inherit">
-        <span>
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et
-            dolore magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate
-            dignissim suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
-            Diam in arcu cursus euismod quis viverra nibh cras pulvinar. Scelerisque mauris pellentesque pulvinar
-            pellentesque habitant.At imperdiet dui accumsan sit amet. Amet est placerat in egestas. Convallis tellus id
-            interdum velit laoreet id. Ornare quam viverra orci sagittis eu. Diam donec adipiscing tristique risus nec.
-            Lacus vel facilisis volutpat est velit egestas. Pulvinar elementum integer enim neque volutpat ac.
-            Praesent tristique magna sit amet purus gravida.
-        </span>
-    <span style="display: inherit; flex-flow: column">
-            <svg id="mechanical-changes-overview"></svg>
-            <svg id="mechanical-changes-detail-view"></svg>
-        </span>
-</div>
-
 <div class="step" id="step2">
-    <button type="button" id="lap-time-0-clear">Clear</button>
-    <button type="button" id="lap-time-0-reset">Reset</button>
-    <svg id="lap-time-0"></svg>
-    <svg id="lap-time-1"></svg>
+    <h1>Lap Time 0 + Lap Time 1</h1>
+    <div id="lt0-lt1-container">
+        <div class="lt0-lt1-top">
+            <div class="lap-time-0-container">
+                <svg id="lap-time-0"></svg>
+            </div>
+            <div class="lap-time-1-explanation">
+                Lap times are a key metric in determining improvement; they are the result of power, aerodynamics,
+                tuning, driver ability and other things. We have charted the average improvement per season to the right,
+                and we can see that the cars often get faster as their engine development gets more mature.
+                <p/>
+                Below, you will see a disaggregated view of lap times, split into their respective tracks, over 2000-2020.
+                <div>
+                    <button type="button" id="lap-time-0-clear">Clear</button>
+                    <button type="button" id="lap-time-0-reset">Reset to Default</button>
+                    <button type="button" id="lap-time-1-disableEnable">Disable Points</button>
+                </div>
+            </div>
+        </div>
+        <div id="lap-time-1-container"><div id="lap-time-1"></div></div>
+    </div>
     <div id="tooltip"></div>
 </div>
 
-<div class="step" id="step3">
-    <select id="selectButton"></select>
-    <svg id="lap-time-2-barchart"></svg>
-    <button type="button" id="startButton">Start Race</button>
-    <div id="laptime2-reatimeLap"></div>
-</div>
+<!--<div class="step" id="step3">-->
+<!--    <select id="selectButton"></select>-->
+<!--    <svg id="lap-time-2-barchart"></svg>-->
+<!--    <button type="button" id="startButton">Start Race</button>-->
+<!--    <svg id="laptime2-text"></svg>-->
+<!--    <text> Visual Simulation Tool for Comparison of Selected Lap Time(s)</text>-->
+<!--    <div id="laptime2-reatimeLap"></div>-->
+<!--</div>-->
 
 <!-- D3 bundle -->
-<script src="js/d3.v6.min.js"></script>
+<script src="js/utils/d3.v6.min.js"></script>
 
 <!-- Our JS code -->
 <script src="js/main.js"></script>

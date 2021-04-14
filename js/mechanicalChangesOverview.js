@@ -74,9 +74,9 @@ class MechanicalChangesOverview {
     // TODO: Append X axis title (weight)
     // TODO: Append Y axis title (power)
 
-    chartTitle(vis, 'Power-to-Weight');
-    axisLabel(vis, true, 'Power');
-    axisLabel(vis, false, 'Weight');
+    chartTitle(vis, 'Power-to-Weight of All F1 Cars from 2000 to 2020', 0);
+    axisLabel(vis, true, 'Power', 0, 0);
+    axisLabel(vis, false, 'Weight', 0, 0);
 
     vis.updateVis();
   }

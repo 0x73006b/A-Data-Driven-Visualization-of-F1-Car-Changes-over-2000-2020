@@ -8,14 +8,11 @@ class LapTime0 {
   constructor(_config, _data) {
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 1000,
-      containerHeight: 400,
+      containerWidth: 600,
+      containerHeight: 200,
       tooltipPadding: 15,
       margin: {
-        top: 30,
-        right: 50,
-        bottom: 70,
-        left: 70,
+        top: 30, right: 50, bottom: 30, left: 70,
       },
     };
     this.data = _data;
@@ -44,18 +41,16 @@ class LapTime0 {
 
     // Initialize axes
     vis.xAxis = d3.axisBottom(vis.xScale)
-      .ticks(21)
+      .ticks(11)
       .tickSizeOuter(0)
       .tickPadding(10)
       .tickFormat((x) => x);
 
     vis.yAxis = d3.axisLeft(vis.yScale)
-      .ticks(10)
+      .ticks(5)
       .tickSizeOuter(0)
-      .tickPadding(10)
-      .tickFormat((x) => getMinuteStringFromMillisecond(x));
-
-    // TODO: cite https://sashamaps.net/docs/resources/20-colors/ for colors
+      .tickPadding(5)
+      .tickFormat((x) => getMinuteStringFromMillisecond(900 * x));
 
     // Define size of SVG drawing area
     vis.svg = d3.select(vis.config.parentElement)
@@ -89,9 +84,9 @@ class LapTime0 {
 
     vis.tooltip.append('text');
 
-    chartTitle(vis, 'LT0: Averaged Best Lap Time by Year');
-    axisLabel(vis, true, 'Years');
-    axisLabel(vis, false, 'Averaged Best Lap Time (Minute)');
+    chartTitle(vis, 'F1 Lap Time Progression From All Races (2000-2020)', 0);
+    // axisLabel(vis, true, 'Years', 20, -20);
+    axisLabel(vis, false, 'Theoretical Time in Minute', 0, -vis.config.containerHeight / 3);
 
     vis.initData();
   }
@@ -99,23 +94,22 @@ class LapTime0 {
   initData() {
     const vis = this;
 
-    // TODO: Implement averaging properly -- this is solely for displaying line
-    vis.processedData = d3.rollups(vis.data, (d) => {
-      let cumulativeSum = 0;
-      d.forEach((v) => {
-        // for each year, get millisec. and add it to cumulative sum
-        cumulativeSum =+ v.laptimeMillis;
-      });
-      // average cumsum by amount of rounds, obtained through the length of that year's array
-      const averagedTime = Math.round(cumulativeSum / d.length);
-      return averagedTime;
-    }, (d) => d.year);
+    vis.processedData = vis.data;
 
     // need sort to make sure line displays properly when using rollupS
     vis.processedData = vis.processedData.sort();
     lt0lt1SelectedYears = [];
     lt0lt1SelectedYears.push(vis.processedData[d3.minIndex(vis.processedData, (d) => d[1])][0]);
     lt0lt1SelectedYears.push(vis.processedData[d3.maxIndex(vis.processedData, (d) => d[1])][0]);
+    lt0lt1SelectedYears.sort();
+
+    const start = lt0lt1SelectedYears[0];
+    const limit = lt0lt1SelectedYears[lt0lt1SelectedYears.length - 1];
+    // eslint-disable-next-line no-plusplus
+    for (let i = start; i < limit; i++) { lt0lt1SelectedYears.push(i); }
+
+    console.log(lt0lt1SelectedYears);
+
     vis.updateVis();
   }
 
@@ -170,9 +164,10 @@ class LapTime0 {
             </div>
            `));
       })
-      .on('mouseleave', (event, d) => {
+      .on('mouseleave', () => {
         d3.select('#tooltip')
-          .style('opacity', 0);
+          .style('opacity', 0)
+          .html(clearTooltip());
       })
       .on('mousemove', (event) => {
         d3.select('#tooltip')
@@ -184,12 +179,25 @@ class LapTime0 {
           lt0lt1SelectedYears = lt0lt1SelectedYears.filter((year) => year !== d[0]);
         } else {
           lt0lt1SelectedYears.push(d[0]);
+          lt0lt1SelectedYears.sort();
         }
+
+        console.log(lt0lt1SelectedYears.length);
+
+        if (lt0lt1SelectedYears.length >= 2) {
+          const start = lt0lt1SelectedYears[0];
+          const limit = lt0lt1SelectedYears[lt0lt1SelectedYears.length - 1];
+          // eslint-disable-next-line no-plusplus
+          for (let i = start; i < limit; i++) { lt0lt1SelectedYears.push(i); }
+        }
+
+        console.log(lt0lt1SelectedYears);
+
         lapTime0.updateVis();
         lapTime1.updateVis();
       });
 
-    let clearButton = d3.select('#lap-time-0-clear')
+    const clearButton = d3.select('#lap-time-0-clear')
       .on('click', () => {
         // clear selectedYears array
         lt0lt1SelectedYears = [];
@@ -198,13 +206,21 @@ class LapTime0 {
         lapTime1.updateVis();
       });
 
-    let resetButton = d3.select('#lap-time-0-reset')
+    /**
+     * reset button
+     * calls lt0 initData to reset max/min.
+     * calls lt1.updateVis() to re-render selected points in small mult.
+     */
+    const resetButton = d3.select('#lap-time-0-reset')
       .on('click', () => {
-        vis.initData();
+        // resets lap-time-1-remove button state
+        pointsRemoved = false;
+        d3.select('#lap-time-1-remove').text('Disable Points');
+        lapTime0.initData();
+        lapTime1.updateVis();
       });
 
     // Update the axes
-    // We use the second .call() to remove the axis and just show gridlines
     vis.xAxisG.call(vis.xAxis);
     vis.yAxisG.call(vis.yAxis);
   }

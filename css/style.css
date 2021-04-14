@@ -1,12 +1,44 @@
 /* Todo: set up styling */
 
+@font-face {
+    font-family: F1Regular;
+    src: url("/data/fonts/Formula1-Regular.woff")
+}
+
+@font-face {
+    font-family: F1Wide;
+    src: url("/data/fonts/Formula1-Wide.woff")
+}
+
+@font-face {
+    font-family: Titillium;
+    font-weight: normal;
+    src: url("/data/fonts/Titillium-Regular.woff")
+}
+
+@font-face {
+    font-family: Titillium;
+    font-weight: bold;
+    src: url("/data/fonts/Titillium-Bold.woff")
+}
+
+:root {
+    font-family: Titillium;
+}
+
 body {
     display: flex;
     flex-flow: column;
     justify-content: center;
-    width: 1000px;
+    width: 1300px;
     margin: auto;
 }
+
+h1 {
+    font-family: F1Wide;
+    font-size: 1.5em;
+}
+
 
 #tooltip {
     position: absolute;
@@ -15,7 +47,7 @@ body {
     box-shadow: 2px 2px 3px 0px rgb(92 92 92);
     border: 1px solid #444;
     font-weight: 600;
-    padding: 2px 8px;
+    padding: 10px;
     left: 0px;
     top: 0px;
 }
@@ -29,29 +61,90 @@ body {
     color: #888;
 }
 
+.axis {
+    font-family: F1Regular;
+}
+
 .mech-overview-point {
     opacity: 0.35;
 }
 
-.lap-time-0-line {
-    fill: none;
-    stroke: lightgrey;
-    stroke-width: 2px;
+#lt0-lt1-container{
+    display: flex;
+    flex-direction: column;
 }
 
-.lap-time-1-line {
-    fill: none;
-    stroke-width: 2px;
+.lt0-lt1-top {
+    display:inherit;
+    flex-flow: row;
+    justify-content: space-between;
 }
 
 .lt0-point, .lt1-point {
-    fill-opacity: 0.25;
-    stroke-opacity: 0.15;
-    stroke: lightgrey;
+    fill-opacity: 1;
+    fill: black;
 }
 
 .lt0-selected, .lt1-selected {
+    fill: #FF1E00;
     fill-opacity: 1;
-    stroke-opacity: 1;
-    stroke: black;
 }
+
+#lap-time-0, #lap-time-1{
+    text-align: center;
+}
+
+.lap-time-0-line, .lap-time-1-line {
+    fill: none;
+    stroke: black;
+    stroke-width: 3;
+    stroke-linecap: round;
+}
+
+.lap-time-0-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#lap-time-1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 45px;
+    transform: translateX(47px);
+}
+
+.lt1-small-multiple-title {
+    font-family: F1Regular;
+    font-size: 13px;
+}
+
+.lt1-small-multiple-container {
+    padding-inline-end: 35px;
+    margin-bottom: -10px;
+}
+
+.lt1-chart {
+    /*width:240px;*/
+    /*height:100px;*/
+}
+
+.lap-time-1-explanation{
+    /*width: 40%*/
+}
+
+.lap-time-1-line {
+    stroke-width: 2;
+}
+
+.lap-time-1-line-dashed {
+    fill: none;
+    stroke: black;
+    stroke-width: 1 !important;
+    stroke-dasharray: 3;
+}
+
+.lap-time-1-svg {
+    /*padding-right: 10px*/
+}
+
