@@ -6124,7 +6124,7 @@
     ]
   },
   {
-    "key": "Autodromo Internazionale del Mugello",
+    "key": "Mugello",
     "value": [
       {
         "circuitRef": "mugello",
@@ -6137,7 +6137,7 @@
         "year": 2020,
         "constructorId": 131,
         "bestLapTime": "01:15.1",
-        "circuitName": "Autodromo Internazionale del Mugello",
+        "circuitName": "Mugello",
         "laptimeMillis": 75001
       }
     ]
