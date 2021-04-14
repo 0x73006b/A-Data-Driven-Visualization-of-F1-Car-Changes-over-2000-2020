@@ -75,20 +75,20 @@ class LapTime1 {
 
     // Initialize xAxis
     // Sets ticks to passed in value
-    vis.xAxis = (tickCount) => d3.axisBottom(vis.xScale)
-      .ticks(tickCount)
+    vis.xAxis = (renderLabel) => d3.axisBottom(vis.xScale)
+      .ticks(3)
       .tickSizeOuter(0)
       .tickPadding(10)
-      .tickFormat((x) => x);
+      .tickFormat((x) => (renderLabel ? x : null));
 
     // Initialize Y-Axis
     // Set tick values of none or 1 minute, 1 minute 30 seconds, 2 minutes
-    vis.yAxis = (tickCount) => d3.axisLeft(vis.yScale)
-      .tickValues(tickCount ? [60 * 1000, 90 * 1000, 120 * 1000] : [])
+    vis.yAxis = (renderLabel) => d3.axisLeft(vis.yScale)
+      .tickValues([60 * 1000, 90 * 1000, 120 * 1000])
       // .tickSizeOuter(0)
       .tickSizeOuter(0)
       .tickPadding(5)
-      .tickFormat((x) => getMinuteStringFromMillisecond(x));
+      .tickFormat((x) => (renderLabel ? getMinuteStringFromMillisecond(x) : null));
 
     // set the x domain
     vis.xScale.domain(d3.extent(vis.data, (c) => c.year));
@@ -150,7 +150,7 @@ class LapTime1 {
       d3.select(currentCircuit)
         .append('g')
         .attr('transform', `translate(0,${vis.height})`)
-        .call(vis.xAxis((i >= 30) ? 3 : 0))
+        .call(vis.xAxis((i >= 30) ? 1 : 0))
         .attr('class', 'axis x-axis');
     });
 
