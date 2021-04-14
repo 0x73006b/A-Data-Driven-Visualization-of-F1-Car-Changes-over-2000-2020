@@ -227,3 +227,69 @@ h1 {
     /*padding-right: 10px*/
 }
 
+
+
+
+.lt2-outer-container {
+    display: flex;
+    flex-direction: column;
+    padding-top: 50px;
+}
+
+.lt2-inner-container {
+    display: flex;
+    flex-direction: row;
+}
+
+#lt2-explainer {
+
+}
+
+#lt2-radio-button-container {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    display: flex;
+    flex-direction: column;
+    align-items: left;
+}
+
+#lt2-container-left-col {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.lt2-container-left-col-lower{
+    display: flex;
+    flex-direction: column;
+}
+
+
+#animation-title {
+    position: relative;
+    margin-left: 20px;
+}
+
+.lt2-0-sector1 {
+    fill: #f20002;
+}
+
+.lt2-0-sector2 {
+    fill: #2fb2e3;
+}
+
+.lt2-0-sector3 {
+    fill: #fcd303;
+}
+
+.lt2-1-sector1 {
+    fill: #13C296;
+}
+
+.lt2-1-sector2 {
+    fill: #F5D900;
+}
+
+.lt2-1-sector3 {
+    fill: #F63EBA;
+}

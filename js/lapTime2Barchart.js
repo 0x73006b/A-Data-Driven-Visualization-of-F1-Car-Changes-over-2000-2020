@@ -11,16 +11,17 @@ class Barchart {
     this.config = {
       parentElement: _config.parentElement,
       // colorScale: _config.colorScale,
-      containerWidth: _config.containerWidth || 1000,
-      containerHeight: _config.containerHeight || 500,
+      containerWidth: _config.containerWidth || 250,
+      containerHeight: _config.containerHeight || 400,
       margin: _config.margin || {
-        top: 25, right: 20, bottom: 20, left: 60,
+        top: 25, right: 20, bottom: 50, left: 40,
       },
     };
     this.data = _data;
     this.reatimeLap = _reatimeLap;
     this.dropDownReady = false;
     this.initVis();
+    this.lt2SelectedYears = [];
   }
 
   /**
@@ -55,7 +56,7 @@ class Barchart {
         sec %= 60;
         return `${minute.toString()}:${sec.toString()}.${(millis / 10).toString()}`;
       })
-      .ticks(6)
+      .ticks(4)
       .tickSizeOuter(0);
 
     // Define size of SVG drawing area
@@ -72,15 +73,75 @@ class Barchart {
       .attr('class', 'axis x-axis')
       .attr('transform', `translate(0,${vis.height})`);
 
-    // Append y-axis group 
+    // Append y-axis group
     vis.yAxisG = vis.chart.append('g')
-      .attr('class', 'axis y-axis');
+      .attr('class', 'axis y-axis')
+      .attr('transform', 'translate(-1,0)');
 
-    vis.selectedTrack = '';
+    // Append axis title
+    vis.svg.append('text')
+      .attr('class', 'axis-title')
+      .attr('x', 0)
+      .attr('y', 0)
+      .attr('dy', '.71em')
+      .text('Sector Time Comparison');
+    vis.svg.append('text')
+      .attr('class', 'axis-title')
+      .attr('x', vis.width + 20)
+      .attr('y', vis.height + 30)
+      .attr('dy', '.71em')
+      .text('Year');
 
-    chartTitle(vis, 'Best Lap Time by Year', 0);
-    axisLabel(vis, true, 'Years', -10, 10);
-    axisLabel(vis, false, 'Best Lap Time (in Minute)', 0, -30);
+    // Handmade legend
+    const legendx = 20;
+    const gap = 10
+    const legendy = vis.height+60;
+    const legendGap = 80;
+    vis.svg.append('circle').attr('cx', legendx).attr('cy', legendy).attr('r', 6)
+      .attr('class', 'circuiteName lt2-0-sector1');
+    vis.svg.append('circle').attr('cx', legendx+legendGap).attr('cy', legendy).attr('r', 6)
+      .attr('class', 'circuiteName lt2-0-sector2');
+    vis.svg.append('circle').attr('cx', legendx+legendGap*2).attr('cy', legendy).attr('r', 6)
+      .attr('class', 'circuiteName lt2-0-sector3');
+    vis.svg.append('text').attr('x', legendx + gap).attr('y', legendy).text('Sector 1')
+      .style('font-size', '15px')
+      .attr('alignment-baseline', 'middle');
+    vis.svg.append('text').attr('x', legendx + gap + legendGap).attr('y', legendy).text('Sector 2')
+      .style('font-size', '15px')
+      .attr('alignment-baseline', 'middle');
+    vis.svg.append('text').attr('x', legendx + gap + legendGap*2).attr('y', legendy).text('Sector 3')
+      .style('font-size', '15px')
+      .attr('alignment-baseline', 'middle');
+
+    vis.stack = d3.stack().keys(['sector1', 'sector2', 'sector3']);
+
+    // todo: should this be empty? @ mr. rmzm
+    vis.selectedTrack = 'Suzuka Circuit';
+
+    vis.initData();
+  }
+
+  /**
+   * Initialize data-related items that only needs to run once.
+   */
+  initData() {
+    const vis = this;
+
+    // Specificy accessor functions
+    vis.colorValue = (d) => d.key;
+    vis.xValue = (d) => d.year;
+    vis.yValue = (d) => d.time * 1000;
+
+    vis.circuitNames = Array.from(new Set(vis.data.map((d) => d.circuitName))).sort();
+    console.log('circuitNames', vis.circuitNames);
+
+    // todo: do we need this?
+    vis.trackNames = Array.from(new Set(vis.data.map((d) => [d.circuitName])));
+    console.log('trackNames', vis.trackNames);
+
+    vis.years = d3.extent(vis.data, (d) => d.year);
+    console.log('years', vis.years);
+    vis.xScale.domain(vis.years);
 
     vis.updateVis();
   }
@@ -91,23 +152,18 @@ class Barchart {
   updateVis() {
     const vis = this;
 
-    // prep data
-    vis.circuitNames = Array.from(new Set(vis.data.map((d) => d.circuitName))).sort();
-    vis.trackNames = vis.data.map((d) => [d.circuitName, d.circuitId]);
+    // // prep data
     vis.selectedTrackData = vis.data.filter((lt) => lt.circuitName === this.selectedTrack);
-    vis.years = Array.from(vis.data.map((d) => d.year)).sort();
+    console.log('selectedTrackData', vis.selectedTrackData);
 
-    // Specificy accessor functions
-    vis.colorValue = (d) => d.key;
-    vis.xValue = (d) => d.year;
-    vis.yValue = (d) => d.laptimeMillis;
-
+    const maxTime = d3.max(vis.selectedTrackData, (d) => (d.sector1 + d.sector2 + d.sector3));
+    console.log(maxTime);
     // Set the scale input domains
-    vis.xScale.domain(vis.years);
-    vis.yScale.domain(
-      [d3.min(vis.selectedTrackData, vis.yValue)
-        - 1000, d3.max(vis.selectedTrackData, vis.yValue)],
-    );
+    vis.yScale.domain([0, maxTime + 10000]);
+
+    vis.stackedData = vis.stack(vis.selectedTrackData);
+    console.log('stackedData', vis.stackedData);
+
     vis.renderVis();
   }
 
@@ -117,48 +173,32 @@ class Barchart {
   renderVis() {
     const vis = this;
 
-    // vis.chart.selectAll('.circuiteName')
-    //   .data(vis.selectedTrackData)
-    //   .join('text')
-    //   .attr('class', 'circuiteName')
-    //   .text((d) => d.circuitName)
-    //   // translate and rotate
-    //   .attr('transform', `translate(${40},${-10})`);
-
-    // Add rectangles
-    vis.chart.selectAll('.bar')
-      .data(vis.selectedTrackData, vis.yValue)
+    // todo: reference stacked bar chart 436v tutorial
+    const stackedChart = vis.chart
+      .selectAll('.circuiteName')
+      .data(vis.stackedData)
+      .join('g')
+      .attr('class', (d) => `circuiteName lt2-0-${d.key}`)
+      .selectAll('rect')
+      .data((d) => d)
       .join('rect')
-      .attr('class', 'bar')
-      .attr('x', (d) => vis.xScale(vis.xValue(d)))
-      .attr('width', 35)
-      .attr('height', (d) => vis.height - vis.yScale(vis.yValue(d)))
-      .attr('y', (d) => vis.yScale(vis.yValue(d)))
-      .attr('fill', () => '#800020');
+      .attr('x', (d) => vis.xScale(d.data.year))
+      .transition()
+      .duration(700)
+      .ease(d3.easeSinOut)
+      .attr('y', (d) => vis.yScale(d[1]))
+      .attr('height', (d) => vis.yScale(d[0]) - vis.yScale(d[1]))
+      .attr('width', vis.xScale.bandwidth());
 
     // Update axes
     vis.xAxisG.call(vis.xAxis);
     vis.yAxisG.call(vis.yAxis);
 
-    // add the options to the button
-    if (!vis.dropDownReady) {
-      d3.select('#selectButton')
-        .selectAll('myOptions')
-        .data(vis.circuitNames)
-        .join('option')
-        .text((d) => d) // text showed in the menu
-        .attr('value', (d) => d); // corresponding value returned by the button
-      vis.dropDownReady = true;
-    }
-
-    // eslint-disable-next-line func-names
-    d3.select('#selectButton').on('change', function () {
-      // recover the option that has been chosen
-      vis.selectedTrack = d3.select(this).property('value');
-      // run the updateChart function with this selected option
+    d3.selectAll('input').on('change', function () {
+      vis.selectedTrack = this.value;
       vis.updateVis();
     });
 
-    vis.reatimeLap.updateVis(vis.selectedTrack, false);
+    vis.reatimeLap.updateVis(vis.selectedTrack, -1);
   }
 }

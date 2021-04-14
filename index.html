@@ -81,12 +81,40 @@
 </div>
 
 <div class="step" id="step3">
-    <select id="selectButton"></select>
-    <svg id="lap-time-2-barchart"></svg>
-    <button type="button" id="startButton">Start Race</button>
-    <svg id="laptime2-text"></svg>
-    <text> Visual Simulation Tool for Comparison of Selected Lap Time(s)</text>
-    <div id="laptime2-reatimeLap"></div>
+    <div class="lt2-outer-container">
+        <h1>Lap Time Visual Comparison Tool</h1>
+        <div class="lt2-inner-container">
+            <div id="lt2-container-left-col">
+                <div class="lt2-container-left-col-upper">
+                    <div id="lt2-explainer">
+                        Proin dictum, tellus ac condimentum laoreet, urna risus cursus massa, eu pretium ante ipsum vitae diam.
+                        Pellentesque eleifend ex condimentum nunc pretium egestas. Nunc ullamcorper nulla eros, sit amet vehicula
+                        urna efficitur eu. Ut sollicitudin condimentum dui nec ultricies. Aliquam rhoncus venenatis mollis. Sed
+                        tristique quis ex vitae porta. Nunc congue placerat blandit. Nullam venenatis dui sed tristique laoreet.
+                        Donec sit amet urna et ipsum iaculis facilisis eget nec velit. Proin sapien libero, tristique sed libero sit
+                        amet, iaculis consectetur quam. Quisque quis lectus eget diam aliquet convallis quis sit amet metus. Vivamus
+                        luctus dictum tellus ac sagittis. Sed hendrerit sapien efficitur maximus sodales. Aliquam in consectetur
+                        tortor. Curabitur euismod laoreet interdum.
+                    </div>
+                    <svg id="lap-time-2-barchart"></svg>
+
+                </div>
+                <div class="lt2-container-left-col-lower">
+                    <div id="lt2-radio-button-container">
+                        <form id="form">
+                            <input type="radio" name="stack" value="Suzuka Circuit" checked>Suzuka Circuit<br>
+                            <input type="radio" name="stack" value="Circuit de Monaco">Circuit de Monaco<br>
+                            <input type="radio" name="stack" value="Marina Bay Street Circuit">Marina Bay Street Circuit
+                        </form>
+                    </div>
+                    <button type="button" id="startButton">Start Race</button>
+                </div>
+            </div>
+            <div>
+                <div id="laptime2-reatimeLap"></div>
+            </div>
+        </div>
+    </div>
 </div>
 
 <!-- D3 bundle -->
