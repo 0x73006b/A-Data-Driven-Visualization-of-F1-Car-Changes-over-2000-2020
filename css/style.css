@@ -123,7 +123,7 @@ h1 {
 }
 
 .mc-explainer {
-    width:50%;
+    /*width:50%;*/
 }
 
 #mc-title {
@@ -248,12 +248,25 @@ h1 {
     margin-top: 15px;
     display: flex;
     flex-direction: column;
+    font-family: F1Regular;
 }
 
 #lt2-container-left-col {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
+}
+
+.lt2-select-a-track {
+    overflow: visible;
+    width: 300px;
+    white-space: nowrap;
+    margin-bottom: -10px;
+}
+
+.lt2-container-left-col-upper {
+    display: flex;
+    flex-direction: column;
 }
 
 .lt2-container-left-col-lower{

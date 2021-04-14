@@ -81,16 +81,15 @@ class RealTimeLap {
           d3.select('#laptime2-reatimeLap').selectAll('*').remove();
           d3.select('#laptime2-reatimeLap').node().append(data.documentElement);
 
-
-
           vis.tracksvg = d3.select('#tracksvg');
+
+          // Animated View Title
           vis.tracksvg.append('text')
             .attr('class', 'chart-title')
             .attr('x', 50)
-            .attr('y', 0)
+            .attr('y', 5)
             .attr('dy', '.71em')
-            .text('Sector Time Comparison');
-
+            .text('Lap Time Visual Comparison Tool \"Animated View\"');
 
           const legendx = 100;
           const legendy = 30;

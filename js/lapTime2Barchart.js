@@ -12,9 +12,9 @@ class Barchart {
       parentElement: _config.parentElement,
       // colorScale: _config.colorScale,
       containerWidth: _config.containerWidth || 250,
-      containerHeight: _config.containerHeight || 400,
+      containerHeight: _config.containerHeight || 410,
       margin: _config.margin || {
-        top: 60, right: 20, bottom: 50, left: 40,
+        top: 60, right: 20, bottom: 60, left: 70,
       },
     };
     this.data = _data;
@@ -49,13 +49,7 @@ class Barchart {
       .tickSize(0);
 
     vis.yAxis = d3.axisLeft(vis.yScale)
-      .tickFormat((x) => {
-        const millis = (x % 1000);
-        let sec = Math.floor(x / 1000);
-        const minute = Math.floor(sec / 60);
-        sec %= 60;
-        return `${minute.toString()}:${sec.toString()}.${(millis / 10).toString()}`;
-      })
+      .tickFormat((x) => getMinuteStringFromMillisecond(x))
       .ticks(4)
       .tickSizeOuter(0);
 
@@ -79,43 +73,28 @@ class Barchart {
       .attr('transform', 'translate(-1,0)');
 
     // Append axis title
-    vis.svg.append('text')
-      .attr('class', 'axis-title')
-      .attr('x', 0)
-      .attr('y', 0)
-      .attr('dy', '.71em')
-      .text('Sector Time Comparison');
-    vis.svg.append('text')
-      .attr('class', 'axis-title')
-      .attr('x', vis.width + 20)
-      .attr('y', vis.height + 65)
-      .attr('dy', '.71em')
-      .text('Year');
-    vis.svg.append('text')
-      .attr('class', 'axis-title')
-      .attr('x', 0)
-      .attr('y', 40)
-      .attr('dy', '.71em')
-      .text('Lap Time');
+    chartTitle(vis, 'Sector Time Comparison', 0, 30, 'start');
+    axisLabel(vis, false, 'Lap Time in Minutes', 0, -1 * (vis.height / 2));
+    axisLabel(vis, true, 'Year', -60, -25);
 
     // Handmade legend
-    const legendx = 20;
-    const gap = 10
-    const legendy = vis.height+90;
+    const legendX = 20;
+    const gap = 10;
+    const legendY = vis.height + 110;
     const legendGap = 80;
-    vis.svg.append('circle').attr('cx', legendx).attr('cy', legendy).attr('r', 6)
+    vis.svg.append('circle').attr('cx', legendX).attr('cy', legendY).attr('r', 6)
       .attr('class', 'circuiteName lt2-0-sector1');
-    vis.svg.append('circle').attr('cx', legendx+legendGap).attr('cy', legendy).attr('r', 6)
+    vis.svg.append('circle').attr('cx', legendX + legendGap).attr('cy', legendY).attr('r', 6)
       .attr('class', 'circuiteName lt2-0-sector2');
-    vis.svg.append('circle').attr('cx', legendx+legendGap*2).attr('cy', legendy).attr('r', 6)
+    vis.svg.append('circle').attr('cx', legendX + legendGap * 2).attr('cy', legendY).attr('r', 6)
       .attr('class', 'circuiteName lt2-0-sector3');
-    vis.svg.append('text').attr('x', legendx + gap).attr('y', legendy).text('Sector 1')
+    vis.svg.append('text').attr('x', legendX + gap).attr('y', legendY).text('Sector 1')
       .style('font-size', '15px')
       .attr('alignment-baseline', 'middle');
-    vis.svg.append('text').attr('x', legendx + gap + legendGap).attr('y', legendy).text('Sector 2')
+    vis.svg.append('text').attr('x', legendX + gap + legendGap).attr('y', legendY).text('Sector 2')
       .style('font-size', '15px')
       .attr('alignment-baseline', 'middle');
-    vis.svg.append('text').attr('x', legendx + gap + legendGap*2).attr('y', legendy).text('Sector 3')
+    vis.svg.append('text').attr('x', legendX + gap + legendGap * 2).attr('y', legendY).text('Sector 3')
       .style('font-size', '15px')
       .attr('alignment-baseline', 'middle');
 

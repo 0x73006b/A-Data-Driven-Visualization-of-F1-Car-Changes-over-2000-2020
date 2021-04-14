@@ -88,23 +88,26 @@
                 <div class="lt2-container-left-col-upper">
                     <div id="lt2-explainer">
                         Raw numbers are good, line charts are better, but even then, a second difference can be hard
-                        to gauge. LT2 attempts to demonstrate the immense difference in on track position a
-                        single second can make. <br/>
+                        to gauge. LT2's "animated view" attempts to demonstrate the immense difference in gap a
+                        single second can make. <p/>
                         We demonstrate the difference between the beginning of the V6 turbo era
                         (2014) and the 2020 cars over 3 selectable tracks.
                     </div>
-                    <svg id="lap-time-2-barchart"></svg>
-
-                </div>
-                <div class="lt2-container-left-col-lower">
                     <div id="lt2-radio-button-container">
+                        <div class="lt2-select-a-track">
+                            <h1>Select a Track</h1>
+                        </div>
                         <form id="form">
-                            <input type="radio" name="stack" value="Suzuka Circuit" checked>Suzuka Circuit<br>
-                            <input type="radio" name="stack" value="Circuit de Monaco">Circuit de Monaco<br>
+                            <input type="radio" name="stack" value="Suzuka Circuit" checked>Suzuka Circuit<br/>
+                            <input type="radio" name="stack" value="Circuit de Monaco">Circuit de Monaco<br/>
                             <input type="radio" name="stack" value="Marina Bay Street Circuit">Marina Bay Street Circuit
                         </form>
                     </div>
                     <button type="button" id="startButton">Start Race</button>
+
+                </div>
+                <div class="lt2-container-left-col-lower">
+                    <svg id="lap-time-2-barchart"></svg>
                 </div>
             </div>
             <div>
