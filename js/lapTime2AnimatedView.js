@@ -43,7 +43,7 @@ class RealTimeLap {
       .attr('transform', `translate(${vis.config.margin.left},${vis.config.margin.top})`);
 
     vis.iterateNum = 0;
-    vis.selectedTrack = '';
+    vis.selectedTrack = 'Suzuka Circuit';
     vis.trackColor = [['#f20002', '#2fb2e3', '#fcd303'], ['#13C296', '#F5D900', '#F63EBA']];
     vis.updateVis();
   }
@@ -80,6 +80,10 @@ class RealTimeLap {
         // clean up previous drawings
           d3.select('#laptime2-reatimeLap').selectAll('*').remove();
           d3.select('#laptime2-reatimeLap').node().append(data.documentElement);
+
+          const title = d3.select('#animation-title').text(this.selectedTrack);
+          console.log(title);
+
           // setup background
           const background = d3.select('#background');
           background
@@ -116,7 +120,7 @@ class RealTimeLap {
     d3.select('#startButton')
       // eslint-disable-next-line no-unused-vars
       .on('click', (_event, d) => {
-        for(var i = 0; i <3; i++) {
+        for (let i = 0; i < 3; i += 1) {
           vis.animationPaths[0][i].interrupt();
           vis.animationPaths[1][i].interrupt();
           vis.animationPaths[0][i].attr('stroke-width', 0);
