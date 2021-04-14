@@ -1,6 +1,4 @@
-// Todo: Implement mechanical change scatterplot;
-// x-axis: Horsepower; y-axis: weight(kg)
-
+// eslint-disable-next-line no-unused-vars
 class MechanicalChangesSubOverview {
   /**
    * Class constructor with initial configuration
@@ -33,6 +31,27 @@ class MechanicalChangesSubOverview {
   initVis() {
     const vis = this;
 
+    // todo put this into a const or get it hashtag Dynamically period
+    vis.keys = [
+      'Arrows',
+      'McLaren',
+      'Sauber, BMW Sauber, Alfa Romeo',
+      'Williams-Mercedes, Williams',
+      'Benetton, Lotus F1, Renault',
+      'Minardi, Toro Rosso, AlphaTauri',
+      'Ferrari',
+      'Toyota',
+      'Super Aguri F1',
+      'Jaguar, Red Bull Racing',
+      'BAR, BAR-Honda, Honda, Brawn GP, Mercedes',
+      'Team Lotus, Caterham',
+      'Dallara, HRT',
+      'Racing, Marussia, Manor',
+      'Prost',
+      'Jordan, Midland F1, Spyker/Force India, Force India, Racing Point',
+      'Haas',
+    ];
+
     // Calculate inner chart size. Margin specifies the space around the actual chart.
     vis.width = vis.config.containerWidth - vis.config.margin.left - vis.config.margin.right;
     vis.height = vis.config.containerHeight - vis.config.margin.top - vis.config.margin.bottom;
@@ -46,27 +65,10 @@ class MechanicalChangesSubOverview {
 
     // for legend display colors
     vis.colorScaleMC = d3.scaleOrdinal()
-      .domain([
-        'Arrows',
-        'McLaren',
-        'Sauber, BMW Sauber, Alfa Romeo',
-        'Williams-Mercedes, Williams',
-        'Benetton, Lotus F1, Renault',
-        'Minardi, Toro Rosso, AlphaTauri',
-        'Ferrari',
-        'Toyota',
-        'Super Aguri F1',
-        'Jaguar, Red Bull Racing',
-        'BAR, BAR-Honda, Honda, Brawn GP, Mercedes',
-        'Team Lotus, Caterham',
-        'Dallara, HRT',
-        'Racing, Marussia, Manor',
-        'Prost',
-        'Jordan, Midland F1, Spyker/Force India, Force India, Racing Point',
-        'Haas',
-      ])
-      .range(['black', '#f8a947', '#900000', '#1a5aff', '#FFE368', '#193A5B', '#D40000', 'white', '#808080', '#4a5074', '#3fdbc8',
-        '#1b7a37', '#D4AF37', '#f95c31', '#051773', '#f7a9d1', '#f9f8fd',
+      .domain(vis.keys)
+      .range(['black', '#f8a947', '#900000', '#1a5aff', '#FFE368', '#193A5B', '#D40000', 'white',
+        '#808080', '#4a5074', '#3fdbc8', '#1b7a37', '#D4AF37', '#f95c31', '#051773',
+        '#f7a9d1', '#dddae8',
       ]);
     // Initialize axes
     vis.xAxis = d3.axisBottom(vis.xScale)
@@ -214,35 +216,15 @@ class MechanicalChangesSubOverview {
 
   renderLegend() {
     const vis = this;
-    const keys = [
-      'Arrows',
-      'McLaren',
-      'Sauber, BMW Sauber, Alfa Romeo',
-      'Williams-Mercedes, Williams',
-      'Benetton, Lotus F1, Renault',
-      'Minardi, Toro Rosso, AlphaTauri',
-      'Ferrari',
-      'Toyota',
-      'Super Aguri F1',
-      'Jaguar, Red Bull Racing',
-      'BAR, BAR-Honda, Honda, Brawn GP, Mercedes',
-      'Team Lotus, Caterham',
-      'Dallara, HRT',
-      'Racing, Marussia, Manor',
-      'Prost',
-      'Jordan, Midland F1, Spyker/Force India, Force India, Racing Point',
-      'Haas',
-
-    ];
 
     const legendArea = vis.legend.selectAll('.legendArea')
-      .data(keys)
+      .data(vis.keys)
       .append('g')
       .attr('height', vis.config.legendHeight)
       .attr('width', vis.config.legendWidth);
 
     const legendAreaCircles = legendArea
-      .data(keys)
+      .data(vis.keys)
       .join('circle')
       .attr('class', 'legend-dots')
       .attr('cx', (d, i) => {
@@ -269,7 +251,7 @@ class MechanicalChangesSubOverview {
       .style('fill', (d) => vis.colorScaleMC(d));
 
     const legendAreaText = legendArea
-      .data(keys)
+      .data(vis.keys)
       .join('text')
       .attr('class', 'legend-text')
       .attr('x', (d, i) => {
