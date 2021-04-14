@@ -74,30 +74,20 @@ h1 {
     flex-direction: column;
 }
 
-.lap-time-0-container {
-    display: flex;
-    flex-direction: column;
-}
-
-#lap-time-1 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-}
-
-.lt1-chart {
-    /*width:240px;*/
-    /*height:100px;*/
-}
-
 .lt0-lt1-top {
     display:inherit;
     flex-flow: row;
     justify-content: space-between;
 }
 
-.lap-time-1-explanation{
-    /*width: 40%*/
+.lt0-point, .lt1-point {
+    fill-opacity: 1;
+    fill: black;
+}
+
+.lt0-selected, .lt1-selected {
+    fill: #FF1E00;
+    fill-opacity: 1;
 }
 
 #lap-time-0, #lap-time-1{
@@ -109,6 +99,38 @@ h1 {
     stroke: black;
     stroke-width: 3;
     stroke-linecap: round;
+}
+
+.lap-time-0-container {
+    display: flex;
+    flex-direction: column;
+}
+
+#lap-time-1 {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    margin-top: 45px;
+    transform: translateX(47px);
+}
+
+.lt1-small-multiple-title {
+    font-family: F1Regular;
+    font-size: 13px;
+}
+
+.lt1-small-multiple-container {
+    padding-inline-end: 35px;
+    margin-bottom: -10px;
+}
+
+.lt1-chart {
+    /*width:240px;*/
+    /*height:100px;*/
+}
+
+.lap-time-1-explanation{
+    /*width: 40%*/
 }
 
 .lap-time-1-line {
@@ -124,15 +146,5 @@ h1 {
 
 .lap-time-1-svg {
     /*padding-right: 10px*/
-}
-
-.lt0-point, .lt1-point {
-    fill-opacity: 1;
-    fill: black;
-}
-
-.lt0-selected, .lt1-selected {
-    fill: #FF1E00;
-    fill-opacity: 1;
 }
 
