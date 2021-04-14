@@ -15,9 +15,6 @@
                 <h1>A Data Driven Visualization of F1 Car Changes over <br/> 2000-2020</h1>
             </div>
             <div id="opening-text">
-                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-                magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
-                suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
             </div>
             <div class="button-container">
                 <input class="next" type="button" onClick="smoothScroll('step1');" value ="Next"/>
@@ -31,12 +28,13 @@
 <div class="step" id="step1" style="display: inherit">
     <div class="mechanical-change">
         <div id="mc-title">
-            <h1>Mechanical Changes</h1>
+            <h1>Power and Weight</h1>
         </div>
-        <div id="mc-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
-            suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
+        <div class="mc-explainer">
+            Being race cars, metrics like power and weight are incredibly important and are an easy way to gauge
+            how fast a car go (though it isn't everything). Power and weight (and power-to-weight)
+            can be used to see technological advances; constructors generally strive for the maximum power at the
+            minimum weight.
         </div>
         <div id="mc_top">
             <svg class='mc' id='mechanical-changes-main-overview'></svg>
@@ -44,6 +42,9 @@
         </div>
         <div id="mc_bottom">
             <svg class='mc' id="mechanical-changes-detail-view"></svg>
+            <div>
+                <input class="next" type="button" onClick="smoothScroll('step2');"  value ="Next"/>
+            </div>
         </div>
 
     </div>
@@ -51,10 +52,9 @@
 </div>
 </div>
 <p/>
-<input class="next" type="button" onClick="smoothScroll('step2');"  value ="Next"/>
 
 <div class="step" id="step2">
-    <h1>Lap Time 0 + Lap Time 1</h1>
+    <h1>Lap Time Progression (LT0 / LT1)</h1>
     <div id="lt0-lt1-container">
         <div class="lt0-lt1-top">
             <div class="lap-time-0-container">
@@ -82,19 +82,16 @@
 
 <div class="step" id="step3">
     <div class="lt2-outer-container">
-        <h1>Lap Time Visual Comparison Tool</h1>
+        <h1>Lap Time Visual Comparison Tool (LT2)</h1>
         <div class="lt2-inner-container">
             <div id="lt2-container-left-col">
                 <div class="lt2-container-left-col-upper">
                     <div id="lt2-explainer">
-                        Proin dictum, tellus ac condimentum laoreet, urna risus cursus massa, eu pretium ante ipsum vitae diam.
-                        Pellentesque eleifend ex condimentum nunc pretium egestas. Nunc ullamcorper nulla eros, sit amet vehicula
-                        urna efficitur eu. Ut sollicitudin condimentum dui nec ultricies. Aliquam rhoncus venenatis mollis. Sed
-                        tristique quis ex vitae porta. Nunc congue placerat blandit. Nullam venenatis dui sed tristique laoreet.
-                        Donec sit amet urna et ipsum iaculis facilisis eget nec velit. Proin sapien libero, tristique sed libero sit
-                        amet, iaculis consectetur quam. Quisque quis lectus eget diam aliquet convallis quis sit amet metus. Vivamus
-                        luctus dictum tellus ac sagittis. Sed hendrerit sapien efficitur maximus sodales. Aliquam in consectetur
-                        tortor. Curabitur euismod laoreet interdum.
+                        Raw numbers are good, line charts are better, but even then, a second difference can be hard
+                        to gauge. LT2 attempts to demonstrate the immense difference in on track position a
+                        single second can make. <br/>
+                        We demonstrate the difference between the beginning of the V6 turbo era
+                        (2014) and the 2020 cars over 3 selectable tracks.
                     </div>
                     <svg id="lap-time-2-barchart"></svg>
 
@@ -120,7 +117,7 @@
 <!-- D3 bundle -->
 <script src="js/utils/d3.v6.min.js"></script>
 
-<!-- jquery access-->>
+<!-- jquery access-->
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>
 <script src="js/utils/buttonScroll.js"></script>
 
