@@ -101,14 +101,6 @@ class LapTime0 {
     lt0lt1SelectedYears = [];
     lt0lt1SelectedYears.push(vis.processedData[d3.minIndex(vis.processedData, (d) => d[1])][0]);
     lt0lt1SelectedYears.push(vis.processedData[d3.maxIndex(vis.processedData, (d) => d[1])][0]);
-    lt0lt1SelectedYears.sort();
-
-    const start = lt0lt1SelectedYears[0];
-    const limit = lt0lt1SelectedYears[lt0lt1SelectedYears.length - 1];
-    // eslint-disable-next-line no-plusplus
-    for (let i = start; i < limit; i++) { lt0lt1SelectedYears.push(i); }
-
-    console.log(lt0lt1SelectedYears);
 
     vis.updateVis();
   }
@@ -179,19 +171,7 @@ class LapTime0 {
           lt0lt1SelectedYears = lt0lt1SelectedYears.filter((year) => year !== d[0]);
         } else {
           lt0lt1SelectedYears.push(d[0]);
-          lt0lt1SelectedYears.sort();
         }
-
-        console.log(lt0lt1SelectedYears.length);
-
-        if (lt0lt1SelectedYears.length >= 2) {
-          const start = lt0lt1SelectedYears[0];
-          const limit = lt0lt1SelectedYears[lt0lt1SelectedYears.length - 1];
-          // eslint-disable-next-line no-plusplus
-          for (let i = start; i < limit; i++) { lt0lt1SelectedYears.push(i); }
-        }
-
-        console.log(lt0lt1SelectedYears);
 
         lapTime0.updateVis();
         lapTime1.updateVis();
