@@ -99,6 +99,7 @@ class MechanicalChangesOverview {
     vis.legend = vis.svg.append('g')
       .attr('transform', 'translate(0, 30)')
       .attr('class', 'legendArea');
+    renderUtilLegend(vis);
 
     vis.initData();
   }
@@ -137,7 +138,6 @@ class MechanicalChangesOverview {
     vis.yValue = (d) => d[1]; // y-axis accesor for rollup data
 
     vis.renderVis();
-    renderUtilLegend(vis);
   }
 
   renderVis() {

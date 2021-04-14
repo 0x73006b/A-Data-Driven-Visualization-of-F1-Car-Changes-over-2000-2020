@@ -109,6 +109,7 @@ class MechanicalChangesSubOverview {
     vis.legend = vis.svg.append('g')
       .attr('transform', 'translate(0, 10)')
       .attr('class', 'legendArea');
+    vis.renderLegend();
 
     // Specify accessor functions
     vis.xValue = (d) => d.power;
@@ -141,7 +142,6 @@ class MechanicalChangesSubOverview {
     vis.groupAccessor = (d) => d.group;
 
     vis.renderVis();
-    vis.renderLegend();
   }
 
   renderVis() {
