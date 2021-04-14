@@ -7,25 +7,22 @@ let mechanicalChangesSelectedYears = [];
 let mechanicalChangesSelectedGroup = null;
 let lt0lt1SelectedYears = [];
 
-// TODO: Remove the eslint disables once ready
-let lapTime0;
-// eslint-disable-next-line no-unused-vars
-let lapTime1;
-let circuitData;
+let improvedMultiplier;
 
-// TODO: Setup charts here
+let lapTime0;
+let lapTime1;
+let pointsRemoved = false;
+let circuitData;
+let trackData;
+
 Promise.all([
-  d3.json('data/Filtered Merged Circuit.json'),
+  d3.json('data/circuitData.json'),
   d3.json('data/car_data.json'),
+  d3.json('data/lt0.json'),
+  d3.json('data/circuitData_millis_nullFill_remDup.json'),
 ])
   .then((data) => {
-    [circuitData, mechanicalChangesData] = data;
-
-    // console.log(d3.rollup(circuitData, d=>d.length, d=>d.year));
-
-    // converting lap time from minute:second.10*millis to millis
-
-    circuitData.map((d) => d.laptimeMillis = getMillisecondsFromTimeString(d));
+    [circuitData, mechanicalChangesData, improvedMultiplier, trackData] = data;
 
     // Create Mechanical Changes Overview: Linechart, Scatterplot, detail: Linecharts
     mechanicalChangesOverview = new MechanicalChangesOverview({ parentElement: '#mechanical-changes-main-overview' }, mechanicalChangesData.data);
@@ -33,7 +30,7 @@ Promise.all([
     mechanicalChangesDetailView = new MechanicalChangesDetailView({ parentElement: '#mechanical-changes-detail-view' }, mechanicalChangesData.data);
 
     // Create LT0
-    lapTime0 = new LapTime0({ parentElement: '#lap-time-0' }, circuitData);
+    lapTime0 = new LapTime0({ parentElement: '#lap-time-0' }, improvedMultiplier);
 
     // Create LT1
     lapTime1 = new LapTime1({ parentElement: '#lap-time-1' }, circuitData);

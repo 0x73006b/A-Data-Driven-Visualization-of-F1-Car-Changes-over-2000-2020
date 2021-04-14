@@ -7,7 +7,6 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-<!-- Add HTML content, SVG drawing area, ... -->
 
 <div class="opening-background">
     <div class="step" id="step0">
@@ -16,9 +15,9 @@
                 <h1>A Data Driven Visualization of F1 Car Changes over 2000-2020</h1>
             </div>
             <div id="opening-text">
-            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-            magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
-            suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+                magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
+                suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
             </div>
             <div class="button-container">
                 <input class="next" type="button" onClick="smoothScroll('step1');" value ="Next"/>
@@ -28,7 +27,6 @@
         </div>
     </div>
 </div>
-<p/>
 
 <div class="step" id="step1" style="display: inherit">
     <div class="mechanical-change">
@@ -36,38 +34,51 @@
             <h1>Mechanical Changes</h1>
         </div>
         <div id="mc-text">
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
-        magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
-        suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
-        </div> 
-            <div id="mc_top">
-                <svg class='mc' id='mechanical-changes-main-overview'></svg>
-                <svg class='mc' id="mechanical-changes-overview"></svg>
-            </div>
-            <div id="mc_bottom">
-                <svg class='mc' id="mechanical-changes-detail-view"></svg>
-            </div>
-            
+            Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore
+            magna aliqua. Egestas sed sed risus pretium quam vulputate. Sed risus pretium quam vulputate dignissim
+            suspendisse in est ante. Ullamcorper eget nulla facilisi etiam dignissim diam quis enim lobortis.
+        </div>
+        <div id="mc_top">
+            <svg class='mc' id='mechanical-changes-main-overview'></svg>
+            <svg class='mc' id="mechanical-changes-overview"></svg>
+        </div>
+        <div id="mc_bottom">
+            <svg class='mc' id="mechanical-changes-detail-view"></svg>
+        </div>
+
     </div>
-       
-    </div>
+
+</div>
 </div>
 <p/>
 <input class="next" type="button" onClick="smoothScroll('step2');"  value ="Next"/>
 
 <div class="step" id="step2">
-    <button type="button" id="lap-time-0-clear">Clear</button>
-    <button type="button" id="lap-time-0-reset">Reset</button>
-    <span style="margin-bottom: -100px; margin-top: 50px; display:flex; flex-direction:row;">
-        <img src="data/Legends_Lt0_lt1_horizontal.png" alt="lt0_lt1_legend" width="500" height="200">
-    </span>
-    <svg id="lap-time-0"></svg>
-    <svg id="lap-time-1"></svg>
+    <h1>Lap Time 0 + Lap Time 1</h1>
+    <div id="lt0-lt1-container">
+        <div class="lt0-lt1-top">
+            <div class="lap-time-0-container">
+                <svg id="lap-time-0"></svg>
+            </div>
+            <div class="lap-time-1-explanation">
+                Lap times are a key metric in determining improvement; they are the result of power, aerodynamics,
+                tuning, driver ability and other things. We have charted the average improvement per season to the right,
+                and we can see that the cars often get faster as their engine development gets more mature.
+                <p/>
+                Below, you will see a disaggregated view of lap times, split into their respective tracks, over 2000-2020.
+                <div>
+                    <button type="button" id="lap-time-0-clear">Clear</button>
+                    <button type="button" id="lap-time-0-reset">Reset to Default</button>
+                    <button type="button" id="lap-time-1-disableEnable">Disable Points</button>
+                </div>
+            </div>
+        </div>
+        <div id="lap-time-1-container"><div id="lap-time-1"></div></div>
+    </div>
     <div id="tooltip"></div>
+<!--  //TODO: Move to better spot  -->
+    <input class="next" type="button" onClick="smoothScroll('step3');" value ="Next"/>
 </div>
-
-<p/>
-<input class="next" type="button" onClick="smoothScroll('step3');" value ="Next"/>
 
 <div class="step" id="step3">
     <select id="selectButton"></select>
@@ -79,7 +90,7 @@
 </div>
 
 <!-- D3 bundle -->
-<script src="js/d3.v6.min.js"></script>
+<script src="js/utils/d3.v6.min.js"></script>
 
 <!-- jquery access-->>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.0/jquery.min.js"></script>

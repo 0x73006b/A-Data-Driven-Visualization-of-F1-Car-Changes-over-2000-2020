@@ -7,6 +7,7 @@ module.exports = {
         "mechanicalChangesMainOverview": true, "MechanicalChangesMainOverview": true,
         "mechanicalChangesSelectedYears": true,
         "mechanicalChangesSelectedGroup": true,
+        "pointsRemoved": true,
 
         "lapTime0": true, "LapTime0": true,
         "lapTime1": true, "LapTime1": true,
@@ -15,6 +16,7 @@ module.exports = {
         "getCircles":true,
         "chartTitle":true,
         "axisLabel":true,
+        "clearTooltip":true,
         "colorScale":true,
         "colorScaleGroup":true,
         "clearTooltip":true,

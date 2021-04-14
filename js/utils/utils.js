@@ -98,6 +98,7 @@ function axisLabel(vis, isX, title, xOffset, yOffset) {
  * @param radius {null|number} - Circle's radius.
  * @returns {*}
  */
+// TODO: Check up on this -- is mechChange using YearAccessor now? It shouldn't
 // accessor is typically year, but can be group too (Mechanical changes)
 // eslint-disable-next-line no-unused-vars
 function getCircles(vis, chartName, dataArray, radius) {
