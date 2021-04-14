@@ -194,9 +194,7 @@ class MechanicalChangesOverview {
           .style('top', `${event.pageY + vis.config.tooltipPadding}px`);
       })
       .on('mouseleave', () => {
-        d3.select('#tooltip')
-          .style('opacity', 0)
-          .html(clearTooltip());
+        clearTooltip();
       })
       .on('click', (event, d) => {
         if (mechanicalChangesSelectedYears.includes(d[0])) {

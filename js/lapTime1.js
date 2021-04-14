@@ -208,9 +208,7 @@ class LapTime1 {
           .html((`<div class="tooltip-label">${d.year}: ${d.bestLapTime}</div>`));
       })
         .on('mouseleave', () => {
-          d3.select('#tooltip')
-            .style('opacity', 0)
-            .html(clearTooltip());
+          clearTooltip();
         })
         .on('mousemove', (event) => {
           d3.select('#tooltip')

@@ -124,7 +124,10 @@ function getCircles(vis, chartName, dataArray, radius) {
  */
 // eslint-disable-next-line no-unused-vars
 function clearTooltip() {
-  return '<div class="tooltip-label"></div>';
+  d3.select('#tooltip')
+    .style('opacity', 0)
+    .style('left', 0)
+    .html('<div class="tooltip-label"></div>');
 }
 
 /**

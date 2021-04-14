@@ -203,9 +203,7 @@ class MechanicalChangesSubOverview {
           .style('top', `${event.pageY + vis.config.tooltipPadding}px`);
       })
       .on('mouseleave', () => {
-        d3.select('#tooltip')
-          .style('opacity', 0)
-          .html(clearTooltip());
+        clearTooltip();
       });
 
     // Update the axes/gridlines

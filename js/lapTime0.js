@@ -227,9 +227,7 @@ class LapTime0 {
            `));
       })
       .on('mouseleave', () => {
-        d3.select('#tooltip')
-          .style('opacity', 0)
-          .html(clearTooltip());
+        clearTooltip();
       })
       .on('mousemove', (event) => {
         d3.select('#tooltip')

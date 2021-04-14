@@ -186,9 +186,7 @@ class MechanicalChangesDetailView {
           .style('top', `${event.pageY + vis.config.tooltipPadding}px`);
       })
       .on('mouseleave', () => {
-        d3.select('#tooltip')
-          .style('opacity', 0)
-          .html(clearTooltip());
+        clearTooltip();
       });
 
     // Add line path
@@ -248,10 +246,7 @@ class MechanicalChangesDetailView {
           .style('top', `${event.pageY + vis.config.tooltipPadding}px`);
       })
       .on('mouseleave', () => {
-        d3.select('#tooltip')
-          .style('left', `${0}px`)
-          .style('top', `${0}px`)
-          .style('opacity', 0);
+        clearTooltip();
       });
 
     // Update the axes
