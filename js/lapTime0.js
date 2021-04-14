@@ -8,7 +8,7 @@ class LapTime0 {
   constructor(_config, _data) {
     this.config = {
       parentElement: _config.parentElement,
-      containerWidth: 900,
+      containerWidth: 600,
       containerHeight: 200,
       tooltipPadding: 15,
       margin: {
@@ -41,7 +41,7 @@ class LapTime0 {
 
     // Initialize axes
     vis.xAxis = d3.axisBottom(vis.xScale)
-      .ticks(21)
+      .ticks(11)
       .tickSizeOuter(0)
       .tickPadding(10)
       .tickFormat((x) => x);
