@@ -58,12 +58,14 @@ function getMinuteStringFromMillisecond(x) {
  * @param title{string} - title of chart to append
  */
 // eslint-disable-next-line no-unused-vars
-function chartTitle(vis, title, yOffset) {
+function chartTitle(vis, title, xOffset, yOffset, passedTextAnchor) {
+  const xPosition = xOffset === null ? vis.width / 2 : xOffset;
+  const textAnchor = passedTextAnchor === undefined ? 'middle' : passedTextAnchor;
   vis.svg.append('text')
     .attr('class', 'chart-title')
-    .attr('x', `${vis.width / 2}`)
+    .attr('x', `${xPosition}`)
     .attr('y', 15 + yOffset)
-    .attr('text-anchor', 'middle')
+    .attr('text-anchor', `${textAnchor}`)
     .attr('font-size', '0.75em')
     .text(title);
 }
@@ -128,7 +130,7 @@ function clearTooltip() {
 }
 
 /**
- * Helper to clear tool tip of any string, etc.
+ * Helper to render legend.
  * @param vis{Object} - A given visualization.
  * @returns {*}
  */
@@ -156,8 +158,8 @@ function renderUtilLegend(vis) {
     .data(keys)
     .join('text')
     .attr('class', 'legend-text')
-    .attr('x', (d, i) => 120 + i * vis.config.legendWidth)
-    .attr('y', 22)
+    .attr('x', (d, i) => 110 + i * vis.config.legendWidth)
+    .attr('y', 25)
     .text((d) => d)
     .attr('font-size', 15)
     .style('font-weight', 'bold');

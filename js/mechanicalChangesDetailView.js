@@ -94,9 +94,8 @@ class MechanicalChangesDetailView {
     // We need to make sure that the tracking area is on top of other chart elements
     vis.marks = vis.chart.append('g');
 
-    // TODO: Fix title, labels -- needs one for derived hp:weight
-    chartTitle(vis, 'Power Progression for Selected Constructor, through the Years', 0);
-    chartTitle(vis, 'Pwr:Weight Progression for Selected Constructor, through the Years', 150);
+    chartTitle(vis, 'Power Progression for Selected Constructor', 0, 10, 'start');
+    chartTitle(vis, 'Pwr:Weight Progression for Selected Constructor', 0, 170, 'start');
     axisLabel(vis, true, 'Years', 0, 10);
     axisLabel(vis, false, 'Power-to-Weight                                                   Power', 0, -150).attr('style', 'white-space:pre');
 

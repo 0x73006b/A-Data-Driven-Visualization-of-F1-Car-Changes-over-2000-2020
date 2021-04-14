@@ -43,7 +43,7 @@ class LapTime0 {
     vis.xAxis = d3.axisBottom(vis.xScale)
       .ticks(11)
       .tickSizeOuter(0)
-      .tickPadding(10)
+      .tickPadding(5)
       .tickFormat((x) => x);
 
     vis.yAxis = d3.axisLeft(vis.yScale)
@@ -84,7 +84,7 @@ class LapTime0 {
 
     vis.tooltip.append('text');
 
-    chartTitle(vis, 'F1 Lap Time Progression From All Races (2000-2020)', 0);
+    chartTitle(vis, 'F1 Lap Time Progression From All Races (2000-2020)', null, 0);
     // axisLabel(vis, true, 'Years', 20, -20);
     axisLabel(vis, false, 'Theoretical Time in Minute', 0, -vis.config.containerHeight / 3);
 
