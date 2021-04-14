@@ -1,16 +1,15 @@
-// Todo: Implement laptime 2 barchart
-// x-axis: years, y-axis: best qualifying time in seconds
+// eslint-disable-next-line no-unused-vars
 class Barchart {
   /**
    * Class constructor with basic chart configuration
-   * @param {Object}
-   * @param {Array}
+   * @param _config - passed in config
+   * @param _data - passed in data
+   * @param _reatimeLap - real time lap
    */
   constructor(_config, _data, _reatimeLap) {
-    // Configuration object with defaults
     this.config = {
       parentElement: _config.parentElement,
-      // colorScale: _config.colorScale,
+      tooltipPadding: 15,
       containerWidth: _config.containerWidth || 250,
       containerHeight: _config.containerHeight || 410,
       margin: _config.margin || {
@@ -19,9 +18,7 @@ class Barchart {
     };
     this.data = _data;
     this.reatimeLap = _reatimeLap;
-    this.dropDownReady = false;
     this.initVis();
-    this.lt2SelectedYears = [];
   }
 
   /**
@@ -90,12 +87,15 @@ class Barchart {
       .attr('class', 'circuiteName lt2-0-sector3');
     vis.svg.append('text').attr('x', legendX + gap).attr('y', legendY).text('Sector 1')
       .style('font-size', '15px')
+      .attr('class', 'legend-text')
       .attr('alignment-baseline', 'middle');
     vis.svg.append('text').attr('x', legendX + gap + legendGap).attr('y', legendY).text('Sector 2')
       .style('font-size', '15px')
+      .attr('class', 'legend-text')
       .attr('alignment-baseline', 'middle');
     vis.svg.append('text').attr('x', legendX + gap + legendGap * 2).attr('y', legendY).text('Sector 3')
       .style('font-size', '15px')
+      .attr('class', 'legend-text')
       .attr('alignment-baseline', 'middle');
 
     vis.stack = d3.stack().keys(['sector1', 'sector2', 'sector3']);
@@ -118,14 +118,10 @@ class Barchart {
     vis.yValue = (d) => d.time * 1000;
 
     vis.circuitNames = Array.from(new Set(vis.data.map((d) => d.circuitName))).sort();
-    console.log('circuitNames', vis.circuitNames);
 
-    // todo: do we need this?
     vis.trackNames = Array.from(new Set(vis.data.map((d) => [d.circuitName])));
-    console.log('trackNames', vis.trackNames);
 
     vis.years = d3.extent(vis.data, (d) => d.year);
-    console.log('years', vis.years);
     vis.xScale.domain(vis.years);
 
     vis.updateVis();
@@ -139,15 +135,12 @@ class Barchart {
 
     // // prep data
     vis.selectedTrackData = vis.data.filter((lt) => lt.circuitName === this.selectedTrack);
-    console.log('selectedTrackData', vis.selectedTrackData);
 
     const maxTime = d3.max(vis.selectedTrackData, (d) => (d.sector1 + d.sector2 + d.sector3));
-    console.log(maxTime);
     // Set the scale input domains
     vis.yScale.domain([0, maxTime + 10000]);
 
     vis.stackedData = vis.stack(vis.selectedTrackData);
-    console.log('stackedData', vis.stackedData);
 
     vis.renderVis();
   }
@@ -168,6 +161,23 @@ class Barchart {
       .data((d) => d)
       .join('rect')
       .attr('x', (d) => vis.xScale(d.data.year))
+      .on('mouseover', (e, d) => {
+        d3.select('#tooltip')
+          .style('opacity', 1)
+          .html((`<div class="tooltip-label">
+                    Sector Time <br/> 
+                    Time for Sector: ${getMinuteStringFromMillisecond(d[1] - d[0])} <br/>
+                    Time Elapsed in Lap: ${getMinuteStringFromMillisecond(d[1])}
+                    </div>`));
+      })
+      .on('mouseleave', () => {
+        clearTooltip();
+      })
+      .on('mousemove', (event) => {
+        d3.select('#tooltip')
+          .style('left', `${event.pageX + vis.config.tooltipPadding}px`)
+          .style('top', `${event.pageY + vis.config.tooltipPadding}px`);
+      })
       .transition()
       .duration(700)
       .ease(d3.easeSinOut)
