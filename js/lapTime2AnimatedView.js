@@ -27,7 +27,7 @@ class RealTimeLap {
       legendX: 100,
       legendY: 30,
       yGap: 20,
-      legendGap: 70,
+      legendGap: 90,
       iconGap: 10,
     };
 
