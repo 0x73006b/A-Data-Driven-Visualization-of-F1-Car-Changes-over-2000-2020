@@ -34,6 +34,7 @@ body {
     margin: auto;
     overflow-x: hidden;
     scroll-behavior: smooth;
+    font-size: 0.925em;
 }
 
 h1 {
@@ -71,23 +72,33 @@ h1 {
     font-size: 1em;
 }
 .axis-title {
-    font-size: 13px;
+    font-family: F1Regular;
+    font-size: 0.75em;
+    text-anchor: middle;
 }
 /* General End */
 
 /* Title Page */
 .opening-background {
+    height: 100vh;
+}
 
+#opening-title {
+    font-size: 2em;
 }
 
 .opening-left-col {
-    width: 650px
+    width: 50%;
+}
+
+.opening-right-col {
+    width: 50%;
+    font-size: 1.25em;
 }
 
 #opening-text {
     /*color: white;*/
     /*background-color: #000000a3;*/
-    margin-top: -25px;
 }
 /* Title End */
 
@@ -96,7 +107,6 @@ h1 {
     display: flex;
     flex-flow: row;
     width: 1300px;
-    font-size: 2em;
 }
 
 #step1 {
@@ -184,23 +194,23 @@ h1 {
 }
 /* LT0 Only End */
 
-/* LT1 Only */
-#lap-time-1 {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: space-between;
-    margin-top: 45px;
-    transform: translateX(47px);
-}
-
 .lt1-small-multiple-title {
     font-family: F1Regular;
     font-size: 13px;
 }
 
 .lt1-small-multiple-container {
-    padding-inline-end: 35px;
+    padding-inline-end: 45px;
     margin-bottom: -10px;
+}
+
+/* LT1 Only */
+#lap-time-1 {
+    display: flex;
+    flex-wrap: wrap;
+    /*justify-content: space-between;*/
+    margin-top: 45px;
+    transform: translateX(67px);
 }
 
 .lt1-chart {
@@ -209,7 +219,7 @@ h1 {
 }
 
 .lap-time-1-explanation{
-    /*width: 40%*/
+    width: 40%
 }
 
 .lap-time-1-line {
@@ -258,10 +268,12 @@ h1 {
 }
 
 .lt2-select-a-track {
+    font-family: F1Regular;
+    font-size: 1.5em;
     overflow: visible;
     width: 300px;
     white-space: nowrap;
-    margin-bottom: -10px;
+    margin-bottom: 5px;
 }
 
 .lt2-container-left-col-upper {
