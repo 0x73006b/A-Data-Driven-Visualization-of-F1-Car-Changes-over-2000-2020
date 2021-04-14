@@ -1,8 +1,4 @@
 /* Todo: set up styling */
-:root {
-     scroll-behavior: smooth;
-}
-
 body {
     display: flex;
     flex-flow: column;
@@ -10,6 +6,7 @@ body {
     width: 1300px;
     margin: auto;
     overflow-x: hidden;
+    scroll-behavior: smooth;
 }
 
 .opening-background {
