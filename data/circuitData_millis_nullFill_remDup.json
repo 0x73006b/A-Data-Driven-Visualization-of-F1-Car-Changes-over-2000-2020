@@ -6143,7 +6143,7 @@
     ]
   },
   {
-    "key": "Autódromo Internacional do Algarve",
+    "key": "Portimão Circuit",
     "value": [
       {
         "circuitRef": "portimao",
@@ -6156,7 +6156,7 @@
         "year": 2020,
         "constructorId": 131,
         "bestLapTime": "01:16.7",
-        "circuitName": "Autódromo Internacional do Algarve",
+        "circuitName": "Portimão Circuit",
         "laptimeMillis": 76007
       }
     ]
