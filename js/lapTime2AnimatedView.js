@@ -82,7 +82,26 @@ class RealTimeLap {
           d3.select('#laptime2-reatimeLap').node().append(data.documentElement);
 
           const title = d3.select('#animation-title').text(this.selectedTrack);
-          console.log(title);
+
+          vis.tracksvg = d3.select("#tracksvg")
+
+          const legendx = 50;
+          const legendy = 10;
+          const yGap = 20;
+          const legendGap = 70
+          const iconGap = 10;
+          for (let i = 0; i < 2; i += 1) {
+            for (let j = 0; j < 3; j += 1) {
+              vis.tracksvg.append('circle')
+                .attr('class', `circuiteName lt2-${i}-sector${j+1}`)
+                .attr('cx', legendx + legendGap * j)
+                .attr('cy', legendy + i * yGap)
+                .attr('r', 6);
+              vis.tracksvg.append('text')
+                .attr('x', legendx + legendGap * j + iconGap).attr('y', legendy + i * yGap + 5).text(`Sector ${j + 1}`)
+                .style('font-size', '15px');
+            }
+          }
 
           // setup background
           const background = d3.select('#background');
@@ -94,7 +113,7 @@ class RealTimeLap {
 
           vis.animationPaths = [[], []];
           // draw out actual lap
-          for(var i = 0; i <3; i++) {
+          for (let i = 0; i < 3; i += 1) {
             vis.animationPaths[0][i] = d3.select(`#sector0${i}`);
             vis.animationPaths[1][i] = d3.select(`#sector1${i}`);
             vis.animationPaths[0][i]

@@ -63,15 +63,26 @@ body {
     stroke: black;
 }
 
-.bar-sector1 {
+.lt2-0-sector1 {
     fill: #f20002;
 }
 
-.bar-sector2 {
+.lt2-0-sector2 {
     fill: #2fb2e3;
 }
 
-.bar-sector3 {
+.lt2-0-sector3 {
     fill: #fcd303;
 }
 
+.lt2-1-sector1 {
+    fill: #13C296;
+}
+
+.lt2-1-sector2 {
+    fill: #F5D900;
+}
+
+.lt2-1-sector3 {
+    fill: #F63EBA;
+}

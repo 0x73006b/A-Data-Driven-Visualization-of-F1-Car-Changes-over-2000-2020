@@ -97,11 +97,11 @@ class Barchart {
     const gap = 10
     const legendy = vis.height+50;
     vis.svg.append('circle').attr('cx', legendx).attr('cy', legendy).attr('r', 6)
-      .attr('class', 'circuiteName bar-sector1');
+      .attr('class', 'circuiteName lt2-0-sector1');
     vis.svg.append('circle').attr('cx', legendx+70).attr('cy', legendy).attr('r', 6)
-      .attr('class', 'circuiteName bar-sector2');
+      .attr('class', 'circuiteName lt2-0-sector2');
     vis.svg.append('circle').attr('cx', legendx+140).attr('cy', legendy).attr('r', 6)
-      .attr('class', 'circuiteName bar-sector3');
+      .attr('class', 'circuiteName lt2-0-sector3');
     vis.svg.append('text').attr('x', legendx + gap).attr('y', legendy).text('Sector 1')
       .style('font-size', '15px')
       .attr('alignment-baseline', 'middle');
@@ -177,7 +177,7 @@ class Barchart {
       .selectAll('.circuiteName')
       .data(vis.stackedData)
       .join('g')
-      .attr('class', (d) => `circuiteName bar-${d.key}`)
+      .attr('class', (d) => `circuiteName lt2-0-${d.key}`)
       .selectAll('rect')
       .data((d) => d)
       .join('rect')
