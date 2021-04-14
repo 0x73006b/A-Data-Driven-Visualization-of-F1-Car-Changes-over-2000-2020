@@ -95,20 +95,21 @@ class Barchart {
     // Handmade legend
     const legendx = 20;
     const gap = 10
-    const legendy = vis.height+50;
+    const legendy = vis.height+60;
+    const legendGap = 80;
     vis.svg.append('circle').attr('cx', legendx).attr('cy', legendy).attr('r', 6)
       .attr('class', 'circuiteName lt2-0-sector1');
-    vis.svg.append('circle').attr('cx', legendx+70).attr('cy', legendy).attr('r', 6)
+    vis.svg.append('circle').attr('cx', legendx+legendGap).attr('cy', legendy).attr('r', 6)
       .attr('class', 'circuiteName lt2-0-sector2');
-    vis.svg.append('circle').attr('cx', legendx+140).attr('cy', legendy).attr('r', 6)
+    vis.svg.append('circle').attr('cx', legendx+legendGap*2).attr('cy', legendy).attr('r', 6)
       .attr('class', 'circuiteName lt2-0-sector3');
     vis.svg.append('text').attr('x', legendx + gap).attr('y', legendy).text('Sector 1')
       .style('font-size', '15px')
       .attr('alignment-baseline', 'middle');
-    vis.svg.append('text').attr('x', legendx + gap + 70).attr('y', legendy).text('Sector 2')
+    vis.svg.append('text').attr('x', legendx + gap + legendGap).attr('y', legendy).text('Sector 2')
       .style('font-size', '15px')
       .attr('alignment-baseline', 'middle');
-    vis.svg.append('text').attr('x', legendx + gap + 140).attr('y', legendy).text('Sector 3')
+    vis.svg.append('text').attr('x', legendx + gap + legendGap*2).attr('y', legendy).text('Sector 3')
       .style('font-size', '15px')
       .attr('alignment-baseline', 'middle');
 

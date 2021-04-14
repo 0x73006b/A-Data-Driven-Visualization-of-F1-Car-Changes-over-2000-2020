@@ -81,15 +81,30 @@ class RealTimeLap {
           d3.select('#laptime2-reatimeLap').selectAll('*').remove();
           d3.select('#laptime2-reatimeLap').node().append(data.documentElement);
 
-          const title = d3.select('#animation-title').text(this.selectedTrack);
 
-          vis.tracksvg = d3.select("#tracksvg")
 
-          const legendx = 50;
-          const legendy = 10;
+          vis.tracksvg = d3.select('#tracksvg');
+          vis.tracksvg.append('text')
+            .attr('class', 'chart-title')
+            .attr('x', 50)
+            .attr('y', 0)
+            .attr('dy', '.71em')
+            .text('Sector Time Comparison');
+
+
+          const legendx = 100;
+          const legendy = 30;
           const yGap = 20;
-          const legendGap = 70
+          const legendGap = 70;
           const iconGap = 10;
+
+          vis.tracksvg.append('text')
+            .attr('x', 50).attr('y', legendy + 5).text("2014:")
+            .style('font-size', '15px');
+          vis.tracksvg.append('text')
+            .attr('x', 50).attr('y', legendy + 5 + yGap).text("2019:")
+            .style('font-size', '15px');
+
           for (let i = 0; i < 2; i += 1) {
             for (let j = 0; j < 3; j += 1) {
               vis.tracksvg.append('circle')
