@@ -17,7 +17,7 @@ class MechanicalChangesDetailView {
       margin: {
         top: 60,
         right: 50,
-        bottom: 40,
+        bottom: 50,
         left: 50,
       },
     };
@@ -95,10 +95,10 @@ class MechanicalChangesDetailView {
     vis.marks = vis.chart.append('g');
 
     chartTitle(vis, 'Power Progression for Selected Constructor', 0, 10, 'start');
-    chartTitle(vis, 'Pwr:Weight Progression for Selected Constructor', 0, 170, 'start');
-    axisLabel(vis, true, 'Years', 0, 10);
+    chartTitle(vis, 'Pwr:Weight Progression for Selected Constructor', 0, 168, 'start');
+    axisLabel(vis, true, 'Years', -250, 10);
     axisLabel(vis, false, 'Power', 0, -65);
-    axisLabel(vis, false, 'Power-to-Weight', 0, -220);
+    axisLabel(vis, false, 'Power-to-Weight', 0, -210);
 
     vis.updateVis();
   }
