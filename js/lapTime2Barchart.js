@@ -47,7 +47,7 @@ class Barchart {
 
     vis.yAxis = d3.axisLeft(vis.yScale)
       .tickFormat((x) => getMinuteStringFromMillisecond(x))
-      .ticks(4)
+      .ticks(10)
       .tickSizeOuter(0);
 
     // Define size of SVG drawing area
