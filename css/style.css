@@ -104,14 +104,18 @@ button{
 /* Title Page */
 .opening-background {
     height: 100vh;
-}
-
-#opening-title {
-    font-size: 2em;
+    display: flex;
+    flex-direction: column;
+    place-content: center;
 }
 
 .opening-left-col {
     width: 50%;
+    margin-top: -10%;
+}
+
+#opening-title {
+    font-size: 2em;
 }
 
 .opening-right-col {
