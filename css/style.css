@@ -181,7 +181,7 @@ button{
 }
 
 #mc-bottom {
-    /*display: flex;*/
+    text-align: center;
 }
 
 #mc {
@@ -204,6 +204,10 @@ button{
     display: inherit;
     flex-flow: row;
     justify-content: space-between;
+}
+
+#lt0-next-button {
+    text-align: right;
 }
 
 .lt0-point, .lt1-point {
