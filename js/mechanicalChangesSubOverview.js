@@ -31,9 +31,11 @@ class MechanicalChangesSubOverview {
     // Specify accessor functions
     vis.xValue = (d) => d.power;
     vis.yValue = (d) => d.weight;
+    vis.xValueJitter = (d) => d.jitterX;
+    vis.yValueJitter = (d) => d.jitterY;
 
-    vis.data.forEach((car, i) => vis.data[i].weight = (car.weight + (Math.random() * 5)));
-    vis.data.forEach((car, i) => vis.data[i].power = (car.power + (Math.random() * 5)));
+    vis.data.forEach((car, i) => vis.data[i].jitterY = (car.weight + (Math.random() * 5)));
+    vis.data.forEach((car, i) => vis.data[i].jitterX = (car.power + (Math.random() * 5)));
 
     vis.initVis();
   }
@@ -44,7 +46,6 @@ class MechanicalChangesSubOverview {
   initVis() {
     const vis = this;
 
-    // todo put this into a const or get it hashtag Dynamically period
     vis.keys = [
       'Arrows',
       'McLaren',
@@ -115,10 +116,10 @@ class MechanicalChangesSubOverview {
 
     // Append X axis title (weight)
     // Append Y axis title (power)
-
     chartTitle(vis, 'Power-to-Weight of All F1 Cars from 2000 to 2020', 0, 0, 'start');
     axisLabel(vis, true, 'Power', -250, 10);
     axisLabel(vis, false, 'Weight', 0, -265);
+    axisLabel(vis, true, '*Note: Points shifted for visiblity.', -250, -315)
 
     // legend
     vis.legend = vis.svg.append('g')
@@ -146,7 +147,6 @@ class MechanicalChangesSubOverview {
     // Specify accessor functions
     vis.xValue = (d) => d.power;
     vis.yValue = (d) => d.weight;
-    // TODO: change
     vis.groupAccessor = (d) => d.group;
 
     vis.renderVis();
@@ -162,8 +162,8 @@ class MechanicalChangesSubOverview {
       .join('circle')
       .attr('class', 'mech-overview-point')
       .attr('r', 5)
-      .attr('cy', (d) => vis.yScale(vis.yValue(d)))
-      .attr('cx', (d) => vis.xScale(vis.xValue(d)))
+      .attr('cy', (d) => vis.yScale(vis.yValueJitter(d)))
+      .attr('cx', (d) => vis.xScale(vis.xValueJitter(d)))
       .attr('fill', (d) => d.color)
       .attr('opacity', (d) => { if (d.group === mechanicalChangesSelectedGroup) { return 1; } return 0.35; });
 
