@@ -146,7 +146,6 @@ class MechanicalChangesSubOverview {
     // Specify accessor functions
     vis.xValue = (d) => d.power;
     vis.yValue = (d) => d.weight;
-    // TODO: change
     vis.groupAccessor = (d) => d.group;
 
     vis.renderVis();
