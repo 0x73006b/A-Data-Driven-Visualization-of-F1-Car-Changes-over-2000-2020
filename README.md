@@ -2,17 +2,18 @@
 
 ## High Level Code Explanation
 
-Please note that quite literally EVERYTHING is heavily a work in progress -- we've left a bunch of TODOs to remind ourselves of what some of the major things we need to do are (if only github had smart commits like bitbucket/jira).
-
 ### Main
 #### `main.js`:
-Main "entry" file that contains the data loading, the chart instantiation and also some global vars that are used in at least 2 js files.
+Main "entry" file that contains the data loading, some required preprocessing, chart instantiation and also some global vars.
 
-### Mechanical Changes
+### Power and Weight/Mechanical Changes
 Mechanical changes takes in data from `car_data.json` (loaded in the `main.js` promise).
 
+#### `mechanicalChangesOverview.js`
+The overview for section, it is a linechart with the x-axis of `years` and the y-axis of `average-power-to-weight-ratio.` Its structure should be familiar.
+
 #### `mechanicalChangesSubOverview.js`:
-This is the "main" scatterplot for mechanical changes -- it is given the title "Power-to-Weight of All F1 Cars from 2000 to 2020". Its x-axis is `power`, its y-axis `weight`.
+This is the sub-overview/filtered scatterplot for mechanical changes -- it is given the title "Power-to-Weight of All F1 Cars from 2000 to 2020". Its x-axis is `power`, its y-axis `weight`.
 
 The control flow is `initVis->updateVis->renderVis` and `updateVis->renderVis` when it needs to update.
 
@@ -27,65 +28,46 @@ In `updateVis`, we do 1 of 2 things:
 
 ### LapTime0
 #### `lapTime0.js`:
-LT0 is a basic line chart with circle points. There is an interaction between LT0<->LT1 that is transferred between LT0 and LT1 through `lt0lt1SelectedYears`, which is an array of years (year is type `number`). There is also a clear and reset button that clear any selections on LT0 (and thus LT1) and reset brings back the default for LT0 (and eventually LT1 -- it's currently a bit buggy, probably just missing a single call).
-
-The current averaging is not how it will be in the final release, we are currently still working on deriving the proper/accurate average.
+LT0 is a basic line chart with circle points. There is an interaction between LT0<->LT1 that is transferred between LT0 and LT1 through `lt0lt1SelectedYears`, which is an array of years (year is type `number`). There is also a clear and reset button that clear any selections on LT0 (and thus LT1) and reset brings back the default for LT0/LT1. 
 
 ### LapTime1
 #### `lapTime1.js`:
-LT1 is stacked/connected scatterplot. The control flow is pretty basic `initVis -> updateVis -> renderVis`, and the interesting thing in `updateVis` is that we make a filtered data arary for the line.
+LT1 is small multiples now, and uses a for-loop to create each small multiple. 
 
-Currently the `processedData` variable is actually just `vis.data`, but the way we wrote our `getCircles` helper, it had to be `processedData`.
+We append axes conditionally, based on the index of the for loop. If left most, it'll be `i % 5`, and so we append the y-axis tick values. If bottom, it'll be `i >= 30`, and we do x-axis ticks.
+
+The `i===15` and `i===32` lines are to check which chart we are working on -- the `15` will append y-axis title, the `32`, x-axis.
+
+There is also the `disableEnable` button which gets makes the points on the small multiples show/not show.
 
 ### LapTime2
 #### `lapTime2Barchart.js`:
 
-Whenever a track is selected in `dropdown menu` in `barchart`, it will update the `animation`
+Suzuka is the default track. When another track is selected by `radio button` in `barchart`, it will update the `animation`
 
-Only real new part is the `preprocessing`.
-For the `dropdown menu`, we had an issue where the selecting a new track using the dropdown kept appending the track options again, so we used a variable `dropdownReady` to make sure we don't reappend options.
+We use a stacked bar chart to show each sector in a track. A tool tip is also added to show the detail.
 
 Whenever the `barchart` is updated, we update the `animation` as well.
 
 #### `lapTime2AnimatedView.js`:
 
-In `animated view`, it waits for `selectedTrack` that's given by `dropdown menu`. if nothing selected, then it tells user that nothing is selected. if something is selected then it tries to find a track's svg file stored locally based on the `circuitRef` as the file name. Once it's found it gets appended to the space/container preallocated in `index.html` and if it's not found, then it will go to the error condition, and it indicates selected track is not available.
+In `animated view`, it uses `selectedTrack` that's given by `radio button`. Suzuka Circuit is the default selected track. If another track is selected then it tries to find a track's svg file stored locally based on the `CircuitName` as the file name. Once it's found it gets appended to the space/container preallocated in `index.html`. Since we have to convert the svg map of a track manually, we limit the supported track to be 3 and it is guranteed that a map is available for sure
 
 #### The `startLap` function
-we always draw out the circuit geometry as backgroud.
-we only start the animation when the start lap button is pressed
+We always draw out the circuit geometry as backgroud and only start the animation when the start lap button is pressed
 
-once it's pressed, the mechanism behind the animation is that we break down the whole track into pieces, we have the transition and duration which is calculated from the fastest laptime -- the laptime in millisecond count is used for how long a lap takes.
+Once the start button is pressed, the mechanism behind the animation is that we break down the whole track into pieces, we have the transition and duration which is calculated from the fastest laptime -- the laptime in millisecond count is used for how long a lap takes.
 
-how svg file is constructed:
-when we found it on wiki, it had extra marks besides the actual path, e.g. where to pit/break, etc., so we deleted all of that in text editor and also changed id of the path to "track" for every file so d3 is able to selct it. We also scaled it using Adobe Illustrator as d3 scaling tools are not as robust and always scale from the origin.
+Once a sector is finished, the event listener will call `updateAnimation` to start the next sector untill all three sectors are animated.
+
+#### how svg file is constructed:
+when we found it on wiki, it had extra marks besides the actual path, e.g. where to pit/break, etc., so we deleted all of that in text editor. Then, two offset paths are created so we have two "racing lines". Each of these racing line are further broken into sector lines. Finally, we changed id of the paths to "background", "sector1", etc.. for every file so d3 is able to selct it. We also scaled it using Adobe Illustrator as d3 scaling tools are not as robust and always scale from the origin.
 
 ### Utils
 `utils.js`: This contains all of our shared utility/helper functions currently.
-- `colorScale`: This is our color scale we use to color in our LT0 and LT1 points.
-- `getMillisecondsFromTimeString()`: This takes a time string in the format `Minutes:Seconds:Milliseconds` and outputs a number (in milliseconds). This is called in main, to get milliseconds for `circuitData`.
 - `getMinuteStringFromMillisecond()`: This does the opposite of above.
 - `chartTitle()`: This is a helper to append chart titles, it makes it a tiny bit quicker/saves some lines.
 - `axisLabel()`: This is a helper to append axis labels, it also saves some lines.
 - `getCircles()`: This is a helper to create circle points in the charts that require it, currently it is only used in LT0 and LT1 due to how it has been coded.
-
-## External Resources
-
-* https://github.com/UBC-InfoVis/2021-436V-examples/tree/master/d3-interactive-line-chart
-    * Line chart reference
-* https://bl.ocks.org/sebg/0cc55428f83eb52bdfad6f5692023b07
-    * General guidance on multi series line chart — specifically their data keying and structure helped me figure out multi series line charts.
-* https://sashamaps.net/docs/resources/20-colors/
-    * Color palette taken from here
-* https://developer.mozilla.org/en-US/docs/Web/SVG/Tutorial/Paths
-    * SVG animation reference
-* https://stackoverflow.com/questions/17498830/animate-svg-path-with-d3js
-    * SVG animation reference
-* Previous assignments (Shabab, Robert, Lydia)
-* https://stackoverflow.com/questions/17722497/scroll-smoothly-to-specific-element-on-page
-    * javascript for scrolling button
-* https://stackoverflow.com/questions/42344395/how-to-control-the-scroll-speed-in-window-scrolltox-coord-y-coord
-    * refining scroll behaviour
-
-
-
+- `clearTooltip`: Helper to clear tool tip of any string, etc.
+- `renderUtilLegend()`: Helper to render legend, only used in mechanical changes overview
