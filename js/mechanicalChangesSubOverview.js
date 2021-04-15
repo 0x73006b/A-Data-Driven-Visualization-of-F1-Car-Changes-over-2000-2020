@@ -117,8 +117,8 @@ class MechanicalChangesSubOverview {
     // Append Y axis title (power)
 
     chartTitle(vis, 'Power-to-Weight of All F1 Cars from 2000 to 2020', 0, 0, 'start');
-    axisLabel(vis, true, 'Power', 0, 0);
-    axisLabel(vis, false, 'Weight', 0, -150);
+    axisLabel(vis, true, 'Power', -250, 10);
+    axisLabel(vis, false, 'Weight', 0, -265);
 
     // legend
     vis.legend = vis.svg.append('g')
