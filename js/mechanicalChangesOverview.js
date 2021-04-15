@@ -83,7 +83,7 @@ class MechanicalChangesOverview {
     // Fix title, labels -- needs one for derived hp:weight
     chartTitle(vis, 'Average Power-to-Weight ratio over the Years', 208.5, -2.5);
     axisLabel(vis, true, 'Years', -230, 10);
-    axisLabel(vis, false, 'Average-Power-to-Weight-Ratio', 0, -230);
+    axisLabel(vis, false, 'Average-Power-to-Weight-Ratio', 0, -170);
 
     // legend
     vis.legend = vis.svg.append('g')

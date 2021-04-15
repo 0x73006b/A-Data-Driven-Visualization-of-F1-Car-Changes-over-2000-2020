@@ -95,9 +95,9 @@ class MechanicalChangesDetailView {
     vis.marks = vis.chart.append('g');
 
     chartTitle(vis, 'Power Progression for Selected Constructor', 0, 10, 'start');
-    chartTitle(vis, 'Pwr:Weight Progression for Selected Constructor', 0, 168, 'start');
+    chartTitle(vis, 'Power-to-Weight Ratio Progression for Selected Constructor', 0, 168, 'start');
     axisLabel(vis, true, 'Years', -250, 10);
-    axisLabel(vis, false, 'Power', 0, -65);
+    axisLabel(vis, false, 'Power (HP)', 0, -73);
     axisLabel(vis, false, 'Power-to-Weight', 0, -210);
 
     vis.updateVis();

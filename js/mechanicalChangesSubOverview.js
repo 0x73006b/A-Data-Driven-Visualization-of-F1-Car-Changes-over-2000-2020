@@ -117,8 +117,8 @@ class MechanicalChangesSubOverview {
     // Append X axis title (weight)
     // Append Y axis title (power)
     chartTitle(vis, 'Power-to-Weight of All F1 Cars from 2000 to 2020', 0, 0, 'start');
-    axisLabel(vis, true, 'Power', -250, 10);
-    axisLabel(vis, false, 'Weight', 0, -265);
+    axisLabel(vis, true, 'Power (HP)', -250, 10);
+    axisLabel(vis, false, 'Weight (kg)', 0, -265);
     axisLabel(vis, true, '*Note: Points shifted for visiblity.', -250, -315)
 
     // legend
