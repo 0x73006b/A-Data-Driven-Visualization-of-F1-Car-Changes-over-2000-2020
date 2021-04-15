@@ -180,7 +180,8 @@ button{
     /*display: flex;*/
 }
 
-#mc-bottom {
+#mc-button-area {
+    padding-top: 10%;
     text-align: center;
 }
 
