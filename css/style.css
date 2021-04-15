@@ -68,10 +68,11 @@ h1 {
     font-size: 0.9em;
 }
 
-.chart-title{
+.chart-title {
     font-family: F1Regular;
     font-size: 1em;
 }
+
 .axis-title {
     font-family: Titillium;
     font-size: 0.9em;
@@ -81,6 +82,7 @@ h1 {
 .legend-text, .legend-title, .axis-title, .chart-title, .axis {
     pointer-events: none;
 }
+
 /* General End */
 
 /* Title Page */
@@ -105,6 +107,7 @@ h1 {
     /*color: white;*/
     /*background-color: #000000a3;*/
 }
+
 /* Title End */
 
 /* Step IDs */
@@ -131,6 +134,7 @@ h1 {
 #step3 {
     margin-bottom: 20vh;
 }
+
 /* Step IDs End */
 
 /* Mechanical Changes */
@@ -157,16 +161,17 @@ h1 {
 .mech-overview-point {
     opacity: 1;
 }
+
 /* Mechanical Changes End*/
 
 /* LT0 + LT1 */
-#lt0-lt1-container{
+#lt0-lt1-container {
     display: flex;
     flex-direction: column;
 }
 
 .lt0-lt1-top {
-    display:inherit;
+    display: inherit;
     flex-flow: row;
     justify-content: space-between;
 }
@@ -181,7 +186,7 @@ h1 {
     fill-opacity: 1;
 }
 
-#lap-time-0, #lap-time-1{
+#lap-time-0, #lap-time-1 {
     text-align: center;
 }
 
@@ -191,6 +196,7 @@ h1 {
     stroke-width: 3;
     stroke-linecap: round;
 }
+
 /* LT0 + LT1 End*/
 
 /* LT0 Only */
@@ -198,6 +204,7 @@ h1 {
     display: flex;
     flex-direction: column;
 }
+
 /* LT0 Only End */
 
 .lt1-small-multiple-title {
@@ -225,7 +232,7 @@ h1 {
     /*height:100px;*/
 }
 
-.lap-time-1-explanation{
+.lap-time-1-explanation {
     width: 40%
 }
 
@@ -243,6 +250,7 @@ h1 {
 .lap-time-1-svg {
     /*padding-right: 10px*/
 }
+
 /* LT1 Only End */
 
 /* LT2 */
@@ -271,7 +279,7 @@ h1 {
 #lt2-container-left-col {
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
+    /*justify-content: space-between;*/
 }
 
 .lt2-select-a-track {
@@ -288,7 +296,7 @@ h1 {
     flex-direction: column;
 }
 
-.lt2-container-left-col-lower{
+.lt2-container-left-col-lower {
     display: flex;
     flex-direction: column;
 }
@@ -322,4 +330,5 @@ h1 {
 .lt2-1-sector3 {
     fill: #F63EBA;
 }
+
 /* LT2 End */

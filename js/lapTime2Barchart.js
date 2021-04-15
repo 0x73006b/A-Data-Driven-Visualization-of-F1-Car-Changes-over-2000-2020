@@ -74,30 +74,6 @@ class Barchart {
     axisLabel(vis, false, 'Lap Time in Minutes', 0, -1 * (vis.height / 2));
     axisLabel(vis, true, 'Year', -60, -25);
 
-    // Handmade legend
-    const legendX = 20;
-    const gap = 10;
-    const legendY = vis.height + 110;
-    const legendGap = 80;
-    vis.svg.append('circle').attr('cx', legendX).attr('cy', legendY).attr('r', 6)
-      .attr('class', 'circuiteName lt2-0-sector1');
-    vis.svg.append('circle').attr('cx', legendX + legendGap).attr('cy', legendY).attr('r', 6)
-      .attr('class', 'circuiteName lt2-0-sector2');
-    vis.svg.append('circle').attr('cx', legendX + legendGap * 2).attr('cy', legendY).attr('r', 6)
-      .attr('class', 'circuiteName lt2-0-sector3');
-    vis.svg.append('text').attr('x', legendX + gap).attr('y', legendY).text('Sector 1')
-      .style('font-size', '15px')
-      .attr('class', 'legend-text')
-      .attr('alignment-baseline', 'middle');
-    vis.svg.append('text').attr('x', legendX + gap + legendGap).attr('y', legendY).text('Sector 2')
-      .style('font-size', '15px')
-      .attr('class', 'legend-text')
-      .attr('alignment-baseline', 'middle');
-    vis.svg.append('text').attr('x', legendX + gap + legendGap * 2).attr('y', legendY).text('Sector 3')
-      .style('font-size', '15px')
-      .attr('class', 'legend-text')
-      .attr('alignment-baseline', 'middle');
-
     vis.stack = d3.stack().keys(['sector1', 'sector2', 'sector3']);
 
     // todo: should this be empty? @ mr. rmzm
@@ -150,7 +126,7 @@ class Barchart {
    */
   renderVis() {
     const vis = this;
-
+    let counter = 0;
     // todo: reference stacked bar chart 436v tutorial
     const stackedChart = vis.chart
       .selectAll('.circuiteName')
@@ -183,7 +159,13 @@ class Barchart {
       .ease(d3.easeSinOut)
       .attr('y', (d) => vis.yScale(d[1]))
       .attr('height', (d) => vis.yScale(d[0]) - vis.yScale(d[1]))
-      .attr('width', vis.xScale.bandwidth());
+      .attr('width', vis.xScale.bandwidth())
+      .attr('class', () => {
+        let a = ['lt2-0-sector1', 'lt2-1-sector1', 'lt2-0-sector2', 'lt2-1-sector2', 'lt2-0-sector3', 'lt2-1-sector3']
+        let rv = a[counter];
+        counter++;
+        return rv;
+    });
 
     // Update axes
     vis.xAxisG.call(vis.xAxis);
