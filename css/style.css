@@ -150,8 +150,18 @@ h1 {
 
 }
 
-#mc_bottom {
+.mc-chart-container {
     display: flex;
+    align-items: center;
+    margin-top: 15px;
+}
+
+#mc-top {
+    /*display: flex;*/
+}
+
+#mc-bottom {
+    /*display: flex;*/
 }
 
 #mc {
@@ -159,7 +169,7 @@ h1 {
 }
 
 .mech-overview-point {
-    opacity: 1;
+    stroke: black;
 }
 
 /* Mechanical Changes End*/

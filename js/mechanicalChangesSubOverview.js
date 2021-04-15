@@ -164,12 +164,9 @@ class MechanicalChangesSubOverview {
       .attr('r', 5)
       .attr('cy', (d) => vis.yScale(vis.yValue(d)))
       .attr('cx', (d) => vis.xScale(vis.xValue(d)))
-      .attr('fill', (d) => {
-        if (d.group === mechanicalChangesSelectedGroup) {
-          return 'black';
-        }
-        return d.color;
-      });
+      .attr('fill', (d) => d.color)
+      .attr('opacity', (d) => { if (d.group === mechanicalChangesSelectedGroup) { return 1; } return 0.35; });
+
     // Detail View Selector
     circles.on('click', (e, d) => {
       if (mechanicalChangesSelectedGroup === d.group) {
