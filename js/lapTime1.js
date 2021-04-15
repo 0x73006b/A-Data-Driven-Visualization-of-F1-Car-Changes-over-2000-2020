@@ -202,7 +202,9 @@ class LapTime1 {
         circles.attr('cursor', 'pointer');
         d3.select('#tooltip')
           .style('opacity', 1)
-          .html((`<div class="tooltip-label">${d.year}: ${d.bestLapTime}</div>`));
+          .html((`<div class="tooltip-label"> <div><i>Year: ${d.year} <i></div> 
+          <div><i>Best Lap Time: ${d.bestLapTime}</i></div>
+          <div><i>Driver: ${d.forename} ${d.surname}</i></div></div>`));
       })
         .on('mouseleave', () => {
           clearTooltip();

@@ -186,8 +186,8 @@ class MechanicalChangesSubOverview {
             <div class="tooltip-label">
                 <div class="tooltip-title">${d.car}</div>
                 Season: ${d.year}
-                <div><i>${d.power}, ${d.weight}</i></div>
-                PWR:WEIGHT: ${parseFloat(d.powerToWeightRatio).toFixed(2)} <br/>
+                <div><i>Power: ${d.power.toFixed(0)} HP, Weight: ${d.weight.toFixed(0)} KG</i></div>
+                Power to Weight Ratio: ${parseFloat(d.powerToWeightRatio).toFixed(2)} <br/>
             </div>
            `));
     })

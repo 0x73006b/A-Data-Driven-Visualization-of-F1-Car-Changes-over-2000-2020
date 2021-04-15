@@ -74,6 +74,7 @@ class RealTimeLap {
 
     vis.laps = vis.data.filter((d) => d.circuitName === vis.selectedTrack);
 
+    // display only when a track is selected
     if (this.selectedTrack === '') {
       d3.select('#laptime2-reatimeLap')
         .selectAll('*')
@@ -160,6 +161,7 @@ class RealTimeLap {
           }
         })
         .catch(() => {
+          // No file is loaded
           d3.select('#laptime2-reatimeLap')
             .selectAll('*')
             .remove();
@@ -178,8 +180,8 @@ class RealTimeLap {
     }
     // start button
     d3.select('#startButton')
-      // eslint-disable-next-line no-unused-vars
       .on('click', (_event, d) => {
+        // stop and remove all current drawing sectors
         for (let i = 0; i < 3; i += 1) {
           vis.animationPaths[0][i].interrupt();
           vis.animationPaths[1][i].interrupt();
@@ -191,6 +193,7 @@ class RealTimeLap {
       });
   }
 
+  // only update the specified sectors
   updateAnimation(trackNum, sectorNum, iterateNum) {
     const vis = this;
     if (iterateNum >= vis.iterateNum) {

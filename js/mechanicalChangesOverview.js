@@ -173,7 +173,7 @@ class MechanicalChangesOverview {
         .html((`
         <div class="tooltip-label">
             <div class="tooltip-title">Season ${d[0]}</div>
-            Avg PWR:WEIGHT: 
+            Average Power to Weight Ratio: 
             ${d[1]} <br/>
         </div>
        `));
