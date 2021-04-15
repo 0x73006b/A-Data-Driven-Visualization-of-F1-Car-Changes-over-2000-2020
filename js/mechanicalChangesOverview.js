@@ -1,11 +1,4 @@
-// TODO: implemented class should populate the scatterplot overview
-// x-axis years; y-axis average power to weight ratio
-// a line chart
-
-// TODO: edit from Detailedview to get general linechart overview
-// TODO: calculate average from the power-to-weight ratio
-// TODO: fix all comments
-
+// eslint-disable-next-line no-unused-vars
 class MechanicalChangesOverview {
   /**
    * Class constructor with initial configuration
@@ -19,10 +12,7 @@ class MechanicalChangesOverview {
       containerHeight: 450,
       tooltipPadding: 15,
       margin: {
-        top: 130,
-        right: 50,
-        bottom: 40,
-        left: 50,
+        top: 20, right: 50, bottom: 40, left: 50,
       },
       legendWidth: 100,
       legendHeight: 40,
@@ -91,9 +81,9 @@ class MechanicalChangesOverview {
     vis.marks = vis.chart.append('g');
 
     // Fix title, labels -- needs one for derived hp:weight
-    chartTitle(vis, 'Average Power-to-Weight ratio over the Years', null, 0);
-    axisLabel(vis, true, 'Years', 0, 10);
-    axisLabel(vis, false, 'Average-Power-to-Weight-Ratio', 0, -150);
+    chartTitle(vis, 'Average Power-to-Weight ratio over the Years', 208.5, -2.5);
+    axisLabel(vis, true, 'Years', -230, 10);
+    axisLabel(vis, false, 'Average-Power-to-Weight-Ratio', 0, -230);
 
     // legend
     vis.legend = vis.svg.append('g')
