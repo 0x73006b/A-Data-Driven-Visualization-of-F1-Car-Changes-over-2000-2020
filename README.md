@@ -1,5 +1,7 @@
 # A Data Driven Visualization of F1 Car Changes over 2000-2020
 
+Please view this project in a `1920x1080` screen, on Chrome/Chromium.
+
 ## High Level Code Explanation
 
 ### Main
