@@ -88,7 +88,7 @@ class Barchart {
   initData() {
     const vis = this;
 
-    // Specificy accessor functions
+    // Specify accessor functions
     vis.colorValue = (d) => d.key;
     vis.xValue = (d) => d.year;
     vis.yValue = (d) => d.time * 1000;
