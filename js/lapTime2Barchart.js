@@ -141,7 +141,7 @@ class Barchart {
         d3.select('#tooltip')
           .style('opacity', 1)
           .html((`<div class="tooltip-label">
-                    Sector Time <br/> 
+                    <div class="tooltip-title">Sector Time</div> 
                     Time for Sector: ${getMinuteStringFromMillisecond(d[1] - d[0])} <br/>
                     Time Elapsed in Lap: ${getMinuteStringFromMillisecond(d[1])}
                     </div>`));

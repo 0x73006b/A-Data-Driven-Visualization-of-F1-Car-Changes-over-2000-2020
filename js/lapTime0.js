@@ -218,7 +218,10 @@ class LapTime0 {
         d3.select('#tooltip')
           .style('opacity', 1)
           .html((`
-          <div class="tooltip-label">Year:${d[0]}, Theoretical Time: ${d[1].toFixed(2)}</div>
+          <div class="tooltip-label">
+            <div class="tooltip-title">Year: ${d[0]}</div> 
+            Theoretical Time: ${d[1].toFixed(2)}
+          </div>
            `));
       })
       .on('mouseleave', () => {
