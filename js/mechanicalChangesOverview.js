@@ -108,6 +108,7 @@ class MechanicalChangesOverview {
       return parseFloat(averagedRatio.toFixed(3));
     }, (d) => d.year);
 
+    // setup yDomain after getting averaged pwr
     vis.yScale.domain([d3.min(vis.processedData, d=>d[1])*.9, d3.max(vis.processedData, d=>d[1])*1.10])
 
     vis.processedData = vis.processedData.sort();
