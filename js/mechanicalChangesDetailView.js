@@ -228,7 +228,6 @@ class MechanicalChangesDetailView {
       .attr('fill', 'black');
 
     powerWeightRatioCircle.on('mouseover', (event, d) => {
-      powerWeightRatioCircle.attr('cursor', 'pointer');
       d3.select('#tooltip')
         .style('opacity', 1)
         .html((`
