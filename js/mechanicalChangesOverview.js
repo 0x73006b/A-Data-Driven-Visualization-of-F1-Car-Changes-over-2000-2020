@@ -41,7 +41,6 @@ class MechanicalChangesOverview {
     vis.yScale = d3.scaleLinear()
       .range([vis.height, 0])
       .nice()
-      .domain(d3.extent(vis.data, vis.yValue1));
 
     // Create color scale for legend
     vis.colorScale = d3.scaleOrdinal()
@@ -97,7 +96,6 @@ class MechanicalChangesOverview {
   initData() {
     const vis = this;
     // Should have averaged power-to-weight by each year
-
     vis.processedData = d3.rollups(vis.data, (d) => {
       let cumulativeSum = 0;
       d.forEach((v) => {
@@ -109,6 +107,8 @@ class MechanicalChangesOverview {
       // Currently rounded to 3 decimal places
       return parseFloat(averagedRatio.toFixed(3));
     }, (d) => d.year);
+
+    vis.yScale.domain([d3.min(vis.processedData, d=>d[1])*.9, d3.max(vis.processedData, d=>d[1])*1.10])
 
     vis.processedData = vis.processedData.sort();
     mechanicalChangesSelectedYears = [];
