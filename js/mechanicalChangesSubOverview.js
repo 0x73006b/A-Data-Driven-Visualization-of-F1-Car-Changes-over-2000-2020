@@ -22,7 +22,7 @@ class MechanicalChangesSubOverview {
       legendRadius: 5,
     };
     this.data = _data;
-    this.calculateLegendYPosition = (i, even) => (even ? 20 + (i / 2) * 15 : 18 + (Math.floor(i / 2)) * 15);
+    this.calculateLegendYPosition = (i, even) => (even ? 20 + (i / 2) * 15 : 20 + (Math.floor(i / 2)) * 15);
     this.initData();
   }
 
@@ -263,12 +263,12 @@ class MechanicalChangesSubOverview {
       .attr('y', (d, i) => {
         if (i % 2 === 0) {
           // if even index
-          return 22 + (i / 2) * 15;
+          return 24 + (i / 2) * 15;
         }
 
         // item 2 and 4 = index 1,3
         // floor makes the index 0, 1
-        return 22 + (Math.floor(i / 2)) * 15;
+        return 24 + (Math.floor(i / 2)) * 15;
       })
       .text((d) => d)
       .attr('font-size', 13)
