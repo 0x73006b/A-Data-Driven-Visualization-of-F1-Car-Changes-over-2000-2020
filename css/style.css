@@ -1,24 +1,24 @@
 /* Fonts */
 @font-face {
     font-family: F1Regular;
-    src: url("/data/fonts/Formula1-Regular.woff")
+    src: url("../data/fonts/Formula1-Regular.woff")
 }
 
 @font-face {
     font-family: F1Wide;
-    src: url("/data/fonts/Formula1-Wide.woff")
+    src: url("../data/fonts/Formula1-Wide.woff")
 }
 
 @font-face {
     font-family: Titillium;
     font-weight: normal;
-    src: url("/data/fonts/Titillium-Regular.woff")
+    src: url("../data/fonts/Titillium-Regular.woff")
 }
 
 @font-face {
     font-family: Titillium;
     font-weight: bold;
-    src: url("/data/fonts/Titillium-Bold.woff")
+    src: url("../data/fonts/Titillium-Bold.woff")
 }
 
 /* General Start */
