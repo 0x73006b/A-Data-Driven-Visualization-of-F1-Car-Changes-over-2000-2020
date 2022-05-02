@@ -42,20 +42,26 @@ h1 {
     font-size: 1.5em;
 }
 
-input{
+input, button{
     padding: 10px 24px;
     border-radius: 5px;
     border: none;
     color:#fff;
     background-color: #f20002;
+    cursor: pointer;
+    transition: background-color 50ms linear;
 }
 
-button{
-    padding: 10px 24px;
-    border-radius: 5px;
-    border: none;
-    color:#fff;
-    background-color: #f20002;
+input:hover, button:hover{
+    background-color: #ff4242;
+    transform: translateY(-1px);
+    transition: background-color 50ms linear;
+}
+
+input:active, button:active{
+    background-color: #af0000;
+    transform: translateY(2px);
+    transition: background-color 20ms linear;
 }
 
 #tooltip {
